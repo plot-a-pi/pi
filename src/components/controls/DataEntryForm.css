@@ -1,0 +1,10 @@
+.DataEntryForm {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 50vw;
+    margin: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: lightcoral;
+}
