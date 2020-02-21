@@ -21,9 +21,13 @@ jest.mock('firebase-admin', () => ({
 describe('post to global data service', () => {
   it('should post a new dataPoint to global', () => {
     const push = jest.fn();
+    const send = jest.fn();
+    const json = jest.fn();
     const res = {
-      status: () => {},
-      json: 'POST method required, access denied'
+      status: () => ({
+        json
+      }),
+      send
     }
 
     const req ={ 
@@ -37,14 +41,18 @@ describe('post to global data service', () => {
     }
 
     const data = {
-      push
+      push,
+      get: () => ({
+        snap: {
+          size: 1
+        }
+      })
     }
 
     return functions.postToGlobalData(req, res, data)
       .then(res => {
         expect(data.push).toBeCalledWith(req.body);
+        console.log(res)
       })
   });
 });
-
-

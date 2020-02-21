@@ -4,7 +4,7 @@ const globalServices = require('./services/postGlobal');
 
 admin.initializeApp();
 
-const dataPoints = admin.database().ref('dataPoints');
+const dataPoints = admin.firestore().collection('data-points')
 const globalMean = admin.database().ref('globalMean');
 const { postToGlobalData } = globalServices;
 
