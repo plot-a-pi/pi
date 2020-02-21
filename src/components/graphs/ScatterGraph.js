@@ -30,7 +30,10 @@ const ScatterGraph = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
 ScatterGraph.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  yMax: PropTypes.number.isRequired,
+  xLabel: PropTypes.string.isRequired,
+  yLabel: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired
 };
 
 export default ScatterGraph;
