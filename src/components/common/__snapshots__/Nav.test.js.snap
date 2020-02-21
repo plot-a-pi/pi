@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav component matches a snapshot 1`] = `
+<Fragment>
+  <NavLink
+    activeStyle={
+      Object {
+        "color": "red",
+        "fontWeight": "bold",
+      }
+    }
+    exact={true}
+    to="/"
+  >
+    <input
+      id="home"
+      name="nav"
+      onChange={[Function]}
+      type="radio"
+      value="home"
+    />
+    <label
+      htmlFor="home"
+    >
+      Home
+    </label>
+  </NavLink>
+  <NavLink
+    activeStyle={
+      Object {
+        "color": "red",
+        "fontWeight": "bold",
+      }
+    }
+    to="/teachers"
+  >
+    <input
+      id="teachers"
+      name="nav"
+      onChange={[Function]}
+      type="radio"
+      value="teachers"
+    />
+    <label
+      htmlFor="teachers"
+    >
+      For Teachers
+    </label>
+  </NavLink>
+  <NavLink
+    activeStyle={
+      Object {
+        "color": "red",
+        "fontWeight": "bold",
+      }
+    }
+    to="/pifaqs"
+  >
+    <input
+      id="pifaqs"
+      name="nav"
+      onChange={[Function]}
+      type="radio"
+      value="pifaqs"
+    />
+    <label
+      htmlFor="pifaqs"
+    >
+      Pi FAQs
+    </label>
+  </NavLink>
+  <NavLink
+    activeStyle={
+      Object {
+        "color": "red",
+        "fontWeight": "bold",
+      }
+    }
+    to="/map"
+  >
+    <input
+      id="map"
+      name="nav"
+      onChange={[Function]}
+      type="radio"
+      value="map"
+    />
+    <label
+      htmlFor="map"
+    >
+      Data Map
+    </label>
+  </NavLink>
+  <NavLink
+    activeStyle={
+      Object {
+        "color": "red",
+        "fontWeight": "bold",
+      }
+    }
+    to="/montecarlo"
+  >
+    <input
+      id="montecarlo"
+      name="nav"
+      onChange={[Function]}
+      type="radio"
+      value="montecarlo"
+    />
+    <label
+      htmlFor="montecarlo"
+    >
+      Monte Carlo
+    </label>
+  </NavLink>
+</Fragment>
+`;
