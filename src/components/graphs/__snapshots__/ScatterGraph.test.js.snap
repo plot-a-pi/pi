@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ScatterGraph component renders ScatterGraph 1`] = `
+<svg
+  className="d3-component"
+  height={800}
+  width={800}
+/>
+`;

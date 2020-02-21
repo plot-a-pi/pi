@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "plot-a-pi"
+    "default": "plot-a-pi",
+    "production": "plot-a-pi-prod"
   }
 }
