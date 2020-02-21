@@ -21,11 +21,11 @@ const Footer = () => {
 
 
   return (
-    <>
+    <footer>
       <div className={Styles.marquee}>
         <div className={Styles.text}>{pi}</div>
       </div>
-    </>
+    </footer>
   );
 };
 
