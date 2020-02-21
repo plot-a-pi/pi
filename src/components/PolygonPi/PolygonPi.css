@@ -1,0 +1,8 @@
+.PolygonPi {
+  display: flex;
+  flex-direction: column;
+}
+
+.Pi {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}

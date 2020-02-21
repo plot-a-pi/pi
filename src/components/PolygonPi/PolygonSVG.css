@@ -1,0 +1,11 @@
+.Circle {
+  stroke: black; 
+  stroke-width: 3;
+  fill: red;
+}
+
+.Polygon {
+  fill: lime;
+  stroke: purple;
+  stroke-width: 1
+}
