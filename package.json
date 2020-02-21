@@ -19,7 +19,9 @@
     "test": "jest --verbose",
     "test:watch": "npm run test -- --watch",
     "start": "webpack-dev-server --hot --mode development --devtool eval-source-map",
-    "build": "webpack -p --devtool source-map"
+    "build": "webpack -p --devtool source-map",
+    "deploy:prod": "npm run build && firebase use production && firebase deploy",
+    "deploy:stage": "npm run build && firebase use default && firebase deploy"
   },
   "keywords": [],
   "author": "",
