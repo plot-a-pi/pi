@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stats component should match snapshot 1`] = `
+<Fragment>
+  <h2>
+    Sample Size:
+  </h2>
+  <p>
+    0
+  </p>
+  <h2>
+    Pi Approximation:
+  </h2>
+  <p>
+    0
+  </p>
+</Fragment>
+`;
