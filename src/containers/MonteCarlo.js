@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
-import MonteCarloDartsGraph from '../components/montecarlo/MonteCarloDartsGraph';
+import MonteCarloControls from '../components/monteCarlo/MonteCarloControls';
+import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import ScatterGraph from '../components/graphs/ScatterGraph';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getSampleSize, getDartsArray, getSampleSizePiArray } from '../selectors/monteCarloSelector';
-import { add1Dart, add10Darts, add100Darts, add1000Darts } from '../actions/montecarloActions';
+import { add1Dart, add10Darts, add100Darts, add1000Darts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
   const [monteCarloState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, sampleSize: null, dartsArray: [], sampleSizePiArray: [] });
@@ -25,9 +25,9 @@ const MonteCarlo = () => {
     <>
       <MonteCarloDartsGraph />
       <MonteCarloControls actions={actions} />
-      <ScatterGraph data={sampleSizePiArray} xMax={sampleSize} yMax={5} xLabel={'Sample Size of Darts'} yLabel={'Pi Approximation'} title={''}/>
+      <ScatterGraph data={sampleSizePiArray} xMax={sampleSize} yMax={5} xLabel={'Sample Size of Darts'} yLabel={'Pi Approximation'} title={'Pi Approximation vs Sample Size of Darts'}/>
     </>
-  )
+  );
+};
 
-
-}
+export default MonteCarlo;
