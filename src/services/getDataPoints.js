@@ -10,7 +10,7 @@ firebase.initializeApp({
   appId: '1:470192475850:web:27390054dc9be10153ee33'
 });
 
-export const getDataPoints = (dbname, dispatch) => {
+export const getData = (dbname, dispatch) => {
   const db = firebase.firestore().collection(dbname);
 
   return db.
