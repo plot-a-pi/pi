@@ -1,18 +1,6 @@
 import React, { useState } from 'react';
-import firebase from 'firebase';
 import styles from './DataEntryForm.css';
-
-const firebaseConfig = {
-  apiKey: 'AIzaSyCqogSdWZ-jW3hcCe-eljYKUL2Rsr6zVZo',
-  authDomain: 'plot-a-pi.firebaseapp.com',
-  databaseURL: 'https://plot-a-pi.firebaseio.com',
-  projectId: 'plot-a-pi',
-  storageBucket: 'plot-a-pi.appspot.com',
-  messagingSenderId: '470192475850',
-  appId: '1:470192475850:web:27390054dc9be10153ee33'
-};
-
-firebase.initializeApp(firebaseConfig);
+import { dataPointsCollection } from '../../firebase/firebase'; 
 
 const DataEntryForm = () => {
   const [circumference, setCircumference] = useState(0);
@@ -20,12 +8,9 @@ const DataEntryForm = () => {
   const [circumferenceUnit, setCircumferenceUnit] = useState('');
   const [diameterUnit, setDiameterUnit] = useState('');
 
-  const db = firebase.firestore();
-  const dataPointRef = db.collection('data-points').doc();
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    dataPointRef.set({
+    dataPointsCollection.add({
       circumference: Number(circumference),
       diameter: Number(diameter),
       circumferenceUnit: circumferenceUnit,
