@@ -13,8 +13,8 @@ const DataEntryForm = () => {
     dataPointsCollection.add({
       circumference: Number(circumference),
       diameter: Number(diameter),
-      circumferenceUnit: circumferenceUnit,
-      diameterUnit: diameterUnit
+      circumferenceUnit,
+      diameterUnit
     })
       .then(() => {
         console.log('Data point created in firestore!');
