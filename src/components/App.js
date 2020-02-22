@@ -1,8 +1,7 @@
 import React from 'react';
-import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 
 export default function App() {
   return (
-    <MonteCarloDartsGraph />
+    <h1>Hello World</h1>
   );
 }
