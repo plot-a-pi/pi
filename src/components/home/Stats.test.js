@@ -6,5 +6,4 @@ describe('Stats component', () => {
     const wrapper = shallow(<Stats />);
     expect(wrapper).toMatchSnapshot(); 
   });
-})
-;
+});
