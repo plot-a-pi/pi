@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './DataEntryForm.css';
-import { dataPointsCollection } from '../../firebase/firebase'; 
+import { createDataPoint } from '../../firebase/actions'; 
 
 const DataEntryForm = () => {
   const [circumference, setCircumference] = useState(0);
@@ -10,7 +10,7 @@ const DataEntryForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dataPointsCollection.add({
+    createDataPoint({
       circumference: Number(circumference),
       diameter: Number(diameter),
       circumferenceUnit,
