@@ -1,5 +1,5 @@
 export const getPiApproximation = state => {
-  return state.circleTotal / state.dartsTotal;
+  return state.circleTotal / state.dartsTotal * 4;
 };
 
 export const getDartsTotal = state => {

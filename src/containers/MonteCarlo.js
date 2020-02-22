@@ -3,11 +3,11 @@ import MonteCarloControls from '../components/monteCarlo/MonteCarloControls';
 import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import ScatterGraph from '../components/graphs/ScatterGraph';
 import monteCarloReducer from '../reducers/monteCarloReducer';
-import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray } from '../selectors/monteCarloSelector';
+import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
-  const [monteCarloState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], dartsTotalPiArray: [] });
+  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 1, circleTotal: 1, dartsArray: [], piApproximationsArray: [] });
 
   const actions = [
     { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(add1Dart()) },
@@ -17,16 +17,16 @@ const MonteCarlo = () => {
     { name: 'CLEAR_DARTS', text: 'Reset', actionCreator: () => dispatch(clearDarts()) }
   ];
 
-  const piApproximation = getPiApproximation();
-  const dartsTotal = getDartsTotal();
-  const dartsArray = getDartsArray();
-  const numDartsVersusPiArray = getNumDartsVersusPiArray();
+  const piApproximation = getPiApproximation(piState);
+  const dartsTotal = getDartsTotal(piState);
+  const dartsArray = getDartsArray(piState);
+  const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
 
   return (
     <>      
       <h1>{piApproximation}</h1>
       <ScatterGraph data={dartsArray} xMax={1} yMax={1} xLabel={'x'} yLabel={'y'} title={'Darts'} />
-      {/* <MonteCarloControls actions={actions} /> */}
+      <MonteCarloControls actions={actions} />
       <ScatterGraph data={numDartsVersusPiArray} xMax={dartsTotal} yMax={5} xLabel={'Sample Size of Darts'} yLabel={'Pi Approximation'} title={'Pi Approximation vs Sample Size of Darts'}/>
     </>
   );

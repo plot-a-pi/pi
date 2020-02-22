@@ -1,7 +1,8 @@
 import React from 'react';
+import MonteCarlo from '../containers/MonteCarlo';
 
 export default function App() {
   return (
-    <h1>Hello World</h1>
+    <MonteCarlo />
   );
 }

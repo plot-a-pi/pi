@@ -6,6 +6,9 @@ export default function reducer(state, action) {
     case ADD_1_DART:
     {
       const data = generateMonteCarloData(1);
+      console.log(data.newPiApproximationsArray);
+      console.log(state.piApproximationsArray);
+      console.log(state.piApproximationsArray.concat(data.newPiApproximationsArray));
       return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: state.circleTotal + data.numC, dartsArray: state.dartsArray.concat(data.dartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
     }
     case ADD_10_DARTS:
