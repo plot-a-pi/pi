@@ -1,6 +1,6 @@
 import React from 'react';
 import ScatterGraph from '../graphs/ScatterGraph';
-import { generateMonteCarloData } from '../../';
+import { generateMonteCarloData } from '../../data/montecarlo';
 const monteCarloData = generateMonteCarloData(1000);
 const dartsArray = monteCarloData.dartsArray;
 const sampleSizVersusPi = monteCarloData.sampleSizeVersusPiArray;

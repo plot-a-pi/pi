@@ -1,10 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import MonteCarloGraph from './MonteCarloGraph';
+import MonteCarloDartsGraph from './MonteCarloDartsGraph';
 
-describe('MonteCarloGraph component', () => {
+describe('MonteCarloDartsGraph component', () => {
   it('renders MonteCarloGraph', () => {
-    const wrapper = shallow(<MonteCarloGraph />);
+    const wrapper = shallow(<MonteCarloDartsGraph />);
     expect(wrapper).toMatchSnapshot();
   });
 });
