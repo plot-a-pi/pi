@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component should match snapshot 1`] = `
+<Fragment>
+  <BrowserRouter>
+    <body
+      className="Home"
+    >
+      <Header />
+      <Nav />
+      <ScatterGraph
+        data={
+          Array [
+            Array [
+              1,
+              2,
+            ],
+            Array [
+              6,
+              10,
+            ],
+          ]
+        }
+        title="generic title"
+        xLabel="I love you guys"
+        xMax={6}
+        yLabel="2nd to last friday mofos"
+        yMax={10}
+      />
+      <Stats />
+      <ButtonNav />
+      <Footer />
+    </body>
+  </BrowserRouter>
+</Fragment>
+`;

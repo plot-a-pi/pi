@@ -13,12 +13,14 @@ const Home = () => {
   return (
     <>
       <Router>
-        <Header />
-        <Nav />
-        <ScatterGraph data={[[1, 2], [6, 10]]} xMax={6} xLabel={'I love you guys'} yMax={10} yLabel={'2nd to last friday mofos'} title={'generic title'} />
-        <Stats />
-        <ButtonNav />
-        <Footer />
+        <body className={styles.Home}>
+          <Header />
+          <Nav />
+          <ScatterGraph data={[[1, 2], [6, 10]]} xMax={6} xLabel={'I love you guys'} yMax={10} yLabel={'2nd to last friday mofos'} title={'generic title'} />
+          <Stats />
+          <ButtonNav />
+          <Footer />
+        </body>
       </Router>
     </>
   );

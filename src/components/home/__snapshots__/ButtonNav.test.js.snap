@@ -2,40 +2,44 @@
 
 exports[`ButtonNav should render ButtonNav 1`] = `
 <Fragment>
-  <Link
-    to="/teachers"
+  <div
+    className="ButtonNav"
   >
-    <button>
-      For Teachers
-    </button>
-  </Link>
-  <Link
-    to="/pifaqs"
-  >
-    <button>
-      Pi FAQS
-    </button>
-  </Link>
-  <Link
-    to="/montecarlo"
-  >
-    <button>
-      Monte Carlo
-    </button>
-  </Link>
-  <Link
-    to="/map"
-  >
-    <button>
-      Map
-    </button>
-  </Link>
-  <Link
-    to="/submit"
-  >
-    <button>
-      Submit to Global Data
-    </button>
-  </Link>
+    <Link
+      to="/teachers"
+    >
+      <button>
+        For Teachers
+      </button>
+    </Link>
+    <Link
+      to="/pifaqs"
+    >
+      <button>
+        Pi FAQS
+      </button>
+    </Link>
+    <Link
+      to="/montecarlo"
+    >
+      <button>
+        Monte Carlo
+      </button>
+    </Link>
+    <Link
+      to="/map"
+    >
+      <button>
+        Map
+      </button>
+    </Link>
+    <Link
+      to="/submit"
+    >
+      <button>
+        Submit to Global Data
+      </button>
+    </Link>
+  </div>
 </Fragment>
 `;

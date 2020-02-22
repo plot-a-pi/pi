@@ -16,14 +16,16 @@ const ScatterGraph = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     },
     [data, d3Container.current]);
   return (
-    <svg
-      className="d3-component"
+    <div className={styles.ScatterGraph}>
+      <svg
+        className="d3-component"
 
-      // these need to adjust based on media queries and page dependent:  home or big graph
-      width={containerWidth}
-      height={containerHeight}
-      ref={d3Container}
-    />
+        // these need to adjust based on media queries and page dependent:  home or big graph
+        width={containerWidth}
+        height={containerHeight}
+        ref={d3Container}
+      />
+    </div>
   );
 };
 
