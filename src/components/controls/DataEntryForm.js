@@ -10,16 +10,21 @@ const DataEntryForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createDataPoint({
-      circumference: Number(circumference),
-      diameter: Number(diameter),
-      circumferenceUnit,
-      diameterUnit
-    })
-      .then(() => {
-        console.log('Data point created in firestore!');
-      });
-  };
+    if(circumferenceUnit !== diameterUnit) {
+      alert('Are you sure your units are correct?');
+    } else if(circumference < diameter) {
+      alert('Are you sure your measurements are correct?');
+    } else {
+      createDataPoint({
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
+      })
+        .then(() => {
+          alert('Success! Your pi has been saved!');
+        });
+    }};
 
   return (
     <div className={styles.DataEntryForm}>
