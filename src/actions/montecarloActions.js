@@ -14,3 +14,7 @@ export const ADD_1000_DARTS = 'ADD_1000_DARTS';
 export const add1000Darts = () => ({ 
   type: ADD_1000_DARTS
 });
+export const CLEAR_DARTS = 'CLEAR_DARTS';
+export const clearDarts = () => ({ 
+  type: CLEAR_DARTS
+});

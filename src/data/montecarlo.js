@@ -1,6 +1,6 @@
 export const generateMonteCarloData = sampleSize => {
   let dartsArray = [];
-  let sampleSizeVersusPiArray = [];
+  let newPiApproximationsArray = [];
   let n = 1;
   let x;
   let y;
@@ -13,10 +13,8 @@ export const generateMonteCarloData = sampleSize => {
       numC++;
     }
     dartsArray.push([x, y]);
-    sampleSizeVersusPiArray.push([n, numC / n * 4]);
+    newPiApproximationsArray.push(numC / n * 4);
     n++;
   }
-  return { dartsArray, sampleSizeVersusPiArray };
+  return { numC, dartsArray, newPiApproximationsArray };
 };
-// graph pi versus n & y versus x
-
