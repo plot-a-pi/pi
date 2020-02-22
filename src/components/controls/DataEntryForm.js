@@ -17,7 +17,7 @@ const DataEntryForm = () => {
       diameterUnit: diameterUnit
     })
       .then(() => {
-        console.log('created data point in firestore');
+        console.log('Data point created in firestore!');
       });
   };
 
@@ -29,7 +29,7 @@ const DataEntryForm = () => {
           <h3>Circumference:</h3>
           <input type='number' required value={circumference} onChange={({ target }) => setCircumference(target.value)}/>
           <select id="units" required value={circumferenceUnit} onChange={({ target }) => setCircumferenceUnit(target.value)}>
-            <option>--</option>
+            <option>-</option>
             <option value="cm">cm</option>
             <option value="in">in</option>
             <option value="m">m</option>
@@ -40,7 +40,7 @@ const DataEntryForm = () => {
           <h3>Diameter:</h3>
           <input type='number' required value={diameter} onChange={({ target }) => setDiameter(target.value)}/>
           <select id="units" required value={diameterUnit} onChange={({ target }) => setDiameterUnit(target.value)}>
-            <option>--</option>
+            <option>-</option>
             <option value="cm">cm</option>
             <option value="in">in</option>
             <option value="m">m</option>
