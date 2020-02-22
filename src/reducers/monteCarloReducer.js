@@ -5,11 +5,9 @@ export default function reducer(state, action) {
   switch(action.type){
     case ADD_1_DART:
     {
-      const data = generateMonteCarloData(1);
-      console.log(data.newPiApproximationsArray);
-      console.log(state.piApproximationsArray);
-      console.log(state.piApproximationsArray.concat(data.newPiApproximationsArray));
-      return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: state.circleTotal + data.numC, dartsArray: state.dartsArray.concat(data.dartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
+      const data = generateMonteCarloData(1, state.circleTotal, state.dartsTotal);
+      console.log('data returned for reducer', data.circleTotal);
+      return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
     }
     case ADD_10_DARTS:
       return { ...state, dartsTotal: state.dartsTotal + 10 };
@@ -18,7 +16,7 @@ export default function reducer(state, action) {
     case ADD_1000_DARTS:
       return { ...state, dartsTotal: state.dartsTotal + 1000 };
     case CLEAR_DARTS:
-      return { piApproximation: null, dartsTotal: null, dartsArray: [], sampleSizePiArray:[] };
+      return { piApproximation: null, dartsTotal: 1, circleTotal: 1, dartsArray: [], piApproximationsArray:[] };
     default:
       console.log(`unhandled name: ${name}`);
       return state;

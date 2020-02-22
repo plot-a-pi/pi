@@ -1,20 +1,21 @@
-export const generateMonteCarloData = sampleSize => {
+export const generateMonteCarloData = (sampleSize, currentCircleTotal, currentDartsTotal) => {
   let dartsArray = [];
   let newPiApproximationsArray = [];
-  let n = 1;
   let x;
   let y;
-  let numC = 0;
+  let n = 0;
   
-  while(n < sampleSize + 1){
+  while(n < sampleSize){
     x = Math.random();
     y = Math.random();
     if(Math.pow((x - .5), 2) + Math.pow((y - .5), 2) < .25) {
-      numC++;
+      currentCircleTotal++;
     }
     dartsArray.push([x, y]);
-    newPiApproximationsArray.push(numC / n * 4);
+    currentDartsTotal !== 0 && newPiApproximationsArray.push(currentCircleTotal / (currentDartsTotal + n) * 4);
     n++;
   }
-  return { numC, dartsArray, newPiApproximationsArray };
+  const newCircleTotal = currentCircleTotal;
+  const newDartsArray = dartsArray;
+  return { newCircleTotal, newDartsArray, newPiApproximationsArray };
 };
