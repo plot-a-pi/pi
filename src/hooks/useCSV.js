@@ -17,8 +17,6 @@ const useCSV = (ref) => {
     });
   };
 
-  
-
   return { csvStatus, handleClick }; 
 };
 
