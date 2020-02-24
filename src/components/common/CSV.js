@@ -7,11 +7,8 @@ const CSV = ({ csvData, header1, header2, children }) => {
   //header1 & header2 sit at the top of the file eg circumfrence diameter
 
   const csvDataPreparedForHeaders = csvData.map(datum => {
-    console.log(datum);
     return ({ 'x' : datum[0], 'y' : datum[1] });
   });
-
-  console.log(csvDataPreparedForHeaders);
 
   const headers = [
     { label: header1, key: 'x' },
@@ -19,7 +16,7 @@ const CSV = ({ csvData, header1, header2, children }) => {
   ];
   return (
     <CSVLink data={csvDataPreparedForHeaders} headers={headers} target='_blank'>
-      <h1>Download</h1>
+      {children}
     </CSVLink>
     
   );

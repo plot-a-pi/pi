@@ -6,6 +6,7 @@ exports[`CSV component matches a snapshot 1`] = `
   data={
     Array [
       Object {
+        "x": 1,
         "y": 1,
       },
     ]
