@@ -17,18 +17,18 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
       <input
         onChange={[Function]}
         required={true}
-        type="number"
-        value={0}
+        type="text"
+        value=""
       />
       <select
-        id="units"
+        id="circumferenceUnits"
         onChange={[Function]}
         required={true}
         value=""
       >
-        <option>
-          --
-        </option>
+        <option
+          value=""
+        />
         <option
           value="cm"
         >
@@ -58,18 +58,18 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
       <input
         onChange={[Function]}
         required={true}
-        type="number"
-        value={0}
+        type="text"
+        value=""
       />
       <select
-        id="units"
+        id="diameterUnits"
         onChange={[Function]}
         required={true}
         value=""
       >
-        <option>
-          --
-        </option>
+        <option
+          value=""
+        />
         <option
           value="cm"
         >
