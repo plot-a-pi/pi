@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSV component matches a snapshot 1`] = `
+<CSVLink
+  asyncOnClick={false}
+  data={
+    Array [
+      Object {
+        "y": 1,
+      },
+    ]
+  }
+  filename="generatedBy_react-csv.csv"
+  headers={
+    Array [
+      Object {
+        "key": "x",
+        "label": "test",
+      },
+      Object {
+        "key": "y",
+        "label": "snapshot",
+      },
+    ]
+  }
+  separator=","
+  target="_blank"
+  uFEFF={true}
+/>
+`;

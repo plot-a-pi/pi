@@ -5,7 +5,7 @@ import { CSVLink } from 'react-csv';
 const CSV = ({ csvData, header1, header2  }) => {
 
   //csvData takes form array of couplets
-  //header1 & header2 sit at the top of the file
+  //header1 & header2 sit at the top of the file eg circumfrence diameter
 
   const csvDataPreparedForHeaders = csvData.map(datum => ({ 'x' : datum[0] }, { 'y' : datum[1] }));
 
@@ -20,7 +20,7 @@ const CSV = ({ csvData, header1, header2  }) => {
 };
 
 CSV.propTypes = {
-  csvData : PropTypes.arrray.isRequired,
+  csvData : PropTypes.array.isRequired,
   header1 : PropTypes.string,
   header2 : PropTypes.string
 };
