@@ -1,14 +1,30 @@
 .Modal {
-    z-index: 5;
-    background-color: lightcyan;
-    color: #252735;
-    border: solid 10px black;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
-    width: 25rem;
-    font-size: 16px;
-    text-align: center;  
-}
+    position: fixed; 
+    padding-top: 50px;
+    left: 25vw; 
+    top: 0;
+    width: 45vw;
+    height: 20vh; 
+    border: 2px solid black;
+
+    .closeButton {
+        float: right; 
+        color: lightgray; 
+        font-size: 24px;  
+        font-weight: bold;
+      }
+      
+    }
+
+    .modalShow{
+        color:black;
+        background-color: rgb(42, 133, 136);
+        opacity: 1;
+    }
+
+    .modalHide {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+      

@@ -14,6 +14,12 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
       <h3>
         Circumference:
       </h3>
+      <Modal
+        modalInstructions="This is how you do circumferency things"
+        modalTitle="Circumference"
+        showModal={false}
+        toggleModal={[Function]}
+      />
       <input
         onChange={[Function]}
         required={true}
@@ -50,11 +56,24 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           ft
         </option>
       </select>
+      <button
+        className="modalButton"
+        onClick={[Function]}
+        type="button"
+      >
+         ? 
+      </button>
     </div>
     <div>
       <h3>
         Diameter:
       </h3>
+      <Modal
+        modalInstructions="This is how you do diametery things"
+        modalTitle="Diameter"
+        showModal={false}
+        toggleModal={[Function]}
+      />
       <input
         onChange={[Function]}
         required={true}
@@ -91,6 +110,13 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           ft
         </option>
       </select>
+      <button
+        className="modalButton"
+        onClick={[Function]}
+        type="button"
+      >
+         ? 
+      </button>
     </div>
     <button>
       Plot!
