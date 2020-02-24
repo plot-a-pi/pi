@@ -6,15 +6,23 @@ export default function reducer(state, action) {
     case ADD_1_DART:
     {
       const data = generateMonteCarloData(1, state.circleTotal, state.dartsTotal);
-      console.log('data returned for reducer', data.circleTotal);
       return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
     }
     case ADD_10_DARTS:
-      return { ...state, dartsTotal: state.dartsTotal + 10 };
+    {
+      const data = generateMonteCarloData(10, state.circleTotal, state.dartsTotal);
+      return { ...state, dartsTotal: state.dartsTotal + 10, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
+    }
     case ADD_100_DARTS:
-      return { ...state, dartsTotal: state.dartsTotal + 100 };
+    {
+      const data = generateMonteCarloData(100, state.circleTotal, state.dartsTotal);
+      return { ...state, dartsTotal: state.dartsTotal + 100, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
+    }
     case ADD_1000_DARTS:
-      return { ...state, dartsTotal: state.dartsTotal + 1000 };
+    {
+      const data = generateMonteCarloData(1000, state.circleTotal, state.dartsTotal);
+      return { ...state, dartsTotal: state.dartsTotal + 1000, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
+    }
     case CLEAR_DARTS:
       return { piApproximation: null, dartsTotal: 1, circleTotal: 1, dartsArray: [], piApproximationsArray:[] };
     default:

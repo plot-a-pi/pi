@@ -1,13 +1,13 @@
 import React from 'react';
-import ScatterGraph from '../graphs/ScatterGraph';
+import Scatterplot from '../graphs/Scatterplot';
 
-const MonteCarloDartsGraph = () => {
+const MonteCarloDartsplot = () => {
 
   return (
     <>
-      <h1>Hello MonteCarloDartsGraph with inscribed circle in a square</h1>
+      <h1>Hello MonteCarloDartsplot with inscribed circle in a square</h1>
     </>
   );
 };
 
-export default MonteCarloDartsGraph;
+export default MonteCarloDartsplot;
