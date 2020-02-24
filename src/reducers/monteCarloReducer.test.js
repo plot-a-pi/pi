@@ -1,6 +1,6 @@
   
 import reducer from './monteCarloReducer';
-import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions.js';
 
 jest.mock('../data/monteCarlo.js');
 
