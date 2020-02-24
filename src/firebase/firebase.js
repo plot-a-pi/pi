@@ -15,3 +15,5 @@ export const app = firebase;
 export const firestore = app.firestore();
 
 export const globalDataCollection = firestore.collection('data-points');
+
+export const globalStatsCollection = firestore.collection('stats');
