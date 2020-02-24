@@ -1,14 +1,17 @@
-import React, { Children } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 import { CSVLink } from 'react-csv';
 
 const CSV = ({ csvData, header1, header2, children }) => {
-
   //csvData takes form array of couplets
   //header1 & header2 sit at the top of the file eg circumfrence diameter
 
-  const csvDataPreparedForHeaders = csvData.map(datum => ({ 'x' : datum[0] }, { 'y' : datum[1] }));
+  const csvDataPreparedForHeaders = csvData.map(datum => {
+    console.log(datum);
+    return ({ 'x' : datum[0], 'y' : datum[1] });
+  });
 
+  console.log(csvDataPreparedForHeaders);
 
   const headers = [
     { label: header1, key: 'x' },
@@ -16,7 +19,7 @@ const CSV = ({ csvData, header1, header2, children }) => {
   ];
   return (
     <CSVLink data={csvDataPreparedForHeaders} headers={headers} target='_blank'>
-      {children}
+      <h1>Download</h1>
     </CSVLink>
     
   );
