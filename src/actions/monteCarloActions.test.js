@@ -1,13 +1,4 @@
-import {
-  ADD_1_DART,
-  add1Dart,
-  ADD_10_DARTS,
-  add10Darts,
-  ADD_100_DARTS,
-  add100Darts,
-  ADD_1000_DARTS,
-  add1000Darts
-} from './monteCarloActions';
+import { ADD_1_DART, add1Dart, ADD_10_DARTS, add10Darts, ADD_100_DARTS, add100Darts, ADD_1000_DARTS, add1000Darts } from './monteCarloActions';
 
 describe('monteCarlo action creators', () => {
   it('creates an add1Dart action', () => {

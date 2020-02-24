@@ -1,6 +1,8 @@
 import { ADD_1_DART, ADD_10_DARTS, ADD_100_DARTS, ADD_1000_DARTS, CLEAR_DARTS } from '../actions/montecarloActions';
 import { generateMonteCarloData } from '../data/monteCarlo';
 
+// refactor to avoid redundancy
+
 export default function reducer(state, action) {
   switch(action.type){
     case ADD_1_DART:

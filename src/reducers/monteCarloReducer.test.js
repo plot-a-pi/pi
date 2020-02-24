@@ -6,6 +6,8 @@ jest.mock('../data/monteCarlo.js');
 
 describe('monteCarlo reducer', () => {
 
+  // refactor this to avoid redundancy
+
   it('handles the ADD_1_DART case', () => {
     const action = add1Dart();
     const initialState = { dartsTotal: 0, circleTotal: 1, dartsArray: [[1, 1]], piApproximation: 3.15, piApproximationsArray: [4] };
