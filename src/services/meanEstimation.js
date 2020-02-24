@@ -1,8 +1,9 @@
+// import { useFirestore }  from '../firebase/hooks'
 
-const data = useFirestore(global-data-points)
+// const data = useFirestore(global-data-points)
 //this returns array of objects
 
-export const calculateGlobalApproximation = (data) => {
+export const calculateApproximation = (data) => {
   const estimationArray = [];
   data.forEach(item => {
     estimationArray.push(item.circumference / item.diameter);

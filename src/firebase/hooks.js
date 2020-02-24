@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import app from './firebase';
+import {app} from './firebase';
 
 export const useFirestore = (ref, initialState = null) => {
   const [data, setData] = useState(initialState);
 
   useEffect(() => {
+    //find ref in Firebase.js
     return ref.onSnapshot(snap => {
       if(snap instanceof app.firestore.DocumentSnapshot) {
         setData({ ...snap.data(), id: snap.id });
