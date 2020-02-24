@@ -101,14 +101,14 @@ exports[`Nav component matches a snapshot 1`] = `
     to="/montecarlo"
   >
     <input
-      id="montecarlo"
+      id="monteCarlo"
       name="nav"
       onChange={[Function]}
       type="radio"
-      value="montecarlo"
+      value="monteCarlo"
     />
     <label
-      htmlFor="montecarlo"
+      htmlFor="monteCarlo"
     >
       Monte Carlo
     </label>
