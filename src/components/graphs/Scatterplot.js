@@ -35,7 +35,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 
     const xScale = scaleLinear()
       .domain([0, xMax])
-      .range([0, width - 10]);
+      .range([0, width]);
 
     if(currentZoomState) {
       const newXScale = currentZoomState.rescaleX(xScale);
@@ -43,7 +43,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     }
 
     const yScale = scaleLinear()
-      .domain([2, yMax])
+      .domain([0, yMax])
       .range([height, 0]);
 
     svg

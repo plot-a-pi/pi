@@ -17,6 +17,8 @@ const MonteCarlo = () => {
     { name: 'CLEAR_DARTS', text: 'Reset', actionCreator: () => dispatch(clearDarts()) }
   ];
 
+  // change to select
+
   const piApproximation = getPiApproximation(piState);
   const dartsTotal = getDartsTotal(piState);
   const dartsArray = getDartsArray(piState);
@@ -25,9 +27,9 @@ const MonteCarlo = () => {
   return (
     <>      
       <h1>{piApproximation}</h1>
-      <Scatterplot data={dartsArray} xMax={1} yMax={1} title={'Darts'} />
+      <Scatterplot data={dartsArray} xMax={1} yMax={1} />
       <MonteCarloControls actions={actions} />
-      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} />
+      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={5} />
     </>
   );
 };

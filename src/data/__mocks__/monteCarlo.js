@@ -1,1 +1,1 @@
-export const generateMonteCarloData = jest.fn(() => ({ newCircleTotal: 2, newDartsArray: [[0, 0]], newPiApproximationsArray: [2] }));
+export const generateMonteCarloData = () => ({ newCircleTotal: 2, newDartsArray: [[0, 0]], newPiApproximationsArray: [2] });
