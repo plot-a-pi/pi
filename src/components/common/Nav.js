@@ -39,8 +39,8 @@ const Nav = () => {
         fontWeight: 'bold',
         color: 'red'
       }}>
-        <input id='montecarlo' type="radio" name='nav' value='montecarlo'  onChange={handleChange} />
-        <label htmlFor='montecarlo'>Monte Carlo</label>
+        <input id='monteCarlo' type="radio" name='nav' value='monteCarlo'  onChange={handleChange} />
+        <label htmlFor='monteCarlo'>Monte Carlo</label>
       </NavLink>
     </>
   );
