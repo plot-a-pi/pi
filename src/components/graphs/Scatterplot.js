@@ -22,7 +22,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax, title }) => {
+const Scatterplot = ({ data, xMax, yMax }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -32,12 +32,6 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-
-    svg.append('text')
-      .attr('text-anchor', 'middle')   
-      .attr('x', width / 2)
-      .attr('y', 30)
-      .text(title);
 
     const xScale = scaleLinear()
       .domain([0, xMax])
@@ -49,8 +43,8 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
     }
 
     const yScale = scaleLinear()
-      .domain([0, yMax])
-      .range([height - 10, 0]);
+      .domain([2, yMax])
+      .range([height, 0]);
 
     svg
       .selectAll('circle')
@@ -71,8 +65,8 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
       .call(axisLeft(yScale));
 
     const zoomBehavior = zoom()
-      .scaleExtent([0.5, 5])
-      .translateExtent([[-100, 0], [width + 100, height]]).on('zoom', () => {
+      .scaleExtent([0, 5])
+      .translateExtent([[0, 0], [width + 50, height]]).on('zoom', () => {
       })
       .on('zoom', () => {
         const zoomState = zoomTransform(svg.node());
@@ -84,7 +78,7 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
   }, [data, dimensions, currentZoomState]);
 
   return (
-    <div ref={wrapperRef} style={{ marginBottom: '2em' }}>
+    <div className={Styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
       <svg className={Styles.svg} ref={svgRef}>
         <g className={'x-axis'}></g>
         <g className={'y-axis'}></g>
@@ -93,21 +87,10 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
     </div>
   );
 };
+// move this logic of axis labels and title to a graph container component to avoid re-render in different place
 
-// svg
-//   .append('svg')
-//   .attr('width', width + margin.left + margin.right)
-//   .attr('height', height + margin.top + margin.bottom)
-//   .append('g')
-//   .attr('transform',
-//     'translate(' + margin.left + ',' + margin.top + ')');
-      
-// svg.append('text')
-//   .attr('text-anchor', 'middle')   
-//   .attr('x', width / 2)
-//   .attr('y', 30)
-//   .text(title);
-    
+// add title
+
 // // add x-axis label
 // svg.append('text')
 //   .attr('transform', 'translate(' + (width / 2) + ' ,' + (height + margin.bottom) + ')')
@@ -126,10 +109,7 @@ const Scatterplot = ({ data, xMax, yMax, title }) => {
 Scatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired,
-  // xLabel: PropTypes.string.isRequired,
-  // yLabel: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  yMax: PropTypes.number.isRequired
 };
 
 //export default Scatterplot;

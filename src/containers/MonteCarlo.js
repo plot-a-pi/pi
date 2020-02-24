@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import MonteCarloControls from '../components/monteCarlo/MonteCarloControls';
-import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
+// import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import Scatterplot from '../components/graphs/Scatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray } from '../selectors/monteCarloSelectors';
@@ -27,7 +27,7 @@ const MonteCarlo = () => {
       <h1>{piApproximation}</h1>
       <Scatterplot data={dartsArray} xMax={1} yMax={1} title={'Darts'} />
       <MonteCarloControls actions={actions} />
-      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={5} title={'Pi Approximation vs Sample Size of Darts'}/>
+      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} />
     </>
   );
 };

@@ -24,8 +24,9 @@ export default function reducer(state, action) {
       return { ...state, dartsTotal: state.dartsTotal + 1000, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray) };
     }
     case CLEAR_DARTS:
-      return { piApproximation: null, dartsTotal: 1, circleTotal: 1, dartsArray: [], piApproximationsArray:[] };
+      return { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray:[] };
     default:
+      // eslint-disable-next-line no-console
       console.log(`unhandled name: ${name}`);
       return state;
   }

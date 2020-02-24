@@ -12,6 +12,5 @@ export const getDartsArray = state => {
 
 export const getNumDartsVersusPiArray = state => {
   const array = state.piApproximationsArray.map((value, i) => [i + 1, value]);
-  console.log(array);
   return array;
 };
