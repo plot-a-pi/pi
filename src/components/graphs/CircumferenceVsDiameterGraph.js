@@ -7,25 +7,18 @@ const CircumferenceVsDiameterGraph = () => {
   let yMax = 100;
   let xMax = 100;
   let dataArray = [];
-
-  const data = useFirestore(globalDataCollection);
-  const stats = useFirestore(globalStatsCollection);
-
-  if(!data) return <h1>no data</h1>;
+  const data = useFirestore(globalDataCollection, []);
+  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
   dataArray = (data.map(point => [point.circumference, point.diameter]));
 
-  if(stats && stats.circumferenceMax && stats.diameterMax) {
-    xMax = stats.circumferenceMax;
-    yMax = stats.diameterMax;
-  }
+  xMax = stats.circumferenceMax;
+  yMax = stats.diameterMax;
 
   return (
     <>
-      <h1>Graph</h1>
       <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax}/>
     </>
   );
 };
 
-export default CircumferenceVsDiameterGraph
-;
+export default CircumferenceVsDiameterGraph;
