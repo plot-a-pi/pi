@@ -33,15 +33,16 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
     
-    svg.select('.y-label')
-      .select('text')
-      .remove();
-    svg.select('.x-label')
-      .select('text')
-      .remove();
-    svg.select('title')
-      .select('text')
-      .remove();
+
+    const removeLabelText = (localThis, args) => {
+      return args.map(arg => {
+        localThis.select(arg)
+          .select('text')
+          .remove();
+      }); 
+    };
+
+    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
       
     // if(currentZoomState) {
     //   const newXScale = currentZoomState.rescaleX(xScale);
