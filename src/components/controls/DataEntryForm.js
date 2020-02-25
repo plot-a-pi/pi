@@ -2,9 +2,9 @@ import React from 'react';
 import styles from './DataEntryForm.css';
 import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
-import { useFirestore } from '../../firebase/hooks'
-import { globalStatsCollection } from '../../firebase/firebase'
-import { updateStats } from '../../services/stats'
+import { useFirestore } from '../../firebase/hooks';
+import { globalStatsCollection } from '../../firebase/firebase';
+import { updateStats } from '../../services/stats';
 
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
@@ -30,9 +30,8 @@ const DataEntryForm = () => {
       diameterUnit
     });
 
-      globalStatsCollection.doc('current-stats').get().then((stats) => {
-      console.log(stats.data(), "stats")
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber))})
+    globalStatsCollection.doc('current-stats').get().then((stats) => {
+      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
 
 
     resetCircumference();
