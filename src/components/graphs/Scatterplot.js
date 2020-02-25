@@ -22,7 +22,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
+const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -71,6 +71,12 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text(title);
+
     svg.select('.x-label')
       .append('text')
       .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
@@ -81,7 +87,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
       .append('text')
       .attr('transform', 'rotate(-90)')
       .attr('y', -50 + yScale(yMax) / 10)
-      .attr('x', 0 - xMax / 2)
+      .attr('x', 0 - yMax / 1.5)
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text(yLabel);
@@ -102,6 +108,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
   return (
     <div className={Styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
       <svg className={Styles.svg} ref={svgRef}>
+        <g className={'title'}></g>
         <g className={'x-label'}></g>
         <g className={'x-axis'}></g>
         <g className={'y-label'}></g>
@@ -132,7 +139,10 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
 Scatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  yMax: PropTypes.number.isRequired,
+  xLabel: PropTypes.string,
+  yLabel: PropTypes.string,
+  title: PropTypes.string
 };
 
 //export default Scatterplot;
