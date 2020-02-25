@@ -17,7 +17,7 @@ const DataEntryForm = () => {
     if(Number.isNaN(circumferenceAsNumber) || Number.isNaN(diameterAsNumber)) return alert('Please enter a number.');
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
-    if(circumference < diameter) return alert('Are you sure your measurements are correct?');
+    if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
    
     createDataPoint({
       circumference: Number(circumference),
