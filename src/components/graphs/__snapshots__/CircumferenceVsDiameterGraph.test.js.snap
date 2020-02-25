@@ -1,7 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterGraph 1`] = `
-<h1>
-  no data
-</h1>
+<Fragment>
+  <div
+    className="container"
+    style={
+      Object {
+        "marginBottom": "2em",
+      }
+    }
+  >
+    <svg
+      className="svg"
+    >
+      <g
+        className="x-axis"
+      />
+      <g
+        className="y-axis"
+      />
+      <g
+        className="data"
+      />
+    </svg>
+  </div>
+</Fragment>
 `;
