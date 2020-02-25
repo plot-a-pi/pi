@@ -52,7 +52,7 @@ const DataEntryForm = () => {
     resetDiameterUnit();
 
     alert('Success! Your pi has been saved!');
-    // history.replace('/');
+    history.replace('/');
   };
  
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
@@ -88,7 +88,6 @@ const DataEntryForm = () => {
           </select>
           <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
           <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
-
         </div>
         <button>Plot!</button>
       </form>
