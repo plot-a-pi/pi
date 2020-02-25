@@ -2,30 +2,19 @@ import React from 'react';
 import styles from './DataEntryForm.css';
 import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
-<<<<<<< HEAD
-import { globalStatsCollection } from '../../firebase/firebase'
-import { updateStats } from '../../services/stats'
-
-=======
 import { globalStatsCollection } from '../../firebase/firebase';
 import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
- 
->>>>>>> 8ca51cc9eef52bedcefe2c044383ad551ef1fa85
+
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
-<<<<<<< HEAD
-
-
-=======
   const history = useHistory();
- 
->>>>>>> 8ca51cc9eef52bedcefe2c044383ad551ef1fa85
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
@@ -43,14 +32,8 @@ const DataEntryForm = () => {
       diameterUnit
     });
 
-<<<<<<< HEAD
-      globalStatsCollection.doc('current-stats').get().then((stats) => {
-      console.log(stats.data(), "stats")
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber))})
-=======
     globalStatsCollection.doc('current-stats').get().then((stats) => {
       updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
->>>>>>> 8ca51cc9eef52bedcefe2c044383ad551ef1fa85
 
 
     resetCircumference();
@@ -61,12 +44,9 @@ const DataEntryForm = () => {
     alert('Success! Your pi has been saved!');
     history.replace('/');
   };
-<<<<<<< HEAD
-=======
- 
+
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
->>>>>>> 8ca51cc9eef52bedcefe2c044383ad551ef1fa85
 
 
   return (
