@@ -1,12 +1,15 @@
 import React from 'react';
-import CircumferenceVsDiameterGraph from './graphs/CircumferenceVsDiameterGraph';
+import { Switch, Route } from 'react-router-dom';
+import Home from './home/Home';
+import SessionForm from './controls/SessionForm';
+import DataEntryForm from './controls/DataEntryForm';
 
 export default function App() {
   return (
-    <CircumferenceVsDiameterGraph />
+    <Switch>
+      <Route exact path='/' component={Home} />
+      <Route path='/session/:id' component={SessionForm} />
+      <Route path='/submit-to-global' component={DataEntryForm} />
+    </Switch>
   );
 }
-
-{/* <h1>Hello World</h1> */}
-
-
