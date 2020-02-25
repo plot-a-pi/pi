@@ -1,0 +1,73 @@
+.NavBackground{
+    animation: changeBackground 1.5s 1 forwards;
+    width: 20vw;
+}
+.Nav{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    width: 20vw;
+    height: 100vh;
+    transition-timing-function: ease-in;
+    font-size: 3vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color:black;
+    animation: slideInToTheRight 1.5s 1 forwards;
+        input{
+            visibility: none;
+        }
+        ul{
+            color: white;
+        }
+}
+
+.Collumn{
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    transition: ease-in;
+    animation: slowRotate 1.5s alternate forwards;
+}
+.Big{
+    font-size: 10vh;
+    max-width: 10vw;
+    margin-left: 0px;
+    transform: rotate(90deg);
+    transform: skewY(10vh);
+}
+@keyframes slowRotate{
+    0%{
+        transform: (0.586,0.8,-0.8,0.586,40,20);
+    }
+    50%{
+        transform: matrix(0.586,0.8,-0.8,0.586,40,20);
+    }
+    75%{
+        transform: matrix(0.586,0.8,-0.8,0.586,40,20);
+    }
+    100%{
+        font-size: 10vh;
+    }
+}
+@keyframes slideInToTheRight {
+    0%{
+        transform: translateX(-50vw);
+    }
+    50%{
+        transform: translateX(-20vw);
+    }
+    75%{
+        transform: translateX(-5vw);
+    }
+    100%{
+        transform: translateX(0vw);
+    }
+}
+@keyframes changeBackground {
+    0%{
+        background-color: white;
+    }
+    100%{
+        background-color: rgba(2, 18, 23, 1);
+    }
+}
