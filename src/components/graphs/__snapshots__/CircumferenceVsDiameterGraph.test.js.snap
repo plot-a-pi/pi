@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterGraph 1`] = `
+<Fragment>
+  <Scatterplot
+    data={Array []}
+    xMax={50}
+    yMax={50}
+  />
+</Fragment>
+`;
