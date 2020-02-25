@@ -14,9 +14,6 @@ const SessionForm = ({ match }) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
     const diameterAsNumber = Number(diameter);
-
-    console.log(circumferenceAsNumber);
-    console.log(diameterAsNumber);
  
     if(Number.isNaN(circumferenceAsNumber) || Number.isNaN(diameterAsNumber)) return alert('Please enter a number.');
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
