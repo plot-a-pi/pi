@@ -1,8 +1,12 @@
 import React from 'react';
+import CircumferenceVsDiameterGraph from './graphs/CircumferenceVsDiameterGraph';
 
 export default function App() {
   return (
-    <h1>Hello World</h1>
+    <CircumferenceVsDiameterGraph />
   );
 }
+
+{/* <h1>Hello World</h1> */}
+
 
