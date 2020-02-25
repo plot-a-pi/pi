@@ -1,9 +1,16 @@
 import React from 'react';
+import Header from '../common/Header';
+import ButtonNav from './ButtonNav';
+import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
 
 const Home = () => {
 
   return (
-    <h1>Hello World</h1>
+    <>
+      <Header />
+      <CircumferenceVsDiameterGraph />
+      <ButtonNav />
+    </>
   );
 };
 
