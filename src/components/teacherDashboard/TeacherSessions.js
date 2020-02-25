@@ -18,7 +18,7 @@ const TeacherSessions = () => {
     <li key={session.id}>
       <h2>{session.name}</h2>
       <Link target='_blank' to={`/session/${session.id}`}>Get Submission Link</Link>
-      {/* <Link target='_blank' to={`/session/${session.id}`}>Download Session Data</Link> */}
+      <Link target='_blank' to={`/session/${session.id}`}>Download Session Data</Link>
       <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
     </li>
   ));
