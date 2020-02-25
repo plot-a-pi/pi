@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft, zoom, zoomTransform } from 'd3';
+import * as d3 from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 // set constant for other browsers
@@ -47,13 +48,19 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .range([height, 0]);
 
     svg
-      .selectAll('circle')
+      .selectAll('.points')
       .data(data)
       .join('circle')
       .attr('cx', data => xScale(data[0]))
       .attr('cy', data => yScale(data[1]))
       .attr('r', 1.5)
-      .style('fill', '#000000');
+      .attr('class', 'points')
+      .style('fill', 'red')
+      .on('mouseover', (data, i)=> {
+        d3.select(this).transition()
+          .attr('r', 5)
+          .duration('100');
+      });
 
     svg
       .select('.x-axis')
@@ -72,9 +79,9 @@ const Scatterplot = ({ data, xMax, yMax }) => {
         const zoomState = zoomTransform(svg.node());
         setCurrentZoomState(zoomState);
       });
-      
+
     svg.call(zoomBehavior);
-    
+
   }, [data, dimensions, currentZoomState]);
 
   return (
