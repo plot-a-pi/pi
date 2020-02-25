@@ -7,7 +7,6 @@ import { globalDataCollection, globalStatsCollection } from '../../firebase/fire
 import ResizeObserver from 'resize-observer-polyfill';
 
 const CircumferenceVsDiameterGraph = () => {
-  let dataArray = [];
   const data = useFirestore(globalDataCollection, []);
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
@@ -34,8 +33,6 @@ const CircumferenceVsDiameterGraph = () => {
 
   const globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
   const userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
-  console.log(userDataPointsArray, 'user-data');
-
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -102,3 +99,4 @@ CircumferenceVsDiameterGraph.propTypes = {
 };
 
 export default CircumferenceVsDiameterGraph;
+
