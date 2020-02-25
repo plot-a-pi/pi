@@ -45,7 +45,6 @@ const DataEntryForm = () => {
       });
       updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
 
-
     resetCircumference();
     resetCircumferenceUnit();
     resetDiameter();
@@ -57,7 +56,6 @@ const DataEntryForm = () => {
  
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
-
 
   return (
     <div className={styles.DataEntryForm}>
@@ -94,8 +92,4 @@ const DataEntryForm = () => {
     </div>
   );
 };
- 
- 
 export default DataEntryForm;
-
-
