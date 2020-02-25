@@ -12,6 +12,7 @@ const DataEntryForm = () => {
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
@@ -20,7 +21,7 @@ const DataEntryForm = () => {
     if(Number.isNaN(circumferenceAsNumber) || Number.isNaN(diameterAsNumber)) return alert('Please enter a number.');
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
-    if(circumference < diameter) return alert('Are you sure your measurements are correct?');
+    if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
 
     createDataPoint({
       circumference: Number(circumference),
@@ -29,10 +30,10 @@ const DataEntryForm = () => {
       diameterUnit
     });
 
-    const stats = useFirestore(globalStatsCollection);
-    const updatedStats = updateStats(stats, circumferenceAsNumber, diameterAsNumber)
+      globalStatsCollection.doc('current-stats').get().then((stats) => {
+      console.log(stats.data(), "stats")
+      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber))})
 
-    updateGlobalStats(updatedStats)
 
     resetCircumference();
     resetCircumferenceUnit();
