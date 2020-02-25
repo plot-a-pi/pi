@@ -80,7 +80,7 @@ const CircumferenceVsDiameterGraph = () => {
       .call(axisLeft(yScale));
       
     
-  }, [data, dimensions]);
+  }, [data, dimensions, stats]);
 
   return (
     <>
