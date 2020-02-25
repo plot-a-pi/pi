@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component renders the Modal 1`] = `
+<section>
+  <div
+    className="Modal modalHide"
+  >
+    <div
+      className="modalHeader"
+    >
+      <span
+        className="closeButton"
+      >
+        ×
+      </span>
+      <h3 />
+      <p />
+    </div>
+  </div>
+</section>
+`;
