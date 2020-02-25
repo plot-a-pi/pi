@@ -2,29 +2,19 @@ import React from 'react';
 import styles from './DataEntryForm.css';
 import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
-<<<<<<< HEAD
-import { useFirestore } from '../../firebase/hooks';
 import { globalStatsCollection } from '../../firebase/firebase';
 import { updateStats } from '../../services/stats';
-
-=======
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
  
->>>>>>> 17f8788e90daa3251184ae79b46b10535343f2f7
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
-<<<<<<< HEAD
-
-
-=======
   const history = useHistory();
  
->>>>>>> 17f8788e90daa3251184ae79b46b10535343f2f7
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
