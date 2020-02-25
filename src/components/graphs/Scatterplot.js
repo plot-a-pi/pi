@@ -34,9 +34,9 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     if(!dimensions) return;
     
 
-    const removeLabelText = (localThis, args) => {
+    const removeLabelText = (svg, args) => {
       return args.map(arg => {
-        localThis.select(arg)
+        svg.select(arg)
           .select('text')
           .remove();
       }); 
