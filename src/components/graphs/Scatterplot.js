@@ -22,7 +22,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax }) => {
+const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -32,16 +32,19 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-
+    
+    svg.selectAll('text')
+      .remove();
+      
+    // if(currentZoomState) {
+    //   const newXScale = currentZoomState.rescaleX(xScale);
+    //   xScale.domain(newXScale.domain());
+    // }
+        
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
-
-    if(currentZoomState) {
-      const newXScale = currentZoomState.rescaleX(xScale);
-      xScale.domain(newXScale.domain());
-    }
-
+    
     const yScale = scaleLinear()
       .domain([0, yMax])
       .range([height, 0]);
@@ -54,28 +57,42 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', 1.5)
       .style('fill', '#000000');
-
+    
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
       .call(axisBottom(xScale));
-
+      
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    const zoomBehavior = zoom()
-      .scaleExtent([0, 5])
-      .translateExtent([[0, 0], [width + 50, height]]).on('zoom', () => {
-      })
-      .on('zoom', () => {
-        const zoomState = zoomTransform(svg.node());
-        setCurrentZoomState(zoomState);
-      });
-      
-    svg.call(zoomBehavior);
+
+    svg.append('text')
+      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + yMax + ')')
+      .style('text-anchor', 'middle')
+      .text(xLabel);
+    
+    svg.append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', '-2vw')
+      .attr('x', 0 - yMax / 2)
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text(yLabel);
+
+    // const zoomBehavior = zoom()
+    //   .scaleExtent([0, 5])
+    //   .translateExtent([[0, 0], [width + 50, height]]).on('zoom', () => {
+    //   })
+    //   .on('zoom', () => {
+    //     const zoomState = zoomTransform(svg.node());
+    //     setCurrentZoomState(zoomState);
+    //   });
+    // svg.call(zoomBehavior);
     
   }, [data, dimensions, currentZoomState]);
+  //useEffect with currentZoomState on update to enable zoom
 
   return (
     <div className={Styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
@@ -89,7 +106,6 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 };
 // move this logic of axis labels and title to a graph container component to avoid re-render in different place
 
-// add title
 
 // // add x-axis label
 // svg.append('text')
@@ -97,7 +113,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 //   .style('text-anchor', 'middle')
 //   .text(xLabel);
 
-// // add y-axis label (rotated)
+// add y-axis label (rotated)
 // svg.append('text')
 //   .attr('transform', 'rotate(-90)')
 //   .attr('y', 0 - margin.left)

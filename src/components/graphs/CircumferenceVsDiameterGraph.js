@@ -16,7 +16,7 @@ const CircumferenceVsDiameterGraph = () => {
 
   return (
     <>
-      <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax}/>
+      <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax} yLabel='hey' xLabel='heya'/>
     </>
   );
 };
