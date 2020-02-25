@@ -29,10 +29,18 @@ const CircumferenceVsDiameterGraph = () => {
   };
 
   const dimensions = useResizeObserver(wrapperRef);
-  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
+  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50, piApproximationsArray: [] });
 
-  const globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-  const userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  let globalDataArray;
+  let userDataPointsArray = [];
+
+  if(!userPointIds) {
+    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+  }
+  else {
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  }
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -66,6 +74,15 @@ const CircumferenceVsDiameterGraph = () => {
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
       .attr('r', 1.5)
       .style('fill', '#000000');
+
+    svg
+      .append('line')
+      .style('stroke', 'blue')
+      .style('stroke-width', 10)
+      .attr('x1', 0)
+      .attr('y1', 0)
+      .attr('x2', xScale(stats.diameterMax))
+      .attr('y2', yScale(stats.circumferenceMax));
 
     svg
       .select('.x-axis')
