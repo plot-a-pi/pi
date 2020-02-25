@@ -4,7 +4,10 @@ exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterG
 <Fragment>
   <Scatterplot
     data={Array []}
+    title="title"
+    xLabel="heya"
     xMax={50}
+    yLabel="hey"
     yMax={50}
   />
 </Fragment>
