@@ -39,6 +39,9 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     svg.select('.x-label')
       .select('text')
       .remove();
+    svg.select('title')
+      .select('text')
+      .remove();
       
     // if(currentZoomState) {
     //   const newXScale = currentZoomState.rescaleX(xScale);
