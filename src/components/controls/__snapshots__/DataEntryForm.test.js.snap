@@ -38,6 +38,35 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
             <h3>
               Circumference:
             </h3>
+            <Modal
+              modalInstructions="This is how you do circumferency things"
+              modalTitle="Circumference"
+              showModal={false}
+              toggleModal={[Function]}
+            >
+              <section>
+                <div
+                  className="Modal modalHide"
+                >
+                  <div
+                    className="modalHeader"
+                  >
+                    <span
+                      className="closeButton"
+                      onClick={[Function]}
+                    >
+                      ×
+                    </span>
+                    <h3>
+                      Circumference
+                    </h3>
+                    <p>
+                      This is how you do circumferency things
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </Modal>
             <input
               onChange={[Function]}
               required={true}
@@ -74,11 +103,47 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                 ft
               </option>
             </select>
+            <button
+              className="modalButton"
+              onClick={[Function]}
+              type="button"
+            >
+               ? 
+            </button>
           </div>
           <div>
             <h3>
               Diameter:
             </h3>
+            <Modal
+              modalInstructions="This is how you do diametery things"
+              modalTitle="Diameter"
+              showModal={false}
+              toggleModal={[Function]}
+            >
+              <section>
+                <div
+                  className="Modal modalHide"
+                >
+                  <div
+                    className="modalHeader"
+                  >
+                    <span
+                      className="closeButton"
+                      onClick={[Function]}
+                    >
+                      ×
+                    </span>
+                    <h3>
+                      Diameter
+                    </h3>
+                    <p>
+                      This is how you do diametery things
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </Modal>
             <input
               onChange={[Function]}
               required={true}
@@ -115,6 +180,13 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                 ft
               </option>
             </select>
+            <button
+              className="modalButton"
+              onClick={[Function]}
+              type="button"
+            >
+               ? 
+            </button>
           </div>
           <button>
             Plot!
