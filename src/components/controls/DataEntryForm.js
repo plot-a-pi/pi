@@ -1,7 +1,9 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
-import { createDataPoint } from '../../firebase/actions';
+import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
+import { globalStatsCollection } from '../../firebase/firebase';
+import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
@@ -17,24 +19,28 @@ const DataEntryForm = () => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
     const diameterAsNumber = Number(diameter);
- 
+
     if(Number.isNaN(circumferenceAsNumber) || Number.isNaN(diameterAsNumber)) return alert('Please enter a number.');
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
-    if(circumference < diameter) return alert('Are you sure your measurements are correct?');
-   
+    if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
+
     createDataPoint({
       circumference: Number(circumference),
       diameter: Number(diameter),
       circumferenceUnit,
       diameterUnit
     });
- 
+
+    globalStatsCollection.doc('current-stats').get().then((stats) => {
+      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
+
+
     resetCircumference();
     resetCircumferenceUnit();
     resetDiameter();
     resetDiameterUnit();
-    
+
     alert('Success! Your pi has been saved!');
     history.replace('/');
   };
@@ -78,8 +84,8 @@ const DataEntryForm = () => {
     </div>
   );
 };
- 
- 
+
+
 export default DataEntryForm;
- 
- 
+
+
