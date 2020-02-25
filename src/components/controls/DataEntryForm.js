@@ -2,12 +2,14 @@ import React from 'react';
 import styles from './DataEntryForm.css';
 import { createDataPoint } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
+import { useHistory } from 'react-router-dom';
  
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
+  const history = useHistory();
  
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,6 +34,7 @@ const DataEntryForm = () => {
     resetDiameterUnit();
     
     alert('Success! Your pi has been saved!');
+    history.replace('/');
   };
  
  

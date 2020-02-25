@@ -15,7 +15,7 @@ const ButtonNav = () => (
     <Link to='/map'>
       <button>Map</button>
     </Link>
-    <Link to='/submit'>
+    <Link to='/submit-to-global'>
       <button>Submit to Global Data</button>
     </Link>
   </>
