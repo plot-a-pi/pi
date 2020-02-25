@@ -1,5 +1,9 @@
+body{
+    background-color: #570963;
+}
+
 .NavBackground{
-    animation: changeBackground 1.5s 1 forwards;
+    animation: changeBackground 1.5s 1 forwards, slideInToTheRight 1s 1 forwards;
     width: 20vw;
 }
 .Nav{
@@ -9,15 +13,12 @@
     width: 20vw;
     height: 100vh;
     transition-timing-function: ease-in;
-    font-size: 3vw;
+    font-size: 2.5vw;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     color:black;
     animation: slideInToTheRight 1.5s 1 forwards;
         input{
             visibility: none;
-        }
-        ul{
-            color: white;
         }
 }
 
@@ -39,10 +40,10 @@
     0%{
         transform: (0.586,0.8,-0.8,0.586,40,20);
     }
-    50%{
+    20%{
         transform: matrix(0.586,0.8,-0.8,0.586,40,20);
     }
-    75%{
+    60%{
         transform: matrix(0.586,0.8,-0.8,0.586,40,20);
     }
     100%{
@@ -53,10 +54,10 @@
     0%{
         transform: translateX(-50vw);
     }
-    50%{
+    20%{
         transform: translateX(-20vw);
     }
-    75%{
+    60%{
         transform: translateX(-5vw);
     }
     100%{
@@ -65,9 +66,9 @@
 }
 @keyframes changeBackground {
     0%{
-        background-color: white;
+        background-color: #570963;
     }
     100%{
-        background-color: rgba(2, 18, 23, 1);
+        background-color: rgba(221, 157, 231, 1);
     }
 }
