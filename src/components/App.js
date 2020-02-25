@@ -1,8 +1,8 @@
 import React from 'react';
-import DataEntryForm from '../components/controls/DataEntryForm';
+import MonteCarlo from '../containers/MonteCarlo';
 
 export default function App() {
   return (
-    <DataEntryForm />
+    <MonteCarlo />
   );
 }
