@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useFirestore } from '../../firebase/hooks';
 import { sessionDataCollection } from '../../firebase/firebase';
-import Link from 'react-csv/components/Link';
+import { Link } from 'react-router-dom';
 import { createSession } from '../../firebase/actions';
+import CSV from '../common/CSV';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
-  //replace null with userId once merge squashed
   const data = useFirestore(sessionDataCollection.where('teacherId', '==', null));
 
   const onSubmit = (event) => {
@@ -18,7 +18,7 @@ const TeacherSessions = () => {
     <li key={session.id}>
       <h2>{session.name}</h2>
       <Link target='_blank' to={`/session/${session.id}`}>Get Submission Link</Link>
-      <Link target='_blank' to={`/session/${session.id}`}>Download Session Data</Link>
+      <CSV firestoreRef={sessionDataCollection.doc(session.id).collection(session.id)} />
       <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
     </li>
   ));
