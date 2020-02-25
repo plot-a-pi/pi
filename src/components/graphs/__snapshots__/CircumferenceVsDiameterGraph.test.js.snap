@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterGraph 1`] = `
+<h1>
+  no data
+</h1>
+`;
