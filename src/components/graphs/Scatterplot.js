@@ -33,7 +33,11 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
     
-    svg.selectAll('text')
+    svg.select('.y-label')
+      .select('text')
+      .remove();
+    svg.select('.x-label')
+      .select('text')
       .remove();
       
     // if(currentZoomState) {
@@ -67,16 +71,17 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-
-    svg.append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + yMax + ')')
+    svg.select('.x-label')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
       .style('text-anchor', 'middle')
       .text(xLabel);
     
-    svg.append('text')
+    svg.select('.y-label')
+      .append('text')
       .attr('transform', 'rotate(-90)')
-      .attr('y', '-2vw')
-      .attr('x', 0 - yMax / 2)
+      .attr('y', -50 + yScale(yMax) / 10)
+      .attr('x', 0 - xMax / 2)
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text(yLabel);
@@ -97,7 +102,9 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel }) => {
   return (
     <div className={Styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
       <svg className={Styles.svg} ref={svgRef}>
+        <g className={'x-label'}></g>
         <g className={'x-axis'}></g>
+        <g className={'y-label'}></g>
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
