@@ -1,40 +1,48 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
-import { createDataPoint } from '../../firebase/actions';
+import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
- 
+import { useFirestore } from '../../firebase/hooks'
+import { globalStatsCollection } from '../../firebase/firebase'
+import { updateStats } from '../../services/stats'
+
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
- 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
     const diameterAsNumber = Number(diameter);
- 
+
     if(Number.isNaN(circumferenceAsNumber) || Number.isNaN(diameterAsNumber)) return alert('Please enter a number.');
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumference < diameter) return alert('Are you sure your measurements are correct?');
-   
+
     createDataPoint({
       circumference: Number(circumference),
       diameter: Number(diameter),
       circumferenceUnit,
       diameterUnit
     });
- 
+
+    const stats = useFirestore(globalStatsCollection);
+    const updatedStats = updateStats(stats, circumferenceAsNumber, diameterAsNumber)
+
+    updateGlobalStats(updatedStats)
+
     resetCircumference();
     resetCircumferenceUnit();
     resetDiameter();
     resetDiameterUnit();
-    
+
     alert('Success! Your pi has been saved!');
   };
- 
- 
+
+
   return (
     <div className={styles.DataEntryForm}>
       <h1>Plot-a-π</h1>
@@ -66,8 +74,8 @@ const DataEntryForm = () => {
     </div>
   );
 };
- 
- 
+
+
 export default DataEntryForm;
- 
- 
+
+

@@ -1,9 +1,9 @@
 import React from 'react';
-import GlobalPiVsCountGraph from '../components/graphs/GlobalPiVsCountGraph';
+import DataEntryForm from '../components/controls/DataEntryForm';
 
 export default function App() {
   return (
-    <GlobalPiVsCountGraph />
+    <DataEntryForm />
   );
 }
 
