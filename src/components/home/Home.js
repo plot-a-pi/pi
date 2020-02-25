@@ -1,14 +1,14 @@
 import React from 'react';
 import Header from '../common/Header';
 import ButtonNav from './ButtonNav';
-import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
+import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
 
 const Home = () => {
 
   return (
     <>
       <Header />
-      <CircumferenceVsDiameterGraph />
+      <CircumferenceVsDiameterWrapper />
       <ButtonNav />
     </>
   );
