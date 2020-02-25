@@ -1,10 +1,15 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import DataEntryForm from './DataEntryForm';
+import { BrowserRouter } from 'react-router-dom';
 
 describe('DataEntryForm component', () => {
   it('renders the DataEntryForm', () => {
-    const wrapper = shallow(<DataEntryForm />);
+    const wrapper = mount(
+      <BrowserRouter>
+        <DataEntryForm />
+      </BrowserRouter>
+    );
     expect(wrapper).toMatchSnapshot();
   });
 });

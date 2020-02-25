@@ -1,22 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { useFirestore } from '../../firebase/hooks';
+import { globalStatsCollection } from '../../firebase/firebase';
+
 const Stats = () => {
 
-  const [sampleSize, setSampleSize] = useState(0);
-  const [piApproximation, setPiApproximation] = useState(0);
-
-  useEffect(() => {
-    //getSampleSize,
-    //setSampleSize
-    //getPiApproximaion,
-    //setPiApproximation
-  }, []);
+  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { count: 0, mean: 'NA' });
   
   return (
     <>
       <h2>Sample Size:</h2>
-      <p>{sampleSize}</p>
+      <p>{stats.count}</p>
       <h2>Pi Approximation:</h2>
-      <p>{piApproximation}</p>
+      <p>{stats.mean}</p>
     </>
   );
 };
