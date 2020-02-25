@@ -33,8 +33,8 @@ const DataEntryForm = () => {
     });
 
     globalStatsCollection.doc('current-stats').get().then((stats) => {
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
-
+      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));
+    });
 
     resetCircumference();
     resetCircumferenceUnit();
@@ -47,7 +47,6 @@ const DataEntryForm = () => {
  
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
-
 
   return (
     <div className={styles.DataEntryForm}>
@@ -85,7 +84,4 @@ const DataEntryForm = () => {
   );
 };
 
-
 export default DataEntryForm;
-
-
