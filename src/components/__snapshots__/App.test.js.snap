@@ -11,5 +11,9 @@ exports[`App component renders App 1`] = `
     component={[Function]}
     path="/session/:id"
   />
+  <Route
+    component={[Function]}
+    path="/submit-to-global"
+  />
 </Switch>
 `;
