@@ -14,6 +14,7 @@ const DataEntryForm = () => {
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
   const history = useHistory();
+
  
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,14 +26,23 @@ const DataEntryForm = () => {
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
 
-    createDataPoint({
-      circumference: Number(circumference),
-      diameter: Number(diameter),
-      circumferenceUnit,
-      diameterUnit
-    });
 
     globalStatsCollection.doc('current-stats').get().then((stats) => {
+      if(localStorage.getItem('my-point-ids')){
+        const pointIds = JSON.parse(localStorage.getItem('my-point-ids'));
+        const updatedPointIds = pointIds.concat([stats.data().count + 1]);
+        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
+      } else {
+        localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
+      }
+  
+      createDataPoint({
+        pointId: stats.data().count + 1,
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
+      });
       updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
 
 
@@ -42,7 +52,7 @@ const DataEntryForm = () => {
     resetDiameterUnit();
 
     alert('Success! Your pi has been saved!');
-    history.replace('/');
+    // history.replace('/');
   };
  
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
