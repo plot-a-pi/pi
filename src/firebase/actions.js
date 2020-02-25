@@ -12,7 +12,9 @@ export const createSession = (teacherId, sessionName) =>{
       sessionDataCollection.doc(ref.id).collection('stats').doc('current-stats').set({ 
         count: 0,
         mean: 0,
-        piApproximationsArray: [0]
+        circumferenceMax: 0,
+        diameterMax: 0,
+        piApproximationsArray: []
       });
     });
 };

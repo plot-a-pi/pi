@@ -1,6 +1,6 @@
 export const updateStats = (statsObj, c, d) => {
-  statsObj.count = ++statsObj.count;
-  const newMean = (statsObj.mean * statsObj.count + c / d) / (statsObj.count + 1);
+  ++statsObj.count;
+  const newMean = (statsObj.mean * statsObj.count + c / d) / (statsObj.count);
   statsObj.piApproximationsArray.push(newMean);
   statsObj.mean = newMean;
   c > statsObj.circumferenceMax ? statsObj.circumferenceMax = c : null;
