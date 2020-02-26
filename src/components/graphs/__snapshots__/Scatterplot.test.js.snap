@@ -3,17 +3,21 @@
 exports[`Scatterplot component renders Scatterplot 1`] = `
 <div
   className="container"
-  style={
-    Object {
-      "marginBottom": "2em",
-    }
-  }
 >
   <svg
     className="svg"
   >
     <g
+      className="title"
+    />
+    <g
+      className="x-label"
+    />
+    <g
       className="x-axis"
+    />
+    <g
+      className="y-label"
     />
     <g
       className="y-axis"

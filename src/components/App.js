@@ -6,6 +6,7 @@ import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
+import GraphLabelWrapper from './common/GraphLabelWrapper';
 
 export default function App() {
   return (
@@ -15,7 +16,11 @@ export default function App() {
       <Route path='/teacher-sessions' component={TeacherSessions} />
       <Route path='/session/:id' component={SessionForm} />
       <Route path='/submit-to-global' component={DataEntryForm} />
-      <Route path='/session-graph/:id' component={SessionGraph} />
+      <Route path='/session-graph/:id' render = {() => (
+        <GraphLabelWrapper title='Global' xLabel='x' yLabel='y'>
+          <SessionGraph />
+        </GraphLabelWrapper>
+      )} />
     </Switch>
   );
 }

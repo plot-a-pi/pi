@@ -1,117 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Nav component matches a snapshot 1`] = `
-<Fragment>
-  <NavLink
-    activeStyle={
+<div
+  className="Big"
+>
+  <span
+    onClick={[Function]}
+    style={
       Object {
-        "color": "red",
-        "fontWeight": "bold",
+        "color": "rgba(221, 157, 231, 1)",
       }
     }
-    exact={true}
-    to="/"
   >
-    <input
-      id="home"
-      name="nav"
-      onChange={[Function]}
-      type="radio"
-      value="home"
-    />
-    <label
-      htmlFor="home"
-    >
-      Home
-    </label>
-  </NavLink>
-  <NavLink
-    activeStyle={
+    |
+  </span>
+  <span
+    onClick={[Function]}
+    style={
       Object {
-        "color": "red",
-        "fontWeight": "bold",
+        "color": "rgba(221, 157, 231, 1)",
       }
     }
-    to="/teachers"
   >
-    <input
-      id="teachers"
-      name="nav"
-      onChange={[Function]}
-      type="radio"
-      value="teachers"
-    />
-    <label
-      htmlFor="teachers"
-    >
-      For Teachers
-    </label>
-  </NavLink>
-  <NavLink
-    activeStyle={
+    |
+  </span>
+  <span
+    onClick={[Function]}
+    style={
       Object {
-        "color": "red",
-        "fontWeight": "bold",
+        "color": "rgba(221, 157, 231, 1)",
       }
     }
-    to="/pifaqs"
   >
-    <input
-      id="pifaqs"
-      name="nav"
-      onChange={[Function]}
-      type="radio"
-      value="pifaqs"
-    />
-    <label
-      htmlFor="pifaqs"
-    >
-      Pi FAQs
-    </label>
-  </NavLink>
-  <NavLink
-    activeStyle={
-      Object {
-        "color": "red",
-        "fontWeight": "bold",
-      }
-    }
-    to="/map"
-  >
-    <input
-      id="map"
-      name="nav"
-      onChange={[Function]}
-      type="radio"
-      value="map"
-    />
-    <label
-      htmlFor="map"
-    >
-      Data Map
-    </label>
-  </NavLink>
-  <NavLink
-    activeStyle={
-      Object {
-        "color": "red",
-        "fontWeight": "bold",
-      }
-    }
-    to="/montecarlo"
-  >
-    <input
-      id="monteCarlo"
-      name="nav"
-      onChange={[Function]}
-      type="radio"
-      value="monteCarlo"
-    />
-    <label
-      htmlFor="monteCarlo"
-    >
-      Monte Carlo
-    </label>
-  </NavLink>
-</Fragment>
+    |
+  </span>
+</div>
 `;
