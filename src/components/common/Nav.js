@@ -28,13 +28,6 @@ const Nav = () => {
         <input id='pifaqs' type="radio" name='nav' value='pifaqs'  onChange={handleChange} />
         <label htmlFor='pifaqs'>Pi FAQs</label>
       </NavLink>
-      <NavLink to='/map' activeStyle={{
-        fontWeight: 'bold',
-        color: 'red'
-      }}>
-        <input id='map' type="radio" name='nav' value='map'  onChange={handleChange} />
-        <label htmlFor='map'>Data Map</label>
-      </NavLink>
       <NavLink to='/montecarlo' activeStyle={{
         fontWeight: 'bold',
         color: 'red'

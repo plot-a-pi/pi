@@ -1,11 +1,13 @@
 import React, { useReducer } from 'react';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
-import Scatterplot from '../components/graphs/Scatterplot'
-import {MonteCarloScatterplot} from '../components/graphs/MonteCarloScatterplot';
+import Scatterplot from '../components/graphs/Scatterplot';
+import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import Header from '../components/common/Header';
+import Nav from '../components/common/Nav';
 
 const MonteCarlo = () => {
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 1, circleTotal: 1, dartsArray: [], piApproximationsArray: [] });
@@ -27,6 +29,8 @@ const MonteCarlo = () => {
 
   return (
     <>
+      <Header />
+      <Nav />
       {/* <h1>{piApproximation}</h1> */}
       <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
       <MonteCarloControls actions={actions} />
