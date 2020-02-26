@@ -31,29 +31,33 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
     const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${width}px`);
+    wrapper.style('border', '10px solid green');
+
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
-
+    
     const yScale = scaleLinear()
       .domain([0, yMax])
       .range([width, 0]);
-
+      
     svg
       .selectAll('rect')
       .remove();
-
+      
     svg
       .selectAll('circle')
       .remove();
-
+      
     svg
       .append('rect')
       .attr('width', width)
       .attr('height', width)
       .style('fill', 'rgb(109, 152, 160)')
       .style('opacity', 0.25);
-
+      
     svg
       .append('circle')
       .attr('cx', data => xScale(0.5))
@@ -61,7 +65,7 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .attr('r', width / 2)
       .style('fill', 'rgb(109, 121, 160)')
       .style('opacity', 0.5);
-
+      
     svg
       .selectAll('.points')
       .data(data)
@@ -73,17 +77,18 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2')
       .style('fill', 'rgb(58, 78, 153)');
-
+      
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${width})`)
       .call(axisBottom(xScale));
-
+      
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
-
+      
   }, [data, dimensions]);
+
 
   return (
     <div className={Styles.container} ref={wrapperRef}>

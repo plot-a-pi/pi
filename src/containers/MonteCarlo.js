@@ -7,6 +7,7 @@ import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplo
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import GraphLabelWrapper from '../components/common/GraphLabelWrapper';
 
 const MonteCarlo = () => {
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMax: 4 });
@@ -34,9 +35,13 @@ const MonteCarlo = () => {
       <h2>{dartsTotal}</h2>
       <h2>Current Pi Approximation</h2>
       <h1>{piApproximation.toFixed(4)}</h1>
-      <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
+      <GraphLabelWrapper title='monteCarlo' xLabel='x' yLabel='y'>
+        <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
+      </GraphLabelWrapper>
       <MonteCarloControls actions={actions} />
+      {/* <GraphLabelWrapper title='scatterPlot' xLabel='x2' yLabel='y2'> */}
       <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+      {/* </GraphLabelWrapper> */}
     </div>
   );
 };
