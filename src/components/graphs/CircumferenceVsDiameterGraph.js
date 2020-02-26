@@ -1,13 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { useFirestore } from '../../firebase/hooks';
 import styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
-import { globalDataCollection, globalStatsCollection } from '../../firebase/firebase';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = () => {
-  const data = useFirestore(globalDataCollection, []);
+const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) => {
+  console.log(data, stats, 'in Circumference Graph child');
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -29,10 +27,16 @@ const CircumferenceVsDiameterGraph = () => {
   };
 
   const dimensions = useResizeObserver(wrapperRef);
-  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
+  let globalDataArray = [];
+  let userDataPointsArray = [];
 
-  const globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-  const userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  if(!userPointIds){
+    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+  }
+  else {
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  }
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -46,6 +50,16 @@ const CircumferenceVsDiameterGraph = () => {
     const yScale = scaleLinear()
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
+
+    const removeLabelText = (svg, args) => {
+      return args.map(arg => {
+        svg.select(arg)
+          .select('text')
+          .remove();
+      }); 
+    };
+  
+    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
     svg
       .selectAll('.user-point')
@@ -75,15 +89,39 @@ const CircumferenceVsDiameterGraph = () => {
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
+
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text(title);
+
+    svg.select('.x-label')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
+      .style('text-anchor', 'middle')
+      .text(xLabel);
+    
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+      .attr('x', 0 - stats.circumferenceMax / 1.5)
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text(yLabel);
       
     
-  }, [data, dimensions, stats]);
+  }, [dimensions]);
 
   return (
     <>
       <div className={styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
         <svg className={styles.svg} ref={svgRef}>
+          <g className={'title'}></g>
+          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
+          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
@@ -94,8 +132,7 @@ const CircumferenceVsDiameterGraph = () => {
 
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  stats: PropTypes.object.isRequired
 };
 
 export default CircumferenceVsDiameterGraph;
