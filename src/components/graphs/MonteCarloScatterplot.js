@@ -40,6 +40,14 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .range([width, 0]);
 
     svg
+      .selectAll('rect')
+      .remove();
+
+    svg
+      .selectAll('circle')
+      .remove();
+
+    svg
       .append('rect')
       .attr('width', width)
       .attr('height', width)
@@ -54,10 +62,6 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .style('fill', 'rgb(109, 121, 160)')
       .style('opacity', 0.5);
 
-    svg
-      .selectAll('.points')
-      .remove();
-    
     svg
       .selectAll('.points')
       .data(data)
