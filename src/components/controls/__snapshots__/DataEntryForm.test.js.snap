@@ -1,100 +1,195 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DataEntryForm component renders the DataEntryForm 1`] = `
-<div
-  className="DataEntryForm"
->
-  <h1>
-    Plot-a-π
-  </h1>
-  <form
-    onSubmit={[Function]}
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
   >
-    <div>
-      <h3>
-        Circumference:
-      </h3>
-      <input
-        onChange={[Function]}
-        required={true}
-        type="text"
-        value=""
-      />
-      <select
-        id="circumferenceUnits"
-        onChange={[Function]}
-        required={true}
-        value=""
+    <DataEntryForm>
+      <div
+        className="DataEntryForm"
       >
-        <option
-          value=""
-        />
-        <option
-          value="cm"
+        <h1>
+          Plot-a-π
+        </h1>
+        <form
+          onSubmit={[Function]}
         >
-          cm
-        </option>
-        <option
-          value="in"
-        >
-          in
-        </option>
-        <option
-          value="m"
-        >
-          m
-        </option>
-        <option
-          value="ft"
-        >
-          ft
-        </option>
-      </select>
-    </div>
-    <div>
-      <h3>
-        Diameter:
-      </h3>
-      <input
-        onChange={[Function]}
-        required={true}
-        type="text"
-        value=""
-      />
-      <select
-        id="diameterUnits"
-        onChange={[Function]}
-        required={true}
-        value=""
-      >
-        <option
-          value=""
-        />
-        <option
-          value="cm"
-        >
-          cm
-        </option>
-        <option
-          value="in"
-        >
-          in
-        </option>
-        <option
-          value="m"
-        >
-          m
-        </option>
-        <option
-          value="ft"
-        >
-          ft
-        </option>
-      </select>
-    </div>
-    <button>
-      Plot!
-    </button>
-  </form>
-</div>
+          <div>
+            <h3>
+              Circumference:
+            </h3>
+            <input
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+            <select
+              id="circumferenceUnits"
+              onChange={[Function]}
+              required={true}
+              value=""
+            >
+              <option
+                value=""
+              />
+              <option
+                value="cm"
+              >
+                cm
+              </option>
+              <option
+                value="in"
+              >
+                in
+              </option>
+              <option
+                value="m"
+              >
+                m
+              </option>
+              <option
+                value="ft"
+              >
+                ft
+              </option>
+            </select>
+            <button
+              className="modalButton"
+              onClick={[Function]}
+              type="button"
+            >
+               ? 
+            </button>
+            <Modal
+              modalInstructions="How to measure circumference"
+              modalTitle="Circumference"
+              showCircumferenceModal={false}
+            >
+              <section>
+                <div
+                  className="Modal modalHide"
+                >
+                  <div
+                    className="modalHeader"
+                  >
+                    <span
+                      className="closeButton"
+                    >
+                      ×
+                    </span>
+                    <h3>
+                      Circumference
+                    </h3>
+                    <p>
+                      How to measure circumference
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </Modal>
+          </div>
+          <div>
+            <h3>
+              Diameter:
+            </h3>
+            <input
+              onChange={[Function]}
+              required={true}
+              type="text"
+              value=""
+            />
+            <select
+              id="diameterUnits"
+              onChange={[Function]}
+              required={true}
+              value=""
+            >
+              <option
+                value=""
+              />
+              <option
+                value="cm"
+              >
+                cm
+              </option>
+              <option
+                value="in"
+              >
+                in
+              </option>
+              <option
+                value="m"
+              >
+                m
+              </option>
+              <option
+                value="ft"
+              >
+                ft
+              </option>
+            </select>
+            <button
+              className="modalButton"
+              onClick={[Function]}
+              type="button"
+            >
+               ? 
+            </button>
+            <Modal
+              modalInstructions="How to measure diameter"
+              modalTitle="Diameter"
+              showDiameterModal={false}
+            >
+              <section>
+                <div
+                  className="Modal modalHide"
+                >
+                  <div
+                    className="modalHeader"
+                  >
+                    <span
+                      className="closeButton"
+                    >
+                      ×
+                    </span>
+                    <h3>
+                      Diameter
+                    </h3>
+                    <p>
+                      How to measure diameter
+                    </p>
+                  </div>
+                </div>
+              </section>
+            </Modal>
+          </div>
+          <button>
+            Plot!
+          </button>
+        </form>
+      </div>
+    </DataEntryForm>
+  </Router>
+</BrowserRouter>
 `;

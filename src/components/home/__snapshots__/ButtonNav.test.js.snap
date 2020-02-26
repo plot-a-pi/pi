@@ -31,7 +31,7 @@ exports[`ButtonNav should render ButtonNav 1`] = `
     </button>
   </Link>
   <Link
-    to="/submit"
+    to="/submit-to-global"
   >
     <button>
       Submit to Global Data
