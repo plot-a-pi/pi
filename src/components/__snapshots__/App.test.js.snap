@@ -2,6 +2,24 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
-  <CircumferenceVsDiameterWrapper />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/session/:id"
+    />
+    <Route
+      component={[Function]}
+      path="/submit-to-global"
+    />
+    <Route
+      component={[Function]}
+      path="/session-graph/:id"
+    />
+  </Switch>
 </Fragment>
 `;
