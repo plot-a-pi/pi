@@ -30,11 +30,11 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   let userDataPointsArray = [];
 
   if(!userPointIds){
-    globalDataArray = data.map(point => [point.diameter, point.circumference]);
+    globalDataArray = data.map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
   else {
-    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter, point.circumference]);
-    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter, point.circumference]);
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
 
   useEffect(() => {
@@ -67,10 +67,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
-      .attr('r', 10)
-      .attr('stroke', '#212e59')
-      .attr('stroke-width', '9')
-      .style('fill', '#223493')
+      .attr('r', 5)
+      .style('fill', '#f5f5f5')
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg

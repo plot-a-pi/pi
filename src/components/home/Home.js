@@ -6,6 +6,7 @@ import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWra
 import GraphLabelWrapper from '../common/GraphLabelWrapper';
 import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import MonteCarlo from '../../containers/MonteCarlo';
+import DataEntryForm from '../controls/DataEntryForm';
 
 const Home = () => {
 
@@ -13,13 +14,14 @@ const Home = () => {
     <>
       <Nav />
       <Header />
+      <DataEntryForm />
       <GraphLabelWrapper title='Global' xLabel='Diameter' yLabel='Circumfrence'>
         <CircumferenceVsDiameterWrapper />
       </GraphLabelWrapper>
       <GraphLabelWrapper title='Global Mean' xLabel='Diameter' yLabel='Circumfrence'>
         <GlobalPiVsCountGraph />
       </GraphLabelWrapper>
-      {/* <MonteCarlo /> */}
+      <MonteCarlo />
 
       <ButtonNav />
     </>

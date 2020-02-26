@@ -148,5 +148,4 @@ Scatterplot.propTypes = {
   // title: PropTypes.string
 };
 
-//export default Scatterplot;
 export default Scatterplot;
