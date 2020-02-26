@@ -1,18 +1,17 @@
-// import React from 'react';
-// import CSV from './CSV';
-// import { globalDataCollection } from '../../firebase/firebase';
+import React from 'react';
+import CSV from './CSV';
+import { globalDataCollection } from '../../firebase/firebase';
 
-// const CSVButton = () => {
+const CSVButton = () => {
 
-//   return (
-//     <>
-//       <button> Download Data
-//         <CSV ref={globalDataCollection } />
-//       </button>
+  return (
+    <>
+      <button> Download Data
+        <CSV ref={globalDataCollection } />
+      </button>
 
-//     </>
-//   );
+    </>
+  );
+};
 
-// };
-
-// export default CSVButton;
+export default CSVButton;
