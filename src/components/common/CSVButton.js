@@ -1,16 +1,31 @@
 import React from 'react';
-import CSV from './CSV';
+import CSVDownload from 'react-csv';
+import PropTypes from 'prop-types';
 
-const CSVButton = ({ children }) => {
-
+const CSVButton = ({ data, header1, header2 }) => {
+      
+  const csvDataPreparedForHeaders = data.map(datum => {
+    return ({ 'x' : datum[0], 'y' : datum[1] });
+  });
+      
+  const headers = [
+    { label: header1, key: 'x' },
+    { label: header2, key: 'y' }
+  ];
+      
   return (
     <>
       <button> Download Icon
-        {children}
+        <CSVDownload data={csvDataPreparedForHeaders} onClick={handleClick} target="_self" headers={headers} />
       </button>
     </>
   );
+};
 
+CSVButton.propTypes = {
+  data : PropTypes.array.isRequired,
+  header1 : PropTypes.string,
+  header2 : PropTypes.string
 };
 
 export default CSVButton;
