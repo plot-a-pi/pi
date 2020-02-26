@@ -2,10 +2,36 @@
 
 exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterGraph 1`] = `
 <Fragment>
-  <Scatterplot
-    data={Array []}
-    xMax={50}
-    yMax={50}
-  />
+  <div
+    className="container"
+    style={
+      Object {
+        "marginBottom": "2em",
+      }
+    }
+  >
+    <svg
+      className="svg"
+    >
+      <g
+        className="title"
+      />
+      <g
+        className="x-label"
+      />
+      <g
+        className="x-axis"
+      />
+      <g
+        className="y-label"
+      />
+      <g
+        className="y-axis"
+      />
+      <g
+        className="data"
+      />
+    </svg>
+  </div>
 </Fragment>
 `;

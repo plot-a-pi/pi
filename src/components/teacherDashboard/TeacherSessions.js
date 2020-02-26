@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useFirestore } from '../../firebase/hooks';
 import { sessionDataCollection } from '../../firebase/firebase';
-import Link from 'react-csv/components/Link';
+import { Link } from 'react-router-dom';
 import { createSession } from '../../firebase/actions';
 
 const TeacherSessions = () => {
