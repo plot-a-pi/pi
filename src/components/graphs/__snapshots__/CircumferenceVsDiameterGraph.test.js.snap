@@ -14,7 +14,16 @@ exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterG
       className="svg"
     >
       <g
+        className="title"
+      />
+      <g
+        className="x-label"
+      />
+      <g
         className="x-axis"
+      />
+      <g
+        className="y-label"
       />
       <g
         className="y-axis"
