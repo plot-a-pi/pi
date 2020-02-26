@@ -1,5 +1,4 @@
-import { sessionDataCollection, globalStatsCollection } from './firebase';
-import { globalDataCollection } from './firebase';
+import { sessionDataCollection, globalStatsCollection, globalDataCollection } from './firebase';
 
 //global
 export const createDataPoint = dataPoint => globalDataCollection.add(dataPoint);
