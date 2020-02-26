@@ -1,20 +1,17 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { useFirestore } from '../../firebase/hooks';
-import styles from './Scatterplot.css';
+import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
-import { globalDataCollection, globalStatsCollection } from '../../firebase/firebase';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = () => {
-  const data = useFirestore(globalDataCollection, []);
+const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
-  
+
     useEffect(() => {
       const observeTarget = ref.current;
       const resizeObserver = new ResizeObserver(entries => {
@@ -29,23 +26,23 @@ const CircumferenceVsDiameterGraph = () => {
   };
 
   const dimensions = useResizeObserver(wrapperRef);
-  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50, piApproximationsArray: [] });
-
-  let globalDataArray;
+  let globalDataArray = [];
   let userDataPointsArray = [];
 
-  if(!userPointIds) {
-    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+  if(!userPointIds){
+    globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
   else {
-    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter, point.circumference]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter, point.circumference]);
   }
 
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
+    
+    console.log(stats.diameterMax, stats.circumferenceMax);
 
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])
@@ -94,13 +91,16 @@ const CircumferenceVsDiameterGraph = () => {
       .call(axisLeft(yScale));
       
     
-  }, [data, dimensions, stats]);
+  }, [dimensions, data, stats]);
 
   return (
     <>
-      <div className={styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
+      <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
+          <g className={'title'}></g>
+          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
+          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
@@ -111,8 +111,7 @@ const CircumferenceVsDiameterGraph = () => {
 
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  stats: PropTypes.object.isRequired
 };
 
 export default CircumferenceVsDiameterGraph;

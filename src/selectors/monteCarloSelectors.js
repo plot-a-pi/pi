@@ -14,3 +14,11 @@ export const getNumDartsVersusPiArray = state => {
   const array = state.piApproximationsArray.map((value, i) => [i + 1, value]);
   return array;
 };
+
+export const getYMax = state => {
+  return state.yMax;
+};
+
+export const getCircleTotal = state => {
+  return state.circleTotal;
+};
