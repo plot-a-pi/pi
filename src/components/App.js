@@ -4,14 +4,12 @@ import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
-import MonteCarlo from '../containers/MonteCarlo';
 import GraphLabelWrapper from './common/GraphLabelWrapper';
 
 export default function App() {
   return (
     <>
-      <MonteCarlo />
-      {/* <Switch>
+      <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
@@ -20,7 +18,7 @@ export default function App() {
             <SessionGraph />
           </GraphLabelWrapper>
         )} />
-      </Switch> */}
+      </Switch>
     </>
   );
 }
