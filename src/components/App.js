@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
+// import Header from './common/Header';
 import SessionGraph from './graphs/SessionGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
@@ -23,4 +24,5 @@ export default function App() {
       )} />
     </Switch>
   );
+
 }

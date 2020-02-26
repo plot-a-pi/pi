@@ -1,10 +1,144 @@
 .DataEntryForm {
+    font-family: 'Roboto Mono';
     display: flex;
     flex-direction: column;
-    height: auto;
-    width: 50vw;
+    width: 80vw;
     margin: auto;
+    margin-top: 8vh;
+    padding: 3vh 0 3vh 0;
     align-items: center;
-    justify-content: space-evenly;
-    background-color: lightcoral;
+    align-content: center;
+    justify-content: space-around;
+    border-radius: 1rem;
+    box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
+
+    .pI {
+        font-size: 34px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        width: 60vw;
+        align-items: center;
+    }
+
+    .svgContainer {
+        margin: .5em;
+        height: 25vh; 
+        width: auto;
+    }
+
+    select {
+        font-size: 16px;
+        font-family: 'Heebo';
+        color: #212E59;
+        line-height: 1;
+        padding: .25em 1em .5em .8em;
+        width: 30%;
+        height: 30px;
+        max-width: 30%; 
+        box-sizing: border-box;
+        border: 1px solid #A4A6C9;
+        border-radius: .5rem;
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        border-radius: .5em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #F5F5F5;
+        background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23212E59%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+          linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%);
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .5em auto, 100%;
+    }
+
+    select:-ms-expand {
+        display: none;
+    }
+
+    select:hover {
+        border-color: #888;
+    }
+
+    select:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 1px 2px #A4A6C9;
+        box-shadow: 0 0 0 2px -moz-mac-focusring;
+        color: #223493; 
+        outline: none;
+    }
+
+    .select option {
+        font-weight:normal;
+    }
+
+    input {
+        font-size: 16px;
+        font-family: 'Heebo';
+        color: #212E59;
+        line-height: 1;
+        width: 25vw;
+        height: 30px;
+        padding: .25em 1em .4em .5em;
+        box-sizing: border-box;
+        border: 1px solid #A4A6C9;
+        border-radius: .5rem;
+        box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+        border-radius: .5em;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: #F5F5F5;
+        background-repeat: no-repeat, repeat;
+        background-position: right .7em top 50%, 0 0;
+        background-size: .5em auto, 100%;
+    }
+
+    input:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 1px 2px #A4A6C9;
+        box-shadow: 0 0 0 2px -moz-mac-focusring;
+        color: #223493; 
+        outline: none;
+    }
+
+    .formInputWrapper {
+        margin: .25em 0 .25em 0;
+        text-align: left;
+    }
+
+    .measurementWrapper {
+        display: flex;
+        width: 60vw;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5em .25em .25em .25em;
+    }
+
+    .plotButton{
+        font-size: 16px;
+        width: 88px;
+        height: 44px;
+        margin-top: 1.5em;
+    }
+
+    .modalButton {
+        font-size: 12px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .modalButton:focus{
+        outline: none;
+        box-shadow: 0 0 1px 2px #A4A6C9;
+        box-shadow: 0 0 0 2px -moz-mac-focusring;
+    }
+
+    h3 {
+        margin-bottom: .3em;
+        padding-left: .25em;
+    }
+
 }
