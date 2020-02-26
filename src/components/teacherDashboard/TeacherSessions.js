@@ -3,17 +3,19 @@ import { useFirestore } from '../../firebase/hooks';
 import { sessionDataCollection } from '../../firebase/firebase';
 import { Link } from 'react-router-dom';
 import { createSession } from '../../firebase/actions';
+import { useUser } from '../../firebase/AuthProvider';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
-  //replace null with userId once merge squashed
-  const data = useFirestore(sessionDataCollection.where('teacherId', '==', null));
+  const user = useUser();
+  const data = useFirestore(sessionDataCollection.where('teacherId', '==', user.uid), []);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    createSession(null, sessionName);
+    createSession(user.uid, sessionName);
   };
 
+  
   const sessionElements = data.map(session => (
     <li key={session.id}>
       <h2>{session.name}</h2>
@@ -22,6 +24,9 @@ const TeacherSessions = () => {
       <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
     </li>
   ));
+  
+
+  
 
   return (
     <>
