@@ -109,7 +109,7 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
     svg.select('.x-label')
       .append('text')
       .attr('x', xScale(xMax / 2))
-      .attr('y', yScale(yMax / 100))
+      .attr('y', 50 + yScale(yMax / 100))
       .style('text-anchor', 'middle')
       .text('x');
     
