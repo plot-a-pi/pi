@@ -41,7 +41,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-    
+
     console.log(stats.diameterMax, stats.circumferenceMax);
 
     const xScale = scaleLinear()
@@ -57,9 +57,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
         svg.select(arg)
           .select('text')
           .remove();
-      }); 
+      });
     };
-  
+
     removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
     svg
@@ -67,20 +67,29 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
+      .attr('r', 10)
+      .attr('stroke', '#223293')
+      .attr('stroke-width', '9')
+      .style('fill', '#f5f5f5')
+      .attr('opacity', 0.8)
+      .transition()
+      .delay(1500)
+      .duration(1500)
       .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
-      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]))
-      .attr('r', 50)
-      .style('fill', '#FF0000');
-
+      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
+    console.log(userDataPointsArray, 'ARRAY');
     svg
       .selectAll('.global-point')
       .data(globalDataArray)
       .join('circle')
       .attr('class', 'global-point')
-      .attr('cx', globalDataArray => xScale(globalDataArray[0]))
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 1.5)
-      .style('fill', '#000000');
+      .attr('r', 5)
+      .style('fill', '#f5f5f5')
+      .attr('opacity', 0.8)
+      .transition()
+      .duration(2000)
+      .attr('cx', globalDataArray => xScale(globalDataArray[0]));
 
     svg
       .select('.x-axis')
@@ -102,7 +111,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
       .style('text-anchor', 'middle')
       .text(xLabel);
-    
+
     svg.select('.y-label')
       .append('text')
       .attr('transform', 'rotate(-90)')
@@ -111,8 +120,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text(yLabel);
-      
-    
+
+
   }, [dimensions, data, stats]);
 
   return (
@@ -133,7 +142,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
 
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
-  stats: PropTypes.object.isRequired
+  stats: PropTypes.object.isRequired,
+  xLabel: PropTypes.string,
+  yLabel: PropTypes.string
 };
 
 export default CircumferenceVsDiameterGraph;

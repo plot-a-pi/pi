@@ -29,21 +29,21 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-    
+
     const removeLabelText = (svg, args) => {
       return args.map(arg => {
         svg.select(arg)
           .select('text')
           .remove();
-      }); 
+      });
     };
 
     removeLabelText(svg, ['.y-label', '.x-label', '.title']);
-        
+
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
-    
+
     const yScale = scaleLinear()
       .domain([0, yMax])
       .range([height, 0]);
@@ -54,7 +54,10 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .join('circle')
       .attr('cy', data => yScale(data[1]))
       .attr('r', 5)
-      .style('fill', 'orange')
+      .attr('stroke', '#19233d')
+      .attr('stroke-width', '2')
+      .style('fill', '#223493')
+      .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -75,8 +78,8 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
           .attr('r', 10);
       })
       .on('mouseleave', function(){
-        svg.select('.tooltip').remove();
         select(this).attr('r', 5);
+        svg.select('.tooltip').remove();
       })
       .transition()
       .duration(1000)
@@ -88,7 +91,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .transition()
       .duration(1000)
       .call(axisBottom(xScale));
-      
+
     svg
       .select('.y-axis')
       .transition()
@@ -107,7 +110,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
       .style('text-anchor', 'middle')
       .text(xLabel);
-    
+
     svg.select('.y-label')
       .append('text')
       .attr('transform', 'rotate(-90)')
@@ -116,7 +119,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text(yLabel);
-    
+
   }, [data, dimensions]);
 
   return (

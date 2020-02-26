@@ -51,16 +51,16 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .append('rect')
       .attr('width', width)
       .attr('height', width)
-      .style('fill', 'rgb(109, 152, 160)')
-      .style('opacity', 0.25);
+      .style('fill', '#7dc4b8')
+      // .style('opacity', 0.25);
 
     svg
       .append('circle')
       .attr('cx', data => xScale(0.5))
       .attr('cy', data => yScale(0.5))
       .attr('r', width / 2)
-      .style('fill', 'rgb(109, 121, 160)')
-      .style('opacity', 0.5);
+      .style('fill', '#a4a6c9')
+      // .style('opacity', 0.5);
 
     svg
       .selectAll('.points')

@@ -1,8 +1,11 @@
 .svg {
-  background:whitesmoke;
+  background: #7dc4b878;
   overflow: visible;
   display: block;
   width: 100%;
+  color: #212E59;
+  font-weight: bolder;
+
 }
 
 .bigCircle {
@@ -15,6 +18,7 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
-  width: 50%;
+  height: 30vh;
+  width: 30vw;
 }
 

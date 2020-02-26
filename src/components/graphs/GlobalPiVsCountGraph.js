@@ -2,6 +2,7 @@ import React from 'react';
 import Scatterplot from './Scatterplot';
 import { useFirestore } from '../../firebase/hooks';
 import { globalStatsCollection } from '../../firebase/firebase';
+import Styles from './Scatterplot.css'
 
 const GlobalPiVsCountGraph = () => {
   const stats = useFirestore(globalStatsCollection.doc('current-stats'), { piApproximationsArray: [], circumferenceMax: 50, diameterMax: 50 });
@@ -11,7 +12,7 @@ const GlobalPiVsCountGraph = () => {
 
   return (
     <>
-      <Scatterplot data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
+      <Scatterplot className={Styles.global} data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
     </>
   );
 };

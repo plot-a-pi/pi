@@ -6,6 +6,7 @@ body{
     animation: changeBackground 1.5s 1 forwards, slideInToTheRight 1s 1 forwards;
     width: 20vw;
 }
+
 .Nav{
     display: flex;
     justify-content: flex-start;
