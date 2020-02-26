@@ -5,6 +5,8 @@ import { createSessionData, updateSessionStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
 import { sessionDataCollection } from '../../firebase/firebase';
 import { updateStats } from '../../services/stats';
+import { useModal } from '../../hooks/useModal';
+import Modal from '../common/Modal';
  
 const SessionForm = ({ match }) => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
@@ -42,6 +44,8 @@ const SessionForm = ({ match }) => {
     alert('Success! Your pi has been saved!');
   };
  
+  const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
+  const [showDiameterModal, toggleDiameterModal] = useModal();
  
   return (
     <div className={styles.DataEntryForm}>
@@ -57,6 +61,8 @@ const SessionForm = ({ match }) => {
             <option value="m">m</option>
             <option value="ft">ft</option>
           </select>
+          <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
+          <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
         </div>
         <div>
           <h3>Diameter:</h3>
@@ -68,6 +74,8 @@ const SessionForm = ({ match }) => {
             <option value="m">m</option>
             <option value="ft">ft</option>
           </select>
+          <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
+          <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
         </div>
         <button>Plot!</button>
       </form>
