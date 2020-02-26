@@ -10,7 +10,6 @@ const Home = () => {
   return (
     <>
       <Nav />
-      <Header />
       <GraphLabelWrapper title='globl' xLabel='Diameter' yLabel='Circumfrence'>
         <CircumferenceVsDiameterWrapper />
       </GraphLabelWrapper>
