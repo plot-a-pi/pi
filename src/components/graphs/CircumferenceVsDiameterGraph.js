@@ -4,7 +4,7 @@ import styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = ({ data, stats }) => {
+const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) => {
   console.log(data, stats, 'in Circumference Graph child');
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
@@ -51,6 +51,16 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
 
+    const removeLabelText = (svg, args) => {
+      return args.map(arg => {
+        svg.select(arg)
+          .select('text')
+          .remove();
+      }); 
+    };
+  
+    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
+
     svg
       .selectAll('.user-point')
       .data(userDataPointsArray)
@@ -80,14 +90,38 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text(title);
 
+    svg.select('.x-label')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
+      .style('text-anchor', 'middle')
+      .text(xLabel);
+    
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+      .attr('x', 0 - stats.circumferenceMax / 1.5)
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text(yLabel);
+      
+    
   }, [dimensions]);
 
   return (
     <>
       <div className={styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
         <svg className={styles.svg} ref={svgRef}>
+          <g className={'title'}></g>
+          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
+          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
