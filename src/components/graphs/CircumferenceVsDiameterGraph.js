@@ -1,13 +1,11 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import { useFirestore } from '../../firebase/hooks';
 import styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
-import { globalDataCollection, globalStatsCollection } from '../../firebase/firebase';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = () => {
-  const data = useFirestore(globalDataCollection, []);
+const CircumferenceVsDiameterGraph = ({ data, stats }) => {
+  console.log(data, stats, 'in Circumference Graph child');
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -29,10 +27,16 @@ const CircumferenceVsDiameterGraph = () => {
   };
 
   const dimensions = useResizeObserver(wrapperRef);
-  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
+  let globalDataArray = [];
+  let userDataPointsArray = [];
 
-  const globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-  const userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  if(!userPointIds){
+    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+  }
+  else {
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  }
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -77,7 +81,7 @@ const CircumferenceVsDiameterGraph = () => {
       .call(axisLeft(yScale));
       
     
-  }, [data, dimensions, stats]);
+  }, [dimensions]);
 
   return (
     <>
@@ -94,8 +98,7 @@ const CircumferenceVsDiameterGraph = () => {
 
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  stats: PropTypes.object.isRequired
 };
 
 export default CircumferenceVsDiameterGraph;
