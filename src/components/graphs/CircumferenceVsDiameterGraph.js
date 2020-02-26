@@ -4,7 +4,7 @@ import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) => {
+const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
