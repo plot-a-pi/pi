@@ -5,14 +5,12 @@ import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph
 
 const CircumferenceVsDiameterWrapper = () => {
   const data = useFirestore(globalDataCollection, []);
-  console.log(data, 'data response from firestore');
   const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
-  console.log(stats, 'stats response from database');
 
   return (
-    <>
-      <CircumferenceVsDiameterGraph data={data} stats={stats} xLabel='xlabel' yLabel='ylabel' title='titledyamic from home' />
-    </>
+    <div>
+      <CircumferenceVsDiameterGraph data={data} stats={stats} xLabel='Diameter (cm)' yLabel='Circumference (cm)' title='Global Data for Circumference Vs. Diameter' />
+    </div>
   );
 };
 

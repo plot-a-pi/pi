@@ -2,7 +2,6 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
-  <GlobalPiVsCountGraph />
   <Switch>
     <Route
       component={[Function]}
@@ -18,8 +17,8 @@ exports[`App component renders App 1`] = `
       path="/submit-to-global"
     />
     <Route
-      component={[Function]}
       path="/session-graph/:id"
+      render={[Function]}
     />
   </Switch>
 </Fragment>
