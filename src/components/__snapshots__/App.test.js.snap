@@ -2,7 +2,24 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
-  <Header />
-  <DataEntryForm />
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/session/:id"
+    />
+    <Route
+      component={[Function]}
+      path="/submit-to-global"
+    />
+    <Route
+      path="/session-graph/:id"
+      render={[Function]}
+    />
+  </Switch>
 </Fragment>
 `;
