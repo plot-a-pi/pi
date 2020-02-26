@@ -15,6 +15,7 @@ const DataEntryForm = () => {
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
   const history = useHistory();
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
@@ -25,16 +26,24 @@ const DataEntryForm = () => {
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
 
-    createDataPoint({
-      circumference: Number(circumference),
-      diameter: Number(diameter),
-      circumferenceUnit,
-      diameterUnit
-    });
 
     globalStatsCollection.doc('current-stats').get().then((stats) => {
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
+      if(localStorage.getItem('my-point-ids')){
+        const pointIds = JSON.parse(localStorage.getItem('my-point-ids'));
+        const updatedPointIds = pointIds.concat([stats.data().count + 1]);
+        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
+      } else {
+        localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
+      }
 
+      createDataPoint({
+        pointId: stats.data().count + 1,
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
+      });
+      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
 
     resetCircumference();
     resetCircumferenceUnit();
@@ -48,14 +57,12 @@ const DataEntryForm = () => {
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
 
-
   return (
     <div className={styles.DataEntryForm}>
       <h1>Plot-a-π</h1>
       <form onSubmit={handleSubmit} >
         <div>
           <h3>Circumference:</h3>
-          <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'This is how you do circumferency things'}/>
           <input type='text' required value={circumference} {...bindCircumference} />
           <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
             <option value=''></option>
@@ -65,10 +72,10 @@ const DataEntryForm = () => {
             <option value="ft">ft</option>
           </select>
           <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
+          <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
         </div>
         <div>
           <h3>Diameter:</h3>
-          <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'This is how you do diametery things'}/>
           <input type='text' required value={diameter} {...bindDiameter} />
           <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
             <option value=''></option>
@@ -78,14 +85,11 @@ const DataEntryForm = () => {
             <option value="ft">ft</option>
           </select>
           <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
+          <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
         </div>
         <button>Plot!</button>
       </form>
     </div>
   );
 };
-
-
 export default DataEntryForm;
-
-
