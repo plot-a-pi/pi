@@ -7,7 +7,7 @@ import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
- 
+
 const DataEntryForm = () => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
@@ -15,7 +15,7 @@ const DataEntryForm = () => {
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
   const history = useHistory();
 
- 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const circumferenceAsNumber = Number(circumference);
@@ -35,7 +35,7 @@ const DataEntryForm = () => {
       } else {
         localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
       }
-  
+
       createDataPoint({
         pointId: stats.data().count + 1,
         circumference: Number(circumference),
@@ -53,7 +53,7 @@ const DataEntryForm = () => {
     alert('Success! Your pi has been saved!');
     history.replace('/');
   };
- 
+
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
 

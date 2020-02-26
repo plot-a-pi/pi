@@ -11,7 +11,11 @@ const CircumferenceVsDiameterWrapper = () => {
 
   return (
     <>
+<<<<<<< HEAD
       <CircumferenceVsDiameterGraph data={data} stats={stats} />
+=======
+      <CircumferenceVsDiameterGraph data={data} stats={stats} xLabel='xlabel' yLabel='ylabel' title='titledyamic from home' />
+>>>>>>> 39bab41550944a6d2dd9e37646e9024a454dc99b
     </>
   );
 };
