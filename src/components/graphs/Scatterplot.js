@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft, zoom, zoomTransform } from 'd3';
-import * as d3 from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 // set constant for other browsers
@@ -48,19 +47,41 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .range([height, 0]);
 
     svg
-      .selectAll('.points')
+      .selectAll('circle')
       .data(data)
       .join('circle')
-      .attr('cx', data => xScale(data[0]))
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 1.5)
-      .attr('class', 'points')
-      .style('fill', 'red')
-      .on('mouseover', (data, i)=> {
-        d3.select(this).transition()
-          .attr('r', 5)
-          .duration('100');
-      });
+      .attr('r', 5)
+      .style('fill', 'orange')
+      .on('mouseenter', function(value) {
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join('text')
+          .attr('class', 'tooltip')
+          .attr('r', 10)
+          .text('(' + value + ')')
+          .attr('x', xScale(value[0]) + 5)
+          .attr('y', yScale(value[1]) - 5)
+          .transition()
+          .duration(500)
+          .attr('y', yScale(value[1]) - 10)
+          .attr('opacity', 1);
+        select(this)
+          .transition()
+          .duration(500)
+          .attr('r', 10);
+      })
+      .on('mouseleave', function(){
+        svg.select('.tooltip').remove();
+        select(this).attr('r', 5);
+      })
+      .transition()
+      .duration(2000)
+      .attr('cx', data => xScale(data[0]))
+
+
+
 
     svg
       .select('.x-axis')
@@ -69,7 +90,11 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 
     svg
       .select('.y-axis')
+      .transition()
+      .duration(2000)
+      .attr('opacity', '1')
       .call(axisLeft(yScale));
+
 
     const zoomBehavior = zoom()
       .scaleExtent([0, 5])
