@@ -3,11 +3,6 @@
 exports[`Scatterplot component renders Scatterplot 1`] = `
 <div
   className="container"
-  style={
-    Object {
-      "marginBottom": "2em",
-    }
-  }
 >
   <svg
     className="svg"
