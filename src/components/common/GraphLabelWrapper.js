@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from './GraphLabelWrapper.css';
 
 const GraphLabelWrapper = ({ xLabel, yLabel, title, children }) => {
@@ -16,4 +17,13 @@ const GraphLabelWrapper = ({ xLabel, yLabel, title, children }) => {
   );
 
 };
+
+GraphLabelWrapper.PropTypes = {
+  xLabel : PropTypes.string,
+  yLabel : PropTypes.string,
+  title : PropTypes.string,
+  children : PropTypes.node,
+};
+
+
 export default GraphLabelWrapper;
