@@ -10,10 +10,11 @@ export default function App() {
     <>
       <Switch>
         <Route exact path='/' component={Home} />
-        
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
-        <Route path='/session-graph/:id' component={SessionGraph} />
+        <Route path='/session-graph/:id' render = {() => (
+          <SessionGraph />
+        )} />
       </Switch>
     </>
   );
