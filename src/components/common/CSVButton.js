@@ -16,7 +16,7 @@ const CSVButton = ({ data, header1, header2 }) => {
   return (
     <>
       <button> Download Icon
-        <CSVDownload data={csvDataPreparedForHeaders} onClick={handleClick} target="_self" headers={headers} />
+        <CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />
       </button>
     </>
   );
