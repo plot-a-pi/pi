@@ -1,3 +1,6 @@
-.Header{
+.Header {
+  background-color: #7DC4B8;
+  background-color: yellow;
+  border: 2px solid green;
   text-align: center;
 }
