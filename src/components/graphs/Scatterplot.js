@@ -91,9 +91,6 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .duration(2000)
       .attr('cx', data => xScale(data[0]));
 
-
-
-
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
