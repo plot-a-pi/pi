@@ -17,8 +17,8 @@ exports[`App component renders App 1`] = `
       path="/submit-to-global"
     />
     <Route
-      path="/session-graph/:id"
-      render={[Function]}
+      component={[Function]}
+      path="/session-graph/123"
     />
   </Switch>
 </Fragment>
