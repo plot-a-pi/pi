@@ -40,7 +40,7 @@ const MonteCarlo = () => {
       </GraphLabelWrapper>
       
       <MonteCarloControls actions={actions} />
-      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} xLabel={'Total Darts'} yLabel={'Pi Approximation'} />
     </div>
   );
 };

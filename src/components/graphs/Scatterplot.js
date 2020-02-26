@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import CSVButton from '../common/CSVButton';
 
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
@@ -129,6 +130,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
+      <CSVButton data={data} header1={xLabel} header2={yLabel} />
     </div>
   );
 };

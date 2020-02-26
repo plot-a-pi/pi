@@ -17,7 +17,7 @@ const CSVButton = ({ data, header1, header2 }) => {
     <>
       <button onClick={() => {
         <CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />;
-      }}> Download Icon
+      }}> Download Data
       </button>
     </>
   );

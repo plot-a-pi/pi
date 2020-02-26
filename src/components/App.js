@@ -4,29 +4,21 @@ import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
+import MonteCarlo from '../containers/MonteCarlo';
 
 export default function App() {
   return (
-<<<<<<< HEAD
-    <Switch>
-      <Route exact path='/' component={Home} />
-      <GlobalPiVsCountGraph />
-      <Route path='/session/:id' component={SessionForm} />
-      <Route path='/submit-to-global' component={DataEntryForm} />
-      <Route path='/session-graph/:id' component={SessionGraph} />
-    </Switch>
-=======
     <>
-      <Switch>
+      <MonteCarlo />
+      {/* <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
         <Route path='/session-graph/:id' render = {() => (
           <SessionGraph />
         )} />
-      </Switch>
+      </Switch> */}
     </>
->>>>>>> 7bb4de7a95d97d9879ca3e62bfcbde5b77a11163
   );
 }
 
