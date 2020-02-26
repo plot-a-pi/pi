@@ -12,7 +12,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
-  
+
     useEffect(() => {
       const observeTarget = ref.current;
       const resizeObserver = new ResizeObserver(entries => {
@@ -90,6 +90,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .select('.y-axis')
       .call(axisLeft(yScale));
 
+<<<<<<< HEAD
     svg.select('.title')
       .append('text')
       .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
@@ -112,6 +113,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .text(yLabel);
       
     
+=======
+
+>>>>>>> f72574c49c4a73bd4f06c91ff822150ef6ae39a5
   }, [dimensions]);
 
   return (
