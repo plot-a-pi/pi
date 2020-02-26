@@ -50,10 +50,38 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .selectAll('circle')
       .data(data)
       .join('circle')
-      .attr('cx', data => xScale(data[0]))
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 1.5)
-      .style('fill', '#000000');
+      .attr('r', 5)
+      .style('fill', 'orange')
+      .on('mouseenter', function(value) {
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join('text')
+          .attr('class', 'tooltip')
+          .attr('r', 10)
+          .text('(' + value + ')')
+          .attr('x', xScale(value[0]) + 5)
+          .attr('y', yScale(value[1]) - 5)
+          .transition()
+          .duration(500)
+          .attr('y', yScale(value[1]) - 10)
+          .attr('opacity', 1);
+        select(this)
+          .transition()
+          .duration(500)
+          .attr('r', 10);
+      })
+      .on('mouseleave', function(){
+        svg.select('.tooltip').remove();
+        select(this).attr('r', 5);
+      })
+      .transition()
+      .duration(2000)
+      .attr('cx', data => xScale(data[0]))
+
+
+
 
     svg
       .select('.x-axis')
@@ -62,7 +90,11 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 
     svg
       .select('.y-axis')
+      .transition()
+      .duration(2000)
+      .attr('opacity', '1')
       .call(axisLeft(yScale));
+
 
     const zoomBehavior = zoom()
       .scaleExtent([0, 5])
@@ -72,9 +104,9 @@ const Scatterplot = ({ data, xMax, yMax }) => {
         const zoomState = zoomTransform(svg.node());
         setCurrentZoomState(zoomState);
       });
-      
+
     svg.call(zoomBehavior);
-    
+
   }, [data, dimensions, currentZoomState]);
 
   return (
