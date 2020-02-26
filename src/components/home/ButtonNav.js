@@ -13,7 +13,7 @@ const ButtonNav = () => (
       <button>Monte Carlo</button>
     </Link>
     <Link to='/map'>
-      <button>Map</button>
+      <button>Data Map</button>
     </Link>
     <Link to='/submit-to-global'>
       <button>Submit to Global Data</button>
