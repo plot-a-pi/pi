@@ -4,7 +4,7 @@ import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) => {
+const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -60,57 +60,57 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       }); 
     };
   
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
+    // removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
-    svg
-      .selectAll('.user-point')
-      .data(userDataPointsArray)
-      .join('circle')
-      .attr('class', 'user-point')
-      .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
-      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]))
-      .attr('r', 50)
-      .style('fill', '#FF0000');
+    // svg
+    //   .selectAll('.user-point')
+    //   .data(userDataPointsArray)
+    //   .join('circle')
+    //   .attr('class', 'user-point')
+    //   .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
+    //   .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]))
+    //   .attr('r', 50)
+    //   .style('fill', '#FF0000');
 
-    svg
-      .selectAll('.global-point')
-      .data(globalDataArray)
-      .join('circle')
-      .attr('class', 'global-point')
-      .attr('cx', globalDataArray => xScale(globalDataArray[0]))
-      .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 1.5)
-      .style('fill', '#000000');
+    // svg
+    //   .selectAll('.global-point')
+    //   .data(globalDataArray)
+    //   .join('circle')
+    //   .attr('class', 'global-point')
+    //   .attr('cx', globalDataArray => xScale(globalDataArray[0]))
+    //   .attr('cy', globalDataArray => yScale(globalDataArray[1]))
+    //   .attr('r', 1.5)
+    //   .style('fill', '#000000');
 
-    svg
-      .select('.x-axis')
-      .attr('transform', `translate(0, ${height})`)
-      .call(axisBottom(xScale));
+    // svg
+    //   .select('.x-axis')
+    //   .attr('transform', `translate(0, ${height})`)
+    //   .call(axisBottom(xScale));
 
-    svg
-      .select('.y-axis')
-      .call(axisLeft(yScale));
+    // svg
+    //   .select('.y-axis')
+    //   .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
+    // svg.select('.title')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(title);
 
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
+    // svg.select('.x-label')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(xLabel);
     
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - stats.circumferenceMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
+    // svg.select('.y-label')
+    //   .append('text')
+    //   .attr('transform', 'rotate(-90)')
+    //   .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+    //   .attr('x', 0 - stats.circumferenceMax / 1.5)
+    //   .attr('dy', '1em')
+    //   .style('text-anchor', 'middle')
+    //   .text(yLabel);
       
     
   }, [dimensions, data, stats]);
