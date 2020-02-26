@@ -33,7 +33,7 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
 
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${width}px`);
-    wrapper.style('border', '10px solid green');
+
 
     const xScale = scaleLinear()
       .domain([0, xMax])
@@ -49,6 +49,19 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       
     svg
       .selectAll('circle')
+      .remove();
+      
+    svg
+      .select('.title')
+      .select('text')
+      .remove();
+    svg
+      .select('.x-label')
+      .select('text')
+      .remove();
+    svg
+      .select('.y-label')
+      .select('text')
       .remove();
       
     svg
@@ -86,6 +99,28 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
+
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text('Monte Carlo');
+
+    svg.select('.x-label')
+      .append('text')
+      .attr('x', xScale(xMax / 2))
+      .attr('y', yScale(yMax / 100))
+      .style('text-anchor', 'middle')
+      .text('x');
+    
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -50 + yScale(yMax) / 10)
+      .attr('x', 0 - yScale(yMax / 2))
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text('y');
       
   }, [data, dimensions]);
 
@@ -93,7 +128,10 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
+        <g className={'title'}></g>
+        <g className={'x-label'}></g>
         <g className={'x-axis'}></g>
+        <g className={'y-label'}></g>
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
