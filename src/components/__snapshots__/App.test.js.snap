@@ -18,7 +18,7 @@ exports[`App component renders App 1`] = `
     />
     <Route
       component={[Function]}
-      path="/session-graph/123"
+      path="/session-graph/:id"
     />
   </Switch>
 </Fragment>
