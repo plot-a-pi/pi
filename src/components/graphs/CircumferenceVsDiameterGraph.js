@@ -4,8 +4,8 @@ import styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const CircumferenceVsDiameterGraph = (data, stats) => {
-
+const CircumferenceVsDiameterGraph = ({ data, stats }) => {
+  console.log(data, stats, 'in Circumference Graph child');
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -27,9 +27,16 @@ const CircumferenceVsDiameterGraph = (data, stats) => {
   };
 
   const dimensions = useResizeObserver(wrapperRef);
+  let globalDataArray = [];
+  let userDataPointsArray = [];
 
-  const globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-  const userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  if(!userPointIds){
+    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+  }
+  else {
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+  }
 
   useEffect(() => {
     const svg = select(svgRef.current);
@@ -74,7 +81,7 @@ const CircumferenceVsDiameterGraph = (data, stats) => {
       .call(axisLeft(yScale));
       
     
-  }, [data, dimensions, stats]);
+  }, [dimensions]);
 
   return (
     <>
@@ -91,8 +98,7 @@ const CircumferenceVsDiameterGraph = (data, stats) => {
 
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  stats: PropTypes.object.isRequired
 };
 
 export default CircumferenceVsDiameterGraph;
