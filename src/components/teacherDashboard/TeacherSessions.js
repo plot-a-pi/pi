@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import { useFirestore } from '../../firebase/hooks';
-import { sessionDataCollection } from '../../firebase/firebase';
-import { Link } from 'react-router-dom';
+import { sessionDataCollection, signOut } from '../../firebase/firebase';
+import { Link, useHistory } from 'react-router-dom';
 import { createSession } from '../../firebase/actions';
+import { useUser } from '../../firebase/AuthProvider';
+import Header from '../common/Header';
+import Nav from '../common/Nav';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
-  //replace null with userId once merge squashed
-  const data = useFirestore(sessionDataCollection.where('teacherId', '==', null));
+  const history = useHistory();
+  const user = useUser();
+  const data = useFirestore(sessionDataCollection.where('teacherId', '==', user.uid), []);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    createSession(null, sessionName);
+    createSession(user.uid, sessionName);
+  };
+
+  const handleClick = () => {
+    signOut();
+    history.push('/');
   };
 
   const sessionElements = data.map(session => (
@@ -22,9 +31,15 @@ const TeacherSessions = () => {
       <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
     </li>
   ));
+  
+
+  
 
   return (
     <>
+      <Header/>
+      <Nav/>
+      <button onClick={handleClick}>Sign Out</button>
       <form onSubmit={onSubmit}>
         <input type='text' value={sessionName} onChange={({ target }) => setSessionName(target.value)}></input>
         <button>Create Session</button>
