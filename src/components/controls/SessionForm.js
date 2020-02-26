@@ -1,14 +1,17 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
 import PropTypes from 'prop-types';
-import { createSessionData } from '../../firebase/actions';
+import { createSessionData, updateSessionStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
+import { sessionDataCollection } from '../../firebase/firebase';
+import { updateStats } from '../../services/stats';
  
 const SessionForm = ({ match }) => {
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
   const { value: diameterUnit, bind: bindDiameterUnit, reset: resetDiameterUnit } = useFormInput('');
+  const { id } = match.params;
  
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,11 +23,15 @@ const SessionForm = ({ match }) => {
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
    
-    createSessionData(match.params.id, {
+    createSessionData(id, {
       circumference: Number(circumference),
       diameter: Number(diameter),
       circumferenceUnit,
       diameterUnit
+    });
+
+    sessionDataCollection.doc(id).collection('stats').doc('current-stats').get().then((stats) => {
+      updateSessionStats(id, updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));
     });
  
     resetCircumference();
