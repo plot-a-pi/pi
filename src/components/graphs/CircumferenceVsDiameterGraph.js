@@ -41,8 +41,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-    
-    console.log(stats.diameterMax, stats.circumferenceMax);
 
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])

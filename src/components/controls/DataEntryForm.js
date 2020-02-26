@@ -1,9 +1,7 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
-import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
 import { globalStatsCollection } from '../../firebase/firebase';
-import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
