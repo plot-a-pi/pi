@@ -34,7 +34,11 @@ const MonteCarlo = () => {
       <h2>{dartsTotal}</h2>
       <h2>Current Pi Approximation</h2>
       <h1>{piApproximation.toFixed(4)}</h1>
+<<<<<<< HEAD
       <MonteCarloScatterplot data={dartsArray} />
+=======
+      <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
+>>>>>>> f696384e0388aef34e78b7a0a5be1f31a4285086
       <MonteCarloControls actions={actions} />
       <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
     </div>

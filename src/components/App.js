@@ -9,14 +9,18 @@ import MonteCarlo from '../containers/MonteCarlo';
 export default function App() {
   return (
     <>
-      <MonteCarlo />
-      {/* <Switch>
+      <Montecarlo />
+      <Switch>
         <Route exact path='/' component={Home} />
-        
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
-        <Route path='/session-graph/:id' component={SessionGraph} />
-      </Switch> */}
+        <Route path='/session-graph/:id' render = {() => (
+          <GraphLabelWrapper title='Global' xLabel='x' yLabel='y'>
+            <SessionGraph />
+          </GraphLabelWrapper>
+        )} />
+      </Switch>
     </>
   );
 }
+

@@ -11,7 +11,7 @@ const GlobalPiVsCountGraph = () => {
 
   return (
     <>
-      <Scatterplot data={dataArray} xMax={stats.diameterMax} yMax={stats.circumferenceMax} />
+      <Scatterplot data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
     </>
   );
 };
