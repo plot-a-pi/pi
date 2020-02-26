@@ -1,0 +1,41 @@
+* {
+    background-color: #F5F5F5;
+    color: #212E59;
+    
+    h1 {
+        font-size: 30px;
+    }
+    
+    h2 {
+        font-size: 25px;
+    }
+    
+    h3 {
+        font-size: 20px;
+    }
+    
+    p {
+        font-size: 16px;
+        font-family: 'Heebo';
+    }
+    
+    .labels {
+        font-size: 16px;
+        font-family: 'Heebo';
+    }
+    
+    button {
+        background-color: #223493;
+        color: #F5F5F5;
+        border: 1.5px solid #A4A6C9;
+        border-radius: .5rem;
+    }
+    
+    button:hover {
+        background-color: #A4A6C9;
+        color: #223493;
+        border: 1.5px solid #223493;
+        border-radius: .5rem;
+    }
+    
+    }
