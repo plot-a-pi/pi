@@ -1,6 +1,7 @@
 * {
     background-color: #F5F5F5;
     color: #212E59;
+    font-family: 'Roboto Mono';
     
     h1 {
         font-size: 30px;
@@ -37,5 +38,6 @@
         border: 1.5px solid #223493;
         border-radius: .5rem;
     }
+
     
     }
