@@ -4,7 +4,7 @@ import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
+export const MonteCarloScatterplot = ({ data }) => {
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
@@ -107,22 +107,22 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
 
     svg.select('.title')
       .append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
+      .attr('transform', 'translate(' + (xScale(1) / 2) + ' ,' + -2 + ')')
       .style('text-anchor', 'middle')
       .text('Monte Carlo');
 
     svg.select('.x-label')
       .append('text')
-      .attr('x', xScale(xMax / 2))
-      .attr('y', 50 + yScale(yMax / 100))
+      .attr('x', xScale(1 / 2))
+      .attr('y', 50 + yScale(1 / 100))
       .style('text-anchor', 'middle')
       .text('x');
     
     svg.select('.y-label')
       .append('text')
       .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(yMax) / 10)
-      .attr('x', 0 - yScale(yMax / 2))
+      .attr('y', -70 + yScale(1) / 10)
+      .attr('x', 0 - yScale(1 / 2))
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text('y');
