@@ -8,12 +8,15 @@ import GlobalPiVsCountGraph from './graphs/GlobalPiVsCountGraph';
 
 export default function App() {
   return (
-    <Switch>
-      <Route exact path='/' component={Home} />
+    <>
       <GlobalPiVsCountGraph />
-      <Route path='/session/:id' component={SessionForm} />
-      <Route path='/submit-to-global' component={DataEntryForm} />
-      <Route path='/session-graph/:id' component={SessionGraph} />
-    </Switch>
+      <Switch>
+        <Route exact path='/' component={Home} />
+      
+        <Route path='/session/:id' component={SessionForm} />
+        <Route path='/submit-to-global' component={DataEntryForm} />
+        <Route path='/session-graph/:id' component={SessionGraph} />
+      </Switch>
+    </>
   );
 }
