@@ -54,10 +54,10 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .join('circle')
       .attr('cy', data => yScale(data[1]))
       .attr('r', 5)
-      .attr('stroke', '#19233d')
-      .attr('stroke-width', '2')
+      .attr('stroke', '#212e59')
+      .attr('stroke-width', '1')
       .style('fill', '#223493')
-      .attr('opacity', 0.8)
+      // .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -68,10 +68,13 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
+          .style('fill', '#f5f5f5')
+          .style('font-size', 'larger')
+          .style('font-weight', 'bolder')
           .transition()
           .duration(500)
-          .attr('y', yScale(value[1]) - 10)
-          .attr('opacity', 1);
+          .attr('y', yScale(value[1]) - 10);
+        // .attr('opacity', 1);
         select(this)
           .transition()
           .duration(500)
@@ -96,7 +99,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .select('.y-axis')
       .transition()
       .duration(1000)
-      .attr('opacity', '1')
+      // .attr('opacity', '1')
       .call(axisLeft(yScale));
 
     svg.select('.title')

@@ -70,9 +70,9 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', 4)
       .attr('class', 'points')
-      .attr('stroke', 'rgb(21, 27, 49)')
-      .attr('stroke-width', '2')
-      .style('fill', 'rgb(58, 78, 153)');
+      .attr('stroke', '#212e59')
+      .attr('stroke-width', '1')
+      .style('fill', '#223493');
 
     svg
       .select('.x-axis')

@@ -1,5 +1,5 @@
 .svg {
-  background: #7dc4b878;
+  background: #7dc4b8;
   overflow: visible;
   display: block;
   width: 100%;
@@ -8,10 +8,6 @@
 
 }
 
-.bigCircle {
-  z-index: -1;
-  fill: rgba(255, 0, 0, 0.438)
-}
 
 .container {
   display: flex;
