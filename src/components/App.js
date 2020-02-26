@@ -4,6 +4,7 @@ import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
+import { GraphLabelWrapper } from './common/GraphLabelWrapper';
 
 export default function App() {
   return (
@@ -19,12 +20,16 @@ export default function App() {
     <>
       <Switch>
         <Route exact path='/' component={Home} />
-        
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
-        <Route path='/session-graph/:id' component={SessionGraph} />
+        <Route path='/session-graph/:id' render = {() => (
+          <GraphLabelWrapper title='Global' xLabel='x' yLabel='y'>
+            <SessionGraph />
+          </GraphLabelWrapper>
+        )} />
       </Switch>
     </>
 >>>>>>> 7bb4de7a95d97d9879ca3e62bfcbde5b77a11163
   );
 }
+
