@@ -4,11 +4,7 @@ import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-<<<<<<< HEAD
 export const MonteCarloScatterplot = ({ data }) => {
-=======
-export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
->>>>>>> f696384e0388aef34e78b7a0a5be1f31a4285086
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
@@ -54,7 +50,6 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
 
     svg
       .append('rect')
-<<<<<<< HEAD
       .attr('x', 0)
       .attr('y', width * 0.09)
       .attr('width', width * 0.91)
@@ -71,20 +66,6 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       .style('fill', 'rgb(109, 121, 160)')
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
-=======
-      .attr('width', width)
-      .attr('height', width)
-      .style('fill', 'rgb(109, 152, 160)')
-      .style('opacity', 0.25);
-
-    svg
-      .append('circle')
-      .attr('cx', data => xScale(0.5))
-      .attr('cy', data => yScale(0.5))
-      .attr('r', width / 2)
-      .style('fill', 'rgb(109, 121, 160)')
-      .style('opacity', 0.5);
->>>>>>> f696384e0388aef34e78b7a0a5be1f31a4285086
 
     svg
       .selectAll('.points')
@@ -114,10 +95,6 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
       <svg className={Styles.svg} ref={svgRef}>
         <g className={'x-axis'}></g>
         <g className={'y-axis'}></g>
-<<<<<<< HEAD
-=======
-        <g className={'data'}></g>
->>>>>>> f696384e0388aef34e78b7a0a5be1f31a4285086
       </svg>
     </div>
   );

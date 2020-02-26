@@ -3,6 +3,7 @@ import styles from './MonteCarlo.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import Scatterplot from '../components/graphs/Scatterplot';
+import GraphLabelWrapper from '../components/common/GraphLabelWrapper';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
@@ -34,11 +35,10 @@ const MonteCarlo = () => {
       <h2>{dartsTotal}</h2>
       <h2>Current Pi Approximation</h2>
       <h1>{piApproximation.toFixed(4)}</h1>
-<<<<<<< HEAD
-      <MonteCarloScatterplot data={dartsArray} />
-=======
-      <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
->>>>>>> f696384e0388aef34e78b7a0a5be1f31a4285086
+      <GraphLabelWrapper title='Monte Carlo Approximation of Pi' xLabel='x' yLabel='y'>
+        <MonteCarloScatterplot data={dartsArray} />
+      </GraphLabelWrapper>
+      
       <MonteCarloControls actions={actions} />
       <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
     </div>
