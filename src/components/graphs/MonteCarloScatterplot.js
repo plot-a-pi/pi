@@ -56,6 +56,10 @@ export const MonteCarloScatterplot = ({ data, xMax, yMax }) => {
 
     svg
       .selectAll('.points')
+      .remove();
+    
+    svg
+      .selectAll('.points')
       .data(data)
       .join('circle')
       .attr('cx', data => xScale(data[0]))

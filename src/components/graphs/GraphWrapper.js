@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 
-const GraphWrapper = () => {
+const GraphWrapper = (title, xLabel, yLabel) => {
 
 
   return (
-    <>
-      <CircumferenceVsDiameterGraph data={data} stats={stats} xLabel='xlabel' yLabel='ylabel' title='titledyamic from home' />
-    </>
+    <div>
+
+    </div>
   );
 };
 
-export default CircumferenceVsDiameterWrapper;
+export default GraphWrapper;
