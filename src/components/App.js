@@ -5,12 +5,12 @@ import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
 import { GraphLabelWrapper } from './common/GraphLabelWrapper';
-import CircumferenceVsDiameterGraph from './graphs/CircumferenceVsDiameterGraph';
+import CircumferenceVsDiameterWrapper from './graphs/CircumferenceVsDiameterGraph';
 
 export default function App() {
   return (
     <>
-      <CircumferenceVsDiameterGraph />
+      <CircumferenceVsDiameterWrapper />
       {/* <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/session/:id' component={SessionForm} />
