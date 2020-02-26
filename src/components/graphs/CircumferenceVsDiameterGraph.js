@@ -1,11 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import styles from './Scatterplot.css';
+import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) => {
-  console.log(data, stats, 'in Circumference Graph child');
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
@@ -31,17 +30,19 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
   let userDataPointsArray = [];
 
   if(!userPointIds){
-    globalDataArray = data.map(point => [point.circumference, point.diameter]);
+    globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
   else {
-    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.circumference, point.diameter]);
-    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.circumference, point.diameter]);
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter, point.circumference]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter, point.circumference]);
   }
 
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
+    
+    console.log(stats.diameterMax, stats.circumferenceMax);
 
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])
@@ -112,11 +113,11 @@ const CircumferenceVsDiameterGraph = ({ data, stats, xLabel, yLabel, title }) =>
       .text(yLabel);
       
     
-  }, [dimensions]);
+  }, [dimensions, data, stats]);
 
   return (
     <>
-      <div className={styles.container} ref={wrapperRef} style={{ marginBottom: '2em' }}>
+      <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
           <g className={'title'}></g>
           <g className={'x-label'}></g>

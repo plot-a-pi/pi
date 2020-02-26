@@ -4,11 +4,6 @@ exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterG
 <Fragment>
   <div
     className="container"
-    style={
-      Object {
-        "marginBottom": "2em",
-      }
-    }
   >
     <svg
       className="svg"
