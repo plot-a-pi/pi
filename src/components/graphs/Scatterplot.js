@@ -20,7 +20,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
+const Scatterplot = ({ data, xMax, yMax }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -30,15 +30,15 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
-    const removeLabelText = (svg, args) => {
-      return args.map(arg => {
-        svg.select(arg)
-          .select('text')
-          .remove();
-      });
-    };
+    // const removeLabelText = (svg, args) => {
+    //   return args.map(arg => {
+    //     svg.select(arg)
+    //       .select('text')
+    //       .remove();
+    //   });
+    // };
 
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
+    // removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
     const xScale = scaleLinear()
       .domain([0, xMax])
@@ -54,10 +54,10 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .join('circle')
       .attr('cy', data => yScale(data[1]))
       .attr('r', 5)
-      .attr('stroke', '#212e59')
-      .attr('stroke-width', '1')
-      .style('fill', '#223493')
-      // .attr('opacity', 0.8)
+      // .attr('stroke', '#212e59')
+      // .attr('stroke-width', '1')
+      .style('fill', '#f5f5f5')
+      .attr('opacity', 0.5)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -68,7 +68,7 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
-          .style('fill', '#f5f5f5')
+          .style('fill', '#223493')
           .style('font-size', 'larger')
           .style('font-weight', 'bolder')
           .transition()
@@ -102,36 +102,36 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       // .attr('opacity', '1')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
+    // svg.select('.title')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(title);
 
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
+    // svg.select('.x-label')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(xLabel);
 
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(yMax) / 10)
-      .attr('x', 0 - yMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
+    // svg.select('.y-label')
+    //   .append('text')
+    //   .attr('transform', 'rotate(-90)')
+    //   .attr('y', -50 + yScale(yMax) / 10)
+    //   .attr('x', 0 - yMax / 1.5)
+    //   .attr('dy', '1em')
+    //   .style('text-anchor', 'middle')
+    //   .text(yLabel);
 
   }, [data, dimensions]);
 
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
-        <g className={'title'}></g>
-        <g className={'x-label'}></g>
+        {/* <g className={'title'}></g>
+        <g className={'x-label'}></g> */}
         <g className={'x-axis'}></g>
-        <g className={'y-label'}></g>
+        {/* <g className={'y-label'}></g> */}
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
@@ -143,9 +143,9 @@ Scatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
   yMax: PropTypes.number.isRequired,
-  xLabel: PropTypes.string,
-  yLabel: PropTypes.string,
-  title: PropTypes.string
+  // xLabel: PropTypes.string,
+  // yLabel: PropTypes.string,
+  // title: PropTypes.string
 };
 
 //export default Scatterplot;

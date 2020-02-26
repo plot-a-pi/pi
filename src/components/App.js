@@ -4,7 +4,7 @@ import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionGraph from './graphs/SessionGraph';
-import { GraphLabelWrapper } from './common/GraphLabelWrapper';
+import  GraphLabelWrapper from './common/GraphLabelWrapper';
 
 export default function App() {
   return (

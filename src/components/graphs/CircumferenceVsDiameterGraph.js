@@ -52,15 +52,15 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
 
-    const removeLabelText = (svg, args) => {
-      return args.map(arg => {
-        svg.select(arg)
-          .select('text')
-          .remove();
-      });
-    };
+    // const removeLabelText = (svg, args) => {
+    //   return args.map(arg => {
+    //     svg.select(arg)
+    //       .select('text')
+    //       .remove();
+    //   });
+    // };
 
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
+    // removeLabelText(svg, ['.y-label', '.x-label']);
 
     svg
       .selectAll('.user-point')
@@ -68,10 +68,36 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .join('circle')
       .attr('class', 'user-point')
       .attr('r', 10)
-      .attr('stroke', '#223293')
+      .attr('stroke', '#212e59')
       .attr('stroke-width', '9')
-      .style('fill', '#f5f5f5')
+      .style('fill', '#223493')
       .attr('opacity', 0.8)
+      .on('mouseenter', function(value) {
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join('text')
+          .attr('class', 'tooltip')
+          .attr('r', 10)
+          .text('(' + value + ')')
+          .attr('x', xScale(value[0]) + 5)
+          .attr('y', yScale(value[1]) - 5)
+          .style('fill', '#f5f5f5')
+          .style('font-size', 'larger')
+          .style('font-weight', 'bolder')
+          .transition()
+          .duration(500)
+          .attr('y', yScale(value[1]) - 10);
+        // .attr('opacity', 1);
+        select(this)
+          .transition()
+          .duration(500)
+          .attr('r', 10);
+      })
+      .on('mouseleave', function(){
+        select(this).attr('r', 5);
+        svg.select('.tooltip').remove();
+      })
       .transition()
       .delay(1500)
       .duration(1500)
@@ -85,8 +111,34 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('class', 'global-point')
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
       .attr('r', 5)
-      .style('fill', '#f5f5f5')
+      .style('fill', '#223493')
       .attr('opacity', 0.8)
+      .on('mouseenter', function(value) {
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join('text')
+          .attr('class', 'tooltip')
+          .attr('r', 10)
+          .text('(' + value + ')')
+          .attr('x', xScale(value[0]) + 5)
+          .attr('y', yScale(value[1]) - 5)
+          .style('fill', '#f5f5f5')
+          .style('font-size', 'larger')
+          .style('font-weight', 'bolder')
+          .transition()
+          .duration(500)
+          .attr('y', yScale(value[1]) - 10);
+        // .attr('opacity', 1);
+        select(this)
+          .transition()
+          .duration(500)
+          .attr('r', 10);
+      })
+      .on('mouseleave', function(){
+        select(this).attr('r', 5);
+        svg.select('.tooltip').remove();
+      })
       .transition()
       .duration(2000)
       .attr('cx', globalDataArray => xScale(globalDataArray[0]));
@@ -100,26 +152,26 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
+    // svg.select('.title')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(title);
 
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
+    // svg.select('.x-label')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(xLabel);
 
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - stats.circumferenceMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
+    // svg.select('.y-label')
+    //   .append('text')
+    //   .attr('transform', 'rotate(-90)')
+    //   .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+    //   .attr('x', 0 - stats.circumferenceMax / 1.5)
+    //   .attr('dy', '1em')
+    //   .style('text-anchor', 'middle')
+    //   .text(yLabel);
 
 
   }, [dimensions, data, stats]);
@@ -128,10 +180,10 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     <>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
-          <g className={'title'}></g>
-          <g className={'x-label'}></g>
+          {/* <g className={'title'}></g> */}
+          {/* <g className={'x-label'}></g> */}
           <g className={'x-axis'}></g>
-          <g className={'y-label'}></g>
+          {/* <g className={'y-label'}></g> */}
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
@@ -143,8 +195,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 CircumferenceVsDiameterGraph.propTypes = {
   data: PropTypes.array.isRequired,
   stats: PropTypes.object.isRequired,
-  xLabel: PropTypes.string,
-  yLabel: PropTypes.string
 };
 
 export default CircumferenceVsDiameterGraph;
