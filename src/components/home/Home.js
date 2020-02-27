@@ -11,7 +11,7 @@ const Home = () => {
     <div className={styles.home}>
       <section className={styles.graphs}>
         <CircumferenceVsDiameterWrapper />
-        <div className={styles.global}>
+        <div>
           <GlobalPiVsCountGraph />
         </div>
       </section>

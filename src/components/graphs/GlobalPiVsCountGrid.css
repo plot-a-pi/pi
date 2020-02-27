@@ -1,10 +1,10 @@
-.MonteCarloGridWrapper {
+.GraphGridStyles {
     .gridContainer {
         display: grid;
-        width: 75vw;
-        height: 50vh;
+        width: 95vw;
+        height: 40vh;
         grid-template-columns: .5fr 4fr;
-        grid-template-rows: .5fr 2fr .5fr;
+        grid-template-rows: .5fr 1fr .5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         text-align: center;
@@ -18,7 +18,7 @@
             p {
             width: 50vh;
             transform-origin: top right;
-            transform: rotate(-90deg) translate(7vh, -87vw);
+            transform: rotate(-90deg) translate(10vh, -87vw);
             font-size: .08em;
             }
         }
@@ -34,11 +34,13 @@
         }
 
         .graph { 
-            grid-area: 2 / 2 / 3 / 3;
-            margin-left: 1em;
+            grid-area: 2 / 2 / 3 / 3; 
+            margin-left: 3vw;
+            margin-bottom: 2vh;
             display: flex;
-            width: 100%;
             align-self: flex-end;
+            width: 100%;
+            height: auto;
         }
 
         .xLabel { 
@@ -54,5 +56,6 @@
                 font-size: .08em;
             }
         }
-    }   
+    }  
+    
 }
