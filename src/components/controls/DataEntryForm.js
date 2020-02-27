@@ -78,7 +78,7 @@ const DataEntryForm = () => {
               <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
-            <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
+            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
           </div>
         </div>
         <div className={styles.formInputWrapper}>
@@ -93,7 +93,7 @@ const DataEntryForm = () => {
               <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
-            <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
+            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
           </div>
         </div>
         <button className={styles.plotButton}>Plot!</button>

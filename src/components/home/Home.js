@@ -1,18 +1,14 @@
 import React from 'react';
-import Nav from '../common/Nav';
+// import Nav from '../common/Nav';
 import ButtonNav from './ButtonNav';
-import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
-import GraphLabelWrapper from '../common/GraphLabelWrapper';
-import Stats from './Stats';
+import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
 
 const Home = () => {
 
   return (
     <>
-      <Nav />
-      <GraphLabelWrapper title='globl' xLabel='Diameter' yLabel='Circumfrence'>
-        <CircumferenceVsDiameterWrapper />
-      </GraphLabelWrapper>
+      {/* <Nav /> */}
+      <CircumferenceVsDiameterWrapper />
       <ButtonNav />
     </>
   );

@@ -42,6 +42,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
+
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])
       .range([0, width]);
@@ -109,7 +111,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('x', 0 - yScale(stats.circumferenceMax / 2))
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
-      .text('y')
+      .text('y');
+    
+    svg
       .selectAll('line')
       .remove('line');  
     
@@ -119,8 +123,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .style('stroke-width', 5)
       .attr('x1', 0)
       .attr('y1', height)
-      .attr('x2', xScale(stats.circumferenceMax / 3))
-      .attr('y2', yScale(stats.circumferenceMax));
+      .attr('x2', xScale(lineEndpoint[0]))
+      .attr('y2', yScale(lineEndpoint[1]));
     
   }, [dimensions, data, stats]);
 
