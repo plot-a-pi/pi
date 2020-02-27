@@ -4,6 +4,10 @@ import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
+const pointRadius = (length) => {
+  return Math.max(1, 5 - (Math.floor(length / 100)));
+};
+
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
 
@@ -20,7 +24,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
+const Scatterplot = ({ data, xMax, yMax }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -29,21 +33,21 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
-    
-    const removeLabelText = (svg, args) => {
-      return args.map(arg => {
-        svg.select(arg)
-          .select('text')
-          .remove();
-      }); 
-    };
 
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
-        
+    // const removeLabelText = (svg, args) => {
+    //   return args.map(arg => {
+    //     svg.select(arg)
+    //       .select('text')
+    //       .remove();
+    //   });
+    // };
+
+    // removeLabelText(svg, ['.y-label', '.x-label', '.title']);
+
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
-    
+
     const yScale = scaleLinear()
       .domain([0, yMax])
       .range([height, 0]);
@@ -53,9 +57,16 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .data(data)
       .join('circle')
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 5)
-      .style('fill', 'orange')
+      .attr('r', pointRadius(data.length))
+      // .attr('stroke', '#212e59')
+      // .attr('stroke-width', '1')
+      .style('fill', '#f5f5f5')
+      .attr('opacity', 0.5)
       .on('mouseenter', function(value) {
+        select(this)
+          // .transition()
+          // .duration(500)
+          .attr('r', 10);
         svg
           .selectAll('.tooltip')
           .data([value])
@@ -65,18 +76,17 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
+          .style('fill', '#223493')
+          .style('font-size', 'larger')
+          .style('font-weight', 'bolder')
           .transition()
           .duration(500)
-          .attr('y', yScale(value[1]) - 10)
-          .attr('opacity', 1);
-        select(this)
-          .transition()
-          .duration(500)
-          .attr('r', 10);
+          .attr('y', yScale(value[1]) - 10);
+        // .attr('opacity', 1);
       })
       .on('mouseleave', function(){
-        svg.select('.tooltip').remove();
         select(this).attr('r', 5);
+        svg.select('.tooltip').remove();
       })
       .transition()
       .duration(1000)
@@ -88,44 +98,44 @@ const Scatterplot = ({ data, xMax, yMax, xLabel, yLabel, title }) => {
       .transition()
       .duration(1000)
       .call(axisBottom(xScale));
-      
+
     svg
       .select('.y-axis')
       .transition()
       .duration(1000)
-      .attr('opacity', '1')
+      // .attr('opacity', '1')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
+    // svg.select('.title')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(title);
 
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
-    
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(yMax) / 10)
-      .attr('x', 0 - yMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
-    
+    // svg.select('.x-label')
+    //   .append('text')
+    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
+    //   .style('text-anchor', 'middle')
+    //   .text(xLabel);
+
+    // svg.select('.y-label')
+    //   .append('text')
+    //   .attr('transform', 'rotate(-90)')
+    //   .attr('y', -50 + yScale(yMax) / 10)
+    //   .attr('x', 0 - yMax / 1.5)
+    //   .attr('dy', '1em')
+    //   .style('text-anchor', 'middle')
+    //   .text(yLabel);
+
   }, [data, dimensions]);
 
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
-        <g className={'title'}></g>
-        <g className={'x-label'}></g>
+        {/* <g className={'title'}></g>
+        <g className={'x-label'}></g> */}
         <g className={'x-axis'}></g>
-        <g className={'y-label'}></g>
+        {/* <g className={'y-label'}></g> */}
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
@@ -137,10 +147,9 @@ Scatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
   yMax: PropTypes.number.isRequired,
-  xLabel: PropTypes.string,
-  yLabel: PropTypes.string,
-  title: PropTypes.string
+  // xLabel: PropTypes.string,
+  // yLabel: PropTypes.string,
+  // title: PropTypes.string
 };
 
-//export default Scatterplot;
 export default Scatterplot;

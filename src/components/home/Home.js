@@ -1,14 +1,20 @@
 import React from 'react';
-import Header from '../common/Header';
 import ButtonNav from './ButtonNav';
-import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
+import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
+import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
+import styles from './Home.css';
+import { style } from 'd3';
 
 const Home = () => {
 
   return (
     <>
-      <Header />
-      <CircumferenceVsDiameterWrapper />
+      <section className={styles.graphs}>
+        <CircumferenceVsDiameterWrapper />
+        <div className={styles.global}>
+          <GlobalPiVsCountGraph />
+        </div>
+      </section>
       <ButtonNav />
     </>
   );
