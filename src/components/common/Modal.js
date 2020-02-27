@@ -26,7 +26,6 @@ Modal.propTypes = {
 
 export default Modal;
 
-
 // Add this code wherever you want the modal-opening button to live...
 // import { useModal } from '../../hooks/useModal';
 // const [show<MODAL_NAME>Modal, toggle[show<MODAL_NAME>Modal] = useModal();
