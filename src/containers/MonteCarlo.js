@@ -9,6 +9,7 @@ import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplo
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import CSVButton from '../components/common/CSVButton';
 
 const MonteCarlo = () => {
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMax: 4 });
@@ -33,6 +34,7 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
+      <CSVButton header1='Diameter' header2='Circumference' data={dartsArray} />
       <div className={styles.stats}>
         <h3>Darts Inside Circle: <span>{circleTotal}</span></h3>
         <h3>Total Darts: <span>{dartsTotal}</span></h3>
