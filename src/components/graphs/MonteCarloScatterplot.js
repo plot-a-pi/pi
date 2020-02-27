@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import Styles from '../../containers/MonteCarlo.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import CSVButton from '../common/CSVButton';
 
 export const MonteCarloScatterplot = ({ data }) => {
 
@@ -133,15 +134,18 @@ export const MonteCarloScatterplot = ({ data }) => {
 
 
   return (
-    <div className={Styles.container} ref={wrapperRef}>
-      <svg className={Styles.svg} ref={svgRef}>
-        <g className={'title'}></g>
-        <g className={'x-label'}></g>
-        <g className={'x-axis'}></g>
-        <g className={'y-label'}></g>
-        <g className={'y-axis'}></g>
-      </svg>
-    </div>
+    <>
+      <CSVButton header1='x' header2='y' data={data} />
+      <div className={Styles.container} ref={wrapperRef}>
+        <svg className={Styles.svg} ref={svgRef}>
+          <g className={'title'}></g>
+          <g className={'x-label'}></g>
+          <g className={'x-axis'}></g>
+          <g className={'y-label'}></g>
+          <g className={'y-axis'}></g>
+        </svg>
+      </div>
+    </>
   );
 };
 
