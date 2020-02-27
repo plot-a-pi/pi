@@ -1,3 +1,4 @@
+.MonteCarlo {
 .svg {
   overflow: visible;
   display: block;
@@ -55,4 +56,13 @@
   display: flex;
   justify-content: center;
   margin-bottom: 5vh;
+}
+
+.stats {
+  width: 95vw;
+  margin: auto;
+  word-wrap: break-word;
+  font-size: 80%;
+}
+
 }

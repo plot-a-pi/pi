@@ -34,8 +34,8 @@ const MonteCarlo = () => {
   return (
     <div className={styles.MonteCarlo}>
       <div className={styles.stats}>
-        <h3>Darts Inside Circle: <span>{circleTotal}</span></h3>
-        <h3>Total Darts: <span>{dartsTotal}</span></h3>
+        <p>Darts Inside Circle: <span>{circleTotal}</span></p>
+        <p>Total Darts: <span>{dartsTotal}</span></p>
         <MathJax.Provider>
           <div className={styles.stats}>
             <MathJax.Node formula={derivation} />
