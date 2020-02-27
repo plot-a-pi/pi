@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../common/Header';
 import Nav from '../common/Nav';
 import ButtonNav from './ButtonNav';
 import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
@@ -11,9 +10,15 @@ const Home = () => {
   return (
     <>
       <Nav />
+<<<<<<< HEAD
       <Header />
       <CircumferenceVsDiameterWrapper />
       <Stats />
+=======
+      <GraphLabelWrapper title='globl' xLabel='Diameter' yLabel='Circumfrence'>
+        <CircumferenceVsDiameterWrapper />
+      </GraphLabelWrapper>
+>>>>>>> 16e375a876970f57b9263e8e65f3eea0ae51714e
       <ButtonNav />
     </>
   );
