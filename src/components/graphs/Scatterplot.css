@@ -11,10 +11,10 @@
 }
 
 .container {
+  margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  justify-content: center;
   width: 50%;
 }
 

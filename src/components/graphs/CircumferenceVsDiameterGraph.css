@@ -4,7 +4,7 @@
   align-items: stretch;
   justify-content: center;
   width: 50%;
-  border: solid red 1px;
+  margin-left: 10vw;
 }
 
 .svg {

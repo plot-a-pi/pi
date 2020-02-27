@@ -11,9 +11,7 @@ const Home = () => {
     <>
       <Nav />
       <Header />
-      <GraphLabelWrapper title='globl' xLabel='Diameter' yLabel='Circumfrence'>
-        <CircumferenceVsDiameterWrapper />
-      </GraphLabelWrapper>
+      <CircumferenceVsDiameterWrapper />
       <ButtonNav />
     </>
   );

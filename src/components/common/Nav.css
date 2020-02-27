@@ -1,5 +1,6 @@
 body{
     background-color: #570963;
+    z-index: -4;
 }
 
 .NavBackground{

@@ -3,12 +3,12 @@
     flex-direction: column;
     align-items: center;
     .title{
-        width: 100%;
+        max-width: fit-content;
         transform: translateX(25%)
     }
     .x{
-        width: 100%;
-        transform: translateX(25%)
+        width: fit-content;
+        transform: translate(-300%, 50%);
     }
     .y{
         max-width: 100%;
@@ -19,8 +19,7 @@
         padding-left: 10%;
     }
     .left{
-        display: flex;
-        align-items: flex-start;
-        transform: translate(-700%, -1100%);
+        transform: translate(-1100%, -300%);
+        width: fit-content;
     }
 }
