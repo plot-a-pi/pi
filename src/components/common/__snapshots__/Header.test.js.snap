@@ -23,10 +23,5 @@ exports[`Header Component should render a Header 1`] = `
       It's easy as Pi!
     </p>
   </div>
-  <div
-    className="nav"
-  >
-    <Nav />
-  </div>
 </header>
 `;

@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import MathJax from 'react-mathjax';
 import { PropTypes } from 'prop-types';
 import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
@@ -28,9 +29,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const dimensions = useResizeObserver(wrapperRef);
   let globalDataArray = [];
   let userDataPointsArray = [];
-  const title = 'Circumference vs. Diameter';
-  const xLabel = 'Circumference';
-  const yLabel = 'Diameter';
 
   if(!userPointIds){
     globalDataArray = data.map(point => [point.diameter, point.circumference]);
@@ -40,10 +38,16 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
 
+  let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
+
+  if(!stats) return;
+  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean.toFixed(5)}`;}
+
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
+
 
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
@@ -54,16 +58,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const yScale = scaleLinear()
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
-
-    const removeLabelText = (svg, args) => {
-      return args.map(arg => {
-        svg.select(arg)
-          .select('text')
-          .remove();
-      });
-    };
-
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
     svg
       .selectAll('.user-point')
@@ -104,7 +98,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .duration(1500)
       .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
       .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
-    console.log(userDataPointsArray, 'ARRAY');
+
     svg
       .selectAll('.global-point')
       .data(globalDataArray)
@@ -154,28 +148,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text('title');
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('x', xScale(stats.diameterMax / 2))
-      .attr('y', 50 + yScale(stats.circumferenceMax / 100))
-      .style('text-anchor', 'middle')
-      .text('x');
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - yScale(stats.circumferenceMax / 2))
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text('y');
-
     svg
       .selectAll('line')
       .remove('line');
@@ -198,38 +170,21 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - stats.circumferenceMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
-
-
   }, [dimensions, data, stats]);
 
   return (
     <>
+      <div className={styles.stats}>
+        <h2>Total Points: <span>{stats.count}</span></h2>
+        <MathJax.Provider>
+          <div className={styles.stats}>
+            <MathJax.Node formula={statsEquation} />
+          </div>
+        </MathJax.Provider>
+      </div>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
-          <g className={'title'}></g>
-          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
-          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>

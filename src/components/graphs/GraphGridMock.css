@@ -1,0 +1,53 @@
+.GraphGridMock {
+    .gridContainer {
+        display: grid;
+        height: 50vh;
+        grid-template-columns: .5fr 4fr;
+        grid-template-rows: 1fr 2fr .5fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        text-align: center;
+
+        .yLabel { 
+            grid-area: 1 / 1 / 4 / 2; 
+            text-align: center;
+            align-items: center;
+            overflow: hidden;
+
+            p {
+            width: 50vh;
+            transform-origin: top right;
+            transform: rotate(-90deg) translate(0, -87vw);
+            }
+        }
+        .title { 
+            grid-area: 1 / 2 / 2 / 3; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .graph { 
+            grid-area: 2 / 2 / 3 / 3; 
+            margin-left: 10vw;
+            margin-bottom: 3vh;
+            display: flex;
+            align-self: flex-end;
+            width: 100%;
+            height: auto;
+        }
+
+        .xLabel { 
+            grid-area: 3 / 2 / 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            p {
+                display: flex;
+                justify-content: center;
+                align-content: center;
+            }
+        }
+    }   
+}

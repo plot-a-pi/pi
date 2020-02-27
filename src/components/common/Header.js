@@ -1,6 +1,5 @@
 import React from 'react';
-import styles from './Header.css';
-import Nav from './Nav';
+import styles from './Header.css'
 
 const Header = () => {
 
@@ -12,9 +11,6 @@ const Header = () => {
       <div className={styles.title}>
         <h2>Plot a Pi</h2>
         <p>It&apos;s easy as Pi!</p>
-      </div>
-      <div className={styles.nav}>
-        <Nav />
       </div>
     </header>
   );

@@ -21,11 +21,10 @@ export default function App() {
         <Route path='/teacher-sessions' component={withSession(TeacherSessions)} />
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
-        <Route path='/session-graph/:id' render = {() => (
-          <SessionGraph />
-        )} />
+        <Route path='/session-graph/:id' component={SessionGraph} />
       </Switch>
     </>
   );
-
 }
+
+// 
