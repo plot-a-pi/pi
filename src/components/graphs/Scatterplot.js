@@ -34,16 +34,6 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
-    // const removeLabelText = (svg, args) => {
-    //   return args.map(arg => {
-    //     svg.select(arg)
-    //       .select('text')
-    //       .remove();
-    //   });
-    // };
-
-    // removeLabelText(svg, ['.y-label', '.x-label', '.title']);
-
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
@@ -106,36 +96,12 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       // .attr('opacity', '1')
       .call(axisLeft(yScale));
 
-    // svg.select('.title')
-    //   .append('text')
-    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + -2 + ')')
-    //   .style('text-anchor', 'middle')
-    //   .text(title);
-
-    // svg.select('.x-label')
-    //   .append('text')
-    //   .attr('transform', 'translate(' + (xScale(xMax) / 2) + ' ,' + (yMax + yMax / 2.5) + ')')
-    //   .style('text-anchor', 'middle')
-    //   .text(xLabel);
-
-    // svg.select('.y-label')
-    //   .append('text')
-    //   .attr('transform', 'rotate(-90)')
-    //   .attr('y', -50 + yScale(yMax) / 10)
-    //   .attr('x', 0 - yMax / 1.5)
-    //   .attr('dy', '1em')
-    //   .style('text-anchor', 'middle')
-    //   .text(yLabel);
-
   }, [data, dimensions]);
 
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
-        {/* <g className={'title'}></g>
-        <g className={'x-label'}></g> */}
         <g className={'x-axis'}></g>
-        {/* <g className={'y-label'}></g> */}
         <g className={'y-axis'}></g>
         <g className={'data'}></g>
       </svg>
@@ -146,10 +112,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 Scatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired,
-  // xLabel: PropTypes.string,
-  // yLabel: PropTypes.string,
-  // title: PropTypes.string
+  yMax: PropTypes.number.isRequired
 };
 
 export default Scatterplot;
