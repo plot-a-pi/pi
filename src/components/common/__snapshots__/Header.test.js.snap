@@ -16,12 +16,17 @@ exports[`Header Component should render a Header 1`] = `
   <div
     className="title"
   >
-    <h1>
-      Plot a Pi
-    </h1>
     <h2>
-      It's easy as Pi!
+      Plot a Pi
     </h2>
+    <p>
+      It's easy as Pi!
+    </p>
+  </div>
+  <div
+    className="nav"
+  >
+    <Nav />
   </div>
 </header>
 `;
