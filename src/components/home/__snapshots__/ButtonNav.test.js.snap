@@ -27,7 +27,7 @@ exports[`ButtonNav should render ButtonNav 1`] = `
     to="/map"
   >
     <button>
-      Map
+      Data Map
     </button>
   </Link>
   <Link

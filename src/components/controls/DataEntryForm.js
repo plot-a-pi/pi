@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
-import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
 import { globalStatsCollection } from '../../firebase/firebase';
-import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
+import { useEmitEvent } from 'react-socket-io-hooks';
 
 const DataEntryForm = () => {
+  const emitCreateDataPoint = useEmitEvent('NEW_GLOBAL_DATA');
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
@@ -36,14 +36,16 @@ const DataEntryForm = () => {
         localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
       }
 
-      createDataPoint({
-        pointId: stats.data().count + 1,
-        circumference: Number(circumference),
-        diameter: Number(diameter),
-        circumferenceUnit,
-        diameterUnit
+      emitCreateDataPoint({
+        payload: {
+          pointId: stats.data().count + 1,
+          circumference: Number(circumference),
+          diameter: Number(diameter),
+          circumferenceUnit,
+          diameterUnit
+        }
       });
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
+    });
 
     resetCircumference();
     resetCircumferenceUnit();
@@ -59,35 +61,42 @@ const DataEntryForm = () => {
 
   return (
     <div className={styles.DataEntryForm}>
-      <h1>Plot-a-π</h1>
+      <h2>Plot your <span className={styles.pI}>π</span></h2>
+      <div >
+        <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
+      </div>
       <form onSubmit={handleSubmit} >
-        <div>
-          <h3>Circumference:</h3>
-          <input type='text' required value={circumference} {...bindCircumference} />
-          <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
-            <option value=''></option>
-            <option value="cm">cm</option>
-            <option value="in">in</option>
-            <option value="m">m</option>
-            <option value="ft">ft</option>
-          </select>
-          <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
-          <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
+        <div className={styles.formInputWrapper}>
+          <h3>Circumference</h3>
+          <div className={styles.measurementWrapper}>
+            <input type='text' required value={circumference} {...bindCircumference} />
+            <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
+              <option value=''></option>
+              <option value="cm">cm</option>
+              <option value="in">in</option>
+              <option value="m">m</option>
+              <option value="ft">ft</option>
+            </select>
+            <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
+            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
+          </div>
         </div>
-        <div>
-          <h3>Diameter:</h3>
-          <input type='text' required value={diameter} {...bindDiameter} />
-          <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
-            <option value=''></option>
-            <option value="cm">cm</option>
-            <option value="in">in</option>
-            <option value="m">m</option>
-            <option value="ft">ft</option>
-          </select>
-          <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
-          <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
+        <div className={styles.formInputWrapper}>
+          <h3>Diameter</h3>
+          <div className={styles.measurementWrapper}>
+            <input type='text' required value={diameter} {...bindDiameter} />
+            <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
+              <option value=''></option>
+              <option value="cm">cm</option>
+              <option value="in">in</option>
+              <option value="m">m</option>
+              <option value="ft">ft</option>
+            </select>
+            <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
+            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
+          </div>
         </div>
-        <button>Plot!</button>
+        <button className={styles.plotButton}>Plot!</button>
       </form>
     </div>
   );

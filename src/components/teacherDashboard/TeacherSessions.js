@@ -1,50 +1,73 @@
-import React, { useState } from 'react';
-import { useFirestore } from '../../firebase/hooks';
-import { sessionDataCollection } from '../../firebase/firebase';
-import { Link } from 'react-router-dom';
-import { createSession } from '../../firebase/actions';
+import React, { useState, useEffect } from 'react';
+import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
+import { signOut } from '../../firebase/firebase';
+import { Link, useHistory } from 'react-router-dom';
+import { useUser } from '../../firebase/AuthProvider';
 import { CSVLink } from 'react-csv';
+import styles from './TeacherSessions.css';
 import getSessionData from '../../services/getSessionData';
+
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
   const [downloadData, setDownloadData] = useState();
-  //replace null with userId once merge squashed
-  const data = useFirestore(sessionDataCollection.where('teacherId', '==', null));
+  const emitUserSessions = useEmitEvent('USER_LOGIN');
+  const emitNewSession = useEmitEvent('CREATE_SESSION');
+  const emitRetrieveSessions = useEmitEvent('RETRIEVE_SESSIONS');
+  const history = useHistory();
+  const socket = useSocket();
+  const user = useUser();
+  
+  const { sessions } = useSocketState();
+  
+  useEffect(() => {
+    if(socket.connected !== undefined) {
+      emitUserSessions(user.uid);
+      emitRetrieveSessions(user.uid);
+    }
+  }, [socket.connected]);
 
   const onSubmit = (event) => {
     event.preventDefault();
-    createSession(null, sessionName);
+    emitNewSession({
+      teacherId: user.uid,
+      name: sessionName
+    });
   };
-
-  const sessionElements = data.map(session => (
-    <li key={session.id}>
-      <h2>{session.name}</h2>
-      <Link target='_blank' to={`/session/${session.id}`}>Get Submission Link</Link>
-      <CSVLink
-        data={downloadData}
-        asyncOnClick={true}
-        onClick={(event, done) => {
-          getSessionData(session._id)
-            .then(csvData => setDownloadData(csvData))
-            .then(() => done());
-        }}
-      >
-      Download Session Data
-      </CSVLink>
-      <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
-    </li>
-  ));
-
+  
+  const sessionElements = sessions.map(session => {
+    return (
+      <li key={session._id}>
+        <h3>{session.name}</h3>
+        <div className={styles.sessionLinks}>
+          <button className={styles.sessionButton}><Link target='_blank' to={`/session/${session._id}`}>Get  Link</Link></button>
+          <CSVLink
+            data={downloadData}
+            asyncOnClick={true}
+            onClick={(event, done) => {
+              getSessionData(session._id)
+                .then(csvData => setDownloadData(csvData))
+                .then(() => done());
+            }}
+          ><button>Download Data</button></CSVLink>
+          <button className={styles.sessionButton}><Link target='_blank' to={`/session-graph/${session._id}`}>View Graph</Link></button>
+        </div>
+      </li>
+    );
+  });
+  
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input type='text' value={sessionName} onChange={({ target }) => setSessionName(target.value)}></input>
-        <button>Create Session</button>
-      </form>
-      <ul>
-        {sessionElements}
-      </ul>
+      <div className={styles.TeacherSessions}>
+        <form onSubmit={onSubmit} className={styles.sessionForm}>
+          <input type='text' value={sessionName} onChange={({ target }) => setSessionName(target.value)}></input>
+          <button>Create</button>
+        </form>
+        <ul className={styles.sessionListWrapper}>
+          <h2>Your Saved Sessions</h2>
+          {sessionElements}
+        </ul>
+      </div>
     </>
   );
 };

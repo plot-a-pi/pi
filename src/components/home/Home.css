@@ -1,0 +1,62 @@
+
+
+.testStyling {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ .buttons {
+    margin: 5%;
+    margin-right: 10%
+}
+
+.graphs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.global {
+    margin-top: 5vh;
+    margin-right: 10%;
+    min-width: 20%;
+    max-width:40%;
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 1rem;
+    box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
+    padding-left: 10%;
+    padding-bottom: 5%;
+    padding-right: 3%;
+    align-self: flex-start;
+}
+
+.circ {
+    padding-bottom: 5%;
+    padding-top: 5%;
+    padding-right: 15%;
+    background-color: rgba(245, 245, 245, 0.9);
+    border-radius: 1rem;
+    box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
+}
+
+@media screen and (max-width: 900px) {
+    .graphs {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 80vw;
+        margin-left: 10%;
+    }
+    .global {
+        min-width: 70vw;
+    }
+
+  }
+

@@ -2,11 +2,24 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
+  <Header />
   <Switch>
     <Route
       component={[Function]}
       exact={true}
       path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/montecarlo"
+    />
+    <Route
+      component={[Function]}
+      path="/teachers"
+    />
+    <Route
+      component={[Function]}
+      path="/teacher-sessions"
     />
     <Route
       component={[Function]}
