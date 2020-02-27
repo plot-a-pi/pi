@@ -42,7 +42,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
-    const lineEndpoint = stats.mean < stats.circumference / stats.diameter ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
+    const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])
