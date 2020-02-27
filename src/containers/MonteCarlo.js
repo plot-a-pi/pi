@@ -29,19 +29,23 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <h2>Darts Inside Circle</h2>
-      <h2>{circleTotal}</h2>
-      <h2>Total Darts</h2>
-      <h2>{dartsTotal}</h2>
-      <h2>Current Pi Approximation</h2>
-      <h1>{piApproximation.toFixed(4)}</h1>
-      {/* <GraphLabelWrapper title='monteCarlo' xLabel='x' yLabel='y'> */}
-      <MonteCarloScatterplot data={dartsArray} xMax={1} yMax={1} />
-      {/* </GraphLabelWrapper> */}
-      <MonteCarloControls actions={actions} />
-      {/* <GraphLabelWrapper title='scatterPlot' xLabel='x2' yLabel='y2'> */}
-      <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
-      {/* </GraphLabelWrapper> */}
+      <div className={styles.stats}>
+        <h3>Darts Inside Circle</h3>
+        <h3>{circleTotal}</h3>
+        <h3>Total Darts</h3>
+        <h3>{dartsTotal}</h3>
+        <h3>Current Pi Approximation</h3>
+        <h1>{piApproximation.toFixed(4)}</h1>
+      </div>
+      <div className={styles.dartContainer}>
+        <div className={styles.dartboard}>
+          <MonteCarloScatterplot data={dartsArray} />
+        </div>
+        <MonteCarloControls actions={actions} />
+      </div>
+      <div className={styles.scatterplot}>
+        <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+      </div>
     </div>
   );
 };
