@@ -5,8 +5,10 @@ import { createSessionData, updateSessionStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
 import { sessionDataCollection } from '../../firebase/firebase';
 import { updateStats } from '../../services/stats';
+import { useEmitEvent } from 'react-socket-io-hooks';
  
 const SessionForm = ({ match }) => {
+  const emitNewSessionData = useEmitEvent('NEW_SESSION_DATA');
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
@@ -23,11 +25,14 @@ const SessionForm = ({ match }) => {
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
    
-    createSessionData(id, {
-      circumference: Number(circumference),
-      diameter: Number(diameter),
-      circumferenceUnit,
-      diameterUnit
+    emitNewSessionData({
+      payload: {
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
+      },
+      sessionId: id
     });
 
     sessionDataCollection.doc(id).collection('stats').doc('current-stats').get().then((stats) => {

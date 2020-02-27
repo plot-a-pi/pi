@@ -5,7 +5,6 @@ import ButtonNav from './ButtonNav';
 import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
 import GraphLabelWrapper from '../common/GraphLabelWrapper';
 import Stats from './Stats';
-import Seed from '../common/Seed';
 
 const Home = () => {
 

@@ -37,11 +37,13 @@ const DataEntryForm = () => {
       }
 
       emitCreateDataPoint({
-        pointId: stats.data().count + 1,
-        circumference: Number(circumference),
-        diameter: Number(diameter),
-        circumferenceUnit,
-        diameterUnit
+        payload: {
+          pointId: stats.data().count + 1,
+          circumference: Number(circumference),
+          diameter: Number(diameter),
+          circumferenceUnit,
+          diameterUnit
+        }
       });
     });
 
