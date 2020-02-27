@@ -1,11 +1,20 @@
-import React from 'react';
-import { useFirestore } from '../../firebase/hooks';
-import { globalStatsCollection } from '../../firebase/firebase';
+import React, { useEffect } from 'react';
+import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
 
 const Stats = () => {
+  const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
+  const socket = useSocket();
+  const { stats } = useSocketState();
 
-  const stats = useFirestore(globalStatsCollection.doc('current-stats'), { count: 0, mean: 'NA' });
+  useEffect(() => {
+    if(socket.connected !== undefined) {
+      emitGlobalStats();
+    }
+
+  }, [socket.connected]);
   
+  if(!stats) return <p>Loading...</p>;
+
   return (
     <>
       <h2>Sample Size:</h2>
