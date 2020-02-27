@@ -8,6 +8,7 @@ import SessionGraph from './graphs/SessionGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
 import GraphLabelWrapper from './common/GraphLabelWrapper';
+import { withSession } from '../firebase/AuthProvider';
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/teachers' component={TeacherDashboard} />
-        <Route path='/teacher-sessions' component={TeacherSessions} />
+        <Route path='/teacher-sessions' component={withSession(TeacherSessions)} />
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
         <Route path='/session-graph/:id' render = {() => (
