@@ -55,16 +55,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
 
-    const removeLabelText = (svg, args) => {
-      return args.map(arg => {
-        svg.select(arg)
-          .select('text')
-          .remove();
-      });
-    };
-
-    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
-
     svg
       .selectAll('.user-point')
       .data(userDataPointsArray)
@@ -104,7 +94,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .duration(1500)
       .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
       .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
-    console.log(userDataPointsArray, 'ARRAY');
+
     svg
       .selectAll('.global-point')
       .data(globalDataArray)
@@ -154,28 +144,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text('title');
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('x', xScale(stats.diameterMax / 2))
-      .attr('y', 50 + yScale(stats.circumferenceMax / 100))
-      .style('text-anchor', 'middle')
-      .text('x');
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - yScale(stats.circumferenceMax / 2))
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text('y');
-
     svg
       .selectAll('line')
       .remove('line');
@@ -197,28 +165,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
-
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text(title);
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
-      .style('text-anchor', 'middle')
-      .text(xLabel);
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-      .attr('x', 0 - stats.circumferenceMax / 1.5)
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text(yLabel);
-
 
   }, [dimensions, data, stats]);
 

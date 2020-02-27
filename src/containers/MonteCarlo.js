@@ -26,8 +26,6 @@ const MonteCarlo = () => {
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
   const yMax = getYMax(piState);
-
-  // eslint-disable-next-line no-useless-escape
   
   const derivation = ' \\frac{Darts \\, Inside \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
   const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
