@@ -41,7 +41,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
 
   if(!stats) return;
-  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean.toFixed(5)}`;}
+  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean}`;}
 
   useEffect(() => {
     const svg = select(svgRef.current);
