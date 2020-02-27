@@ -22,7 +22,7 @@ export const sessionDataCollection = firestore.collection('sessions');
 
 export const auth = app.auth();
 export const loginMethod = auth.signInWithPopup;
-export const googleProvider = new firebase.auth.GithubAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 export const loginWithProvider = () => {
   return firebase.auth().signInWithPopup(googleProvider);
