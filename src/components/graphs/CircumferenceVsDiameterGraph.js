@@ -186,13 +186,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .style('stroke-width', 5)
       .attr('x1', 0)
       .attr('y1', height)
-<<<<<<< HEAD
       .attr('x2', xScale(lineEndpoint[0]))
       .attr('y2', yScale(lineEndpoint[1]));
-    
-=======
-      .attr('x2', xScale(stats.circumferenceMax / 3))
-      .attr('y2', yScale(stats.circumferenceMax));
 
     svg
       .select('.x-axis')
@@ -225,7 +220,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .text(yLabel);
 
 
->>>>>>> 722894fe6f310ac04e5bc333f69c8d1c253e0af9
   }, [dimensions, data, stats]);
 
   return (
