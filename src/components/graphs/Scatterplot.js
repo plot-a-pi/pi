@@ -5,7 +5,7 @@ import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const pointRadius = (length) => {
-  return Math.max(1.5, 5 - (Math.floor(length / 100)));
+  return Math.max(1, 5 - (Math.floor(length / 100)));
 };
 
 const useResizeObserver = ref => {
