@@ -1,15 +1,15 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import App from './App';
-import { SocketProvider } from 'react-socket-io-hooks';
 
+jest.mock('react-socket-io-hooks', () => ({
+  useEmitEvent: () => {}, 
+  useSocketState: () => {}, 
+  useSocket: () => {}
+}));
 describe('App component', () => {
   it('renders App', () => {
-    const wrapper = mount(
-      <SocketProvider>
-        <App />
-      </SocketProvider>
-    );
+    const wrapper = shallow(<App />);
     expect(wrapper).toMatchSnapshot();
   });
 });
