@@ -7,7 +7,6 @@ import Header from './common/Header';
 import SessionGraph from './graphs/SessionGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
-import GraphLabelWrapper from './common/GraphLabelWrapper';
 import { withSession } from '../firebase/AuthProvider';
 
 export default function App() {

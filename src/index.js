@@ -9,7 +9,7 @@ import { AuthProvider } from './firebase/AuthProvider';
 import './main.css';
 
 render(
-  <SocketProvider uri='http://localhost:7891' reducer={reducer} initialState={initialState} >
+  <SocketProvider uri='https://pi-be.herokuapp.com/' reducer={reducer} initialState={initialState} >
     <AuthProvider>
       <BrowserRouter>
         <App />

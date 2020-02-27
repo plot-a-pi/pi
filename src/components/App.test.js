@@ -7,6 +7,7 @@ jest.mock('react-socket-io-hooks', () => ({
   useSocketState: () => {}, 
   useSocket: () => {}
 }));
+
 describe('App component', () => {
   it('renders App', () => {
     const wrapper = shallow(<App />);
