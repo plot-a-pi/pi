@@ -18,7 +18,7 @@ const GraphLabelWrapper = ({ xLabel, yLabel, title, children }) => {
 
 };
 
-GraphLabelWrapper.PropTypes = {
+GraphLabelWrapper.propTypes = {
   xLabel : PropTypes.string,
   yLabel : PropTypes.string,
   title : PropTypes.string,
