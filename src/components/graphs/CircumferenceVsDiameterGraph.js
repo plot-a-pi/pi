@@ -1,5 +1,4 @@
 import React, { useRef, useEffect, useState } from 'react';
-import MathJax from 'react-mathjax';
 import { PropTypes } from 'prop-types';
 import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
@@ -38,16 +37,13 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
 
-  let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
-
-  if(!stats) return;
-  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean}`;}
-
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${2 / 3 * width}px`);
 
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
@@ -105,7 +101,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .join('circle')
       .attr('class', 'global-point')
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 5)
+      .attr('r', 3.5)
       .style('fill', '#223493')
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
@@ -154,8 +150,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
     svg
       .append('line')
-      .style('stroke', 'blue')
-      .style('stroke-width', 5)
+      .style('stroke', '#212E59')
+      .style('stroke-width', 2)
       .attr('x1', 0)
       .attr('y1', height)
       .attr('x2', xScale(lineEndpoint[0]))
@@ -174,14 +170,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
   return (
     <>
-      <div className={styles.stats}>
-        <h2>Total Points: <span>{stats.count}</span></h2>
-        <MathJax.Provider>
-          <div className={styles.stats}>
-            <MathJax.Node formula={statsEquation} />
-          </div>
-        </MathJax.Provider>
-      </div>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
           <g className={'x-axis'}></g>
