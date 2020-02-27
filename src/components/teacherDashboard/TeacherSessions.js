@@ -17,10 +17,6 @@ const TeacherSessions = () => {
     createSession(null, sessionName);
   };
 
-  const handleClick = (event, done, sessionId) => {
-    
-  };
-
   const sessionElements = data.map(session => (
     <li key={session.id}>
       <h2>{session.name}</h2>
@@ -29,8 +25,8 @@ const TeacherSessions = () => {
         data={downloadData}
         asyncOnClick={true}
         onClick={(event, done) => {
-          getSessionData(sessionId)
-            .then(data => setDownloadData(data))
+          getSessionData(session._id)
+            .then(csvData => setDownloadData(csvData))
             .then(() => done());
         }}
       >
