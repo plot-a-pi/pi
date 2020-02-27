@@ -14,13 +14,13 @@ const Home = () => {
     <>
       <Nav />
       <Header />
-      {/* <DataEntryForm />
+      <DataEntryForm />
       <GraphLabelWrapper title='Global' xLabel='Diameter' yLabel='Circumfrence'>
         <CircumferenceVsDiameterWrapper />
       </GraphLabelWrapper>
       <GraphLabelWrapper title='Global Mean' xLabel='Diameter' yLabel='Circumfrence'>
         <GlobalPiVsCountGraph />
-      </GraphLabelWrapper> */}
+      </GraphLabelWrapper>
       <MonteCarlo />
 
       <ButtonNav />
