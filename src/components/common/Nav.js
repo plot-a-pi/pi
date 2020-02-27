@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link, useHistory  } from 'react-router-dom';
 import { useNav } from '../../hooks/nav';
 import styles from './Nav.css';
+import { sessionDataCollection, signOut } from '../../firebase/firebase';
 
 const Nav = () => {
   const { handleChange } = useNav();
   const [publicFacingNav, setPublicFacingNav] = useState(false);
+  const history = useHistory();
+  const handleClick = () => {
+    signOut();
+    history.push('/');
+  };
   let jsx;
   if(!publicFacingNav){
     jsx = (
@@ -17,9 +23,9 @@ const Nav = () => {
   }
   if(publicFacingNav){
     jsx = (
-      <div className={styles.NavBackground}>
+      <div className={styles.NavBackground} style={{ position: 'fixed', zIndex : 0 }}>
         <div id='jsxHorizontal' className={styles.Collumn}>
-          <span style={{ color: '#570963', textDecoration: 'none' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
+          <span style={{ color: '#570963', textDecoration: 'none', backgroundColor: 'rgba(221, 157, 231, 0.04)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
         </div>
         <ul className={styles.Nav}>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }} exact to='/' activeStyle={{
@@ -61,6 +67,7 @@ const Nav = () => {
             <input style={{ display: 'none' }} id='monteCarlo' value='monteCarlo'  onChange={handleChange} />
             <label htmlFor='monteCarlo'>Monte Carlo</label>
           </NavLink>
+          <button onClick={handleClick}>Sign Out</button>
         </ul>
       </div>);
   }
