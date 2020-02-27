@@ -1,6 +1,21 @@
 .Header {
-  background-color: #7DC4B8;
-  background-color: yellow;
-  border: 2px solid green;
+  font-family: 'Roboto Mono';
+  display: flex;
   text-align: center;
+  background-color: #F5F5F5;
+  height: 10vh;
+  padding: .75em;
+
+  .logo {
+    background-color: transparent;
+  }
+
+  .title {
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    padding-left: 1em;
+  }
 }
