@@ -162,8 +162,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
       .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
 
-    
-
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
