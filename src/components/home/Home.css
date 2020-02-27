@@ -1,0 +1,7 @@
+body{
+    background-color: whitesmoke;
+}
+.testStyling {
+    display: flex;
+    flex-wrap: wrap;
+}
