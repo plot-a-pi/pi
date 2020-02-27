@@ -1,4 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
+import MathJax from 'react-mathjax';
 import { PropTypes } from 'prop-types';
 import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
@@ -28,9 +29,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const dimensions = useResizeObserver(wrapperRef);
   let globalDataArray = [];
   let userDataPointsArray = [];
-  const title = 'Circumference vs. Diameter';
-  const xLabel = 'Circumference';
-  const yLabel = 'Diameter';
 
   if(!userPointIds){
     globalDataArray = data.map(point => [point.diameter, point.circumference]);
@@ -40,10 +38,15 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
 
+  let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
+
+  if(stats.mean) statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean.toFixed(5)}`;
+
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
+
 
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
@@ -170,12 +173,16 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
   return (
     <>
+      <div className={styles.stats}>
+        <MathJax.Provider>
+          <div className={styles.stats}>
+            <MathJax.Node formula={statsEquation} />
+          </div>
+        </MathJax.Provider>
+      </div>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
-          <g className={'title'}></g>
-          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
-          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
