@@ -1,9 +1,8 @@
 import React from 'react';
-import ButtonNav from './ButtonNav';
+import ButtonNav from '../common/ButtonNav';
 import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
 import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import styles from './Home.css';
-import { style } from 'd3';
 
 const Home = () => {
 
@@ -15,9 +14,6 @@ const Home = () => {
           <GlobalPiVsCountGraph />
         </div>
       </section>
-      <div className={styles.buttons}>
-        <ButtonNav />
-      </div>
     </div>
   );
 };
