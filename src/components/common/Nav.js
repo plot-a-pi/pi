@@ -67,6 +67,13 @@ const Nav = () => {
             <input style={{ display: 'none' }} id='monteCarlo' value='monteCarlo'  onChange={handleChange} />
             <label htmlFor='monteCarlo'>Monte Carlo</label>
           </NavLink>
+          <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/submit-to-global' activeStyle={{	
+            fontWeight: 'bold',	
+            color: 'purple'	
+          }}>	
+            <input style={{ display: 'none' }} id='globalData' value='globalData'  onChange={handleChange} />	
+            <label htmlFor='globalData'>Submit to Global Data</label>	
+          </NavLink>
           <button onClick={handleClick}>Sign Out</button>
         </ul>
       </div>);
