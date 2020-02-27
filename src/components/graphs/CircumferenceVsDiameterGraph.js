@@ -132,8 +132,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .attr('y', yScale(value[1]) - 10);
         // .attr('opacity', 1);
         select(this)
-          .transition()
-          .duration(500)
+          // .transition()
+          // .duration(500)
           .attr('r', 10);
       })
       .on('mouseleave', function(){
@@ -175,7 +175,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text('y');
-    
+
     svg
       .selectAll('line')
       .remove('line');
