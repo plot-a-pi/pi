@@ -1,13 +1,11 @@
 .svg {
-  background:whitesmoke;
   overflow: visible;
+  background: #7dc4b8;
   display: block;
   width: 100%;
-}
-
-.bigCircle {
-  z-index: -1;
-  fill: rgba(255, 0, 0, 0.438)
+  height: 100%;
+  color: #212E59;
+  font-weight: bolder;
 }
 
 .container {
@@ -15,6 +13,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 50%;
+  width: 75%;
+  background: #7dc4b8;
 }
 
