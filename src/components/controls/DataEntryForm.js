@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
-import { createDataPoint, updateGlobalStats } from '../../firebase/actions';
 import { useFormInput } from '../../hooks/useFormInput';
 import { globalStatsCollection } from '../../firebase/firebase';
-import { updateStats } from '../../services/stats';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
+import { useEmitEvent } from 'react-socket-io-hooks';
 
 const DataEntryForm = () => {
+  const emitCreateDataPoint = useEmitEvent('NEW_GLOBAL_DATA');
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
@@ -36,14 +36,16 @@ const DataEntryForm = () => {
         localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
       }
 
-      createDataPoint({
-        pointId: stats.data().count + 1,
-        circumference: Number(circumference),
-        diameter: Number(diameter),
-        circumferenceUnit,
-        diameterUnit
+      emitCreateDataPoint({
+        payload: {
+          pointId: stats.data().count + 1,
+          circumference: Number(circumference),
+          diameter: Number(diameter),
+          circumferenceUnit,
+          diameterUnit
+        }
       });
-      updateGlobalStats(updateStats(stats.data(), circumferenceAsNumber, diameterAsNumber));});
+    });
 
     resetCircumference();
     resetCircumferenceUnit();
