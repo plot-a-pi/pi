@@ -54,19 +54,6 @@ export const MonteCarloScatterplot = ({ data }) => {
       .remove();
 
     svg
-      .select('.title')
-      .select('text')
-      .remove();
-    svg
-      .select('.x-label')
-      .select('text')
-      .remove();
-    svg
-      .select('.y-label')
-      .select('text')
-      .remove();
-
-    svg
       .append('rect')
       .attr('x', 0)
       .attr('y', width * 0.09)
@@ -108,28 +95,6 @@ export const MonteCarloScatterplot = ({ data }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(1) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text('Monte Carlo');
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('x', xScale(1 / 2))
-      .attr('y', 30 + yScale(1 / 100))
-      .style('text-anchor', 'middle')
-      .text('x');
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -70 + yScale(1) / 10)
-      .attr('x', 0 - yScale(1 / 2))
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text('y');
-
   }, [data, dimensions]);
 
 
@@ -138,10 +103,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       <CSVButton header1='x' header2='y' data={data} />
       <div className={Styles.container} ref={wrapperRef}>
         <svg className={Styles.svg} ref={svgRef}>
-          <g className={'title'}></g>
-          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
-          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
         </svg>
       </div>

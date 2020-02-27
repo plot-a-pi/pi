@@ -63,7 +63,7 @@ const DataEntryForm = () => {
     <div className={styles.DataEntryForm}>
       <h2>Plot your <span className={styles.pI}>π</span></h2>
       <div >
-        <img className={styles.svgContainer} src='src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
+        <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
       </div>
       <form onSubmit={handleSubmit} >
         <div className={styles.formInputWrapper}>
