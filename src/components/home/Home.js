@@ -3,7 +3,6 @@ import ButtonNav from './ButtonNav';
 import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
 import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import styles from './Home.css';
-import { style } from 'd3';
 
 const Home = () => {
 
