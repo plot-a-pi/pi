@@ -5,7 +5,6 @@ import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import styles from './Home.css';
-import { style } from 'd3';
 
 const Home = () => {
   const [showIntroModal, toggleIntroModal] = useModal();
