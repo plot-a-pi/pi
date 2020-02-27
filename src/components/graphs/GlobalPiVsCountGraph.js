@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
 import Styles from './Scatterplot.css';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
-import CSVButton from '../common/CSVButton';
 
 const GlobalPiVsCountGraph = () => {
   const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
@@ -21,7 +20,6 @@ const GlobalPiVsCountGraph = () => {
 
   return (
     <>
-      <CSVButton header1='x' header2='y' data={dataArray} />
       <Scatterplot className={Styles.global} data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
     </>
   );
