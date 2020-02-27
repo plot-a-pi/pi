@@ -6,7 +6,7 @@ exports[`ButtonNav should render ButtonNav 1`] = `
     to="/teachers"
   >
     <button>
-      For Teachers
+      For Groups
     </button>
   </Link>
   <Link
