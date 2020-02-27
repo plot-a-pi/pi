@@ -33,7 +33,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const yLabel = 'Diameter';
 
   if(!userPointIds){
-    globalDataArray = data.map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
   else {
     globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
