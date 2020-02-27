@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
 import PropTypes from 'prop-types';
 import { useFirestore } from '../../firebase/hooks';
 import { sessionDataCollection } from '../../firebase/firebase';
+import { useEmitEvent } from 'react-socket-io-hooks';
 
 const SessionGraph = ({ match }) => {
   const { id } = match.params;
+
+  const emitJoinSession = useEmitEvent('JOIN_SESSION');
+
+  useEffect(() => {
+    emitJoinSession(id);
+  }, []);
 
   let yMax = 100;
   let xMax = 100;
