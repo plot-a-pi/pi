@@ -14,7 +14,6 @@ const Home = () => {
     <>
       <Nav />
       <Header />
-<<<<<<< HEAD
       {/* <DataEntryForm />
       <GraphLabelWrapper title='Global' xLabel='Diameter' yLabel='Circumfrence'>
         <CircumferenceVsDiameterWrapper />
@@ -24,9 +23,6 @@ const Home = () => {
       </GraphLabelWrapper> */}
       <MonteCarlo />
 
-=======
-      <CircumferenceVsDiameterWrapper />
->>>>>>> c0a3e0c8567f6ffca11722452da3ce01944a5e61
       <ButtonNav />
     </>
   );

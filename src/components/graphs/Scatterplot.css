@@ -3,27 +3,17 @@
   background: #7dc4b8;
   display: block;
   width: 100%;
+  height: 100%;
   color: #212E59;
   font-weight: bolder;
-
 }
 
-
 .container {
-<<<<<<< HEAD
-  background: #7dc4b8;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  justify-content: center;
-  height: 30vh;
-  width: 30vw;
-=======
   margin-top: 3vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  width: 50%;
->>>>>>> c0a3e0c8567f6ffca11722452da3ce01944a5e61
+  width: 75%;
+  background: #7dc4b8;
 }
 
