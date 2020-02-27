@@ -1,0 +1,50 @@
+* {
+    body {
+        background-color: #F5F5F5;
+        color: #212E59;
+        font-family: 'Roboto Mono';
+    }
+
+    h1 {
+        font-size: 30px;
+        background-color: transparent;
+    }
+
+    h2 {
+        font-size: 25px;
+        background-color: transparent;
+    }
+
+    h3 {
+        font-size: 20px;
+        background-color: transparent;
+    }
+
+    p {
+        font-size: 16px;
+        font-family: 'Heebo';
+        background-color: transparent;
+
+    }
+
+    .labels {
+        font-size: 16px;
+        font-family: 'Heebo';
+        background-color: transparent;
+    }
+
+    button {
+        background-color: #223493;
+        color: #F5F5F5;
+        border: 1.5px solid #A4A6C9;
+        border-radius: .5rem;
+    }
+
+    button:hover {
+        background-color: #A4A6C9;
+        color: #223493;
+        border: 1.5px solid #223493;
+        border-radius: .5rem;
+    }
+
+    }

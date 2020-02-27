@@ -2,14 +2,13 @@ import React from 'react';
 import styles from './Modal.css';
 import PropTypes from 'prop-types';
 
-const Modal = ({ modalTitle, modalInstructions, showModal, toggleModal }) => {
+const Modal = ({ modalInstructions, showModal, toggleModal }) => {
 
   return (
     <section>
       <div className={`${styles.Modal} ${showModal ? styles.modalShow : styles.modalHide}`}>
         <div className={styles.modalHeader}>
-          <span className={styles.closeButton} onClick={toggleModal}>&times;</span>
-          <h3>{modalTitle}</h3>
+          <button className={styles.closeButton} onClick={toggleModal}>&times;</button>
           <p>{modalInstructions}</p>
         </div>
       </div>
@@ -26,7 +25,6 @@ Modal.propTypes = {
 };
 
 export default Modal;
-
 
 // Add this code wherever you want the modal-opening button to live...
 // import { useModal } from '../../hooks/useModal';

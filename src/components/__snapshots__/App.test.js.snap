@@ -2,11 +2,20 @@
 
 exports[`App component renders App 1`] = `
 <Fragment>
+  <Header />
   <Switch>
     <Route
       component={[Function]}
       exact={true}
       path="/"
+    />
+    <Route
+      component={[Function]}
+      path="/teachers"
+    />
+    <Route
+      component={[Function]}
+      path="/teacher-sessions"
     />
     <Route
       component={[Function]}
@@ -17,8 +26,8 @@ exports[`App component renders App 1`] = `
       path="/submit-to-global"
     />
     <Route
-      component={[Function]}
       path="/session-graph/:id"
+      render={[Function]}
     />
   </Switch>
 </Fragment>
