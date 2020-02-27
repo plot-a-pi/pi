@@ -2,7 +2,7 @@ Home Page Text
 
 What's this about? 
 ? -Modal --> 
-Would you like to contribute to pi?  Carefully measure the circumference and diamter of a circular object and submit your data below.  Some questions to ponder: how does the approximation of pi change as more data is added?   
+Would you like to contribute to pi?  Carefully measure the circumference and diamter of a circular object and submit your own measurements to improve our global approximation of pi.  How does the approximation change as more data is added?   
 
 Form Text
 
