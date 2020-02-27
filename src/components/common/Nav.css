@@ -1,5 +1,6 @@
 body{
     background-color: #570963;
+    z-index: -4;
 }
 #jsxHorizontal{
     width: fit-content;
@@ -12,10 +13,11 @@ body{
     width: 20vw;
     background-color: rgba(221, 157, 231, .04);
 }
+
 .Nav{
     display: flex;
     background-color: rgba(221, 157, 231, .07);
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     width: 20vw;
     height: 100vh;
@@ -39,20 +41,21 @@ body{
          }
 }
 
-
-.Collumn{
+.Column{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     transition: ease-in;
     animation: slowRotate 1.5s alternate forwards;
 }
-.Big{
-    font-size: 10vh;
+.Big {
+    font-size: 5vh;
     max-width: 10vw;
     margin-left: 0px;
     transform: rotate(90deg);
-    transform: skewY(10vh);
+    transform: skewY(3vh);
+    letter-spacing: -7px;
+    padding-right: .4em;
 }
 @keyframes slowRotate{
     0%{
@@ -69,6 +72,7 @@ body{
     }
 }
 @keyframes slideInToTheRight {
+    
     0%{
         transform: translateX(-50vw);
     }

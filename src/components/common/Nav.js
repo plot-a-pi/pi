@@ -16,16 +16,14 @@ const Nav = () => {
   if(!publicFacingNav){
     jsx = (
       <div className={styles.Big}>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
+        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
       </div>);
   }
   if(publicFacingNav){
     jsx = (
-      <div className={styles.NavBackground} style={{ position: 'fixed', zIndex : 0 }}>
-        <div id='jsxHorizontal' className={styles.Collumn}>
-          <span style={{ color: '#570963', textDecoration: 'none', backgroundColor: 'rgba(221, 157, 231, 0.04)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
+      <div className={styles.NavBackground}>
+        <div id='jsxHorizontal' className={styles.Column}>
+          <span style={{ color: '#570963', textDecoration: 'none' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
         </div>
         <ul className={styles.Nav}>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }} exact to='/' activeStyle={{
