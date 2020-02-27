@@ -9,13 +9,12 @@ const CircumferenceVsDiameterWrapper = () => {
   const data = useFirestore(globalDataCollection, []);
   const stats = useFirestore(globalStatsCollection.doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 });
   const dataForCSV = data.map(datum => ([datum.diameter, datum.circumference]));
-  console.log(dataForCSV);
   return (
     <>
       <CSVButton header1='Diameter' header2='Circumference' data={dataForCSV} />
       <div>
         <CircumferenceVsDiameterGraph data={data} stats={stats} xLabel='Diameter (cm)' yLabel='Circumference (cm)' title='Global Data for Circumference Vs. Diameter' />
-      </div>
+      </div> 
     </>
   );
 };
