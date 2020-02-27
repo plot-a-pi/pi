@@ -10,15 +10,13 @@ const Nav = () => {
   if(!publicFacingNav){
     jsx = (
       <div className={styles.Big}>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
+        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
       </div>);
   }
   if(publicFacingNav){
     jsx = (
       <div className={styles.NavBackground}>
-        <div id='jsxHorizontal' className={styles.Collumn}>
+        <div id='jsxHorizontal' className={styles.Column}>
           <span style={{ color: '#570963', textDecoration: 'none' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
         </div>
         <ul className={styles.Nav}>
