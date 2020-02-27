@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import Styles from './Scatterplot.css';
+import Styles from '../../containers/MonteCarlo.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
@@ -39,19 +39,19 @@ export const MonteCarloScatterplot = ({ data }) => {
     const xScale = scaleLinear()
       .domain([0, circleDiameter + 0.1])
       .range([0, width]);
-    
+
     const yScale = scaleLinear()
       .domain([0, circleDiameter + 0.1])
       .range([width, 0]);
-      
+
     svg
       .selectAll('rect')
       .remove();
-      
+
     svg
       .selectAll('circle')
       .remove();
-      
+
     svg
       .select('.title')
       .select('text')
@@ -64,14 +64,15 @@ export const MonteCarloScatterplot = ({ data }) => {
       .select('.y-label')
       .select('text')
       .remove();
-      
+
     svg
       .append('rect')
       .attr('x', 0)
       .attr('y', width * 0.09)
       .attr('width', width * 0.91)
       .attr('height', width * 0.91)
-      .style('fill', 'rgb(109, 152, 160)')
+      .style('fill', '#7dc4b8')
+      .style('opacity', 0.25)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
@@ -80,7 +81,8 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('cx', data => xScale(circleDiameter / 2))
       .attr('cy', data => yScale(circleDiameter / 2))
       .attr('r', width * 0.91 / 2)
-      .style('fill', 'rgb(109, 121, 160)')
+      .style('fill', '#a4a6c9')
+      .style('opacity', 0.5)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
@@ -92,15 +94,15 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', 4)
       .attr('class', 'points')
-      .attr('stroke', 'rgb(21, 27, 49)')
-      .attr('stroke-width', '2')
-      .style('fill', 'rgb(58, 78, 153)');
-      
+      .attr('stroke', '#212e59')
+      .attr('stroke-width', '1')
+      .style('fill', '#223493');
+
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${width})`)
       .call(axisBottom(xScale));
-      
+
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
@@ -114,10 +116,10 @@ export const MonteCarloScatterplot = ({ data }) => {
     svg.select('.x-label')
       .append('text')
       .attr('x', xScale(1 / 2))
-      .attr('y', 50 + yScale(1 / 100))
+      .attr('y', 30 + yScale(1 / 100))
       .style('text-anchor', 'middle')
       .text('x');
-    
+
     svg.select('.y-label')
       .append('text')
       .attr('transform', 'rotate(-90)')
@@ -126,7 +128,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('dy', '1em')
       .style('text-anchor', 'middle')
       .text('y');
-      
+
   }, [data, dimensions]);
 
 

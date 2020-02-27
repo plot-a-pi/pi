@@ -16,8 +16,6 @@ const CircumferenceVsDiameterWrapper = () => {
     }
   }, [socket.connected]);
 
-  if(!stats) return <p>Loading...</p>;
-
   return (
     <div>
       <CircumferenceVsDiameterGraph data={points} stats={stats} xLabel='Diameter (cm)' yLabel='Circumference (cm)' title='Global Data for Circumference Vs. Diameter' />
