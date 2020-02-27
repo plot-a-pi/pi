@@ -8,10 +8,10 @@ const GraphGridMock = () => {
       <div className={styles.GraphGridMock}>
         <div className={styles.gridContainer}>
           <div className={styles.yLabel}>
-            <h2>Y-Label</h2> 
+            <p>Y-Label</p> 
           </div>
           <div className={styles.title}>
-            <h1>Title</h1>
+            <h2>Title</h2>
           </div>
           <div className={styles.graph}>
             <section>
@@ -19,7 +19,7 @@ const GraphGridMock = () => {
             </section>
           </div>
           <div className={styles.xLabel}>
-            <h2>X-Label</h2>
+            <p>X-Label</p>
           </div>
         </div>
       </div>
