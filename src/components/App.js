@@ -17,6 +17,7 @@ export default function App() {
       {/* <Header />
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route path='/montecarlo' component={MonteCarlo} />
         <Route path='/teachers' component={TeacherDashboard} />
         <Route path='/teacher-sessions' component={withSession(TeacherSessions)} />
         <Route path='/session/:id' component={SessionForm} />
