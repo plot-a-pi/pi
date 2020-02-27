@@ -72,7 +72,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('width', width * 0.91)
       .attr('height', width * 0.91)
       .style('fill', '#7dc4b8')
-      // .style('opacity', 0.25);
+      .style('opacity', 0.25)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
@@ -82,7 +82,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('cy', data => yScale(circleDiameter / 2))
       .attr('r', width * 0.91 / 2)
       .style('fill', '#a4a6c9')
-      // .style('opacity', 0.5);
+      .style('opacity', 0.5)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
