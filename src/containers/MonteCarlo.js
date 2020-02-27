@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
+import graphContanerStyles from '../components/graphs/GraphGridMock.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import Scatterplot from '../components/graphs/Scatterplot';
@@ -44,7 +45,22 @@ const MonteCarlo = () => {
       </div>
       <div className={styles.dartContainer}>
         <div className={styles.dartboard}>
-          <MonteCarloScatterplot data={dartsArray} />
+          <div className={graphContanerStyles.GraphGridMock}>
+            <div className={graphContanerStyles.gridContainer}>
+              <div className={graphContanerStyles.yLabel}>
+                <p>y</p> 
+              </div>
+              <div className={graphContanerStyles.title}>
+                <h2>MonteCarlo</h2>
+              </div>
+              <div className={graphContanerStyles.graph}>
+                <MonteCarloScatterplot data={dartsArray} />
+              </div>
+              <div className={graphContanerStyles.xLabel}>
+                <p>x</p>
+              </div>
+            </div>
+          </div>
         </div>
         <MonteCarloControls actions={actions} />
       </div>
