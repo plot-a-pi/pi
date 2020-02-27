@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
@@ -26,15 +27,22 @@ const MonteCarlo = () => {
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
   const yMax = getYMax(piState);
 
+  // eslint-disable-next-line no-useless-escape
+  
+  const derivation = ' \\frac{Darts \\, Inside \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
+  const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
+
   return (
     <div className={styles.MonteCarlo}>
       <div className={styles.stats}>
-        <h3>Darts Inside Circle</h3>
-        <h3>{circleTotal}</h3>
-        <h3>Total Darts</h3>
-        <h3>{dartsTotal}</h3>
-        <h3>Current Pi Approximation</h3>
-        <h1>{piApproximation.toFixed(4)}</h1>
+        <h3>Darts Inside Circle: <span>{circleTotal}</span></h3>
+        <h3>Total Darts: <span>{dartsTotal}</span></h3>
+        <MathJax.Provider>
+          <div className={styles.stats}>
+            <MathJax.Node formula={derivation} />
+            <MathJax.Node formula={statsEquation} />
+          </div>
+        </MathJax.Provider>
       </div>
       <div className={styles.dartContainer}>
         <div className={styles.dartboard}>
