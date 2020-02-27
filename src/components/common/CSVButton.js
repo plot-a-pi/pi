@@ -17,7 +17,7 @@ const CSVButton = ({ data, header1, header2 }) => {
     return (
       <button onClick={() => {
         setReady(!ready);
-      }}> Download Icon
+      }}> Download Raw Data
       </button>);
   }
   else return (
