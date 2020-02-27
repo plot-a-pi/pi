@@ -23,11 +23,14 @@
     p {
         font-size: 16px;
         font-family: 'Heebo';
+        background-color: transparent;
+
     }
 
     .labels {
         font-size: 16px;
         font-family: 'Heebo';
+        background-color: transparent;
     }
 
     button {
