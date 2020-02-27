@@ -28,6 +28,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const dimensions = useResizeObserver(wrapperRef);
   let globalDataArray = [];
   let userDataPointsArray = [];
+  const title = 'Circumference vs. Diameter';
+  const xLabel = 'Circumference';
+  const yLabel = 'Diameter';
 
   if(!userPointIds){
     globalDataArray = data.map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
@@ -42,8 +45,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
-    console.log(stats.diameterMax, stats.circumferenceMax);
-
     const xScale = scaleLinear()
       .domain([0, stats.diameterMax])
       .range([0, width]);
@@ -52,15 +53,15 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .domain([0, stats.circumferenceMax])
       .range([height, 0]);
 
-    // const removeLabelText = (svg, args) => {
-    //   return args.map(arg => {
-    //     svg.select(arg)
-    //       .select('text')
-    //       .remove();
-    //   });
-    // };
+    const removeLabelText = (svg, args) => {
+      return args.map(arg => {
+        svg.select(arg)
+          .select('text')
+          .remove();
+      });
+    };
 
-    // removeLabelText(svg, ['.y-label', '.x-label']);
+    removeLabelText(svg, ['.y-label', '.x-label']);
 
     svg
       .selectAll('.user-point')
@@ -139,7 +140,21 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       })
       .transition()
       .duration(2000)
-      .attr('cx', globalDataArray => xScale(globalDataArray[0]));
+      .attr('cx', globalDataArray => xScale(globalDataArray[0]))
+      .attr('cy', globalDataArray => yScale(globalDataArray[1]));
+
+    svg
+      .selectAll('line')
+      .remove('line');
+
+    svg
+      .append('line')
+      .style('stroke', 'blue')
+      .style('stroke-width', 5)
+      .attr('x1', 0)
+      .attr('y1', height)
+      .attr('x2', xScale(stats.circumferenceMax / 3))
+      .attr('y2', yScale(stats.circumferenceMax));
 
     svg
       .select('.x-axis')
@@ -150,26 +165,26 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    // svg.select('.title')
-    //   .append('text')
-    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
-    //   .style('text-anchor', 'middle')
-    //   .text(title);
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text(title);
 
-    // svg.select('.x-label')
-    //   .append('text')
-    //   .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
-    //   .style('text-anchor', 'middle')
-    //   .text(xLabel);
+    svg.select('.x-label')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + (stats.circumferenceMax + stats.circumferenceMax / 2.5) + ')')
+      .style('text-anchor', 'middle')
+      .text(xLabel);
 
-    // svg.select('.y-label')
-    //   .append('text')
-    //   .attr('transform', 'rotate(-90)')
-    //   .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
-    //   .attr('x', 0 - stats.circumferenceMax / 1.5)
-    //   .attr('dy', '1em')
-    //   .style('text-anchor', 'middle')
-    //   .text(yLabel);
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+      .attr('x', 0 - stats.circumferenceMax / 1.5)
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text(yLabel);
 
 
   }, [dimensions, data, stats]);
@@ -178,10 +193,10 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     <>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
-          {/* <g className={'title'}></g> */}
-          {/* <g className={'x-label'}></g> */}
+          <g className={'title'}></g>
+          <g className={'x-label'}></g>
           <g className={'x-axis'}></g>
-          {/* <g className={'y-label'}></g> */}
+          <g className={'y-label'}></g>
           <g className={'y-axis'}></g>
           <g className={'data'}></g>
         </svg>
@@ -196,4 +211,3 @@ CircumferenceVsDiameterGraph.propTypes = {
 };
 
 export default CircumferenceVsDiameterGraph;
-

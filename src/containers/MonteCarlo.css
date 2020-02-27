@@ -1,7 +1,5 @@
 .MonteCarlo {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   color: rgb(58, 78, 153);
-  height: 60vh;
-  width: 60vw;
 }
