@@ -8,12 +8,11 @@ exports[`Modal component renders the Modal 1`] = `
     <div
       className="modalHeader"
     >
-      <span
+      <button
         className="closeButton"
       >
         ×
-      </span>
-      <h3 />
+      </button>
       <p />
     </div>
   </div>
