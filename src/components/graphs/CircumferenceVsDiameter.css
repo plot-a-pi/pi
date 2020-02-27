@@ -10,8 +10,8 @@
         text-align: center;
 
         .yLabel { 
-            grid-area: 1 / 1 / 4 / 2; 
-            text-align: center;
+            grid-area: 2 / 1 / 4 / 2; 
+            justify-content: center;
             align-items: center;
             overflow: hidden;
 
@@ -23,7 +23,7 @@
             }
         }
         .title { 
-            grid-area: 1 / 2 / 2 / 3; 
+            grid-area: 1 / 1 / 2 / 3; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -36,7 +36,7 @@
         .graph { 
             grid-area: 2 / 2 / 3 / 3; 
             margin-left: 3vw;
-            margin-bottom: 3vh;
+            margin-bottom: 2vh;
             display: flex;
             align-self: flex-end;
             width: 100%;
