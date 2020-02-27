@@ -3,9 +3,12 @@ import { useFirestore } from '../../firebase/hooks';
 import { sessionDataCollection } from '../../firebase/firebase';
 import { Link } from 'react-router-dom';
 import { createSession } from '../../firebase/actions';
+import { CSVLink } from 'react-csv';
+import getSessionData from '../../services/getSessionData';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
+  const [downloadData, setDownloadData] = useState();
   //replace null with userId once merge squashed
   const data = useFirestore(sessionDataCollection.where('teacherId', '==', null));
 
@@ -14,11 +17,25 @@ const TeacherSessions = () => {
     createSession(null, sessionName);
   };
 
+  const handleClick = (event, done, sessionId) => {
+    
+  };
+
   const sessionElements = data.map(session => (
     <li key={session.id}>
       <h2>{session.name}</h2>
       <Link target='_blank' to={`/session/${session.id}`}>Get Submission Link</Link>
-      <Link target='_blank' to={`/session/${session.id}`}>Download Session Data</Link>
+      <CSVLink
+        data={downloadData}
+        asyncOnClick={true}
+        onClick={(event, done) => {
+          getSessionData(sessionId)
+            .then(data => setDownloadData(data))
+            .then(() => done());
+        }}
+      >
+      Download Session Data
+      </CSVLink>
       <Link target='_blank' to={`/session-graph/${session.id}`}>View Session Graph</Link>
     </li>
   ));
