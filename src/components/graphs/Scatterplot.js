@@ -63,6 +63,10 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .style('fill', '#f5f5f5')
       .attr('opacity', 0.5)
       .on('mouseenter', function(value) {
+        select(this)
+          // .transition()
+          // .duration(500)
+          .attr('r', 10);
         svg
           .selectAll('.tooltip')
           .data([value])
@@ -79,10 +83,6 @@ const Scatterplot = ({ data, xMax, yMax }) => {
           .duration(500)
           .attr('y', yScale(value[1]) - 10);
         // .attr('opacity', 1);
-        select(this)
-          .transition()
-          .duration(500)
-          .attr('r', 10);
       })
       .on('mouseleave', function(){
         select(this).attr('r', 5);
