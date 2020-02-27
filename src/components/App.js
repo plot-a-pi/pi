@@ -13,8 +13,7 @@ import MonteCarlo from '../containers/MonteCarlo';
 export default function App() {
   return (
     <>
-      <MonteCarlo />
-      {/* <Header />
+      <Header />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/montecarlo' component={MonteCarlo} />
@@ -25,7 +24,7 @@ export default function App() {
         <Route path='/session-graph/:id' render = {() => (
           <SessionGraph />
         )} />
-      </Switch> */}
+      </Switch>
     </>
   );
 
