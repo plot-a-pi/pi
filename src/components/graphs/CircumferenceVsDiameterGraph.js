@@ -126,16 +126,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .selectAll('.user-point')
       .data(userDataPointsArray)
       .join('circle')
-<<<<<<< HEAD
       .attr('class', 'user-point')
       .attr('r', 5)
       .style('fill', '#f5f5f5')
-=======
-      .attr('class', 'global-point')
-      .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 3.5)
-      .style('fill', '#223493')
->>>>>>> 09da239e3497d3c7860b31562a9f041e12a28288
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
@@ -180,23 +173,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-<<<<<<< HEAD
     
-=======
-    svg
-      .selectAll('line')
-      .remove('line');
-
-    svg
-      .append('line')
-      .style('stroke', '#212E59')
-      .style('stroke-width', 2)
-      .attr('x1', 0)
-      .attr('y1', height)
-      .attr('x2', xScale(lineEndpoint[0]))
-      .attr('y2', yScale(lineEndpoint[1]));
-
->>>>>>> 09da239e3497d3c7860b31562a9f041e12a28288
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
