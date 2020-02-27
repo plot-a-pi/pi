@@ -1,3 +1,4 @@
+  
 import React from 'react';
 import { useFirestore } from '../../firebase/hooks';
 import { globalDataCollection, globalStatsCollection } from '../../firebase/firebase';

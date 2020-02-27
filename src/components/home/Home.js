@@ -1,6 +1,6 @@
 import React from 'react';
 import ButtonNav from './ButtonNav';
-import CircumferenceVsDiameterWrapper from '../graphs/CircumferenceVsDiameterWrapper';
+import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
 
 const Home = () => {
 
