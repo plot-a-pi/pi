@@ -101,7 +101,8 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
               <Modal
                 modalInstructions="How to measure circumference"
                 modalTitle="Circumference"
-                showCircumferenceModal={false}
+                showModal={false}
+                toggleModal={[Function]}
               >
                 <section>
                   <div
@@ -110,14 +111,12 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                     <div
                       className="modalHeader"
                     >
-                      <span
+                      <button
                         className="closeButton"
+                        onClick={[Function]}
                       >
                         ×
-                      </span>
-                      <h3>
-                        Circumference
-                      </h3>
+                      </button>
                       <p>
                         How to measure circumference
                       </p>
@@ -182,7 +181,8 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
               <Modal
                 modalInstructions="How to measure diameter"
                 modalTitle="Diameter"
-                showDiameterModal={false}
+                showModal={false}
+                toggleModal={[Function]}
               >
                 <section>
                   <div
@@ -191,14 +191,12 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                     <div
                       className="modalHeader"
                     >
-                      <span
+                      <button
                         className="closeButton"
+                        onClick={[Function]}
                       >
                         ×
-                      </span>
-                      <h3>
-                        Diameter
-                      </h3>
+                      </button>
                       <p>
                         How to measure diameter
                       </p>

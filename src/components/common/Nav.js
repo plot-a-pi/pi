@@ -10,15 +10,13 @@ const Nav = () => {
   if(!publicFacingNav){
     jsx = (
       <div className={styles.Big}>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
-        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|</span>
+        <span style={{ color :'rgba(221, 157, 231, 1)' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
       </div>);
   }
   if(publicFacingNav){
     jsx = (
       <div className={styles.NavBackground}>
-        <div id='jsxHorizontal' className={styles.Collumn}>
+        <div id='jsxHorizontal' className={styles.Column}>
           <span style={{ color: '#570963', textDecoration: 'none' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
         </div>
         <ul className={styles.Nav}>
@@ -60,14 +58,6 @@ const Nav = () => {
           }}>
             <input style={{ display: 'none' }} id='monteCarlo' value='monteCarlo'  onChange={handleChange} />
             <label htmlFor='monteCarlo'>Monte Carlo</label>
-          </NavLink>
-          <br/>
-          <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/submit-to-global' activeStyle={{
-            fontWeight: 'bold',
-            color: 'purple'
-          }}>
-            <input style={{ display: 'none' }} id='globalData' value='globalData'  onChange={handleChange} />
-            <label htmlFor='globalData'>Submit to Global Data</label>
           </NavLink>
         </ul>
       </div>);
