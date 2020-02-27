@@ -10,22 +10,28 @@ import getSessionData from '../../services/getSessionData';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
-  const [downloadData, setDownloadData] = useState();
+  const [downloadData, setDownloadData] = useState([]);
   const emitUserSessions = useEmitEvent('USER_LOGIN');
   const emitNewSession = useEmitEvent('CREATE_SESSION');
   const emitRetrieveSessions = useEmitEvent('RETRIEVE_SESSIONS');
   const history = useHistory();
   const socket = useSocket();
   const user = useUser();
-  
+
   const { sessions } = useSocketState();
-  
+  let text;
+
   useEffect(() => {
     if(socket.connected !== undefined) {
       emitUserSessions(user.uid);
       emitRetrieveSessions(user.uid);
     }
+    if(sessions.length > 1){
+      text = 'Your Saved Sessions';
+    }
   }, [socket.connected]);
+
+
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -34,7 +40,7 @@ const TeacherSessions = () => {
       name: sessionName
     });
   };
-  
+
   const sessionElements = sessions.map(session => {
     return (
       <li key={session._id}>
@@ -55,7 +61,7 @@ const TeacherSessions = () => {
       </li>
     );
   });
-  
+
   return (
     <>
       <div className={styles.TeacherSessions}>
@@ -64,7 +70,7 @@ const TeacherSessions = () => {
           <button>Create</button>
         </form>
         <ul className={styles.sessionListWrapper}>
-          <h2>Your Saved Sessions</h2>
+          <h2>{text}</h2>
           {sessionElements}
         </ul>
       </div>

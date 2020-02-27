@@ -7,9 +7,6 @@ const ButtonNav = () => (
     <Link to='/teachers'>
       <button>For Teachers</button>
     </Link>
-    <Link to='/pifaqs'>
-      <button>Pi FAQS</button>
-    </Link>
     <Link to='/montecarlo'>
       <button>Monte Carlo</button>
     </Link>

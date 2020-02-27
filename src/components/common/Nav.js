@@ -43,14 +43,6 @@ const Nav = () => {
             <label htmlFor='teachers'>For Teachers</label>
           </NavLink>
           <br/>
-          <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/pifaqs' activeStyle={{
-            fontWeight: 'bold',
-            color: 'purple'
-          }}>
-            <input style={{ display: 'none' }} id='pifaqs' value='pifaqs'  onChange={handleChange} />
-            <label htmlFor='pifaqs'>Pi FAQs</label>
-          </NavLink>
-          <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/map' activeStyle={{
             fontWeight: 'bold',
             color: 'purple'
