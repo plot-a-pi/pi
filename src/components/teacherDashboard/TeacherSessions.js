@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
-import { signOut } from '../../firebase/firebase';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useUser } from '../../firebase/AuthProvider';
 import { CSVLink } from 'react-csv';
 import styles from './TeacherSessions.css';
