@@ -40,7 +40,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           <img
             alt="Circumference vs Diameter Diagram"
             className="svgContainer"
-            src="src/assets/192566_256x256.png"
+            src="/src/assets/192566_256x256.png"
           />
         </div>
         <form
