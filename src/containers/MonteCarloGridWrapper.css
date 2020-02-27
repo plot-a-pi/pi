@@ -1,4 +1,4 @@
-.GraphGridMock {
+.MonteCarloGridWrapper {
     .gridContainer {
         display: grid;
         width: 95vw;
@@ -18,7 +18,7 @@
             p {
             width: 50vh;
             transform-origin: top right;
-            transform: rotate(-90deg) translate(10vh, -87vw);
+            transform: rotate(-90deg) translate(0, -87vw);
             font-size: .08em;
             }
         }
@@ -34,13 +34,12 @@
         }
 
         .graph { 
+            padding: 3em;
             grid-area: 2 / 2 / 3 / 3; 
             margin-left: 3vw;
             margin-bottom: 2vh;
             display: flex;
             align-self: flex-end;
-            width: 100%;
-            height: auto;
         }
 
         .xLabel { 
