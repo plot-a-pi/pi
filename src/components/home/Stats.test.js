@@ -4,8 +4,14 @@ import { shallow } from 'enzyme';
 
 jest.mock('react-socket-io-hooks', () => ({
   useEmitEvent: () => {}, 
-  useSocketState: () => {}, 
-  useSocket: () => {}
+  useSocketState: () => ({
+    stats: []
+  }), 
+  useSocket: () => ({
+    socket: {
+      connected: null
+    }
+  }),
 }));
 
 describe('Stats component', () => {
