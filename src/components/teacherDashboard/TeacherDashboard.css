@@ -1,0 +1,19 @@
+.TeacherDashboard {
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    margin: auto;
+
+    .instructions {
+        padding: 1em;
+        margin-top: 3vh;
+        margin-bottom: 2vh;
+        box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
+    }
+
+    .loginButton {
+        display: flex;
+        justify-content: center;
+        height: 30px;
+    }
+}
