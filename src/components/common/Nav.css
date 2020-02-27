@@ -10,7 +10,7 @@ body{
 
 .Nav{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     width: 20vw;
     height: 100vh;
@@ -26,7 +26,7 @@ body{
 
 .Collumn{
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     transition: ease-in;
     animation: slowRotate 1.5s alternate forwards;

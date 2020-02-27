@@ -4,6 +4,10 @@ import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
+const pointRadius = (length) => {
+  return Math.max(1.5, 5 - (Math.floor(length / 100) * .5));
+};
+
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
 
@@ -53,7 +57,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .data(data)
       .join('circle')
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 5)
+      .attr('r', pointRadius(data.length))
       // .attr('stroke', '#212e59')
       // .attr('stroke-width', '1')
       .style('fill', '#f5f5f5')
