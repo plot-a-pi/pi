@@ -53,26 +53,13 @@ export const MonteCarloScatterplot = ({ data }) => {
       .remove();
 
     svg
-      .select('.title')
-      .select('text')
-      .remove();
-    svg
-      .select('.x-label')
-      .select('text')
-      .remove();
-    svg
-      .select('.y-label')
-      .select('text')
-      .remove();
-
-    svg
       .append('rect')
       .attr('x', 0)
       .attr('y', width * 0.09)
       .attr('width', width * 0.91)
       .attr('height', width * 0.91)
       .style('fill', '#7dc4b8')
-      // .style('opacity', 0.25);
+      .style('opacity', 0.25)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
@@ -82,7 +69,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('cy', data => yScale(circleDiameter / 2))
       .attr('r', width * 0.91 / 2)
       .style('fill', '#a4a6c9')
-      // .style('opacity', 0.5);
+      .style('opacity', 0.5)
       .attr('stroke', 'rgb(21, 27, 49)')
       .attr('stroke-width', '2');
 
@@ -107,38 +94,13 @@ export const MonteCarloScatterplot = ({ data }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg.select('.title')
-      .append('text')
-      .attr('transform', 'translate(' + (xScale(1) / 2) + ' ,' + -2 + ')')
-      .style('text-anchor', 'middle')
-      .text('Monte Carlo');
-
-    svg.select('.x-label')
-      .append('text')
-      .attr('x', xScale(1 / 2))
-      .attr('y', 30 + yScale(1 / 100))
-      .style('text-anchor', 'middle')
-      .text('x');
-
-    svg.select('.y-label')
-      .append('text')
-      .attr('transform', 'rotate(-90)')
-      .attr('y', -70 + yScale(1) / 10)
-      .attr('x', 0 - yScale(1 / 2))
-      .attr('dy', '1em')
-      .style('text-anchor', 'middle')
-      .text('y');
-
   }, [data, dimensions]);
 
 
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
-        <g className={'title'}></g>
-        <g className={'x-label'}></g>
         <g className={'x-axis'}></g>
-        <g className={'y-label'}></g>
         <g className={'y-axis'}></g>
       </svg>
     </div>

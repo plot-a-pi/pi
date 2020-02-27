@@ -5,3 +5,31 @@ body{
     display: flex;
     flex-wrap: wrap;
 }
+
+.graphs{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2vh;
+    margin-bottom: 5vh;
+}
+
+.global {
+    margin-top: 5vh;
+    margin-right: 10%;
+    min-height: 50vh;
+    min-width: 30%;
+    max-width:40%;
+}
+
+@media screen and (max-width: 900px) {
+    .graphs {
+        flex-direction: column;
+    }
+    .global {
+        margin-left: 10vw;
+        min-width: 100vw;
+    }
+
+  }
+

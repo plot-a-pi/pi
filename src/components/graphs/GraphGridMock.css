@@ -2,8 +2,8 @@
     .gridContainer {
         display: grid;
         height: 50vh;
-        grid-template-columns: 1fr 4fr;
-        grid-template-rows: 1fr 4fr 1fr;
+        grid-template-columns: .5fr 4fr;
+        grid-template-rows: 1fr 2fr .5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         text-align: center;
@@ -14,10 +14,10 @@
             align-items: center;
             overflow: hidden;
 
-            h2 {
+            p {
             width: 50vh;
             transform-origin: top right;
-            transform: rotate(-90deg) translate(0, -82vw);
+            transform: rotate(-90deg) translate(0, -87vw);
             }
         }
         .title { 
@@ -29,9 +29,12 @@
 
         .graph { 
             grid-area: 2 / 2 / 3 / 3; 
+            margin-left: 10vw;
+            margin-bottom: 3vh;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            align-self: flex-end;
+            width: 100%;
+            height: auto;
         }
 
         .xLabel { 
@@ -40,7 +43,7 @@
             align-items: center;
             justify-content: center;
 
-            h2 {
+            p {
                 display: flex;
                 justify-content: center;
                 align-content: center;
