@@ -8,11 +8,13 @@ import SessionGraph from './graphs/SessionGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
 import { withSession } from '../firebase/AuthProvider';
+import MonteCarlo from '../containers/MonteCarlo';
 
 export default function App() {
   return (
     <>
-      <Header />
+      <MonteCarlo />
+      {/* <Header />
       <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/teachers' component={TeacherDashboard} />
@@ -22,7 +24,7 @@ export default function App() {
         <Route path='/session-graph/:id' render = {() => (
           <SessionGraph />
         )} />
-      </Switch>
+      </Switch> */}
     </>
   );
 

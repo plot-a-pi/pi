@@ -25,9 +25,13 @@ const MonteCarlo = () => {
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
   const yMax = getYMax(piState);
+  const c = 'CircleDarts';
 
   return (
     <div className={styles.MonteCarlo}>
+      <p className={styles.stats}>
+        \(Circle  Darts \over Total  Darts\) = \({circleTotal} \over {dartsTotal}\)
+      </p>
       <div className={styles.stats}>
         <h3>Darts Inside Circle</h3>
         <h3>{circleTotal}</h3>
