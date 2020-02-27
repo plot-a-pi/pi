@@ -100,7 +100,6 @@ export const MonteCarloScatterplot = ({ data }) => {
 
   return (
     <>
-      <CSVButton header1='x' header2='y' data={data} />
       <div className={Styles.container} ref={wrapperRef}>
         <svg className={Styles.svg} ref={svgRef}>
           <g className={'x-axis'}></g>

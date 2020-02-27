@@ -2,7 +2,6 @@ import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
 import React, { useEffect } from 'react';
 import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
 import CSVButton from '../common/CSVButton';
-import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
 import graphContainerStyles from './CircumferenceVsDiameter.css';
 import CvDGraphStats from './CvDGraphStats';
 
