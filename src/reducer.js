@@ -1,7 +1,9 @@
 export const initialState = {
   points: [],
   stats: {
-    piApproximationArray: []
+    piApproximationArray: [],
+    circumferenceMax: 50,
+    diameterMax: 50
   },
   sessions: [],
   sessionData: [],
