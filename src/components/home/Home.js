@@ -8,15 +8,17 @@ import { style } from 'd3';
 const Home = () => {
 
   return (
-    <>
+    <div className={styles.home}>
       <section className={styles.graphs}>
         <CircumferenceVsDiameterWrapper />
         <div className={styles.global}>
           <GlobalPiVsCountGraph />
         </div>
       </section>
-      <ButtonNav />
-    </>
+      <div className={styles.buttons}>
+        <ButtonNav />
+      </div>
+    </div>
   );
 };
 
