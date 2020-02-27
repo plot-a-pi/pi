@@ -10,15 +10,9 @@ const Home = () => {
   return (
     <>
       <Nav />
-<<<<<<< HEAD
-      <Header />
-      <CircumferenceVsDiameterWrapper />
-      <Stats />
-=======
       <GraphLabelWrapper title='globl' xLabel='Diameter' yLabel='Circumfrence'>
         <CircumferenceVsDiameterWrapper />
       </GraphLabelWrapper>
->>>>>>> 16e375a876970f57b9263e8e65f3eea0ae51714e
       <ButtonNav />
     </>
   );

@@ -40,16 +40,16 @@ describe('socket reducer', () => {
   });
 
   it('can handle a RETRIEVE_SESSION_DATA action', () => {
-    const state = { sessionData: null };
+    const state = { sessionData: ['beginning data'] };
     const action = { 
       type: RETRIEVE_SESSION_DATA,
-      payload: ['some', 'data']
+      payload: 'some'
     };
 
     const newState = reducer(state, action);
 
     expect(newState).toEqual({
-      sessionData: action.payload
+      sessionData: [...state.sessionData, action.payload]
     });
   });
 

@@ -1,33 +1,34 @@
 import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
 import PropTypes from 'prop-types';
-import { useFirestore } from '../../firebase/hooks';
-import { sessionDataCollection } from '../../firebase/firebase';
-import { useEmitEvent } from 'react-socket-io-hooks';
+import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
 
 const SessionGraph = ({ match }) => {
   const { id } = match.params;
+  const socket = useSocket();
 
   const emitJoinSession = useEmitEvent('JOIN_SESSION');
+  const emitSessionData = useEmitEvent('GET_SESSION_DATA');
+  const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
+  const { sessionData } = useSocketState();
+  const { sessionStats } = useSocketState();
 
   useEffect(() => {
-    emitJoinSession(id);
-  }, []);
+    if(socket.connected !== undefined) {
+      emitJoinSession(id);
+      emitSessionData(id);
+      emitSessionStats(id);
+    }
+  }, [socket.connected]);
 
   let yMax = 100;
   let xMax = 100;
   let dataArray = [];
-  const data = useFirestore(sessionDataCollection.doc(id).collection(id), []);
-  const stats = useFirestore(sessionDataCollection
-    .doc(id)
-    .collection('stats')
-    .doc('current-stats'), { circumferenceMax: 50, diameterMax: 50 }
-  );
 
-  dataArray = (data.map(point => [point.circumference, point.diameter]));
+  dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
 
-  xMax = stats.circumferenceMax;
-  yMax = stats.diameterMax;
+  xMax = sessionStats.circumferenceMax;
+  yMax = sessionStats.diameterMax;
 
   return (
     <>
