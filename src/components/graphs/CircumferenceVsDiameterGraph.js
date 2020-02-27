@@ -174,6 +174,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   return (
     <>
       <div className={styles.stats}>
+        <h2>Total Points: <span>{stats.count}</span></h2>
         <MathJax.Provider>
           <div className={styles.stats}>
             <MathJax.Node formula={statsEquation} />
