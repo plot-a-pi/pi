@@ -32,22 +32,39 @@ export const MonteCarloScatterplot = ({ data }) => {
     if(!dimensions) return;
     const circleDiameter = 1;
 
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${width}px`);
+
+
     const xScale = scaleLinear()
       .domain([0, circleDiameter + 0.1])
       .range([0, width]);
-
+    
     const yScale = scaleLinear()
       .domain([0, circleDiameter + 0.1])
       .range([width, 0]);
-
+      
     svg
       .selectAll('rect')
       .remove();
-
+      
     svg
       .selectAll('circle')
       .remove();
-
+      
+    svg
+      .select('.title')
+      .select('text')
+      .remove();
+    svg
+      .select('.x-label')
+      .select('text')
+      .remove();
+    svg
+      .select('.y-label')
+      .select('text')
+      .remove();
+      
     svg
       .append('rect')
       .attr('x', 0)
@@ -77,25 +94,58 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', 4)
       .attr('class', 'points')
+<<<<<<< HEAD
       .attr('stroke', '#212e59')
       .attr('stroke-width', '1')
       .style('fill', '#223493');
 
+=======
+      .attr('stroke', 'rgb(21, 27, 49)')
+      .attr('stroke-width', '2')
+      .style('fill', 'rgb(58, 78, 153)');
+      
+>>>>>>> c0a3e0c8567f6ffca11722452da3ce01944a5e61
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${width})`)
       .call(axisBottom(xScale));
-
+      
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
 
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(1) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text('Monte Carlo');
+
+    svg.select('.x-label')
+      .append('text')
+      .attr('x', xScale(1 / 2))
+      .attr('y', 50 + yScale(1 / 100))
+      .style('text-anchor', 'middle')
+      .text('x');
+    
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -70 + yScale(1) / 10)
+      .attr('x', 0 - yScale(1 / 2))
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text('y');
+      
   }, [data, dimensions]);
+
 
   return (
     <div className={Styles.container} ref={wrapperRef}>
       <svg className={Styles.svg} ref={svgRef}>
+        <g className={'title'}></g>
+        <g className={'x-label'}></g>
         <g className={'x-axis'}></g>
+        <g className={'y-label'}></g>
         <g className={'y-axis'}></g>
       </svg>
     </div>

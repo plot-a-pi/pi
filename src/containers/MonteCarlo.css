@@ -1,5 +1,9 @@
 .MonteCarlo {
   display: flex;
+<<<<<<< HEAD
   flex-direction: column;
+=======
+  flex-direction: row;
+>>>>>>> c0a3e0c8567f6ffca11722452da3ce01944a5e61
   color: rgb(58, 78, 153);
 }

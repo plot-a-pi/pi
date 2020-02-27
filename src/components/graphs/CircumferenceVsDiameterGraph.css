@@ -3,11 +3,16 @@
   flex-direction: column;
   align-items: stretch;
   justify-content: center;
+<<<<<<< HEAD
   height: 30vh;
   width: 30vw;
   margin-left: 5vw;
   color: #212E59;
   font-weight: bolder;
+=======
+  width: 50%;
+  margin-left: 10vw;
+>>>>>>> c0a3e0c8567f6ffca11722452da3ce01944a5e61
 }
 
 .svg {

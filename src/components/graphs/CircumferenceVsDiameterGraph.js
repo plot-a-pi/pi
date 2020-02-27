@@ -61,7 +61,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       });
     };
 
-    removeLabelText(svg, ['.y-label', '.x-label']);
+    removeLabelText(svg, ['.y-label', '.x-label', '.title']);
 
     svg
       .selectAll('.user-point')
@@ -144,6 +144,35 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('cy', globalDataArray => yScale(globalDataArray[1]));
 
     svg
+      .select('.x-axis')
+      .attr('transform', `translate(0, ${height})`)
+      .call(axisBottom(xScale));
+
+    svg
+      .select('.y-axis')
+      .call(axisLeft(yScale));
+
+    svg.select('.title')
+      .append('text')
+      .attr('transform', 'translate(' + (xScale(stats.diameterMax) / 2) + ' ,' + -2 + ')')
+      .style('text-anchor', 'middle')
+      .text('title');
+
+    svg.select('.x-label')
+      .append('text')
+      .attr('x', xScale(stats.diameterMax / 2))
+      .attr('y', 50 + yScale(stats.circumferenceMax / 100))
+      .style('text-anchor', 'middle')
+      .text('x');
+
+    svg.select('.y-label')
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -50 + yScale(stats.circumferenceMax) / 10)
+      .attr('x', 0 - yScale(stats.circumferenceMax / 2))
+      .attr('dy', '1em')
+      .style('text-anchor', 'middle')
+      .text('y')
       .selectAll('line')
       .remove('line');
 
