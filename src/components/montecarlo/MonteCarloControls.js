@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styles from '../../containers/MonteCarlo.css';
 
 const MonteCarloControls = ({ actions }) => (
-  <section>
+  <section className={styles.controls}>
+    <h3>Add Darts</h3>
     {actions.map(({ name, text, actionCreator }) => (
       <button key={name} onClick={actionCreator}>
         {text || name}

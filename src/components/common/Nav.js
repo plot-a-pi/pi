@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useNav } from '../../hooks/nav';
+import { signOut } from '../../firebase/firebase';
 import styles from './Nav.css';
 
 const Nav = () => {
   const { handleChange } = useNav();
   const [publicFacingNav, setPublicFacingNav] = useState(false);
+
+  const handleClick = () => {
+    signOut();
+  };
+
   let jsx;
   if(!publicFacingNav){
     jsx = (
@@ -19,6 +25,7 @@ const Nav = () => {
         <div id='jsxHorizontal' className={styles.Column}>
           <span style={{ color: '#570963', textDecoration: 'none' }} onClick={() => setPublicFacingNav(!publicFacingNav)}>|||</span>
         </div>
+        <button onClick={handleClick}>Sign Out</button>
         <ul className={styles.Nav}>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }} exact to='/' activeStyle={{
             fontWeight: 'bold',
@@ -66,3 +73,4 @@ const Nav = () => {
 };
 
 export default Nav;
+
