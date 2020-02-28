@@ -4,10 +4,6 @@ import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
-const pointRadius = (length) => {
-  return Math.max(1, 3 - (Math.floor(length / 1000)));
-};
-
 const useResizeObserver = ref => {
   const [dimensions, setDimensions] = useState(null);
 
@@ -24,7 +20,7 @@ const useResizeObserver = ref => {
   return dimensions;
 };
 
-const Scatterplot = ({ data, xMax, yMax }) => {
+const ScatterplotPiApprox = ({ data, xMax, yMax }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
@@ -38,11 +34,11 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     wrapper.style('height', `${2 / 3 * width}px`);
 
     const xScale = scaleLinear()
-      .domain([0, xMax + xMax / 20])
+      .domain([0, xMax])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, yMax + yMax / 20])
+      .domain([0, yMax])
       .range([height, 0]);
 
     svg
@@ -50,8 +46,9 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .data(data)
       .join('circle')
       .attr('cy', data => yScale(data[1]))
-      .attr('r', pointRadius(data.length))
+      .attr('r', 3)
       .style('fill', '#f5f5f5')
+      .attr('stroke', '#7593c0')
       .attr('stroke-width', 0.5)
       .on('mouseenter', function(value) {
         select(this)
@@ -109,10 +106,10 @@ const Scatterplot = ({ data, xMax, yMax }) => {
   );
 };
 
-Scatterplot.propTypes = {
+ScatterplotPiApprox.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
   yMax: PropTypes.number.isRequired
 };
 
-export default Scatterplot;
+export default ScatterplotPiApprox;

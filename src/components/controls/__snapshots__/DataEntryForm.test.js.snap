@@ -40,7 +40,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           <img
             alt="Circumference vs Diameter Diagram"
             className="svgContainer"
-            src="/src/assets/192566_256x256.png"
+            src="/path/image"
           />
         </div>
         <form>
@@ -69,24 +69,9 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                   value=""
                 />
                 <option
-                  value="cm"
-                >
-                  cm
-                </option>
-                <option
                   value="in"
                 >
                   in
-                </option>
-                <option
-                  value="m"
-                >
-                  m
-                </option>
-                <option
-                  value="ft"
-                >
-                  ft
                 </option>
               </select>
               <button
@@ -150,24 +135,9 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                   value=""
                 />
                 <option
-                  value="cm"
-                >
-                  cm
-                </option>
-                <option
                   value="in"
                 >
                   in
-                </option>
-                <option
-                  value="m"
-                >
-                  m
-                </option>
-                <option
-                  value="ft"
-                >
-                  ft
                 </option>
               </select>
               <button
