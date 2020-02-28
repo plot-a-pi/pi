@@ -1,39 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { signOut } from '../../firebase/firebase';
-import { useUser } from '../../firebase/AuthProvider';
 import styles from './Header.css';
 
 const ButtonNav = () => {
-  const handleClick = () => {
-    signOut();
-  };
-
-  let buttonClass;
-  let userName;
-
-  const findUser = () => {
-    let user = useUser();
-    if(user){
-      userName = user.displayName.split(' ')[0];
-      buttonClass = styles.visible;
-    } else {
-      buttonClass = styles.hidden;
-    }
-
-    console.log(userName);
-  };
-
-  findUser();
-
-  return (
-    <>
-      <div className={styles.signout}>
-        <p className={buttonClass}>Signed in as: {userName}</p>
-        <Link className={buttonClass} to='/'>
-          <button onClick={handleClick}>Sign Out</button>
+  if(/teacher-sessions/.test(window.location.href))
+    return (
+      <div className={styles.sessionNav}>
+        <Link to='/'>
+          <button>Back to Home</button>
         </Link>
       </div>
+    );
+  return (
+    <>
       <div className={styles.nav}>
         <Link to='/'>
           <button>Home Page</button>
