@@ -29,7 +29,7 @@
     .sessionLinks {
         display: flex;
         justify-content: space-evenly;
-
+        margin-bottom: 2vh
     }
 
     h2 {
@@ -47,7 +47,7 @@
      }
 
      button {
-        height: 30px;
+        min-height: 30px;
     }
 
     input {
@@ -76,7 +76,7 @@
         border-color: #aaa;
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
-        color: #223493; 
+        color: #223493;
         outline: none;
     }
 }
