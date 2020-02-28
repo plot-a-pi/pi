@@ -79,7 +79,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .join('circle')
       .attr('cx', data => xScale(data[0]))
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 4)
+      .attr('r', 3)
       .attr('class', 'points')
       .attr('stroke', '#212e59')
       .attr('stroke-width', '1')
