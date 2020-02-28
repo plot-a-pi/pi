@@ -9,7 +9,12 @@ import CSVButton from '../common/CSVButton';
 
 const Home = () => {
   const [showIntroModal, toggleIntroModal] = useModal();
-
+  const modalInstructions = (
+    <div>
+      <p>Would you like to contribute to pi?</p>
+      <p>Measure the circumference and diamter of a circular object and submit your measurements to improve our global approximation of pi.</p>
+      <p>How does the approximation change as more data is added?</p>
+    </div>);
 
   return (
     <div className={styles.home}>
@@ -19,7 +24,7 @@ const Home = () => {
           <h3>What&apos;s this about...</h3>
           <button className={styles.modalButton} type='button' onClick={() => toggleIntroModal()}> ? </button>
         </div>
-        <Modal showModal={showIntroModal} toggleModal={toggleIntroModal} modalTitle={'Diameter'} modalInstructions={'Would you like to contribute to pi?  Measure the circumference and diamter of a circular object and submit your measurements to improve our global approximation of pi.  How does the approximation change as more data is added?'} />
+        <Modal showModal={showIntroModal} toggleModal={toggleIntroModal} modalTitle={'Diameter'} modalInstructions={modalInstructions} />
       </section>
       <section className={styles.graphs}>
         <CircumferenceVsDiameterWrapper />

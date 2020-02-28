@@ -61,6 +61,17 @@ const DataEntryForm = () => {
     history.replace('/');
   };
 
+  const circumferenceModalText = (
+    <div>
+      <p>The circumference is the distance around the circle.</p>
+      <p>Determine the length of string required to wrap around a circular object.</p>
+    </div>);
+  const diameterModalText = (
+    <div>
+      <p>The diameter is the distance across the circle.</p>
+      <p>Use a ruler to measure the widest path across the circle.</p>
+    </div>);
+
   return (
     <div className={styles.DataEntryForm}>
       <h2>Plot your <span className={styles.pI}>π</span></h2>
@@ -77,7 +88,7 @@ const DataEntryForm = () => {
               <option value="in">in</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
-            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object.'} />
+            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={circumferenceModalText} />
           </div>
         </div>
         <div className={styles.formInputWrapper}>
@@ -89,7 +100,7 @@ const DataEntryForm = () => {
               <option value="in">in</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
-            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. '} />
+            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={diameterModalText} />
           </div>
         </div>
         <button className={styles.plotButton} onClick={handleClick}>Plot!</button>
