@@ -24,7 +24,6 @@ const CircumferenceVsDiameterWrapper = () => {
 
   return (
     <>
-      <CSVButton header1='Diameter' header2='Circumference' data={dataForCSV} />
       <CvDGraphStats stats={stats}/>
       <div className={graphContainerStyles.GraphGridMock}>
         <div className={graphContainerStyles.gridContainer}>
@@ -45,6 +44,7 @@ const CircumferenceVsDiameterWrapper = () => {
             <p>Diameter (cm)</p>
           </div>
         </div>
+        <CSVButton header1='Diameter' header2='Circumference' data={dataForCSV} />
       </div>
     </>
   );

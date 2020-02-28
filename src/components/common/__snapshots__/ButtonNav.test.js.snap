@@ -3,25 +3,6 @@
 exports[`ButtonNav should render ButtonNav 1`] = `
 <Fragment>
   <div
-    className="signout"
-  >
-    <p
-      className="hidden"
-    >
-      Signed in as: 
-    </p>
-    <Link
-      className="hidden"
-      to="/"
-    >
-      <button
-        onClick={[Function]}
-      >
-        Sign Out
-      </button>
-    </Link>
-  </div>
-  <div
     className="nav"
   >
     <Link

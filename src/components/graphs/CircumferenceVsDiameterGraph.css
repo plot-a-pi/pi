@@ -18,3 +18,18 @@
   color: #212E59;
 }
 
+.stats {
+  background-color: whitesmoke;
+  padding: 1em;
+  border-radius: .5em;
+  text-align: center;
+
+  h3 {
+    font-size: 1em;
+  }
+
+  .formula {
+    font-size: 90%;
+  }
+}
+
