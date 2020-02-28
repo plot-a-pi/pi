@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
 import { useFormInput } from '../../hooks/useFormInput';
-import { globalStatsCollection } from '../../firebase/firebase';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
@@ -27,25 +26,13 @@ const DataEntryForm = () => {
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
     if(Math.abs(circumferenceAsNumber / diameterAsNumber) > 0.15) return alert('Are you sure you measured accurately?');
 
-
-    globalStatsCollection.doc('current-stats').get().then((stats) => {
-      if(localStorage.getItem('my-point-ids')){
-        const pointIds = JSON.parse(localStorage.getItem('my-point-ids'));
-        const updatedPointIds = pointIds.concat([stats.data().count + 1]);
-        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
-      } else {
-        localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
+    emitCreateDataPoint({
+      payload: {
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
       }
-
-      emitCreateDataPoint({
-        payload: {
-          pointId: stats.data().count + 1,
-          circumference: Number(circumference),
-          diameter: Number(diameter),
-          circumferenceUnit,
-          diameterUnit
-        }
-      });
     });
 
     resetCircumference();
