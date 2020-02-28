@@ -11,7 +11,6 @@ import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplo
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMin, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
-import CSVButton from '../components/common/CSVButton';
 
 const MonteCarlo = () => {
 
