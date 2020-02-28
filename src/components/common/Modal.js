@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Modal.css';
 import PropTypes from 'prop-types';
 
-const Modal = ({ modalInstructions, showModal, toggleModal }) => {
+const Modal = ({ modalInstructions, showModal, toggleModal, children }) => {
 
   return (
     <section>
@@ -10,6 +10,7 @@ const Modal = ({ modalInstructions, showModal, toggleModal }) => {
         <div className={styles.modalHeader}>
           <button className={styles.closeButton} type='button' onClick={toggleModal}>&times;</button>
           <p>{modalInstructions}</p>
+          { children }
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
 import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
+import Modal from '../components/common/Modal';
+import { useModal } from '../hooks/useModal';
 import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
@@ -13,6 +15,7 @@ import CSVButton from '../components/common/CSVButton';
 
 const MonteCarlo = () => {
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMax: 4 });
+  const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
     { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(add1Dart()) },
@@ -29,21 +32,11 @@ const MonteCarlo = () => {
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
   const yMax = getYMax(piState);
   
-  const derivation = ' \\frac{Darts \\, Inside \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
+  const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
   const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
 
   return (
     <div className={styles.MonteCarlo}>
-      <div className={styles.stats}>
-        <p>Darts Inside Circle: <span>{circleTotal}</span></p>
-        <p>Total Darts: <span>{dartsTotal}</span></p>
-        <MathJax.Provider>
-          <div className={styles.stats}>
-            <MathJax.Node formula={derivation} />
-            <MathJax.Node formula={statsEquation} />
-          </div>
-        </MathJax.Provider>
-      </div>
       <div className={styles.dartContainer}>
         <div className={styles.dartboard}>
           <div className={GridWrapperStyles.MonteCarloGridWrapper}>
@@ -65,7 +58,22 @@ const MonteCarlo = () => {
         </div>
         <MonteCarloControls actions={actions} />
       </div>
-      <CSVButton header1='x' header2='y' data={dartsArray} />
+      {/* <CSVButton header1='x' header2='y' data={dartsArray} /> */}
+      <div className={styles.stats}>
+        <div>
+          <p>Darts In Circle: <span>{circleTotal}</span></p>
+          <p>Total Darts: <span>{dartsTotal}</span></p>
+        </div>
+        <MathJax.Provider>
+          <MathJax.Node formula={statsEquation} />
+        </MathJax.Provider>
+        <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
+      </div>
+      <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions='Pi Approximation Derivation'>
+        <MathJax.Provider>
+          <MathJax.Node formula={derivation} />
+        </MathJax.Provider>
+      </Modal>
       <div className={GridWrapperStyles.MonteCarloGridWrapper}>
         <div className={GridWrapperStyles.gridContainer}>
           <div className={GridWrapperStyles.yLabel}>
@@ -79,11 +87,10 @@ const MonteCarlo = () => {
           </div>
           <div className={GridWrapperStyles.xLabel}>
             <p>x</p>
+            <CSVButton  header1='x' header2='y' data={numDartsVersusPiArray} />
           </div>
         </div>
-        <CSVButton header1='x' header2='y' data={numDartsVersusPiArray} />
       </div>
-      
     </div>
   );
 };

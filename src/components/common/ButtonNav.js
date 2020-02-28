@@ -15,16 +15,16 @@ const ButtonNav = () => {
     <>
       <div className={styles.nav}>
         <Link to='/'>
-          <button>Home Page</button>
+          <button>Home</button>
         </Link>
         <Link to='/teachers'>
-          <button>For Groups</button>
+          <button>Groups</button>
         </Link>
         <Link to='/montecarlo'>
           <button>Monte Carlo</button>
         </Link>
         <Link to='/submit-to-global'>
-          <button>Plot A Pi</button>
+          <button>Plot Pi!</button>
         </Link>
       </div>
     </>
