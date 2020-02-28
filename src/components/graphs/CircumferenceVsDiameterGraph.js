@@ -76,7 +76,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .join('circle')
       .attr('class', 'global-point')
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 5)
+      .attr('r', 4)
       .style('fill', '#223493')
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
@@ -85,23 +85,23 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .data([value])
           .join('text')
           .attr('class', 'tooltip')
-          .attr('r', 10)
+          .attr('r', 8)
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
           .attr('stroke', 'white')
           .attr('stroke-width', '2')
           .style('fill', '#212E59')
-          .style('font-size', '2em')
+          .style('font-size', 'x-large')
           .style('font-weight', '900')
           .transition()
           .duration(500)
           .attr('y', yScale(value[1]) - 10);
         select(this)
-          .attr('r', 10);
+          .attr('r', 8);
       })
       .on('mouseleave', function(){
-        select(this).attr('r', 5);
+        select(this).attr('r', 4);
         svg.select('.tooltip').remove();
       })
       .transition()
@@ -114,7 +114,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
-      .attr('r', 7)
+      .attr('r', 8)
       .style('fill', '#99CCFF')
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
@@ -129,7 +129,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .attr('stroke', 'white')
           .attr('stroke-width', '2')
           .style('fill', '#212E59')
-          .style('font-size', '2em')
+          .style('font-size', 'x-large')
           .style('font-weight', '900')
           .transition()
           .duration(500)
@@ -138,7 +138,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .attr('r', 12);
       })
       .on('mouseleave', function(){
-        select(this).attr('r', 5);
+        select(this).attr('r', 8);
         svg.select('.tooltip').remove();
       })
       .transition()
