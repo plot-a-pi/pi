@@ -20,6 +20,8 @@ const CircumferenceVsDiameterWrapper = () => {
     }
   }, [socket.connected]);
 
+  const dataForCSV = points.map(datum => ([datum.diameter, datum.circumference]));
+  
   return (
     <>
       <CvDGraphStats stats={stats}/>
