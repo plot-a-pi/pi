@@ -5,7 +5,6 @@ import Modal from '../components/common/Modal';
 import { useModal } from '../hooks/useModal';
 import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
-// import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import ScatterplotPiApprox from '../components/graphs/ScatterplotPiApprox';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
