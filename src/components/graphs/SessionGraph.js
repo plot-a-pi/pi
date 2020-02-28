@@ -44,9 +44,6 @@ const SessionGraph = ({ match }) => {
           <div className={styles.yLabel}>
             <p>Circumference</p> 
           </div>
-          <div className={styles.title}>
-            <h2>Title</h2>
-          </div>
           <div className={styles.graph}>
             <section>
               <div className={styles.graphs}>
