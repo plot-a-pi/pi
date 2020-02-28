@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import Styles from '../../containers/MonteCarlo.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
-import CSVButton from '../common/CSVButton';
 
 export const MonteCarloScatterplot = ({ data }) => {
 

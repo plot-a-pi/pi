@@ -39,7 +39,7 @@ const GlobalPiVsCountGraph = () => {
             <p>Count</p>
           </div>
         </div>
-        <CSVButton header1='x' header2='y' data={dataArray} />
+        <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
       </div>
     </>
   );
