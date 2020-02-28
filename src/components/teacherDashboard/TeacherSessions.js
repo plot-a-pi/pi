@@ -43,7 +43,7 @@ const TeacherSessions = () => {
     });
   };
 
-  const handleDownload= (id) => {
+  const handleDownload = (id) => {
     getSessionData(id)
       .then(data => data.json())
       .then(data => setDownloadData(data));
