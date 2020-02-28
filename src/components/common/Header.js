@@ -5,7 +5,7 @@ import ButtonNav from './ButtonNav';
 const Header = () => {
 
   return (
-    <header>
+    <header className={styles.wrapper}>
       <div className={styles.Header}>
         <div className={styles.logo}>
           <img width='70px' src='/src/assets/192566_256x256.png' alt='Pi logo' />
