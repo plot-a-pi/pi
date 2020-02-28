@@ -60,10 +60,7 @@ const SessionForm = ({ match }) => {
             <input type='text' required value={circumference} {...bindCircumference} />
             <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
             <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
@@ -75,10 +72,7 @@ const SessionForm = ({ match }) => {
             <input type='text' required value={diameter} {...bindDiameter} />
             <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
             <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />

@@ -49,11 +49,11 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
     const xScale = scaleLinear()
-      .domain([0, stats.diameterMax])
+      .domain([0, stats.diameterMax + stats.diameterMax / 50])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, stats.circumferenceMax])
+      .domain([0, stats.circumferenceMax + stats.diameterMax / 50])
       .range([height, 0]);
 
     svg
@@ -78,7 +78,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
       .attr('r', 4)
       .style('fill', '#223493')
-      .attr('opacity', 0.8)
+      .attr('opacity', 0.9)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
