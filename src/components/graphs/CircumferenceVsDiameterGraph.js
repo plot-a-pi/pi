@@ -49,11 +49,11 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
     const xScale = scaleLinear()
-      .domain([0, stats.diameterMax])
+      .domain([0, stats.diameterMax + stats.diameterMax / 50])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, stats.circumferenceMax])
+      .domain([0, stats.circumferenceMax + stats.diameterMax / 50])
       .range([height, 0]);
 
     svg
@@ -76,9 +76,9 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .join('circle')
       .attr('class', 'global-point')
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
-      .attr('r', 5)
+      .attr('r', 4)
       .style('fill', '#223493')
-      .attr('opacity', 0.8)
+      .attr('opacity', 0.9)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -101,7 +101,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .attr('r', 10);
       })
       .on('mouseleave', function(){
-        select(this).attr('r', 5);
+        select(this).attr('r', 4);
         svg.select('.tooltip').remove();
       })
       .transition()
@@ -111,12 +111,17 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
     svg
       .selectAll('.user-point')
+      .remove('user-point');
+
+    svg
+      .selectAll('.user-point')
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
       .attr('r', 7)
       .style('fill', '#99CCFF')
-      .attr('opacity', 0.8)
+      .attr('stroke', '#223493')
+      .attr('stroke-width', 4)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -155,7 +160,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     svg
       .select('.y-axis')
       .call(axisLeft(yScale));
-
 
     svg
       .select('.x-axis')

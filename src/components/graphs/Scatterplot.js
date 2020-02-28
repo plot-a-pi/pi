@@ -5,7 +5,11 @@ import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const pointRadius = (length) => {
+<<<<<<< HEAD
   return Math.max(1, 3 - (Math.floor(length / 100)));
+=======
+  return Math.max(1, 3 - (Math.floor(length / 1000)));
+>>>>>>> 085da39e57e938e373e69bf1a1f8990ebafc0924
 };
 
 const useResizeObserver = ref => {
@@ -38,11 +42,11 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     wrapper.style('height', `${2 / 3 * width}px`);
 
     const xScale = scaleLinear()
-      .domain([0, xMax])
+      .domain([0, xMax + xMax / 20])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, yMax])
+      .domain([0, yMax + yMax / 20])
       .range([height, 0]);
 
     svg
@@ -52,7 +56,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', pointRadius(data.length))
       .style('fill', '#f5f5f5')
-      .attr('opacity', 0.5)
+      .attr('stroke-width', 0.5)
       .on('mouseenter', function(value) {
         select(this)
           .attr('r', 10);
@@ -76,7 +80,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
 
       })
       .on('mouseleave', function(){
-        select(this).attr('r', pointRadius(data.length));
+        select(this).attr('r', 3);
         svg.select('.tooltip').remove();
       })
       .transition()

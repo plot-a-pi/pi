@@ -1,7 +1,15 @@
 .CSVButton {
+<<<<<<< HEAD
   position: absolute;
   right: 0px;
   bottom: 0px;
   width: 30px;
   border: 1px solid #7593c0;
+=======
+  width: 55px;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px;
+  border: 1px solid black;
+>>>>>>> 085da39e57e938e373e69bf1a1f8990ebafc0924
 }
