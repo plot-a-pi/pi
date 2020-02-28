@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.css';
 
 const ButtonNav = () => {
-  if(/teacher-sessions/.test(window.location.href))
+  const location = useLocation();
+  if(location.pathname === '/teacher-sessions')
+
     return (
       <div className={styles.sessionNav}>
         <Link to='/'>
@@ -15,16 +17,16 @@ const ButtonNav = () => {
     <>
       <div className={styles.nav}>
         <Link to='/'>
-          <button>Home Page</button>
+          <button>Home</button>
         </Link>
         <Link to='/teachers'>
-          <button>For Groups</button>
+          <button>Groups</button>
         </Link>
         <Link to='/montecarlo'>
           <button>Monte Carlo</button>
         </Link>
         <Link to='/submit-to-global'>
-          <button>Plot A Pi</button>
+          <button>Plot Pi!</button>
         </Link>
       </div>
     </>

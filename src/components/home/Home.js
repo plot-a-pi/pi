@@ -4,6 +4,7 @@ import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import styles from './Home.css';
+import PiCrawler from '../common/PiCrawler';
 
 const Home = () => {
   const [showIntroModal, toggleIntroModal] = useModal();
@@ -11,6 +12,7 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
+      <PiCrawler />
       <section className={styles.introduction}>
         <div className={styles.whatsThis}>
           <h3>What&apos;s this about...</h3>

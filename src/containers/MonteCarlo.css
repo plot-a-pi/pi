@@ -59,7 +59,11 @@
 }
 
 .stats {
+  display: flex;
+  align-items: space-between;
+  justify-content: center;
   width: 95vw;
+  height: 10vh;
   margin: auto;
   word-wrap: break-word;
   font-size: 80%;
