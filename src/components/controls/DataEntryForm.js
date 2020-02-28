@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'react-uuid';
 import styles from './DataEntryForm.css';
 import { useFormInput } from '../../hooks/useFormInput';
 import Modal from '../common/Modal';
@@ -8,6 +9,8 @@ import { useEmitEvent } from 'react-socket-io-hooks';
 
 const DataEntryForm = () => {
   const emitCreateDataPoint = useEmitEvent('NEW_GLOBAL_DATA');
+  const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
+  const pointId = uuid();
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
   const { value: diameter, bind: bindDiameter, reset: resetDiameter } = useFormInput('');
@@ -30,9 +33,18 @@ const DataEntryForm = () => {
         circumference: Number(circumference),
         diameter: Number(diameter),
         circumferenceUnit,
-        diameterUnit
+        diameterUnit,
+        pointId
       }
     });
+
+    if(localStorage.getItem('my-point-ids')){
+      const pointIds = JSON.parse(localStorage.getItem('my-point-ids'));
+      const updatedPointIds = pointIds.concat([pointId]);
+      localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
+    } else {
+      localStorage.setItem('my-point-ids', JSON.stringify([pointId]));
+    }
 
     resetCircumference();
     resetCircumferenceUnit();
