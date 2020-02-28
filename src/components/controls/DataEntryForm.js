@@ -72,10 +72,7 @@ const DataEntryForm = () => {
             <input type='text' required value={circumference} {...bindCircumference} />
             <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
             <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object.'} />
@@ -87,10 +84,7 @@ const DataEntryForm = () => {
             <input type='text' required value={diameter} {...bindDiameter} />
             <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
             <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. '} />
