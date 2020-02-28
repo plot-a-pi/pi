@@ -8,7 +8,14 @@ export default function reducer(state, action) {
     case ADD_1_DART:
     {
       const data = generateMonteCarloData(1, state.circleTotal, state.dartsTotal);
-      return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray), yMax: data.piMax > state.yMax ? data.piMax : state.yMax };
+      return { 
+        ...state, 
+        dartsTotal: state.dartsTotal + 1, 
+        circleTotal: data.newCircleTotal, 
+        dartsArray: state.dartsArray.concat(data.newDartsArray), 
+        piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray), 
+        yMax: data.piMax > state.yMax ? data.piMax : state.yMax 
+      };
     }
     case ADD_10_DARTS:
     {
