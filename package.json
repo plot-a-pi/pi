@@ -35,6 +35,7 @@
     "react-mathjax": "^1.0.1",
     "react-router-dom": "^5.1.2",
     "react-socket-io-hooks": "^0.2.0",
+    "react-uuid": "^1.0.2",
     "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
