@@ -20,11 +20,8 @@ const CircumferenceVsDiameterWrapper = () => {
     }
   }, [socket.connected]);
 
-  const dataForCSV = points.map(datum => ([datum.diameter, datum.circumference]));
-
   return (
     <>
-      <CSVButton header1='Diameter' header2='Circumference' data={dataForCSV} />
       <CvDGraphStats stats={stats}/>
       <div className={graphContainerStyles.GraphGridMock}>
         <div className={graphContainerStyles.gridContainer}>
