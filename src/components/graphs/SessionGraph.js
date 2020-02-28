@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
 import PropTypes from 'prop-types';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
+import styles from '../home/Home.css';
 
 const SessionGraph = ({ match }) => {
   const { id } = match.params;
@@ -21,18 +22,17 @@ const SessionGraph = ({ match }) => {
     }
   }, [socket.connected]);
 
-  let yMax = 100;
-  let xMax = 100;
+  let yMax = sessionStats.circumferenceMax ? sessionStats.circumferenceMax : 100;
+  let xMax = sessionStats.diameterMax ? sessionStats.diameterMax : 100;
   let dataArray = [];
 
   dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
 
-  xMax = sessionStats.circumferenceMax;
-  yMax = sessionStats.diameterMax;
-
   return (
     <>
-      <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax}/>
+      <div className={styles.graphs}>
+        <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax}/>
+      </div>
     </>
   );
 };
