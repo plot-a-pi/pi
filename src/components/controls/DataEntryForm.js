@@ -32,7 +32,8 @@ const DataEntryForm = () => {
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
-    // if(Math.abs(circumferenceAsNumber / diameterAsNumber) > 0.15) return alert('Are you sure you measured accurately?');
+    if(Math.abs((circumferenceAsNumber / diameterAsNumber - Math.PI) / Math.PI) > 0.15) return alert('Are you sure you measured accurately?');
+    if(circumferenceAsNumber > 150 || diameterAsNumber > 50) return alert('Please measure a smaller circle');
 
     emitCreateDataPoint({
       payload: {
