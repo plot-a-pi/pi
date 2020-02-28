@@ -33,16 +33,6 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <div className={styles.stats}>
-        <p>Darts Inside Circle: <span>{circleTotal}</span></p>
-        <p>Total Darts: <span>{dartsTotal}</span></p>
-        <MathJax.Provider>
-          <div className={styles.stats}>
-            <MathJax.Node formula={derivation} />
-            <MathJax.Node formula={statsEquation} />
-          </div>
-        </MathJax.Provider>
-      </div>
       <div className={styles.dartContainer}>
         <div className={styles.dartboard}>
           <div className={GridWrapperStyles.MonteCarloGridWrapper}>
@@ -80,7 +70,16 @@ const MonteCarlo = () => {
           </div>
         </div>
       </div>
-      
+      <div className={styles.stats}>
+        <p>Darts Inside Circle: <span>{circleTotal}</span></p>
+        <p>Total Darts: <span>{dartsTotal}</span></p>
+        <MathJax.Provider>
+          <div className={styles.stats}>
+            <MathJax.Node formula={derivation} />
+            <MathJax.Node formula={statsEquation} />
+          </div>
+        </MathJax.Provider>
+      </div>
     </div>
   );
 };

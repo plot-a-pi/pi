@@ -22,7 +22,6 @@
 }
 
 .dartboard {
-  margin-bottom: 7vh;
   display: flex;
   justify-content: flex-end;
 }
