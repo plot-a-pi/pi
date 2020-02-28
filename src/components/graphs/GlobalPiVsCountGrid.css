@@ -1,10 +1,10 @@
-.GraphGridMock {
+.GraphGridStyles {
     .gridContainer {
         display: grid;
         width: 95vw;
-        height: 50vh;
+        height: 40vh;
         grid-template-columns: .5fr 4fr;
-        grid-template-rows: 1fr 2fr .5fr;
+        grid-template-rows: .5fr 1fr .5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         text-align: center;
@@ -56,5 +56,6 @@
                 font-size: .08em;
             }
         }
-    }   
+    }  
+    
 }
