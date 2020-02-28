@@ -2,14 +2,15 @@ import React from 'react';
 import styles from './Modal.css';
 import PropTypes from 'prop-types';
 
-const Modal = ({ modalInstructions, showModal, toggleModal }) => {
+const Modal = ({ modalInstructions, showModal, toggleModal, children }) => {
 
   return (
     <section>
       <div className={`${styles.Modal} ${showModal ? styles.modalShow : styles.modalHide}`}>
         <div className={styles.modalHeader}>
-          <button className={styles.closeButton} onClick={toggleModal}>&times;</button>
+          <button className={styles.closeButton} type='button' onClick={toggleModal}>&times;</button>
           <p>{modalInstructions}</p>
+          { children }
         </div>
       </div>
     </section>
