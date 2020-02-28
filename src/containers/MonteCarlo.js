@@ -70,8 +70,8 @@ const MonteCarlo = () => {
         <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions='Pi Approximation Derivation'>
-        <MathJax.Provider>
-          <MathJax.Node formula={derivation} />
+        <MathJax.Provider >
+          <MathJax.Node formula={derivation} style={{ 'font-size' : '8px', 'font-style': 'bold' }}/>
         </MathJax.Provider>
       </Modal>
       <div className={GridWrapperStyles.MonteCarloGridWrapper}>
