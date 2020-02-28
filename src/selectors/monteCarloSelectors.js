@@ -19,6 +19,10 @@ export const getYMax = state => {
   return state.yMax;
 };
 
+export const getYMin = state => {
+  return state.yMin;
+};
+
 export const getCircleTotal = state => {
   return state.circleTotal;
 };
