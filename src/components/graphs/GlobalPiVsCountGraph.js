@@ -3,6 +3,7 @@ import Scatterplot from './Scatterplot';
 import Styles from './Scatterplot.css';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
 import GraphGridStyles from './GlobalPiVsCountGrid.css';
+import CSVButton from '../common/CSVButton';
 
 const GlobalPiVsCountGraph = () => {
   const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
@@ -24,10 +25,10 @@ const GlobalPiVsCountGraph = () => {
       <div className={GraphGridStyles.GraphGridStyles}>
         <div className={GraphGridStyles.gridContainer}>
           <div className={GraphGridStyles.yLabel}>
-            <p>Y-Label</p> 
+            <p>Pi Approximation</p> 
           </div>
           <div className={GraphGridStyles.title}>
-            <h2>Title</h2>
+            <h2>Global Pi Approximation vs Count</h2>
           </div>
           <div className={GraphGridStyles.graph}>
             <section>
@@ -35,9 +36,10 @@ const GlobalPiVsCountGraph = () => {
             </section>
           </div>
           <div className={GraphGridStyles.xLabel}>
-            <p>X-Label</p>
+            <p>Count</p>
           </div>
         </div>
+        <CSVButton header1='x' header2='y' data={dataArray} />
       </div>
     </>
   );

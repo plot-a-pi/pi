@@ -10,6 +10,7 @@ exports[`Modal component renders the Modal 1`] = `
     >
       <button
         className="closeButton"
+        type="button"
       >
         ×
       </button>
