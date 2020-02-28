@@ -4,7 +4,7 @@
         width: 95vw;
         height: 50vh;
         grid-template-columns: .5fr 4fr;
-        grid-template-rows: 1fr 2fr .5fr;
+        grid-template-rows: .5fr 2fr .5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         text-align: center;
@@ -29,7 +29,7 @@
             justify-content: center;
         
             h2 {
-                font-size: .75em;
+                font-size: 1em;
             }
         }
 

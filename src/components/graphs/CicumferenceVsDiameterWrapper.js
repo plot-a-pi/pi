@@ -24,7 +24,6 @@ const CircumferenceVsDiameterWrapper = () => {
   
   return (
     <>
-      <CvDGraphStats stats={stats}/>
       <div className={graphContainerStyles.GraphGridMock}>
         <div className={graphContainerStyles.gridContainer}>
           <div className={graphContainerStyles.yLabel}>
@@ -35,19 +34,16 @@ const CircumferenceVsDiameterWrapper = () => {
           </div>
           <div className={graphContainerStyles.graph}>
             <section>
-              <div>
-                <CircumferenceVsDiameterGraph data={points} stats={stats} />
-              </div>
+              <CircumferenceVsDiameterGraph data={points} stats={stats} />
             </section>
           </div>
           <div className={graphContainerStyles.xLabel}>
             <p>Diameter (in)</p>
-            <div className={graphContainerStyles.dataDownload}>
-            </div>
+            <CSVButton  header1='Diameter' header2='Circumference' data={dataForCSV} />
           </div>
-          <CSVButton  header1='Diameter' header2='Circumference' data={dataForCSV} />
         </div>
-      </div>
+      </div>      
+      <CvDGraphStats stats={stats}/>
     </>
   );
 };
