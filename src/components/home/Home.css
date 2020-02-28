@@ -42,6 +42,16 @@
     box-shadow: 0 0 0 2px -moz-mac-focusring;
 }
 
+.whatsThis {
+
+    display: flex;
+    width: 80vw;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+
+}
+
 @media screen and (max-width: 900px) {
     .graphs {
         flex-direction: column;

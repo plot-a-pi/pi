@@ -43,9 +43,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
             src="/src/assets/192566_256x256.png"
           />
         </div>
-        <form
-          onSubmit={[Function]}
-        >
+        <form>
           <div
             className="formInputWrapper"
           >
@@ -114,6 +112,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       <button
                         className="closeButton"
                         onClick={[Function]}
+                        type="button"
                       >
                         ×
                       </button>
@@ -194,6 +193,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       <button
                         className="closeButton"
                         onClick={[Function]}
+                        type="button"
                       >
                         ×
                       </button>
@@ -208,6 +208,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           </div>
           <button
             className="plotButton"
+            onClick={[Function]}
           >
             Plot!
           </button>
