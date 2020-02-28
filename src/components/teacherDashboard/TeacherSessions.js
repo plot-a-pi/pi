@@ -10,7 +10,7 @@ import getSessionData from '../../services/getSessionData';
 
 const TeacherSessions = () => {
   const [sessionName, setSessionName] = useState('Session Name');
-  const [downloadData, setDownloadData] = useState([]);
+  const [downloadData, setDownloadData] = useState(null);
   const emitUserSessions = useEmitEvent('USER_LOGIN');
   const emitNewSession = useEmitEvent('CREATE_SESSION');
   const emitRetrieveSessions = useEmitEvent('RETRIEVE_SESSIONS');

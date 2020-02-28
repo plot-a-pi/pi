@@ -34,6 +34,9 @@ const Scatterplot = ({ data, xMax, yMax }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${2 / 3 * width}px`);
+
     const xScale = scaleLinear()
       .domain([0, xMax])
       .range([0, width]);
