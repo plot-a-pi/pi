@@ -6,6 +6,8 @@ import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
 import { useEmitEvent } from 'react-socket-io-hooks';
+import Icon from '../../assets/192566_256x256.png';
+
 
 const DataEntryForm = () => {
   
@@ -63,7 +65,7 @@ const DataEntryForm = () => {
     <div className={styles.DataEntryForm}>
       <h2>Plot your <span className={styles.pI}>π</span></h2>
       <div >
-        <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
+        <img className={styles.svgContainer} src={Icon} alt='Circumference vs Diameter Diagram'/>
       </div>
       <form>
         <div className={styles.formInputWrapper}>
