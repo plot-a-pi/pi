@@ -37,7 +37,6 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <CSVButton header1='Diameter' header2='Circumference' data={dartsArray} />
       <div className={styles.stats}>
         <p>Darts Inside Circle: <span>{circleTotal}</span></p>
         <p>Total Darts: <span>{dartsTotal}</span></p>
@@ -75,6 +74,7 @@ const MonteCarlo = () => {
         </div>
         <MonteCarloControls actions={actions} />
       </div>
+      <CSVButton header1='x' header2='y' data={dartsArray} />
       <div className={GridWrapperStyles.MonteCarloGridWrapper}>
         <div className={GridWrapperStyles.gridContainer}>
           <div className={GridWrapperStyles.yLabel}>
@@ -90,6 +90,7 @@ const MonteCarlo = () => {
             <p>x</p>
           </div>
         </div>
+        <CSVButton header1='x' header2='y' data={numDartsVersusPiArray} />
       </div>
       
     </div>
