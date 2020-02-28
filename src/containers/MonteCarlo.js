@@ -1,6 +1,8 @@
 import React, { useReducer } from 'react';
 import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
+import Modal from '../components/common/Modal';
+import { useModal } from '../hooks/useModal';
 import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
@@ -13,6 +15,7 @@ import CSVButton from '../components/common/CSVButton';
 
 const MonteCarlo = () => {
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMax: 4 });
+  const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
     { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(add1Dart()) },
@@ -40,9 +43,15 @@ const MonteCarlo = () => {
         <p>Total Darts: <span>{dartsTotal}</span></p>
         <MathJax.Provider>
           <div className={styles.stats}>
-            <MathJax.Node formula={derivation} />
             <MathJax.Node formula={statsEquation} />
           </div>
+          <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
+          <div>
+            <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions='Pi Approximation Derivation'>
+              <MathJax.Node formula={derivation} />
+            </Modal>
+          </div>
+          
         </MathJax.Provider>
       </div>
       <div className={styles.dartContainer}>

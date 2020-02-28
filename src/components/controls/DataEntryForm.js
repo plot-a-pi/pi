@@ -7,6 +7,10 @@ import { useHistory } from 'react-router-dom';
 import { useEmitEvent } from 'react-socket-io-hooks';
 
 const DataEntryForm = () => {
+  
+  const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
+  const [showDiameterModal, toggleDiameterModal] = useModal();
+
   const emitCreateDataPoint = useEmitEvent('NEW_GLOBAL_DATA');
   const { value: circumference, bind: bindCircumference, reset: resetCircumference } = useFormInput('');
   const { value: circumferenceUnit, bind: bindCircumferenceUnit, reset: resetCircumferenceUnit } = useFormInput('');
@@ -43,9 +47,6 @@ const DataEntryForm = () => {
     alert('Success! Your pi has been saved!');
     history.replace('/');
   };
-
-  const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
-  const [showDiameterModal, toggleDiameterModal] = useModal();
 
   return (
     <div className={styles.DataEntryForm}>

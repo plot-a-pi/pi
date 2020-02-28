@@ -60,6 +60,7 @@
 
 .stats {
   width: 95vw;
+  height: 10vh;
   margin: auto;
   word-wrap: break-word;
   font-size: 80%;
