@@ -111,8 +111,6 @@ export const MonteCarloScatterplot = ({ data }) => {
 };
 
 MonteCarloScatterplot.propTypes = {
-  data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  data: PropTypes.array.isRequired
 };
 
