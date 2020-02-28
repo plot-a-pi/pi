@@ -78,7 +78,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('cy', globalDataArray => yScale(globalDataArray[1]))
       .attr('r', 4)
       .style('fill', '#223493')
-      .attr('opacity', 0.9)
+      .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')
@@ -111,17 +111,12 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
     svg
       .selectAll('.user-point')
-      .remove('user-point');
-
-    svg
-      .selectAll('.user-point')
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
       .attr('r', 8)
       .style('fill', '#99CCFF')
-      .attr('stroke', '#223493')
-      .attr('stroke-width', 4)
+      .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
           .selectAll('.tooltip')

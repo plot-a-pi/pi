@@ -52,7 +52,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', pointRadius(data.length))
       .style('fill', '#f5f5f5')
-      .attr('stroke-width', 0.5)
+      .attr('opacity', 0.9)
       .on('mouseenter', function(value) {
         select(this)
           .attr('r', 10);
