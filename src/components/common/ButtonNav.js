@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import styles from './Header.css';
 
 const ButtonNav = () => {
-  if(/teacher-sessions/.test(window.location.href))
+  const location = useLocation();
+  if(location.pathname === '/teacher-sessions')
+
     return (
       <div className={styles.sessionNav}>
         <Link to='/'>
