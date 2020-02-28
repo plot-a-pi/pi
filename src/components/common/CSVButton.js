@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CSVDownload } from 'react-csv';
 import PropTypes from 'prop-types';
+import styles from './CSVButton.css';
 
 const CSVButton = ({ data, header1, header2 }) => {
   const [ready, setReady] = useState(false);
@@ -12,21 +13,23 @@ const CSVButton = ({ data, header1, header2 }) => {
     { label: header1, key: 'x' },
     { label: header2, key: 'y' }
   ];
-  // const csvDownloadComponent = (data, target, headers) => (<CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />
+
   if(!ready){
     return (
-      <button onClick={() => {
+      <div className={styles.CSVButton} onClick={() => {
         setReady(!ready);
       }}>Raw Data
-      </button>);
+      </div>);
   }
   else return (
     <>
-      <button onClick={() => {
-        setReady(!ready);
-      }}>Raw Data
-      </button>
-      <CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />
+      <div className={styles.CSVButton}>
+        <div onClick={() => {
+          setReady(!ready);
+        }}>Raw Data
+        </div>
+        <CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />
+      </div>
     </>);
 };
 
