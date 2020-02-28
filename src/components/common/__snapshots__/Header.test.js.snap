@@ -12,7 +12,7 @@ exports[`Header Component should render a Header 1`] = `
     >
       <img
         alt="Pi logo"
-        src="/src/assets/192566_256x256.png"
+        src="/path/image"
         width="70px"
       />
     </div>

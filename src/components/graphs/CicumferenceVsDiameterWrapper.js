@@ -43,10 +43,9 @@ const CircumferenceVsDiameterWrapper = () => {
           <div className={graphContainerStyles.xLabel}>
             <p>Diameter (in)</p>
             <div className={graphContainerStyles.dataDownload}>
-              <CSVButton  header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />
-            </div>
           </div>
         </div>
+        <CSVButton  header1='Diameter' header2='Circumference' data={dataForCSV} />
       </div>
     </>
   );

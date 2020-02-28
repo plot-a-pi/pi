@@ -5,6 +5,8 @@ import { useFormInput } from '../../hooks/useFormInput';
 import { useEmitEvent } from 'react-socket-io-hooks';
 import { useModal } from '../../hooks/useModal';
 import Modal from '../common/Modal';
+import Icon from '../../assets/192566_256x256.png';
+
  
 const SessionForm = ({ match }) => {
   const emitNewSessionData = useEmitEvent('NEW_SESSION_DATA');
@@ -49,7 +51,7 @@ const SessionForm = ({ match }) => {
     <div className={styles.DataEntryForm}>
       <h2>Plot your <span className={styles.pI}>π</span></h2>
       <div >
-        <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
+        <img className={styles.svgContainer} src={Icon} alt='Circumference vs Diameter Diagram'/>
       </div>
       <form onSubmit={handleSubmit} >
         <div className={styles.formInputWrapper}>
