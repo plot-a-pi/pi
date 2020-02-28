@@ -28,14 +28,14 @@ exports[`ButtonNav should render ButtonNav 1`] = `
       to="/"
     >
       <button>
-        Home
+        Home Page
       </button>
     </Link>
     <Link
       to="/teachers"
     >
       <button>
-        For Teachers
+        For Groups
       </button>
     </Link>
     <Link
