@@ -7,7 +7,6 @@ import { useSocketState } from 'react-socket-io-hooks';
 
 const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
-  const { recentUserPoint } = useSocketState();
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
 
@@ -27,17 +26,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     return dimensions;
   };
 
-  useEffect(() => {
-    if(recentUserPoint){
-      if(userPointIds){
-        const updatedPointIds = userPointIds.concat([recentUserPoint._id]);
-        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
-      } else {
-        localStorage.setItem('my-point-ids', JSON.stringify([recentUserPoint._id]));
-      }
-    }
-  }, [recentUserPoint]);
-
   const dimensions = useResizeObserver(wrapperRef);
   let globalDataArray = [];
   let userDataPointsArray = [];
@@ -46,8 +34,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
   else {
-    globalDataArray = data.filter(point=> (!userPointIds.includes(point._id))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
-    userDataPointsArray = data.filter(point => userPointIds.includes(point._id)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
 
   useEffect(() => {
