@@ -34,11 +34,11 @@ const ScatterplotPiApprox = ({ data, xMax, yMax }) => {
     wrapper.style('height', `${2 / 3 * width}px`);
 
     const xScale = scaleLinear()
-      .domain([0, xMax])
+      .domain([0, xMax + xMax / 20])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, yMax])
+      .domain([0, yMax + yMax / 20])
       .range([height, 0]);
 
     svg
@@ -47,9 +47,7 @@ const ScatterplotPiApprox = ({ data, xMax, yMax }) => {
       .join('circle')
       .attr('cy', data => yScale(data[1]))
       .attr('r', 3)
-      .style('fill', '#f5f5f5')
-      .attr('stroke', '#7593c0')
-      .attr('stroke-width', 0.5)
+      .style('fill', 'whitesmoke')
       .on('mouseenter', function(value) {
         select(this)
           .attr('r', 10);
