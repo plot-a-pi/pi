@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Scatterplot from './Scatterplot';
 import PropTypes from 'prop-types';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
@@ -6,6 +6,8 @@ import styles from '../graphs/CircumferenceVsDiameter.css';
 
 const SessionGraph = ({ match }) => {
   const { id } = match.params;
+  const [xMax, setXMax] = useState(100);
+  const [yMax, setYMax] = useState(100);
   const socket = useSocket();
 
   const emitJoinSession = useEmitEvent('JOIN_SESSION');
@@ -22,8 +24,16 @@ const SessionGraph = ({ match }) => {
     }
   }, [socket.connected]);
 
-  let yMax = sessionStats.circumferenceMax ? sessionStats.circumferenceMax : 100;
-  let xMax = sessionStats.diameterMax ? sessionStats.diameterMax : 100;
+  useEffect(() => {
+    if(!sessionStats?.circumferenceMax){
+      setXMax(100);
+      setYMax(100);
+    } else {
+      setXMax(sessionStats?.circumferenceMax),
+      setYMax(sessionStats?.diameterMax);
+    }
+  }, [sessionStats]);
+
   let dataArray = [];
 
   dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
