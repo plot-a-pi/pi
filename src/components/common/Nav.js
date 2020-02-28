@@ -40,7 +40,7 @@ const Nav = () => {
             color: 'purple'
           }}>
             <input style={{ display: 'none' }} id='teachers' value='teachers'  onChange={handleChange} />
-            <label htmlFor='teachers'>For Teachers</label>
+            <label htmlFor='teachers'>For Groups</label>
           </NavLink>
           <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/pifaqs' activeStyle={{

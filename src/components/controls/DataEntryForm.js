@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './DataEntryForm.css';
 import { useFormInput } from '../../hooks/useFormInput';
-import { globalStatsCollection } from '../../firebase/firebase';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
@@ -25,26 +24,15 @@ const DataEntryForm = () => {
     if(circumferenceAsNumber <= 0 || diameterAsNumber <= 0) return alert('Please enter a positive number.');
     if(circumferenceUnit !== diameterUnit) return alert('Are you sure your units are correct?');
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
+    // if(Math.abs(circumferenceAsNumber / diameterAsNumber) > 0.15) return alert('Are you sure you measured accurately?');
 
-
-    globalStatsCollection.doc('current-stats').get().then((stats) => {
-      if(localStorage.getItem('my-point-ids')){
-        const pointIds = JSON.parse(localStorage.getItem('my-point-ids'));
-        const updatedPointIds = pointIds.concat([stats.data().count + 1]);
-        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
-      } else {
-        localStorage.setItem('my-point-ids', JSON.stringify([stats.data().count + 1]));
+    emitCreateDataPoint({
+      payload: {
+        circumference: Number(circumference),
+        diameter: Number(diameter),
+        circumferenceUnit,
+        diameterUnit
       }
-
-      emitCreateDataPoint({
-        payload: {
-          pointId: stats.data().count + 1,
-          circumference: Number(circumference),
-          diameter: Number(diameter),
-          circumferenceUnit,
-          diameterUnit
-        }
-      });
     });
 
     resetCircumference();
@@ -78,7 +66,7 @@ const DataEntryForm = () => {
               <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
-            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
+            <Modal showModal={showCircumferenceModal} toggleModal={toggleCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object.'} />
           </div>
         </div>
         <div className={styles.formInputWrapper}>
@@ -93,7 +81,7 @@ const DataEntryForm = () => {
               <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
-            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
+            <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. '} />
           </div>
         </div>
         <button className={styles.plotButton}>Plot!</button>

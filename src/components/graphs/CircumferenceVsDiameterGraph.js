@@ -1,12 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
-import MathJax from 'react-mathjax';
 import { PropTypes } from 'prop-types';
 import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import { useSocketState } from 'react-socket-io-hooks';
 
 const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
+  const { recentUserPoint } = useSocketState();
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
 
@@ -26,6 +27,17 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     return dimensions;
   };
 
+  useEffect(() => {
+    if(recentUserPoint){
+      if(userPointIds){
+        const updatedPointIds = userPointIds.concat([recentUserPoint._id]);
+        localStorage.setItem('my-point-ids', JSON.stringify(updatedPointIds));
+      } else {
+        localStorage.setItem('my-point-ids', JSON.stringify([recentUserPoint._id]));
+      }
+    }
+  }, [recentUserPoint]);
+
   const dimensions = useResizeObserver(wrapperRef);
   let globalDataArray = [];
   let userDataPointsArray = [];
@@ -34,20 +46,17 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
   else {
-    globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
-    userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    globalDataArray = data.filter(point=> (!userPointIds.includes(point._id))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
+    userDataPointsArray = data.filter(point => userPointIds.includes(point._id)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
-
-  let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
-
-  if(!stats) return;
-  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean}`;}
 
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${2 / 3 * width}px`);
 
     const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
 
@@ -60,44 +69,18 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .range([height, 0]);
 
     svg
-      .selectAll('.user-point')
-      .data(userDataPointsArray)
-      .join('circle')
-      .attr('class', 'user-point')
-      .attr('r', 5)
-      .style('fill', '#f5f5f5')
-      .attr('opacity', 0.8)
-      .on('mouseenter', function(value) {
-        svg
-          .selectAll('.tooltip')
-          .data([value])
-          .join('text')
-          .attr('class', 'tooltip')
-          .attr('r', 10)
-          .text('(' + value + ')')
-          .attr('x', xScale(value[0]) + 5)
-          .attr('y', yScale(value[1]) - 5)
-          .style('fill', '#f5f5f5')
-          .style('font-size', 'larger')
-          .style('font-weight', 'bolder')
-          .transition()
-          .duration(500)
-          .attr('y', yScale(value[1]) - 10);
-        // .attr('opacity', 1);
-        select(this)
-          .transition()
-          .duration(500)
-          .attr('r', 10);
-      })
-      .on('mouseleave', function(){
-        select(this).attr('r', 5);
-        svg.select('.tooltip').remove();
-      })
-      .transition()
-      .delay(1500)
-      .duration(1500)
-      .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
-      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
+      .selectAll('line')
+      .remove('line');
+
+    svg
+      .append('line')
+      .style('stroke', 'blue')
+      .style('stroke-width', 2)
+      .attr('x1', 0)
+      .attr('y1', height)
+      .attr('x2', xScale(lineEndpoint[0]))
+      .attr('y2', yScale(lineEndpoint[1]));
+
 
     svg
       .selectAll('.global-point')
@@ -140,6 +123,46 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('cy', globalDataArray => yScale(globalDataArray[1]));
 
     svg
+      .selectAll('.user-point')
+      .data(userDataPointsArray)
+      .join('circle')
+      .attr('class', 'user-point')
+      .attr('r', 5)
+      .style('fill', '#f5f5f5')
+      .attr('opacity', 0.8)
+      .on('mouseenter', function(value) {
+        svg
+          .selectAll('.tooltip')
+          .data([value])
+          .join('text')
+          .attr('class', 'tooltip')
+          .attr('r', 10)
+          .text('(' + value + ')')
+          .attr('x', xScale(value[0]) + 5)
+          .attr('y', yScale(value[1]) - 5)
+          .style('fill', '#f5f5f5')
+          .style('font-size', 'larger')
+          .style('font-weight', 'bolder')
+          .transition()
+          .duration(500)
+          .attr('y', yScale(value[1]) - 10);
+        // .attr('opacity', 1);
+        select(this)
+          .transition()
+          .duration(500)
+          .attr('r', 10);
+      })
+      .on('mouseleave', function(){
+        select(this).attr('r', 5);
+        svg.select('.tooltip').remove();
+      })
+      .transition()
+      .delay(1500)
+      .duration(1500)
+      .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
+      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
+
+    svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
       .call(axisBottom(xScale));
@@ -148,19 +171,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    svg
-      .selectAll('line')
-      .remove('line');
-
-    svg
-      .append('line')
-      .style('stroke', 'blue')
-      .style('stroke-width', 5)
-      .attr('x1', 0)
-      .attr('y1', height)
-      .attr('x2', xScale(lineEndpoint[0]))
-      .attr('y2', yScale(lineEndpoint[1]));
-
+    
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
@@ -174,14 +185,6 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
 
   return (
     <>
-      <div className={styles.stats}>
-        <h2>Total Points: <span>{stats.count}</span></h2>
-        <MathJax.Provider>
-          <div className={styles.stats}>
-            <MathJax.Node formula={statsEquation} />
-          </div>
-        </MathJax.Provider>
-      </div>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
           <g className={'x-axis'}></g>
