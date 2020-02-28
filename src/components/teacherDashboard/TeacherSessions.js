@@ -60,9 +60,9 @@ const TeacherSessions = () => {
       <li key={session._id}>
         <h3>{session.name}</h3>
         <div className={styles.sessionLinks}>
-          <button className={styles.sessionButton}><Link target='_blank' to={`/session/${session._id}`}>Get  Link</Link></button>
-          <button onClick={() => handleDownload(session._id)}>Download Data</button>
-          <button className={styles.sessionButton}><Link target='_blank' to={`/session-graph/${session._id}`}>View Graph</Link></button>
+          <Link className={styles.sessionButton} target='_blank' to={`/session/${session._id}`}>Get  Link</Link>
+          <Link className={styles.sessionButton} target='_blank' to={`/session-graph/${session._id}`}>View Graph</Link>
+          <Link className={styles.sessionButton} onClick={() => handleDownload(session._id)}>Download Data</Link>
         </div>
       </li>
     );
@@ -72,7 +72,7 @@ const TeacherSessions = () => {
     <section className={styles.wrapper}>
       <div className={styles.TeacherSessions}>
         <form onSubmit={onSubmit} className={styles.sessionForm}>
-          <input type='text' value={sessionName} onChange={({ target }) => setSessionName(target.value)}></input>
+          <input type='text' placeholder={'Enter Session Name'} onChange={({ target }) => setSessionName(target.value)}></input>
           <button>Create</button>
         </form>
         <ul className={styles.sessionListWrapper}>
