@@ -35,6 +35,9 @@ const ButtonNav = () => {
         </Link>
       </div>
       <div className={styles.nav}>
+        <Link to='/'>
+          <button>Home</button>
+        </Link>
         <Link to='/teachers'>
           <button>For Teachers</button>
         </Link>
