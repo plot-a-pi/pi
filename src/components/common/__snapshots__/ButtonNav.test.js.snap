@@ -9,14 +9,14 @@ exports[`ButtonNav should render ButtonNav 1`] = `
       to="/"
     >
       <button>
-        Home Page
+        Home
       </button>
     </Link>
     <Link
       to="/teachers"
     >
       <button>
-        For Groups
+        Groups
       </button>
     </Link>
     <Link
@@ -30,7 +30,7 @@ exports[`ButtonNav should render ButtonNav 1`] = `
       to="/submit-to-global"
     >
       <button>
-        Plot A Pi
+        Plot Pi!
       </button>
     </Link>
   </div>
