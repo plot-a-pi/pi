@@ -36,10 +36,10 @@ const ButtonNav = () => {
       </div>
       <div className={styles.nav}>
         <Link to='/'>
-          <button>Home</button>
+          <button>Home Page</button>
         </Link>
         <Link to='/teachers'>
-          <button>For Teachers</button>
+          <button>For Groups</button>
         </Link>
         <Link to='/montecarlo'>
           <button>Monte Carlo</button>

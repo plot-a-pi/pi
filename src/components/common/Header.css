@@ -1,4 +1,6 @@
-
+.wrapper {
+  margin-bottom: 3vh;
+}
 .Header {
   font-family: 'Roboto Mono';
   display: grid;
