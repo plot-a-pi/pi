@@ -28,7 +28,7 @@ const CircumferenceVsDiameterWrapper = () => {
       <div className={graphContainerStyles.GraphGridMock}>
         <div className={graphContainerStyles.gridContainer}>
           <div className={graphContainerStyles.yLabel}>
-            <p>Circumference (cm)</p> 
+            <p>Circumference (in)</p> 
           </div>
           <div className={graphContainerStyles.title}>
             <h2>Global Data for Circumference Vs Diameter</h2>
@@ -41,12 +41,12 @@ const CircumferenceVsDiameterWrapper = () => {
             </section>
           </div>
           <div className={graphContainerStyles.xLabel}>
-            <p>Diameter (cm)</p>
+            <p>Diameter (in)</p>
             <div className={graphContainerStyles.dataDownload}>
             </div>
           </div>
+          <CSVButton  header1='Diameter' header2='Circumference' data={dataForCSV} />
         </div>
-        <CSVButton  header1='Diameter' header2='Circumference' data={dataForCSV} />
       </div>
     </>
   );
