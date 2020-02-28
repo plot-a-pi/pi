@@ -41,6 +41,14 @@
             align-self: flex-end;
         }
 
+        .scatterplot {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 5vh;
+            width: 85vw;
+            margin-left: 2em;
+          }
+
         .xLabel { 
             grid-area: 3 / 2 / 4 / 3;
             display: flex;
@@ -54,5 +62,8 @@
                 font-size: .08em;
             }
         }
-    }   
+    }  
+    
+    
+
 }
