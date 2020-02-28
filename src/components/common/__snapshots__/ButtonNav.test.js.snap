@@ -5,34 +5,34 @@ exports[`ButtonNav should render ButtonNav 1`] = `
   <div
     className="nav"
   >
-    <Link
+    <Component
       to="/"
     >
       <button>
         Home Page
       </button>
-    </Link>
-    <Link
+    </Component>
+    <Component
       to="/teachers"
     >
       <button>
         For Groups
       </button>
-    </Link>
-    <Link
+    </Component>
+    <Component
       to="/montecarlo"
     >
       <button>
         Monte Carlo
       </button>
-    </Link>
-    <Link
+    </Component>
+    <Component
       to="/submit-to-global"
     >
       <button>
         Plot A Pi
       </button>
-    </Link>
+    </Component>
   </div>
 </Fragment>
 `;
