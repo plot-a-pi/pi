@@ -54,7 +54,7 @@ const TeacherSessions = () => {
   };
 
   const headers = ['diameter', 'circumference'];
-  
+
   const sessionElements = sessions.map(session => {
     return (
       <li key={session._id}>
