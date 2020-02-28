@@ -48,6 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
 
             p {
                 display: flex;
@@ -55,6 +56,28 @@
                 align-content: center;
                 font-size: .08em;
             }
+
+            .dataDownload {
+
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                width: 100px;                
+                color: #F5F5F5;
+                background-color: #223493;
+                opacity: .75;
+                border-radius: .5rem;
+                text-align: center;
+
+
+                button {
+                background-color: transparent;
+                border-style: none;
+                }
+
+            }
         }
     }   
+
+    
 }
