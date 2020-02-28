@@ -17,14 +17,14 @@ const CSVButton = ({ data, header1, header2 }) => {
     return (
       <button onClick={() => {
         setReady(!ready);
-      }}> Download Icon
+      }}>Raw Data
       </button>);
   }
   else return (
     <>
       <button onClick={() => {
         setReady(!ready);
-      }}> Download Icon
+      }}>Raw Data
       </button>
       <CSVDownload data={csvDataPreparedForHeaders} target="_self" headers={headers} />
     </>);
