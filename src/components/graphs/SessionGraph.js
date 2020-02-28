@@ -42,7 +42,10 @@ const SessionGraph = ({ match }) => {
       <div className={styles.GraphGridMock}>
         <div className={styles.gridContainer}>
           <div className={styles.yLabel}>
-            <p>Circumference</p> 
+            <p>Circumference (in)</p> 
+          </div>
+          <div className={styles.title}>
+            <h2>Session Circumference vs Diameter</h2>
           </div>
           <div className={styles.graph}>
             <section>
@@ -52,7 +55,7 @@ const SessionGraph = ({ match }) => {
             </section>
           </div>
           <div className={styles.xLabel}>
-            <p>Diameter</p>
+            <p>Diameter (in)</p>
           </div>
         </div>
       </div>

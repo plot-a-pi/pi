@@ -37,7 +37,9 @@
 }
 
 .sessionNav {
+  background-color: rgba(245, 245, 245, 0.808);
   display: flex;
   justify-content: flex-end;
   margin-right: 2%;
+  padding-bottom: .5em;
 }

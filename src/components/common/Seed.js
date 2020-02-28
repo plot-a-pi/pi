@@ -10,9 +10,7 @@ const Seed = () => {
       
       const randomNumber = Math.ceil(Math.random() * 100);
       setTimeout(() => {
-        console.log(i);
         emitCreateDataPoint({
-          
           payload: {
             diameter: randomNumber,
             diameterUnit: 'in',
@@ -34,8 +32,6 @@ const Seed = () => {
     
   }, [socket.connected]);
   
-  
-
   return (
     <p>seeding..</p>
   );
