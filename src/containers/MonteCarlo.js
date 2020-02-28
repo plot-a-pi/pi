@@ -6,15 +6,16 @@ import { useModal } from '../hooks/useModal';
 import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
-import Scatterplot from '../components/graphs/Scatterplot';
+import ScatterplotPiApprox from '../components/graphs/ScatterplotPiApprox';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
-import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
+import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMin, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
-import CSVButton from '../components/common/CSVButton';
 
 const MonteCarlo = () => {
-  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMax: 4 });
+
+  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMin: 2, yMax: 4 });
+
   const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
@@ -30,7 +31,9 @@ const MonteCarlo = () => {
   const circleTotal = getCircleTotal(piState);
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
+  const yMin = getYMin(piState);
   const yMax = getYMax(piState);
+
   
   const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
   const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
@@ -45,7 +48,7 @@ const MonteCarlo = () => {
                 <p>y</p> 
               </div>
               <div className={GridWrapperStyles.title}>
-                <h2>MonteCarlo</h2>
+                <h2>Monte Carlo Approximation of Pi</h2>
               </div>
               <div className={GridWrapperStyles.graph}>
                 <MonteCarloScatterplot data={dartsArray} />
@@ -84,7 +87,7 @@ const MonteCarlo = () => {
             <h2>Pi Approximation vs Total Darts</h2>
           </div>
           <div className={GridWrapperStyles.scatterplot} >
-            <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+            <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} />
           </div>
           <div className={GridWrapperStyles.xLabel}>
             <p>Total Darts</p>

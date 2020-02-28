@@ -1,14 +1,23 @@
 import { ADD_1_DART, ADD_10_DARTS, ADD_100_DARTS, ADD_1000_DARTS, CLEAR_DARTS } from '../actions/monteCarloActions';
 import { generateMonteCarloData } from '../data/monteCarlo';
 
-// refactor to avoid redundancy
+// refactor with factory method
+// research more efficient solution for updating piApproximationsArray
+// integrate tracking yMin functionality to enhance graph readability
 
 export default function reducer(state, action) {
   switch(action.type){
     case ADD_1_DART:
     {
       const data = generateMonteCarloData(1, state.circleTotal, state.dartsTotal);
-      return { ...state, dartsTotal: state.dartsTotal + 1, circleTotal: data.newCircleTotal, dartsArray: state.dartsArray.concat(data.newDartsArray), piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray), yMax: data.piMax > state.yMax ? data.piMax : state.yMax };
+      return { 
+        ...state, 
+        dartsTotal: state.dartsTotal + 1, 
+        circleTotal: data.newCircleTotal, 
+        dartsArray: state.dartsArray.concat(data.newDartsArray), 
+        piApproximationsArray: state.piApproximationsArray.concat(data.newPiApproximationsArray), 
+        yMax: data.piMax > state.yMax ? data.piMax : state.yMax 
+      };
     }
     case ADD_10_DARTS:
     {
