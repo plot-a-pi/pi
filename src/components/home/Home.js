@@ -5,7 +5,6 @@ import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import styles from './Home.css';
 import PiCrawler from '../common/PiCrawler';
-import CSVButton from '../common/CSVButton';
 
 const Home = () => {
   const [showIntroModal, toggleIntroModal] = useModal();
