@@ -52,7 +52,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
       .attr('cy', data => yScale(data[1]))
       .attr('r', pointRadius(data.length))
       .style('fill', '#f5f5f5')
-      .attr('stroke-width', 0.5)
+      .attr('opacity', 0.9)
       .on('mouseenter', function(value) {
         select(this)
           .attr('r', 10);
@@ -66,9 +66,9 @@ const Scatterplot = ({ data, xMax, yMax }) => {
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
           .attr('stroke', '#212E59')
-          .attr('stroke-width', '2')
+          .attr('stroke-width', '1')
           .style('fill', 'white')
-          .style('font-size', '2em')
+          .style('font-size', 'x-large')
           .style('font-weight', '900')
           .transition()
           .duration(500)

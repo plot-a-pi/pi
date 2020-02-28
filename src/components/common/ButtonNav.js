@@ -9,7 +9,7 @@ const ButtonNav = () => {
     return (
       <div className={styles.sessionNav}>
         <Link to='/'>
-          <button>Back to Home</button>
+          <button>Home</button>
         </Link>
       </div>
     );

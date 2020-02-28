@@ -82,7 +82,16 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object."
+                modalInstructions={
+                  <div>
+                    <p>
+                      The circumference is the distance around the circle.
+                    </p>
+                    <p>
+                      Determine the length of string required to wrap around a circular object.
+                    </p>
+                  </div>
+                }
                 modalTitle="Circumference"
                 showModal={false}
                 toggleModal={[Function]}
@@ -102,7 +111,14 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object.
+                        <div>
+                          <p>
+                            The circumference is the distance around the circle.
+                          </p>
+                          <p>
+                            Determine the length of string required to wrap around a circular object.
+                          </p>
+                        </div>
                       </p>
                     </div>
                   </div>
@@ -148,7 +164,16 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. "
+                modalInstructions={
+                  <div>
+                    <p>
+                      The diameter is the distance across the circle.
+                    </p>
+                    <p>
+                      Use a ruler to measure the widest path across the circle.
+                    </p>
+                  </div>
+                }
                 modalTitle="Diameter"
                 showModal={false}
                 toggleModal={[Function]}
@@ -168,7 +193,14 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. 
+                        <div>
+                          <p>
+                            The diameter is the distance across the circle.
+                          </p>
+                          <p>
+                            Use a ruler to measure the widest path across the circle.
+                          </p>
+                        </div>
                       </p>
                     </div>
                   </div>
