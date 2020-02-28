@@ -28,8 +28,8 @@
             align-items: center;
             justify-content: center;
         
-            h2 {
-                font-size: .75em;
+            p {
+                font-size: 1em;
             }
         }
 

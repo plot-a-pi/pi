@@ -1,4 +1,6 @@
 .CSVButton {
+  position: absolute;
+  right: 15px;
   width: 55px;
   font-size: 10px;
   text-align: center;

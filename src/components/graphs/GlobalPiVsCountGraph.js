@@ -28,18 +28,20 @@ const GlobalPiVsCountGraph = () => {
             <p>Pi Approximation</p> 
           </div>
           <div className={GraphGridStyles.title}>
-            <h2>Global Pi Approximation vs Count</h2>
+            <p>Global Pi Approximation vs Count</p>
           </div>
           <div className={GraphGridStyles.graph}>
             <section>
-              <Scatterplot className={Styles.global} data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
+              <div>
+                <Scatterplot className={Styles.global} data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
+              </div>
             </section>
           </div>
           <div className={GraphGridStyles.xLabel}>
             <p>Count</p>
+            <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
           </div>
         </div>
-        <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
       </div>
     </>
   );

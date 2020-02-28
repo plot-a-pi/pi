@@ -13,7 +13,6 @@ const Home = () => {
 
   return (
     <div className={styles.home}>
-      <PiCrawler />
       <section className={styles.introduction}>
         <div className={styles.whatsThis}>
           <h3>What&apos;s this about...</h3>
@@ -27,6 +26,7 @@ const Home = () => {
           <GlobalPiVsCountGraph />
         </div>
       </section>
+      <PiCrawler />
     </div>
   );
 };
