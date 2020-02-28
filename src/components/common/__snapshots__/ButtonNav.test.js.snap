@@ -25,6 +25,13 @@ exports[`ButtonNav should render ButtonNav 1`] = `
     className="nav"
   >
     <Link
+      to="/"
+    >
+      <button>
+        Home
+      </button>
+    </Link>
+    <Link
       to="/teachers"
     >
       <button>
