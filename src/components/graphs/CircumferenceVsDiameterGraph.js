@@ -89,16 +89,15 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
-          .style('fill', '#f5f5f5')
-          .style('font-size', 'larger')
-          .style('font-weight', 'bolder')
+          .attr('stroke', 'white')
+          .attr('stroke-width', '2')
+          .style('fill', '#212E59')
+          .style('font-size', '2em')
+          .style('font-weight', '900')
           .transition()
           .duration(500)
           .attr('y', yScale(value[1]) - 10);
-        // .attr('opacity', 1);
         select(this)
-          // .transition()
-          // .duration(500)
           .attr('r', 10);
       })
       .on('mouseleave', function(){
@@ -115,8 +114,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .data(userDataPointsArray)
       .join('circle')
       .attr('class', 'user-point')
-      .attr('r', 5)
-      .style('fill', '#f5f5f5')
+      .attr('r', 7)
+      .style('fill', '#99CCFF')
       .attr('opacity', 0.8)
       .on('mouseenter', function(value) {
         svg
@@ -124,21 +123,19 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .data([value])
           .join('text')
           .attr('class', 'tooltip')
-          .attr('r', 10)
           .text('(' + value + ')')
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
-          .style('fill', '#f5f5f5')
-          .style('font-size', 'larger')
-          .style('font-weight', 'bolder')
+          .attr('stroke', 'white')
+          .attr('stroke-width', '2')
+          .style('fill', '#212E59')
+          .style('font-size', '2em')
+          .style('font-weight', '900')
           .transition()
           .duration(500)
           .attr('y', yScale(value[1]) - 10);
-        // .attr('opacity', 1);
         select(this)
-          .transition()
-          .duration(500)
-          .attr('r', 10);
+          .attr('r', 12);
       })
       .on('mouseleave', function(){
         select(this).attr('r', 5);
@@ -159,7 +156,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .select('.y-axis')
       .call(axisLeft(yScale));
 
-    
+
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
