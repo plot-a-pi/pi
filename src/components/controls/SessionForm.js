@@ -5,6 +5,8 @@ import { useFormInput } from '../../hooks/useFormInput';
 import { useEmitEvent } from 'react-socket-io-hooks';
 import { useModal } from '../../hooks/useModal';
 import Modal from '../common/Modal';
+import Icon from '../../assets/192566_256x256.png';
+
  
 const SessionForm = ({ match }) => {
   const emitNewSessionData = useEmitEvent('NEW_SESSION_DATA');
@@ -49,7 +51,7 @@ const SessionForm = ({ match }) => {
     <div className={styles.DataEntryForm}>
       <h2>Plot your <span className={styles.pI}>π</span></h2>
       <div >
-        <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
+        <img className={styles.svgContainer} src={Icon} alt='Circumference vs Diameter Diagram'/>
       </div>
       <form onSubmit={handleSubmit} >
         <div className={styles.formInputWrapper}>
@@ -58,10 +60,7 @@ const SessionForm = ({ match }) => {
             <input type='text' required value={circumference} {...bindCircumference} />
             <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleCircumferenceModal()}> ? </button>
             <Modal showCircumferenceModal={showCircumferenceModal} modalTitle={'Circumference'} modalInstructions={'How to measure circumference'} />
@@ -73,10 +72,7 @@ const SessionForm = ({ match }) => {
             <input type='text' required value={diameter} {...bindDiameter} />
             <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit}>
               <option value=''></option>
-              <option value="cm">cm</option>
               <option value="in">in</option>
-              <option value="m">m</option>
-              <option value="ft">ft</option>
             </select>
             <button className={styles.modalButton} type='button' onClick={() => toggleDiameterModal()}> ? </button>
             <Modal showDiameterModal={showDiameterModal} modalTitle={'Diameter'} modalInstructions={'How to measure diameter'} />
