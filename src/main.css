@@ -33,18 +33,21 @@
     }
 
     button {
-        background-color: #223493;
-        color: #F5F5F5;
+        background-color: whitesmoke;
+        color: #223493;
+        font-size: 14px;
         border: 1.5px solid #A4A6C9;
         border-radius: .5rem;
+        padding: .25em .5em .25em .5em;
 
     }
 
     button:hover {
-        background-color: #A4A6C9;
-        color: #223493;
+        background-color: #223493;
+        color: whitesmoke;
         border: 1.5px solid #223493;
         border-radius: .5rem;
+        outline-style: none;
     }
 
     }
