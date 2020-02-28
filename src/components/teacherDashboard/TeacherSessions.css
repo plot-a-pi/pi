@@ -1,3 +1,25 @@
+.wrapper{
+
+
+    align-items: center;
+                    .signout{
+                        display: flex;
+                        margin-bottom: 1vh;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        margin-right: 2%;
+                        margin-top: 10%;
+
+                        p{
+                            font-size:  small;
+                            margin-right: 2%;
+                            color: #212e59;
+                            margin-bottom: 2px;
+                        }
+                    }
+                }
 .TeacherSessions {
     font-family: 'Roboto Mono';
     width: 95vw;
@@ -44,9 +66,9 @@
         text-decoration: none;
         background-color: transparent;
         color: whitesmoke;
-     }
+    }
 
-     button {
+    button {
         min-height: 30px;
     }
 
@@ -79,4 +101,5 @@
         color: #223493;
         outline: none;
     }
+
 }

@@ -19,8 +19,7 @@ const DataEntryForm = () => {
   const history = useHistory();
 
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
     const circumferenceAsNumber = Number(circumference);
     const diameterAsNumber = Number(diameter);
 
@@ -54,7 +53,7 @@ const DataEntryForm = () => {
       <div >
         <img className={styles.svgContainer} src='/src/assets/192566_256x256.png' alt='Circumference vs Diameter Diagram'/>
       </div>
-      <form onSubmit={handleSubmit} >
+      <form>
         <div className={styles.formInputWrapper}>
           <h3>Circumference</h3>
           <div className={styles.measurementWrapper}>
@@ -85,7 +84,7 @@ const DataEntryForm = () => {
             <Modal showModal={showDiameterModal} toggleModal={toggleDiameterModal} modalTitle={'Diameter'} modalInstructions={'The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. '} />
           </div>
         </div>
-        <button className={styles.plotButton}>Plot!</button>
+        <button className={styles.plotButton} onClick={handleClick}>Plot!</button>
       </form>
     </div>
   );
