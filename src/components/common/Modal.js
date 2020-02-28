@@ -8,7 +8,7 @@ const Modal = ({ modalInstructions, showModal, toggleModal }) => {
     <section>
       <div className={`${styles.Modal} ${showModal ? styles.modalShow : styles.modalHide}`}>
         <div className={styles.modalHeader}>
-          <button className={styles.closeButton} onClick={toggleModal}>&times;</button>
+          <button className={styles.closeButton} type='button' onClick={toggleModal}>&times;</button>
           <p>{modalInstructions}</p>
         </div>
       </div>

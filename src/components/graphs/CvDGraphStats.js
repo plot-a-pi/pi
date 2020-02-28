@@ -13,9 +13,9 @@ const CvDGraphStats = ({ stats }) => {
   
   return (
     <div className={styles.stats}>
-      <h2>Total Points: <span>{stats.count}</span></h2>
+      <h3>Total Points: <span>{stats.count}</span></h3>
       <MathJax.Provider>
-        <div className={styles.stats}>
+        <div className={styles.formula}>
           <MathJax.Node formula={statsEquation} />
         </div>
       </MathJax.Provider>

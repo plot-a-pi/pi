@@ -1,3 +1,25 @@
+.wrapper{
+
+
+    align-items: center;
+                    .signout{
+                        display: flex;
+                        margin-bottom: 1vh;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        margin-right: 2%;
+                        margin-top: 10%;
+
+                        p{
+                            font-size:  small;
+                            margin-right: 2%;
+                            color: #212e59;
+                            margin-bottom: 2px;
+                        }
+                    }
+                }
 .TeacherSessions {
     font-family: 'Roboto Mono';
     width: 95vw;
@@ -29,7 +51,7 @@
     .sessionLinks {
         display: flex;
         justify-content: space-evenly;
-
+        margin-bottom: 2vh
     }
 
     h2 {
@@ -44,10 +66,10 @@
         text-decoration: none;
         background-color: transparent;
         color: whitesmoke;
-     }
+    }
 
-     button {
-        height: 30px;
+    button {
+        min-height: 30px;
     }
 
     input {
@@ -76,7 +98,8 @@
         border-color: #aaa;
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
-        color: #223493; 
+        color: #223493;
         outline: none;
     }
+
 }

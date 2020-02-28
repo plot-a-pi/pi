@@ -1,6 +1,7 @@
+import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
 import React, { useEffect } from 'react';
 import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
-import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
+import CSVButton from '../common/CSVButton';
 import graphContainerStyles from './CircumferenceVsDiameter.css';
 import CvDGraphStats from './CvDGraphStats';
 
@@ -18,6 +19,8 @@ const CircumferenceVsDiameterWrapper = () => {
       emitGlobalStats();
     }
   }, [socket.connected]);
+
+  const dataForCSV = points.map(datum => ([datum.diameter, datum.circumference]));
 
   return (
     <>
@@ -41,6 +44,7 @@ const CircumferenceVsDiameterWrapper = () => {
             <p>Diameter (cm)</p>
           </div>
         </div>
+        <CSVButton header1='Diameter' header2='Circumference' data={dataForCSV} />
       </div>
     </>
   );
