@@ -66,7 +66,7 @@ const Scatterplot = ({ data, xMax, yMax }) => {
           .attr('x', xScale(value[0]) + 5)
           .attr('y', yScale(value[1]) - 5)
           .attr('stroke', '#212E59')
-          .attr('stroke-width', '1')
+          .attr('stroke-width', '.5')
           .style('fill', 'white')
           .style('font-size', 'x-large')
           .style('font-weight', '900')
