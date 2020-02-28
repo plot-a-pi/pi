@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
-import graphContanerStyles from '../components/graphs/GraphGridMock.css';
+import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 // import MonteCarloDartsGraph from '../components/monteCarlo/MonteCarloDartsGraph';
 import Scatterplot from '../components/graphs/Scatterplot';
@@ -36,8 +36,8 @@ const MonteCarlo = () => {
     <div className={styles.MonteCarlo}>
       <CSVButton header1='Diameter' header2='Circumference' data={dartsArray} />
       <div className={styles.stats}>
-        <h3>Darts Inside Circle: <span>{circleTotal}</span></h3>
-        <h3>Total Darts: <span>{dartsTotal}</span></h3>
+        <p>Darts Inside Circle: <span>{circleTotal}</span></p>
+        <p>Total Darts: <span>{dartsTotal}</span></p>
         <MathJax.Provider>
           <div className={styles.stats}>
             <MathJax.Node formula={derivation} />
@@ -47,18 +47,18 @@ const MonteCarlo = () => {
       </div>
       <div className={styles.dartContainer}>
         <div className={styles.dartboard}>
-          <div className={graphContanerStyles.GraphGridMock}>
-            <div className={graphContanerStyles.gridContainer}>
-              <div className={graphContanerStyles.yLabel}>
+          <div className={GridWrapperStyles.MonteCarloGridWrapper}>
+            <div className={GridWrapperStyles.gridContainer}>
+              <div className={GridWrapperStyles.yLabel}>
                 <p>y</p> 
               </div>
-              <div className={graphContanerStyles.title}>
+              <div className={GridWrapperStyles.title}>
                 <h2>MonteCarlo</h2>
               </div>
-              <div className={graphContanerStyles.graph}>
+              <div className={GridWrapperStyles.graph}>
                 <MonteCarloScatterplot data={dartsArray} />
               </div>
-              <div className={graphContanerStyles.xLabel}>
+              <div className={GridWrapperStyles.xLabel}>
                 <p>x</p>
               </div>
             </div>
@@ -66,9 +66,23 @@ const MonteCarlo = () => {
         </div>
         <MonteCarloControls actions={actions} />
       </div>
-      <div className={styles.scatterplot}>
-        <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+      <div className={GridWrapperStyles.MonteCarloGridWrapper}>
+        <div className={GridWrapperStyles.gridContainer}>
+          <div className={GridWrapperStyles.yLabel}>
+            <p>y</p> 
+          </div>
+          <div className={GridWrapperStyles.title}>
+            <h2>MonteCarlo</h2>
+          </div>
+          <div className={styles.scatterplot}>
+            <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
+          </div>
+          <div className={GridWrapperStyles.xLabel}>
+            <p>x</p>
+          </div>
+        </div>
       </div>
+      
     </div>
   );
 };
