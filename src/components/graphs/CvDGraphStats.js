@@ -8,7 +8,7 @@ const CvDGraphStats = ({ stats }) => {
   let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
 
   if(!stats) return;
-  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean}`;}
+  else {statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean.toFixed(4)}`;}
   
   
   return (
