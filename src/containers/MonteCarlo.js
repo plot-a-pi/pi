@@ -58,36 +58,36 @@ const MonteCarlo = () => {
         </div>
         <MonteCarloControls actions={actions} />
       </div>
-      {/* <CSVButton header1='x' header2='y' data={dartsArray} /> */}
       <div className={styles.stats}>
-        <div>
+        <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
           <p>Total Darts: <span>{dartsTotal}</span></p>
         </div>
-        <MathJax.Provider>
-          <MathJax.Node formula={statsEquation} />
-        </MathJax.Provider>
-        <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
+        <div className={styles.formula}>
+          <MathJax.Provider>
+            <MathJax.Node formula={statsEquation} />
+          </MathJax.Provider>
+          <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
+        </div>
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions='Pi Approximation Derivation'>
-        <MathJax.Provider>
-          <MathJax.Node formula={derivation} />
+        <MathJax.Provider >
+          <MathJax.Node formula={derivation} style={{ 'font-size' : '8px', 'font-style': 'bold' }}/>
         </MathJax.Provider>
       </Modal>
       <div className={GridWrapperStyles.MonteCarloGridWrapper}>
         <div className={GridWrapperStyles.gridContainer}>
           <div className={GridWrapperStyles.yLabel}>
-            <p>y</p> 
+            <p>Pi Approximation</p> 
           </div>
           <div className={GridWrapperStyles.title}>
-            <h2>MonteCarlo</h2>
+            <h2>Pi Approximation vs Total Darts</h2>
           </div>
-          <div className={styles.scatterplot}>
+          <div className={GridWrapperStyles.scatterplot} >
             <Scatterplot data={numDartsVersusPiArray} xMax={dartsTotal} yMax={yMax} />
           </div>
           <div className={GridWrapperStyles.xLabel}>
-            <p>x</p>
-            <CSVButton  header1='x' header2='y' data={numDartsVersusPiArray} />
+            <p>Total Darts</p>
           </div>
         </div>
       </div>
