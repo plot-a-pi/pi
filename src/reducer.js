@@ -1,14 +1,17 @@
 export const initialState = {
   points: [],
   stats: {
-    piApproximationArray: []
+    piApproximationArray: [],
+    circumferenceMax: 50,
+    diameterMax: 50
   },
   sessions: [],
   sessionData: [],
   sessionStats: {
     circumferenceMax: null,
     diameterMax: null
-  }
+  },
+  recentUserPoint: null
 };
 
 export const UPDATE_GLOBAL = 'UPDATE_GLOBAL';
@@ -24,7 +27,7 @@ export const GET_SESSION_STATS = 'GET_SESSION_STATS';
 export default function reducer(state, action) {
   switch(action.type){
     case UPDATE_GLOBAL:
-      return { ...state, points: [...state.points, action.payload] };
+      return { ...state, points: [...state.points, action.payload],  recentUserPoint: action.payload };
     case RETRIEVE_DATA_POINTS:
       return { ...state, points: action.payload };
     case RETRIEVE_GLOBAL_STATS:
