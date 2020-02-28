@@ -99,7 +99,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="How to measure circumference"
+                modalInstructions="The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object."
                 modalTitle="Circumference"
                 showModal={false}
                 toggleModal={[Function]}
@@ -118,7 +118,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        How to measure circumference
+                        The circumference is the distance around the circle.  Determine the length of string required to wrap around a circular object.
                       </p>
                     </div>
                   </div>
@@ -179,7 +179,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="How to measure diameter"
+                modalInstructions="The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. "
                 modalTitle="Diameter"
                 showModal={false}
                 toggleModal={[Function]}
@@ -198,7 +198,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        How to measure diameter
+                        The diameter is the distance across the circle.  Use a ruler to measure the widest path across the circle. 
                       </p>
                     </div>
                   </div>
