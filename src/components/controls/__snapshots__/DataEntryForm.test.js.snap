@@ -40,12 +40,10 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           <img
             alt="Circumference vs Diameter Diagram"
             className="svgContainer"
-            src="/src/assets/192566_256x256.png"
+            src="/path/image"
           />
         </div>
-        <form
-          onSubmit={[Function]}
-        >
+        <form>
           <div
             className="formInputWrapper"
           >
@@ -71,24 +69,9 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                   value=""
                 />
                 <option
-                  value="cm"
-                >
-                  cm
-                </option>
-                <option
                   value="in"
                 >
                   in
-                </option>
-                <option
-                  value="m"
-                >
-                  m
-                </option>
-                <option
-                  value="ft"
-                >
-                  ft
                 </option>
               </select>
               <button
@@ -99,7 +82,16 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="How to measure circumference"
+                modalInstructions={
+                  <div>
+                    <p>
+                      The circumference is the distance around the circle.
+                    </p>
+                    <p>
+                      Determine the length of string required to wrap around a circular object.
+                    </p>
+                  </div>
+                }
                 modalTitle="Circumference"
                 showModal={false}
                 toggleModal={[Function]}
@@ -114,11 +106,19 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       <button
                         className="closeButton"
                         onClick={[Function]}
+                        type="button"
                       >
                         ×
                       </button>
                       <p>
-                        How to measure circumference
+                        <div>
+                          <p>
+                            The circumference is the distance around the circle.
+                          </p>
+                          <p>
+                            Determine the length of string required to wrap around a circular object.
+                          </p>
+                        </div>
                       </p>
                     </div>
                   </div>
@@ -151,24 +151,9 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                   value=""
                 />
                 <option
-                  value="cm"
-                >
-                  cm
-                </option>
-                <option
                   value="in"
                 >
                   in
-                </option>
-                <option
-                  value="m"
-                >
-                  m
-                </option>
-                <option
-                  value="ft"
-                >
-                  ft
                 </option>
               </select>
               <button
@@ -179,7 +164,16 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                  ? 
               </button>
               <Modal
-                modalInstructions="How to measure diameter"
+                modalInstructions={
+                  <div>
+                    <p>
+                      The diameter is the distance across the circle.
+                    </p>
+                    <p>
+                      Use a ruler to measure the widest path across the circle.
+                    </p>
+                  </div>
+                }
                 modalTitle="Diameter"
                 showModal={false}
                 toggleModal={[Function]}
@@ -194,11 +188,19 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       <button
                         className="closeButton"
                         onClick={[Function]}
+                        type="button"
                       >
                         ×
                       </button>
                       <p>
-                        How to measure diameter
+                        <div>
+                          <p>
+                            The diameter is the distance across the circle.
+                          </p>
+                          <p>
+                            Use a ruler to measure the widest path across the circle.
+                          </p>
+                        </div>
                       </p>
                     </div>
                   </div>
@@ -208,6 +210,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
           </div>
           <button
             className="plotButton"
+            onClick={[Function]}
           >
             Plot!
           </button>

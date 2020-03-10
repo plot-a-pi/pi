@@ -10,20 +10,20 @@
         text-align: center;
 
         .yLabel { 
-            grid-area: 1 / 1 / 4 / 2; 
-            text-align: center;
+            grid-area: 2 / 1 / 4 / 2; 
+            justify-content: center;
             align-items: center;
             overflow: hidden;
 
             p {
             width: 50vh;
             transform-origin: top right;
-            transform: rotate(-90deg) translate(0, -87vw);
+            transform: rotate(-90deg) translate(10vh, -87vw);
             font-size: .08em;
             }
         }
         .title { 
-            grid-area: 1 / 2 / 2 / 3; 
+            grid-area: 1 / 1 / 2 / 3; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -36,7 +36,7 @@
         .graph { 
             grid-area: 2 / 2 / 3 / 3; 
             margin-left: 3vw;
-            margin-bottom: 3vh;
+            margin-bottom: 2vh;
             display: flex;
             align-self: flex-end;
             width: 100%;
@@ -48,6 +48,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+
 
             p {
                 display: flex;

@@ -2,12 +2,13 @@
     position: fixed; 
     padding: .5em;
     left: 25vw; 
-    top: 25vh;
-    width: 50vw;
+    top: 30vh;
+    width: 55vw;
     height: 20vh; 
     border: 1px solid #223493;
     border-radius: 1em;
-    background-color: whitesmoke;      
+    background-color: whitesmoke;  
+    z-index: 2;    
     }
 
     button {
@@ -23,6 +24,7 @@
         align-items: center;
         color:black;
         opacity: 1;
+        height: fit-content;
     }
 
     .modalHeader {

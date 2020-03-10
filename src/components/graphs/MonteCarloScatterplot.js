@@ -79,7 +79,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .join('circle')
       .attr('cx', data => xScale(data[0]))
       .attr('cy', data => yScale(data[1]))
-      .attr('r', 4)
+      .attr('r', 3)
       .attr('class', 'points')
       .attr('stroke', '#212e59')
       .attr('stroke-width', '1')
@@ -98,18 +98,18 @@ export const MonteCarloScatterplot = ({ data }) => {
 
 
   return (
-    <div className={Styles.container} ref={wrapperRef}>
-      <svg className={Styles.svg} ref={svgRef}>
-        <g className={'x-axis'}></g>
-        <g className={'y-axis'}></g>
-      </svg>
-    </div>
+    <>
+      <div className={Styles.container} ref={wrapperRef}>
+        <svg className={Styles.svg} ref={svgRef}>
+          <g className={'x-axis'}></g>
+          <g className={'y-axis'}></g>
+        </svg>
+      </div>
+    </>
   );
 };
 
 MonteCarloScatterplot.propTypes = {
-  data: PropTypes.array.isRequired,
-  xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  data: PropTypes.array.isRequired
 };
 

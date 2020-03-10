@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonNav should render ButtonNav 1`] = `
+<Fragment>
+  <div
+    className="nav"
+  >
+    <Component
+      to="/"
+    >
+      <button>
+        Home
+      </button>
+    </Component>
+    <Component
+      to="/teachers"
+    >
+      <button>
+        Groups
+      </button>
+    </Component>
+    <Component
+      to="/montecarlo"
+    >
+      <button>
+        Monte Carlo
+      </button>
+    </Component>
+    <Component
+      to="/submit-to-global"
+    >
+      <button>
+        Plot Pi!
+      </button>
+    </Component>
+  </div>
+</Fragment>
+`;

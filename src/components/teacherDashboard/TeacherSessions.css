@@ -1,3 +1,25 @@
+.wrapper{
+
+
+    align-items: center;
+                    .signout{
+                        display: flex;
+                        margin-bottom: 1vh;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        align-items: center;
+                        width: 100%;
+                        margin-right: 2%;
+                        margin-top: 10%;
+
+                        p{
+                            font-size:  small;
+                            margin-right: 2%;
+                            color: #212e59;
+                            margin-bottom: 2px;
+                        }
+                    }
+                }
 .TeacherSessions {
     font-family: 'Roboto Mono';
     width: 95vw;
@@ -29,7 +51,7 @@
     .sessionLinks {
         display: flex;
         justify-content: space-evenly;
-
+        margin-bottom: 2vh
     }
 
     h2 {
@@ -41,13 +63,25 @@
     }
 
     a {
-        text-decoration: none;
-        background-color: transparent;
-        color: whitesmoke;
-     }
 
-     button {
-        height: 30px;
+        background-color: whitesmoke;
+        color: #223493;
+        font-size: 14px;
+        border: 1.5px solid #A4A6C9;
+        border-radius: .5rem;
+        padding: .25em .5em .25em .5em;
+        text-decoration: none;
+    }
+
+    a:hover {
+        background-color: #223493;
+        color: whitesmoke;
+        border: 1.5px solid #223493;
+        border-radius: .5rem;
+        outline-style: none;
+    }
+
+    button {
     }
 
     input {
@@ -76,7 +110,8 @@
         border-color: #aaa;
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
-        color: #223493; 
+        color: #223493;
         outline: none;
     }
+
 }

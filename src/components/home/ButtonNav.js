@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from './Home.css'
 
 const ButtonNav = () => (
-<>
+  <>
     <Link to='/teachers'>
-      <button>For Teachers</button>
+      <button>For Groups</button>
     </Link>
     <Link to='/pifaqs'>
       <button>Pi FAQS</button>

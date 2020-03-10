@@ -4,39 +4,39 @@
         width: 95vw;
         height: 50vh;
         grid-template-columns: .5fr 4fr;
-        grid-template-rows: 1fr 2fr .5fr;
+        grid-template-rows: .5fr 2fr .5fr;
         grid-column-gap: 0px;
         grid-row-gap: 0px;
         text-align: center;
 
         .yLabel { 
-            grid-area: 1 / 1 / 4 / 2; 
-            text-align: center;
+            grid-area: 2 / 1 / 4 / 2; 
+            justify-content: center;
             align-items: center;
             overflow: hidden;
 
             p {
             width: 50vh;
             transform-origin: top right;
-            transform: rotate(-90deg) translate(0, -87vw);
+            transform: rotate(-90deg) translate(10vh, -87vw);
             font-size: .08em;
             }
         }
         .title { 
-            grid-area: 1 / 2 / 2 / 3; 
+            grid-area: 1 / 1 / 2 / 3; 
             display: flex;
             align-items: center;
             justify-content: center;
         
             h2 {
-                font-size: .75em;
+                font-size: 1em;
             }
         }
 
         .graph { 
             grid-area: 2 / 2 / 3 / 3; 
             margin-left: 3vw;
-            margin-bottom: 3vh;
+            margin-bottom: 2vh;
             display: flex;
             align-self: flex-end;
             width: 100%;
@@ -48,6 +48,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
 
             p {
                 display: flex;
@@ -55,6 +56,28 @@
                 align-content: center;
                 font-size: .08em;
             }
+
+            .dataDownload {
+
+                position: absolute;
+                right: 0px;
+                bottom: 0px;
+                width: 100px;                
+                color: #F5F5F5;
+                background-color: #223493;
+                opacity: .75;
+                border-radius: .5rem;
+                text-align: center;
+
+
+                button {
+                background-color: transparent;
+                border-style: none;
+                }
+
+            }
         }
     }   
+
+    
 }
