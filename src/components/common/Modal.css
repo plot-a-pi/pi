@@ -1,21 +1,23 @@
 .Modal {
-    position: fixed; 
+    position: fixed;
     padding: .5em;
-    left: 25vw; 
+    left: 25vw;
     top: 30vh;
     width: 55vw;
-    height: 20vh; 
+    height: 20vh;
     border: 1px solid #223493;
     border-radius: 1em;
-    background-color: whitesmoke;  
-    z-index: 2;    
+    background-color: whitesmoke;
+    z-index: 2;
     }
 
     button {
-        float: right; 
-        color: lightgray; 
-        font-size: 16px;  
+        float: right;
+        color: lightgray;
+        font-size: 16px;
         font-weight: bold;
+        margin-left: 1vw;
+        max-height: 30%;
       }
 
     .modalShow{
@@ -29,6 +31,11 @@
 
     .modalHeader {
         background: transparent;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        width: 100%;
+        overflow: scroll;
     }
 
     .modalHide {
@@ -36,4 +43,11 @@
         pointer-events: none;
     }
 
-      
+    @media screen and (max-width: 900px) {
+        .Modal {
+            width: 85vw;
+            left: 5vw;
+            }
+
+      }
+

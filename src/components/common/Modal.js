@@ -14,7 +14,6 @@ const Modal = ({ modalInstructions, showModal, toggleModal, children }) => {
         </div>
       </div>
     </section>
-
   );
 };
 
