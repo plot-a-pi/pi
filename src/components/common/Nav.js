@@ -29,7 +29,7 @@ const Nav = () => {
         <ul className={styles.Nav}>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }} exact to='/' activeStyle={{
             fontWeight: 'bold',
-            color: 'purple'
+            backgroundColor: 'purple'
           }}>
             <input style={{ display: 'none' }} id='home' value='home' onChange={handleChange} />
             <label htmlFor='home'>Home</label>
@@ -37,7 +37,7 @@ const Nav = () => {
           <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/teachers' activeStyle={{
             fontWeight: 'bold',
-            color: 'purple'
+            backgroundColor: 'purple'
           }}>
             <input style={{ display: 'none' }} id='teachers' value='teachers'  onChange={handleChange} />
             <label htmlFor='teachers'>For Groups</label>
@@ -45,7 +45,7 @@ const Nav = () => {
           <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/pifaqs' activeStyle={{
             fontWeight: 'bold',
-            color: 'purple'
+            backgroundColor: 'purple'
           }}>
             <input style={{ display: 'none' }} id='pifaqs' value='pifaqs'  onChange={handleChange} />
             <label htmlFor='pifaqs'>Pi FAQs</label>
@@ -53,7 +53,7 @@ const Nav = () => {
           <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/map' activeStyle={{
             fontWeight: 'bold',
-            color: 'purple'
+            backgroundColor: 'purple'
           }}>
             <input style={{ display: 'none' }} id='map' value='map'  onChange={handleChange} />
             <label htmlFor='map'>Data Map</label>
@@ -61,7 +61,7 @@ const Nav = () => {
           <br/>
           <NavLink style={{ color: 'blue', textDecoration: 'none' }}  to='/montecarlo' activeStyle={{
             fontWeight: 'bold',
-            color: 'purple'
+            backgroundColor: 'purple'
           }}>
             <input style={{ display: 'none' }} id='monteCarlo' value='monteCarlo'  onChange={handleChange} />
             <label htmlFor='monteCarlo'>Monte Carlo</label>
