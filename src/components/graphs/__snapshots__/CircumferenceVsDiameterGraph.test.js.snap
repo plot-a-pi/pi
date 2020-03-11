@@ -8,15 +8,30 @@ exports[`CircumferenceVsDiameterGraph component renders CircumferenceVsDiameterG
     <svg
       className="svg"
     >
+      <text
+        className="title"
+        fill="#212E59"
+      >
+        Global Circle Measurement Data
+      </text>
       <g
         className="x-axis"
       />
+      <text
+        className="x-label"
+        fill="#212E59"
+      >
+        Diameter (in)
+      </text>
       <g
         className="y-axis"
       />
-      <g
-        className="data"
-      />
+      <text
+        className="y-label"
+        fill="#212E59"
+      >
+        Circumference (in)
+      </text>
     </svg>
   </div>
 </Fragment>

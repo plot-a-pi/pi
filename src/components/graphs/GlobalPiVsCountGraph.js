@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
-import Styles from './Scatterplot.css';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
-import GraphGridStyles from './GlobalPiVsCountGrid.css';
 import CSVButton from '../common/CSVButton';
 
 const GlobalPiVsCountGraph = () => {
@@ -22,27 +20,8 @@ const GlobalPiVsCountGraph = () => {
 
   return (
     <>
-      <div className={GraphGridStyles.GraphGridStyles}>
-        <div className={GraphGridStyles.gridContainer}>
-          <div className={GraphGridStyles.yLabel}>
-            <p>Pi Approximation</p> 
-          </div>
-          <div className={GraphGridStyles.title}>
-            <p>Global Pi Approximation vs Count</p>
-          </div>
-          <div className={GraphGridStyles.graph}>
-            <section>
-              <div>
-                <Scatterplot className={Styles.global} data={dataArray} xMax={stats.count + 1} yMax={stats.mean + 1} />
-              </div>
-            </section>
-          </div>
-          <div className={GraphGridStyles.xLabel}>
-            <p>Count</p>
-            <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
-          </div>
-        </div>
-      </div>
+      <Scatterplot data={dataArray} xMax={stats.count + 1} yMin={1.5} yMax={stats.mean + 0.5} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
+      <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
     </>
   );
 };

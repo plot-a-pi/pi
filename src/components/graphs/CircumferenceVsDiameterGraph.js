@@ -42,18 +42,24 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
+    const pxX = width;
+    const pxY = 2 / 3 * pxX;
+
     const wrapper = select(wrapperRef.current);
-    wrapper.style('height', `${2 / 3 * width}px`);
+    wrapper.style('height', `${pxY}px`);
 
-    const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, 3 * stats.diameterMax] : [stats.circumferenceMax / 3, stats.circumferenceMax];
+    svg
+      .attr('viewBox', `0 ${-pxY * 0.2} ${pxX} ${pxY + pxY * 0.5}`);
 
-    const xScale = scaleLinear()
+    const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, stats.mean * stats.diameterMax] : [stats.circumferenceMax / stats.mean, stats.circumferenceMax];
+
+    const scX = scaleLinear()
       .domain([0, stats.diameterMax + stats.diameterMax / 50])
-      .range([0, width]);
+      .range([0, pxX]);
 
-    const yScale = scaleLinear()
+    const scY = scaleLinear()
       .domain([0, stats.circumferenceMax + stats.diameterMax / 50])
-      .range([height, 0]);
+      .range([pxY, 0]);
 
     svg
       .selectAll('line')
@@ -65,8 +71,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .style('stroke-width', 2)
       .attr('x1', 0)
       .attr('y1', height)
-      .attr('x2', xScale(lineEndpoint[0]))
-      .attr('y2', yScale(lineEndpoint[1]));
+      .attr('x2', scX(lineEndpoint[0]))
+      .attr('y2', scY(lineEndpoint[1]));
 
 
     svg
@@ -74,7 +80,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .data(globalDataArray)
       .join('circle')
       .attr('class', 'global-point')
-      .attr('cy', globalDataArray => yScale(globalDataArray[1]))
+      .attr('cy', globalDataArray => scY(globalDataArray[1]))
       .attr('r', 4)
       .style('fill', '#223493')
       .attr('opacity', 0.8)
@@ -86,8 +92,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .attr('class', 'tooltip')
           .attr('r', 8)
           .text('(' + value + ')')
-          .attr('x', xScale(value[0]) + 5)
-          .attr('y', yScale(value[1]) - 5)
+          .attr('x', scX(value[0]) + 5)
+          .attr('y', scY(value[1]) - 5)
           .attr('stroke', 'white')
           .attr('stroke-width', '.5')
           .style('fill', '#212E59')
@@ -95,7 +101,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .style('font-weight', '900')
           .transition()
           .duration(500)
-          .attr('y', yScale(value[1]) - 10);
+          .attr('y', scY(value[1]) - 10);
         select(this)
           .attr('r', 8);
       })
@@ -105,8 +111,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       })
       .transition()
       .duration(2000)
-      .attr('cx', globalDataArray => xScale(globalDataArray[0]))
-      .attr('cy', globalDataArray => yScale(globalDataArray[1]));
+      .attr('cx', globalDataArray => scX(globalDataArray[0]))
+      .attr('cy', globalDataArray => scY(globalDataArray[1]));
 
     svg
       .selectAll('.user-point')
@@ -123,8 +129,8 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .join('text')
           .attr('class', 'tooltip')
           .text('(' + value + ')')
-          .attr('x', xScale(value[0]) + 5)
-          .attr('y', yScale(value[1]) - 5)
+          .attr('x', scX(value[0]) + 5)
+          .attr('y', scY(value[1]) - 5)
           .attr('stroke', 'white')
           .attr('stroke-width', '.5')
           .style('fill', '#212E59')
@@ -132,7 +138,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
           .style('font-weight', '900')
           .transition()
           .duration(500)
-          .attr('y', yScale(value[1]) - 10);
+          .attr('y', scY(value[1]) - 10);
         select(this)
           .attr('r', 12);
       })
@@ -143,26 +149,53 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .transition()
       .delay(1500)
       .duration(1500)
-      .attr('cx', userDataPointsArray => xScale(userDataPointsArray[0]))
-      .attr('cy', userDataPointsArray => yScale(userDataPointsArray[1]));
+      .attr('cx', userDataPointsArray => scX(userDataPointsArray[0]))
+      .attr('cy', userDataPointsArray => scY(userDataPointsArray[1]));
 
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
-      .call(axisBottom(xScale));
+      .call(axisBottom(scX));
 
     svg
       .select('.y-axis')
-      .call(axisLeft(yScale));
+      .call(axisLeft(scY));
 
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${height})`)
-      .call(axisBottom(xScale));
+      .call(axisBottom(scX))
+      .attr('font-size', '1vh');
 
     svg
       .select('.y-axis')
-      .call(axisLeft(yScale));
+      .call(axisLeft(scY))
+      .attr('font-size', '1vh');
+
+    svg
+      .select('.title')
+      .attr('transform', `translate(${pxX / 2}, ${-pxY * 0.07})`)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '3vw')
+      .style('text-anchor', 'middle');
+
+    svg
+      .select('.x-label')
+      .attr('transform', `translate(${pxX / 2}, ${pxY + pxY * 0.2})`)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '2vw')
+      .style('text-anchor', 'middle');
+
+    svg
+      .select('.y-label')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -pxX * 0.1)
+      .attr('x', -pxY / 2)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '2vw')
+      .style('text-anchor', 'middle');
+
+
 
   }, [dimensions, data, stats]);
 
@@ -170,9 +203,11 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     <>
       <div className={styles.container} ref={wrapperRef}>
         <svg className={styles.svg} ref={svgRef}>
+          <text className={'title'} fill='#212E59'>Global Circle Measurement Data</text>
           <g className={'x-axis'}></g>
+          <text className={'x-label'} fill='#212E59'>Diameter (in)</text>
           <g className={'y-axis'}></g>
-          <g className={'data'}></g>
+          <text className={'y-label'} fill='#212E59'>Circumference (in)</text>
         </svg>
       </div>
     </>
