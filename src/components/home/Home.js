@@ -9,9 +9,11 @@ import PiCrawler from '../common/PiCrawler';
 const Home = () => {
   const [showIntroModal, toggleIntroModal] = useModal();
   const modalInstructions = (
-    <div>
-      <p>Would you like to contribute to pi?</p>
+    <div className={styles.modal}>
+      <h3>Would you like to contribute to pi?</h3>
+      <br/>
       <p>Measure the circumference and diamter of a circular object and submit your measurements to improve our global approximation of pi.</p>
+      <br/>
       <p>How does the approximation change as more data is added?</p>
     </div>);
 
@@ -26,7 +28,7 @@ const Home = () => {
       </section>
       <section className={styles.graphs}>
         <CircumferenceVsDiameterWrapper />
-        <div>
+        <div className={styles.global}>
           <GlobalPiVsCountGraph />
         </div>
       </section>

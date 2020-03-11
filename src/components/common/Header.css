@@ -43,3 +43,31 @@
   margin-right: 2%;
   padding-bottom: .5em;
 }
+
+.link {
+  background-color: whitesmoke;
+  color: #223493;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 14px;
+  border: 1.5px solid #A4A6C9;
+  border-radius: .5rem;
+  padding: .5em 1em .5em 1em;
+}
+
+.link:hover {
+  background-color: #223493;
+  color: whitesmoke;
+  border: 1.5px solid #223493;
+  border-radius: .5rem;
+  outline-style: none;
+}
+
+.active {
+  background-color: #223493;
+  color: whitesmoke;
+  border: 1.5px solid #223493;
+  border-radius: .5rem;
+  outline-style: none;
+}

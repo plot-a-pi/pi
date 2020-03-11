@@ -25,7 +25,7 @@
 
     .svgContainer {
         margin: .5em;
-        height: 25vh; 
+        height: 25vh;
         width: auto;
     }
 
@@ -37,7 +37,7 @@
         padding: .25em 1em .5em .8em;
         width: 30%;
         height: 30px;
-        max-width: 30%; 
+        max-width: 30%;
         box-sizing: border-box;
         border: 1px solid #A4A6C9;
         border-radius: .5rem;
@@ -66,7 +66,7 @@
         border-color: #aaa;
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
-        color: #223493; 
+        color: #223493;
         outline: none;
     }
 
@@ -100,7 +100,7 @@
         border-color: #aaa;
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
-        color: #223493; 
+        color: #223493;
         outline: none;
     }
 
@@ -124,6 +124,11 @@
         margin-top: 1.5em;
     }
 
+    .modal {
+        font-family: 'Roboto Mono';
+        color: #212E59;
+    }
+    
     .modalButton {
         font-size: 12px;
         width: 30px;

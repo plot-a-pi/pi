@@ -57,6 +57,11 @@
   }
 }
 
+.modal {
+  font-family: 'Roboto Mono';
+  color: #212E59;
+}
+
 .controls {
   display: flex;
   flex-direction: column;
