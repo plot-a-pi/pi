@@ -39,11 +39,11 @@ export const MonteCarloScatterplot = ({ data }) => {
       .attr('viewBox', `${-width * 0.15} ${-width * 0.2} ${width * 1.2} ${width * 0.8}`);
 
     const xScale = scaleLinear()
-      .domain([0, circleDiameter + 0.1])
+      .domain([0, circleDiameter])
       .range([0, width]);
 
     const yScale = scaleLinear()
-      .domain([0, circleDiameter + 0.1])
+      .domain([0, circleDiameter])
       .range([width, 0]);
 
     svg
@@ -57,9 +57,9 @@ export const MonteCarloScatterplot = ({ data }) => {
     svg
       .append('rect')
       .attr('x', 0)
-      .attr('y', width * 0.09)
-      .attr('width', width * 0.90)
-      .attr('height', width * 0.90)
+      .attr('y', 0)
+      .attr('width', width)
+      .attr('height', width)
       .style('fill', '#7dc4b8')
       .style('opacity', 0.25)
       .attr('stroke', 'rgb(21, 27, 49)')
@@ -67,9 +67,11 @@ export const MonteCarloScatterplot = ({ data }) => {
 
     svg
       .append('circle')
+      // eslint-disable-next-line no-unused-vars
       .attr('cx', data => xScale(circleDiameter / 2))
+      // eslint-disable-next-line no-unused-vars
       .attr('cy', data => yScale(circleDiameter / 2))
-      .attr('r', width * 0.90 / 2)
+      .attr('r', width / 2)
       .style('fill', '#a4a6c9')
       .style('opacity', 0.5)
       .attr('stroke', 'rgb(21, 27, 49)')
@@ -111,7 +113,7 @@ export const MonteCarloScatterplot = ({ data }) => {
 
     svg
       .select('.x-label')
-      .attr('transform', `translate(${width / 2}, ${width * 0.6})`)
+      .attr('transform', `translate(${width / 2}, ${width * 1.2})`)
       .attr('font-family', 'Arial')
       .attr('font-size', '2vw')
       .style('text-anchor', 'middle');
@@ -134,11 +136,11 @@ export const MonteCarloScatterplot = ({ data }) => {
     <>
       <div className={Styles.container} ref={wrapperRef}>
         <svg className={Styles.svg} ref={svgRef}>
-          <text className={'title'} fill='whitesmoke'>Randomly Generated Darts</text>
+          <text className={'title'} fill='#212E59'>Randomly Generated Darts</text>
           <g className={'x-axis'}></g>
-          <text className={'x-label'} fill='whitesmoke'>x</text>
+          <text className={'x-label'} fill='#212E59'>x</text>
           <g className={'y-axis'}></g>
-          <text className={'y-label'} fill='whitesmoke'>y</text>
+          <text className={'y-label'} fill='#212E59'>y</text>
         </svg>
       </div>
     </>
