@@ -141,7 +141,10 @@ const ScatterplotPiApprox = ({ data, xMax, yMax, title, xLabel, yLabel }) => {
 ScatterplotPiApprox.propTypes = {
   data: PropTypes.array.isRequired,
   xMax: PropTypes.number.isRequired,
-  yMax: PropTypes.number.isRequired
+  yMax: PropTypes.number.isRequired,
+  title: PropTypes.number.isRequired,
+  xLabel: PropTypes.number.isRequired,
+  yLabel: PropTypes.number.isRequired
 };
 
 export default ScatterplotPiApprox;

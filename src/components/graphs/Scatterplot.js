@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import Styles from './Scatterplot.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import CSVButton from '../common/CSVButton';
 
 const pointRadius = (length) => {
   return Math.max(1, 3 - (Math.floor(length / 1000)));
@@ -139,6 +140,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
         <g className={'y-axis'}></g>
         <text className={'y-label'} fill='whitesmoke'>{yLabel}</text>
       </svg>
+      <CSVButton header1='Count' header2='Pi Approximation' data={data} />
     </div>
   );
 };

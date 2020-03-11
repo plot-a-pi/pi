@@ -1,13 +1,22 @@
-import React from 'react';
-import CircumferenceVsDiameterWrapper from '../graphs/CicumferenceVsDiameterWrapper';
+import React, { useEffect } from 'react';
 import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import styles from './Home.css';
 import PiCrawler from '../common/PiCrawler';
+import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
+import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
+import CvDGraphStats from '../graphs/CvDGraphStats';
 
 const Home = () => {
+
+  const emitRetrievedDataPoints = useEmitEvent('RETRIEVE_DATA_POINTS');
+  const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
+  const socket = useSocket();
+  const { points } = useSocketState();
+  const { stats } = useSocketState();
   const [showIntroModal, toggleIntroModal] = useModal();
+
   const modalInstructions = (
     <div className={styles.modal}>
       <h3>Would you like to contribute to pi?</h3>
@@ -17,8 +26,15 @@ const Home = () => {
       <p>How does the approximation change as more data is added?</p>
     </div>);
 
+  useEffect(() => {
+    if(socket.connected !== undefined) {
+      emitRetrievedDataPoints();
+      emitGlobalStats();
+    }
+  }, [socket.connected]);    
+  
   return (
-    <div className={styles.home}>
+    <div className={styles.Home}>
       <section className={styles.introduction}>
         <div className={styles.whatsThis}>
           <h3>What&apos;s this about...</h3>
@@ -26,13 +42,10 @@ const Home = () => {
         </div>
         <Modal showModal={showIntroModal} toggleModal={toggleIntroModal} modalTitle={'Diameter'} modalInstructions={modalInstructions} />
       </section>
-      <section className={styles.graphs}>
-        <CircumferenceVsDiameterWrapper />
-        <div className={styles.global}>
-          <GlobalPiVsCountGraph />
-        </div>
-      </section>
-      <PiCrawler />
+      <CircumferenceVsDiameterGraph className={styles.graphA} data={points} stats={stats} /> 
+      <CvDGraphStats className={stats} stats={stats}/>
+      <GlobalPiVsCountGraph className={styles.graphB} />
+      <PiCrawler className={styles.piCrawler} />
     </div>
   );
 };

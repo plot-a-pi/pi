@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import Scatterplot from './Scatterplot';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
-import CSVButton from '../common/CSVButton';
 
 const GlobalPiVsCountGraph = () => {
   const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
@@ -19,10 +18,7 @@ const GlobalPiVsCountGraph = () => {
   const dataArray = piApproximationsArray.map((pi, i) => [i + 1, pi.toFixed(2)]);
 
   return (
-    <>
-      <Scatterplot data={dataArray} xMax={stats.count + 1} yMin={1.5} yMax={stats.mean + 0.5} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
-      <CSVButton header1='Count' header2='Pi Approximation' data={dataArray} />
-    </>
+    <Scatterplot data={dataArray} xMax={stats.count + 1} yMin={1.5} yMax={stats.mean + 0.5} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
   );
 };
 

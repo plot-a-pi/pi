@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 85vw;
+  font-weight: bolder;
+}
+
 .svg {
   background: #212E59;
   display: block;
@@ -5,10 +13,4 @@
   color: whitesmoke;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  width: 85vw;
-}
 

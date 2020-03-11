@@ -3,11 +3,13 @@ import { PropTypes } from 'prop-types';
 import styles from './CircumferenceVsDiameterGraph.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import CSVButton from '../common/CSVButton';
 
 const CircumferenceVsDiameterGraph = ({ data, stats }) => {
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
+  const dataForCSV = data.map(datum => ([datum.diameter, datum.circumference]));
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
@@ -43,7 +45,7 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
     if(!dimensions) return;
 
     const pxX = width;
-    const pxY = 2 / 3 * pxX;
+    const pxY = 3 / 5 * pxX;
 
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${pxY}px`);
@@ -195,22 +197,19 @@ const CircumferenceVsDiameterGraph = ({ data, stats }) => {
       .attr('font-size', '2vw')
       .style('text-anchor', 'middle');
 
-
-
   }, [dimensions, data, stats]);
 
   return (
-    <>
-      <div className={styles.container} ref={wrapperRef}>
-        <svg className={styles.svg} ref={svgRef}>
-          <text className={'title'} fill='#212E59'>Global Circle Measurement Data</text>
-          <g className={'x-axis'}></g>
-          <text className={'x-label'} fill='#212E59'>Diameter (in)</text>
-          <g className={'y-axis'}></g>
-          <text className={'y-label'} fill='#212E59'>Circumference (in)</text>
-        </svg>
-      </div>
-    </>
+    <div className={styles.container} ref={wrapperRef}>
+      <svg className={styles.svg} ref={svgRef}>
+        <text className={'title'} fill='#212E59'>Global Circle Measurement Data</text>
+        <g className={'x-axis'}></g>
+        <text className={'x-label'} fill='#212E59'>Diameter (in)</text>
+        <g className={'y-axis'}></g>
+        <text className={'y-label'} fill='#212E59'>Circumference (in)</text>
+      </svg>
+      <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+    </div>
   );
 };
 
