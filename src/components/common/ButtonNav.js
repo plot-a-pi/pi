@@ -9,8 +9,8 @@ const ButtonNav = () => {
 
     return (
       <div className={styles.sessionNav}>
-        <NavLink to='/'>
-          <button>Home</button>
+        <NavLink exact to='/' className={styles.link} activeClassName={styles.active}>
+          Home
         </NavLink>
       </div>
     );
