@@ -6,6 +6,7 @@ import './index.css';
 import { SocketProvider } from 'react-socket-io-hooks';
 import reducer, { initialState } from './reducer';
 import { AuthProvider } from './firebase/AuthProvider';
+import './index.css';
 import './main.css';
 
 render(
