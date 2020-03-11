@@ -6,32 +6,33 @@ exports[`ButtonNav should render ButtonNav 1`] = `
     className="nav"
   >
     <Component
+      activeClassName="active"
+      className="link"
+      exact={true}
       to="/"
     >
-      <button>
-        Home
-      </button>
+      Home
     </Component>
     <Component
+      activeClassName="active"
+      className="link"
       to="/teachers"
     >
-      <button>
-        Groups
-      </button>
+      Groups
     </Component>
     <Component
+      activeClassName="active"
+      className="link"
       to="/montecarlo"
     >
-      <button>
-        Monte Carlo
-      </button>
+      Monte Carlo
     </Component>
     <Component
+      activeClassName="active"
+      className="link"
       to="/submit-to-global"
     >
-      <button>
-        Plot Pi!
-      </button>
+      Plot Pi!
     </Component>
   </div>
 </Fragment>
