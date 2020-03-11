@@ -1,9 +1,9 @@
 .container {
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 85vw;
-  font-weight: bolder;
 }
 
 .svg {

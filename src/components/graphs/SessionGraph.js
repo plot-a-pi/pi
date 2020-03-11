@@ -38,28 +38,7 @@ const SessionGraph = ({ match }) => {
 
   dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
   return (
-    <>
-      <div className={styles.GraphGridMock}>
-        <div className={styles.gridContainer}>
-          <div className={styles.yLabel}>
-            <p>Circumference (in)</p> 
-          </div>
-          <div className={styles.title}>
-            <h2>Session Circumference vs Diameter</h2>
-          </div>
-          <div className={styles.graph}>
-            <section>
-              <div className={styles.graphs}>
-                <Scatterplot data={dataArray} xMax={xMax} yMax ={yMax}/>
-              </div>
-            </section>
-          </div>
-          <div className={styles.xLabel}>
-            <p>Diameter (in)</p>
-          </div>
-        </div>
-      </div>
-    </>
+    <Scatterplot data={dataArray} xMax={xMax} yMin={0} yMax ={yMax} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };

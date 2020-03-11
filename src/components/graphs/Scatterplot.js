@@ -140,7 +140,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
         <g className={'y-axis'}></g>
         <text className={'y-label'} fill='whitesmoke'>{yLabel}</text>
       </svg>
-      <CSVButton header1='Count' header2='Pi Approximation' data={data} />
+      <CSVButton header1={xLabel} header2={yLabel} data={data} />
     </div>
   );
 };
