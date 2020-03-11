@@ -7,14 +7,23 @@ exports[`Scatterplot component renders Scatterplot 1`] = `
   <svg
     className="svg"
   >
+    <text
+      className="title"
+      fill="whitesmoke"
+    />
     <g
       className="x-axis"
+    />
+    <text
+      className="x-label"
+      fill="whitesmoke"
     />
     <g
       className="y-axis"
     />
-    <g
-      className="data"
+    <text
+      className="y-label"
+      fill="whitesmoke"
     />
   </svg>
 </div>

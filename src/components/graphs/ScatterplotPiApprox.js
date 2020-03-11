@@ -37,7 +37,7 @@ const ScatterplotPiApprox = ({ data, xMax, yMax, title, xLabel, yLabel }) => {
     const pxY = 1 / 2 * pxX;
     
     svg
-      .attr('viewBox', `${-pxX * 0.15} ${-pxY * 0.2} ${pxX + pxX * 0.2} ${pxY + pxY * 0.5}`);
+      .attr('viewBox', `0 ${-pxY * 0.2} ${pxX} ${pxY + pxY * 0.5}`);
 
     const scX = scaleLinear()
       .domain([0, xMax + xMax / 15])

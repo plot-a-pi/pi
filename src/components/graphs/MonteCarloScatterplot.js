@@ -113,7 +113,7 @@ export const MonteCarloScatterplot = ({ data }) => {
 
     svg
       .select('.x-label')
-      .attr('transform', `translate(${width / 2}, ${width * 1.2})`)
+      .attr('transform', `translate(${width / 2}, ${width * 1.1})`)
       .attr('font-family', 'Arial')
       .attr('font-size', '2vw')
       .style('text-anchor', 'middle');
