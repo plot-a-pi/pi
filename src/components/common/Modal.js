@@ -14,13 +14,12 @@ const Modal = ({ modalInstructions, showModal, toggleModal, children }) => {
         </div>
       </div>
     </section>
-
   );
 };
 
 Modal.propTypes = {
   modalTitle: PropTypes.string.isRequired,
-  modalInstructions: PropTypes.string.isRequired,
+  modalInstructions: PropTypes.object.isRequired,
   showModal: PropTypes.bool.isRequired,
   toggleModal: PropTypes.func.isRequired
 };

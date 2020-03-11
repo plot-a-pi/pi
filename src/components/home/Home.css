@@ -42,6 +42,12 @@
     margin: 0;
     padding: 0;
 }
+
+.modal {
+    font-family: 'Roboto Mono';
+    color: #212E59;
+}
+
 .modalButton {
     font-size: 12px;
     width: 30px;

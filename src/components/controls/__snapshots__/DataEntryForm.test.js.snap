@@ -83,12 +83,15 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
               </button>
               <Modal
                 modalInstructions={
-                  <div>
+                  <div
+                    className="modal"
+                  >
                     <p>
                       The circumference is the distance around the circle.
                     </p>
+                    <br />
                     <p>
-                      Determine the length of string required to wrap around a circular object.
+                      Measure the distance around a circular object and record it here.
                     </p>
                   </div>
                 }
@@ -111,12 +114,15 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        <div>
+                        <div
+                          className="modal"
+                        >
                           <p>
                             The circumference is the distance around the circle.
                           </p>
+                          <br />
                           <p>
-                            Determine the length of string required to wrap around a circular object.
+                            Measure the distance around a circular object and record it here.
                           </p>
                         </div>
                       </p>
@@ -165,12 +171,15 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
               </button>
               <Modal
                 modalInstructions={
-                  <div>
+                  <div
+                    className="modal"
+                  >
                     <p>
                       The diameter is the distance across the circle.
                     </p>
+                    <br />
                     <p>
-                      Use a ruler to measure the widest path across the circle.
+                      Measure the widest path across the same circular object and record it here.
                     </p>
                   </div>
                 }
@@ -193,12 +202,15 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                         ×
                       </button>
                       <p>
-                        <div>
+                        <div
+                          className="modal"
+                        >
                           <p>
                             The diameter is the distance across the circle.
                           </p>
+                          <br />
                           <p>
-                            Use a ruler to measure the widest path across the circle.
+                            Measure the widest path across the same circular object and record it here.
                           </p>
                         </div>
                       </p>

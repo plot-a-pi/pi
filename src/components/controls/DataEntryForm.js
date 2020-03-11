@@ -7,10 +7,11 @@ import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
 import { useEmitEvent } from 'react-socket-io-hooks';
 import Icon from '../../assets/192566_256x256.png';
+import { style } from 'd3';
 
 
 const DataEntryForm = () => {
-  
+
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
 
@@ -63,14 +64,16 @@ const DataEntryForm = () => {
   };
 
   const circumferenceModalText = (
-    <div>
+    <div className={styles.modal}>
       <p>The circumference is the distance around the circle.</p>
-      <p>Determine the length of string required to wrap around a circular object.</p>
+      <br/>
+      <p>Measure the distance around a circular object and record it here.</p>
     </div>);
   const diameterModalText = (
-    <div>
+    <div className={styles.modal}>
       <p>The diameter is the distance across the circle.</p>
-      <p>Use a ruler to measure the widest path across the circle.</p>
+      <br/>
+      <p>Measure the widest path across the same circular object and record it here.</p>
     </div>);
 
   return (
