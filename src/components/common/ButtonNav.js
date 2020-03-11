@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.css';
+import { style } from 'd3';
 
 const ButtonNav = () => {
   const location = useLocation();
@@ -8,26 +9,26 @@ const ButtonNav = () => {
 
     return (
       <div className={styles.sessionNav}>
-        <Link to='/'>
+        <NavLink to='/'>
           <button>Home</button>
-        </Link>
+        </NavLink>
       </div>
     );
   return (
     <>
       <div className={styles.nav}>
-        <Link to='/'>
-          <button>Home</button>
-        </Link>
-        <Link to='/teachers'>
-          <button>Groups</button>
-        </Link>
-        <Link to='/montecarlo'>
-          <button>Monte Carlo</button>
-        </Link>
-        <Link to='/submit-to-global'>
-          <button>Plot Pi!</button>
-        </Link>
+        <NavLink exact to='/' className={styles.link} activeClassName={styles.active}>
+          Home
+        </NavLink>
+        <NavLink to='/teachers' className={styles.link} activeClassName={styles.active}>
+          Groups
+        </NavLink>
+        <NavLink to='/montecarlo' className={styles.link} activeClassName={styles.active}>
+          Monte Carlo
+        </NavLink>
+        <NavLink to='/submit-to-global' className={styles.link} activeClassName={styles.active}>
+          Plot Pi!
+        </NavLink>
       </div>
     </>
   );

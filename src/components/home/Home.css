@@ -6,19 +6,26 @@
 .home {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
 }
+
  .buttons {
     margin: 5%;
     margin-right: 10%
 }
 
-.graphs{
-    display: flex;
-    flex-direction: row;
+.graphs {
+    flex-direction: column;
     justify-content: space-between;
-    margin-top: 2vh;
+    align-items: center;
     margin-bottom: 5vh;
+    min-height: 200vh;
+}
+.global {
+    min-width: 70vw;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
 }
 
 .circ {
@@ -30,6 +37,11 @@
     box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
 }
 
+.introduction {
+    max-height: 5vh;
+    margin: 0;
+    padding: 0;
+}
 .modalButton {
     font-size: 12px;
     width: 30px;
@@ -43,13 +55,12 @@
 }
 
 .whatsThis {
-
     display: flex;
     width: 80vw;
     margin: auto;
     align-items: center;
     justify-content: center;
-
+    margin-bottom: 10vh;
 }
 
 @media screen and (max-width: 900px) {
