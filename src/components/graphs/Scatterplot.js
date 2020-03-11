@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import Styles from './Scatterplot.css';
-import { scaleLinear, select, axisBottom, axisLeft, extent } from 'd3';
+import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 
 const pointRadius = (length) => {
@@ -31,7 +31,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
 
   useEffect(() => {
     const svg = select(svgRef.current);
-    const { width, height } = dimensions || wrapperRef.current.getBoundingClientRect();
+    const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
     const wrapper = select(wrapperRef.current);
@@ -41,7 +41,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
     const pxY = 1 / 2 * pxX;
     
     svg
-      .attr('viewBox', `${-pxX * 0.15} ${-pxY * 0.2} ${pxX + pxX * 0.2} ${pxY + pxY * 0.4}`);
+      .attr('viewBox', `${-pxX * 0.15} ${-pxY * 0.2} ${pxX + pxX * 0.2} ${pxY + pxY * 0.5}`);
 
     const scX = scaleLinear()
       .domain([0, xMax + xMax / 20])
@@ -93,14 +93,16 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
       .select('.y-axis')
       .transition()
       .duration(1000)
-      .call(axisLeft(scY));
+      .call(axisLeft(scY))
+      .attr('font-size', '1vh');
 
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${pxY})`)
       .transition()
       .duration(1000)
-      .call(axisBottom(scX));
+      .call(axisBottom(scX))
+      .attr('font-size', '1vh');
 
     svg
       .select('.title')
@@ -111,7 +113,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
 
     svg
       .select('.x-label')
-      .attr('transform', `translate(${pxX / 2}, ${pxY + pxY * 0.15})`)
+      .attr('transform', `translate(${pxX / 2}, ${pxY + pxY * 0.2})`)
       .attr('font-family', 'Arial')
       .attr('font-size', '2vw')
       .style('text-anchor', 'middle');
@@ -119,7 +121,7 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
     svg
       .select('.y-label')
       .attr('transform', 'rotate(-90)')
-      .attr('y', -pxX * 0.07)
+      .attr('y', -pxX * 0.1)
       .attr('x', -pxY / 2)
       .attr('font-family', 'Arial')
       .attr('font-size', '2vw')

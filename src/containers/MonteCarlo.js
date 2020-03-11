@@ -39,27 +39,8 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <div className={styles.dartContainer}>
-        <div className={styles.dartboard}>
-          <div className={GridWrapperStyles.MonteCarloGridWrapper}>
-            <div className={GridWrapperStyles.gridContainer}>
-              <div className={GridWrapperStyles.yLabel}>
-                <p>y</p> 
-              </div>
-              <div className={GridWrapperStyles.title}>
-                <h2>Monte Carlo Approximation of Pi</h2>
-              </div>
-              <div className={GridWrapperStyles.graph}>
-                <MonteCarloScatterplot data={dartsArray} />
-              </div>
-              <div className={GridWrapperStyles.xLabel}>
-                <p>x</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <MonteCarloControls actions={actions} />
-      </div>
+      <MonteCarloScatterplot data={dartsArray} />
+      <MonteCarloControls actions={actions} />
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
@@ -77,22 +58,7 @@ const MonteCarlo = () => {
           <MathJax.Node formula={derivation} style={{ 'font-size' : '8px', 'font-style': 'bold' }}/>
         </MathJax.Provider>
       </Modal>
-      <div className={GridWrapperStyles.MonteCarloGridWrapper}>
-        <div className={GridWrapperStyles.gridContainer}>
-          <div className={GridWrapperStyles.yLabel}>
-            <p>Pi Approximation</p> 
-          </div>
-          <div className={GridWrapperStyles.title}>
-            <h2>Pi Approximation vs Total Darts</h2>
-          </div>
-          <div className={GridWrapperStyles.scatterplot} >
-            <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} />
-          </div>
-          <div className={GridWrapperStyles.xLabel}>
-            <p>Total Darts</p>
-          </div>
-        </div>
-      </div>
+      <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
     </div>
   );
 };

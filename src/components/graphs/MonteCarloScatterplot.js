@@ -35,6 +35,8 @@ export const MonteCarloScatterplot = ({ data }) => {
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${width}px`);
 
+    svg
+      .attr('viewBox', `${-width * 0.15} ${-width * 0.2} ${width * 1.2} ${width * 0.8}`);
 
     const xScale = scaleLinear()
       .domain([0, circleDiameter + 0.1])
@@ -56,8 +58,8 @@ export const MonteCarloScatterplot = ({ data }) => {
       .append('rect')
       .attr('x', 0)
       .attr('y', width * 0.09)
-      .attr('width', width * 0.91)
-      .attr('height', width * 0.91)
+      .attr('width', width * 0.90)
+      .attr('height', width * 0.90)
       .style('fill', '#7dc4b8')
       .style('opacity', 0.25)
       .attr('stroke', 'rgb(21, 27, 49)')
@@ -67,7 +69,7 @@ export const MonteCarloScatterplot = ({ data }) => {
       .append('circle')
       .attr('cx', data => xScale(circleDiameter / 2))
       .attr('cy', data => yScale(circleDiameter / 2))
-      .attr('r', width * 0.91 / 2)
+      .attr('r', width * 0.90 / 2)
       .style('fill', '#a4a6c9')
       .style('opacity', 0.5)
       .attr('stroke', 'rgb(21, 27, 49)')
@@ -88,11 +90,42 @@ export const MonteCarloScatterplot = ({ data }) => {
     svg
       .select('.x-axis')
       .attr('transform', `translate(0, ${width})`)
-      .call(axisBottom(xScale));
+      .transition()
+      .duration(1000)
+      .call(axisBottom(xScale))
+      .attr('font-size', '1vh');
 
     svg
       .select('.y-axis')
-      .call(axisLeft(yScale));
+      .transition()
+      .duration(1000)
+      .call(axisLeft(yScale))
+      .attr('font-size', '1vh');
+
+    svg
+      .select('.title')
+      .attr('transform', `translate(${width / 2}, ${-width * 0.07})`)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '3vw')
+      .style('text-anchor', 'middle');
+
+    svg
+      .select('.x-label')
+      .attr('transform', `translate(${width / 2}, ${width * 0.6})`)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '2vw')
+      .style('text-anchor', 'middle');
+
+    svg
+      .select('.y-label')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', -width * 0.1)
+      .attr('x', -width / 2)
+      .attr('font-family', 'Arial')
+      .attr('font-size', '2vw')
+      .style('text-anchor', 'middle');
+
+
 
   }, [data, dimensions]);
 
@@ -101,8 +134,11 @@ export const MonteCarloScatterplot = ({ data }) => {
     <>
       <div className={Styles.container} ref={wrapperRef}>
         <svg className={Styles.svg} ref={svgRef}>
+          <text className={'title'} fill='whitesmoke'>Randomly Generated Darts</text>
           <g className={'x-axis'}></g>
+          <text className={'x-label'} fill='whitesmoke'>x</text>
           <g className={'y-axis'}></g>
+          <text className={'y-label'} fill='whitesmoke'>y</text>
         </svg>
       </div>
     </>
