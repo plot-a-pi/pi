@@ -1,8 +1,8 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
-import Styles from '../../containers/MonteCarlo.css';
 import { scaleLinear, select, axisBottom, axisLeft } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
+import styles from './MonteCarloScatterplot.css';
 
 export const MonteCarloScatterplot = ({ data }) => {
 
@@ -36,7 +36,7 @@ export const MonteCarloScatterplot = ({ data }) => {
     wrapper.style('height', `${width}px`);
 
     svg
-      .attr('viewBox', `${-width * 0.15} ${-width * 0.2} ${width * 1.2} ${width * 0.8}`);
+      .attr('viewBox', `${-width * 0.15} ${-width * 0.15} ${width * 1.2} ${width * 1.3}`);
 
     const xScale = scaleLinear()
       .domain([0, circleDiameter])
@@ -134,8 +134,8 @@ export const MonteCarloScatterplot = ({ data }) => {
 
   return (
     <>
-      <div className={Styles.container} ref={wrapperRef}>
-        <svg className={Styles.svg} ref={svgRef}>
+      <div className={styles.container} ref={wrapperRef}>
+        <svg className={styles.svg} ref={svgRef}>
           <text className={'title'} fill='#212E59'>Randomly Generated Darts</text>
           <g className={'x-axis'}></g>
           <text className={'x-label'} fill='#212E59'>x</text>

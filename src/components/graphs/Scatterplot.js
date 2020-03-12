@@ -35,11 +35,12 @@ const Scatterplot = ({ data, xMax, yMin, yMax, title, xLabel, yLabel }) => {
     const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
     if(!dimensions) return;
 
-    const wrapper = select(wrapperRef.current);
-    wrapper.style('height', `${1 / 2 * pxX}px`);
-
     const pxX = width;
     const pxY = 1 / 2 * pxX;
+
+    const wrapper = select(wrapperRef.current);
+    wrapper.style('height', `${pxY}px`);
+
     
     svg
       .attr('viewBox', `${-pxX * 0.15} ${-pxY * 0.2} ${pxX + pxX * 0.2} ${pxY + pxY * 0.5}`);
