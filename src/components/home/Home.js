@@ -45,7 +45,7 @@ const Home = () => {
         </div>
         <Modal showModal={showIntroModal} toggleModal={toggleIntroModal} modalTitle={'Diameter'} modalInstructions={modalInstructions} />
       </section>
-      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} /> 
+      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} title={'Global Circle Measurements'} xLabel='Diameter (in)' yLabel={'Circumference (in)'} /> 
       <CvDGraphStats className={stats} stats={stats}/>
       <PivsCountScatterplot className={styles.graphB} data={dataArray} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
       <PiCrawler className={styles.piCrawler} />

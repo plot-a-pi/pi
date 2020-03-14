@@ -6,7 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
 
-const CvsDScatterplot = ({ data, stats }) => {
+const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
@@ -35,7 +35,7 @@ const CvsDScatterplot = ({ data, stats }) => {
     if(!dimensions) return;
 
     const wrapper = select(wrapperRef.current);
-    wrapper.style('height', `${width * 0.7}px`);
+    wrapper.style('height', `${width * 0.77}px`);
 
     makeCvsDScatterplot(svg, data, stats, width);
 
@@ -44,11 +44,12 @@ const CvsDScatterplot = ({ data, stats }) => {
   return (
     <div className={styles.container} ref={wrapperRef}>
       <svg className={styles.svg} ref={svgRef}>
-        <text className={'title'} fill='#212E59'>Global Circle Measurement Data</text>
+        <text className={'title'} fill='#212E59'>{title}</text>
         <g className={'x-axis'}></g>
-        <text className={'x-label'} fill='#212E59'>Diameter (in)</text>
+        <text className={'x-label'} fill='#212E59'>{xLabel}</text>
         <g className={'y-axis'}></g>
-        <text className={'y-label'} fill='#212E59'>Circumference (in)</text>
+        <text className={'y-label'} fill='#212E59'>{yLabel}</text>
+        <line className={'line'}></line>
       </svg>
       <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
     </div>

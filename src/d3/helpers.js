@@ -108,11 +108,11 @@ export const makePivsCountScatterplot = (svg, data, width) => {
 };
 
 export const makeCvsDScatterplot = (svg, data, stats, width) => {
-
+  
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   let globalDataArray = [];
   let userDataPointsArray = [];
-
+  
   if(!userPointIds){
     globalDataArray = data.map(point => [point.diameter, point.circumference]);
   }
@@ -120,32 +120,25 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
     userDataPointsArray = data.filter(point => userPointIds.includes(point.pointId)).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
-
+  
   const pxX = width;
-  const pxY = 2 / 3 * pxX;
+  const pxY = 0.6 * pxX;
   const scale = width / 500 + 1; 
-
+  
   svg
-    .attr('viewBox', `0 ${-pxY * 0.2} ${pxX} ${pxY + pxY * 0.5}`);
-
+    .attr('viewBox', `${-pxX * 0.06} ${-pxY * 0.23} ${pxX} ${pxY + pxY * 0.5}`);
+  
   const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, stats.mean * stats.diameterMax] : [stats.circumferenceMax / stats.mean, stats.circumferenceMax];
-
-  const xExtent = extent(data, d => d[0]);
-  console.log({ xExtent });
-  console.log({ xRange });
-  const xRange = xExtent[1] - xExtent[0] > 0 ? xExtent[1] - xExtent[0] : 2;
+  
+  const xExtent = extent(data, d => d.diameter);
+  const xRange = xExtent[1] - xExtent[0];
   const scX = scaleLinear()
     .domain([xExtent[0], xExtent[1] + xRange * 0.07])
     .range([0, pxX]);
   
-  // const yExtent = extent(data, d => d[1]);
-  // // const yRange = yExtent[1] - yExtent[0] > 0 ? yExtent[1] - yExtent[0] : 4;
-  // const scY = scaleLinear()
-  //   .domain([yExtent[0], yExtent[1]])
-  //   .range([pxY, 0]);
-
+  const yExtent = extent(data, d => d.circumference);
   const scY = scaleLinear()
-    .domain([0, stats.circumferenceMax + stats.diameterMax / 50])
+    .domain([yExtent[0], yExtent[1]])
     .range([pxY, 0]);
 
   svg
@@ -162,6 +155,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .data(globalDataArray)
     .join('circle')
     .attr('class', 'global-point')
+    .attr('cx', globalDataArray => scX(globalDataArray[0]))
     .attr('cy', globalDataArray => scY(globalDataArray[1]))
     .attr('r', scale)
     .style('fill', '#223493')
@@ -203,6 +197,8 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .join('circle')
     .attr('class', 'user-point')
     .attr('r', scale * 5)
+    .attr('cx', userDataPointsArray => scX(userDataPointsArray[0]))
+    .attr('cy', userDataPointsArray => scY(userDataPointsArray[1]))
     .style('fill', '#99CCFF')
     .attr('opacity', 0.8)
     .on('mouseenter', function(d){
@@ -222,9 +218,9 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .style('font-weight', '900')
         .transition()
         .duration(500)
-        .style('font-size', '3vw')
-        .attr('x', '15vw')
-        .attr('y', '37vw')
+        .style('font-size', '5vw')
+        .attr('x', '10vw')
+        .attr('y', '30vw')
         .style('text-anchor', 'middle');
     })
     .on('mouseleave', function() {
@@ -255,14 +251,14 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
 
   svg
     .select('.title')
-    .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.15})`)
+    .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.09})`)
     .attr('font-family', 'Arial')
     .attr('font-size', '3.5vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.x-label')
-    .attr('transform', `translate(${pxX / 2}, ${pxY * 1.3})`)
+    .attr('transform', `translate(${pxX / 2}, ${pxY * 1.15})`)
     .attr('font-family', 'Arial')
     .attr('font-size', '3vw')
     .style('text-anchor', 'middle');
