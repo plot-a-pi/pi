@@ -1,5 +1,4 @@
 // import { useFirestore }  from '../firebase/hooks'
-
 // const data = useFirestore(global-data-points)
 //this returns array of objects
 
@@ -10,7 +9,6 @@ export const calculateApproximation = (data) => {
   });
   return estimationArray;
 };
-
 
 export const calculateMean = (estimationArray) => {
   let meanData = estimationArray.reduce((acc, curr) => {

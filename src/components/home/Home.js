@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
-import GlobalPiVsCountGraph from '../graphs/GlobalPiVsCountGraph';
 import Modal from '../common/Modal';
 import { useModal } from '../../hooks/useModal';
 import styles from './Home.css';
 import PiCrawler from '../common/PiCrawler';
 import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
-import CircumferenceVsDiameterGraph from '../graphs/CircumferenceVsDiameterGraph';
+import CvsDScatterplot from '../graphs/CvsDScatterplot';
 import CvDGraphStats from '../graphs/CvDGraphStats';
+import PivsCountScatterplot from '../graphs/PivsCountScatterplot';
 
 const Home = () => {
 
@@ -32,6 +32,9 @@ const Home = () => {
       emitGlobalStats();
     }
   }, [socket.connected]);    
+
+  const piApproximationsArray = stats.piApproximationArray;
+  const dataArray = piApproximationsArray.map((pi, i) => [i + 1, pi]);
   
   return (
     <div className={styles.Home}>
@@ -42,9 +45,9 @@ const Home = () => {
         </div>
         <Modal showModal={showIntroModal} toggleModal={toggleIntroModal} modalTitle={'Diameter'} modalInstructions={modalInstructions} />
       </section>
-      <CircumferenceVsDiameterGraph className={styles.graphA} data={points} stats={stats} /> 
+      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} /> 
       <CvDGraphStats className={stats} stats={stats}/>
-      <GlobalPiVsCountGraph className={styles.graphB} />
+      <PivsCountScatterplot className={styles.graphB} data={dataArray} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
       <PiCrawler className={styles.piCrawler} />
     </div>
   );

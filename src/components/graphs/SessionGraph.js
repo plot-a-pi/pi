@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Scatterplot from './Scatterplot';
+//import Scatterplot from './Scatterplot';
 import PropTypes from 'prop-types';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
-import styles from '../graphs/CircumferenceVsDiameter.css';
 
 const SessionGraph = ({ match }) => {
   const { id } = match.params;
@@ -37,8 +36,8 @@ const SessionGraph = ({ match }) => {
   let dataArray = [];
 
   dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
-  return (
-    <Scatterplot data={dataArray} xMax={xMax} yMin={0} yMax ={yMax} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+  return (<></>
+  //<Scatterplot data={dataArray} xMax={xMax} yMin={0} yMax ={yMax} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };

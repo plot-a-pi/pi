@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
+<div
+  className="container"
+>
+  <svg
+    className="svg"
+  >
+    <text
+      className="title"
+      fill="whitesmoke"
+    />
+    <g
+      className="x-axis"
+    />
+    <text
+      className="x-label"
+      fill="whitesmoke"
+    />
+    <g
+      className="y-axis"
+    />
+    <text
+      className="y-label"
+      fill="whitesmoke"
+    />
+  </svg>
+  <CSVButton
+    data={
+      Array [
+        Array [
+          1,
+          2,
+        ],
+      ]
+    }
+  />
+</div>
+`;
