@@ -21,8 +21,7 @@ Modal.propTypes = {
   modalTitle: PropTypes.string.isRequired,
   modalInstructions: PropTypes.object.isRequired,
   showModal: PropTypes.bool.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  children: PropTypes.element.isRequired
+  toggleModal: PropTypes.func.isRequired
 };
 
 export default Modal;

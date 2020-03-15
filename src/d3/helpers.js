@@ -1,3 +1,4 @@
+/* eslint-disable babel/no-invalid-this */
 import { scaleLinear, select, axisBottom, axisLeft, extent } from 'd3';
 
 export const makePivsCountScatterplot = (svg, data, width) => {

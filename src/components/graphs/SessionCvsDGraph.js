@@ -11,6 +11,7 @@ const SessionCvsDGraph = ({ match }) => {
   const emitSessionData = useEmitEvent('GET_SESSION_DATA');
   const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
   const { sessionData } = useSocketState();
+  console.log({ sessionData });
 
   useEffect(() => {
 
