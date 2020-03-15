@@ -83,7 +83,7 @@ const TeacherSessions = () => {
       {downloadData ? <CSVDownload data={downloadData} headers={headers} /> : null}
       <div className={styles.signout}>
         <p>Signed in as: {userName}</p>
-        <Link to='/'>
+        <Link to={'/'}>
           <button onClick={handleClick}>Sign Out</button>
         </Link>
       </div>
