@@ -114,7 +114,7 @@ export const makeCvsDScatterplot = (svg, data, width) => {
   let userDataPointsArray = [];
   
   if(!userPointIds){
-    globalDataArray = data.map(point => [point.diameter, point.circumference]);
+    globalDataArray = data.map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
   }
   else {
     globalDataArray = data.filter(point=> (!userPointIds.includes(point.pointId))).map(point => [point.diameter.toFixed(2), point.circumference.toFixed(2)]);
@@ -136,7 +136,7 @@ export const makeCvsDScatterplot = (svg, data, width) => {
   
   const yExtent = extent(data, d => d.circumference);
   const scY = scaleLinear()
-    .domain([yExtent[0], yExtent[1]])
+    .domain([0, yExtent[1]])
     .range([pxY, 0]);
 
   const piApproximation = 3.14;

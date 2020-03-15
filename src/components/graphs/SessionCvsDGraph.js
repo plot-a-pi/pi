@@ -11,7 +11,6 @@ const SessionCvsDGraph = ({ match }) => {
   const emitSessionData = useEmitEvent('GET_SESSION_DATA');
   const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
   const { sessionData } = useSocketState();
-  console.log({ sessionData });
 
   useEffect(() => {
 
@@ -23,10 +22,11 @@ const SessionCvsDGraph = ({ match }) => {
 
   }, [socket.connected]);
 
-  const dataArray = (sessionData.map(point => [point.circumference, point.diameter]));
+  if(!sessionData) return null;
+  console.log(sessionData);
 
   return (
-    <CvsDScatterplot data={dataArray} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <CvsDScatterplot data={sessionData} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };
