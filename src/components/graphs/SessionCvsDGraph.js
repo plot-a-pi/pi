@@ -10,7 +10,7 @@ const SessionCvsDGraph = ({ match }) => {
   const emitJoinSession = useEmitEvent('JOIN_SESSION');
   const emitSessionData = useEmitEvent('RETRIEVE_SESSION_DATA');
   const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
-  const { sessionData } = useSocketState();
+  const { sessionData, sessionStats } = useSocketState();
 
   useEffect(() => {
 
@@ -22,11 +22,10 @@ const SessionCvsDGraph = ({ match }) => {
 
   }, [socket.connected]);
 
-  if(!sessionData || !sessionData[0]) return null;
-  console.log(sessionData[0], 'sessionData in SessionCvsDGraph');
+  if(!sessionData || !sessionData[0] || !sessionStats || !sessionStats.mean) return null;
 
   return (
-    <CvsDScatterplot data={sessionData[0]} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };

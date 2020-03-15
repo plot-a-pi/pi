@@ -107,7 +107,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('stroke-width', scale * 0.5);
 };
 
-export const makeCvsDScatterplot = (svg, data, width) => {
+export const makeCvsDScatterplot = (svg, data, stats, width) => {
   
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   let globalDataArray = [];
@@ -139,9 +139,10 @@ export const makeCvsDScatterplot = (svg, data, width) => {
     .domain([0, yExtent[1]])
     .range([pxY, 0]);
 
-  const piApproximation = 3.14;
-  
-  const lineEndpoint = piApproximation < yExtent[1] / xExtent[1] ? [xExtent[1], piApproximation * xExtent[1]] : [yExtent[1] / piApproximation, yExtent[1]];
+  let lineEndpoint = [0, 0];
+
+  if(stats.mean) 
+  { lineEndpoint = stats.mean < yExtent[1] / xExtent[1] ? [xExtent[1], stats.mean * (xExtent[1])] : [yExtent[1] / stats.mean, yExtent[1]];}
 
   svg
     .selectAll('.line')
