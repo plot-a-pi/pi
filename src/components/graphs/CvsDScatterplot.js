@@ -6,7 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
 
-const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
+const CvsDScatterplot = ({ data, title, xLabel, yLabel }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
@@ -32,14 +32,15 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
   useEffect(() => {
     const svg = select(svgRef.current);
     const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
-    if(!dimensions) return;
+    // check this line... "cannot read propery 'toFixed' of undefined at eval helpers.js"
+    if(!dimensions || !data[0]) return;
 
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${width * 0.77}px`);
 
-    makeCvsDScatterplot(svg, data, stats, width);
+    makeCvsDScatterplot(svg, data, width);
 
-  }, [dimensions, data, stats]);
+  }, [dimensions, data]);
 
   return (
     <div className={styles.container} ref={wrapperRef}>
@@ -58,7 +59,9 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
 
 CvsDScatterplot.propTypes = {
   data: PropTypes.array.isRequired,
-  stats: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
+  xLabel: PropTypes.string.isRequired,
+  yLabel: PropTypes.string.isRequired
 };
 
 export default CvsDScatterplot;

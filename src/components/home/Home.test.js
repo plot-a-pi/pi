@@ -1,11 +1,13 @@
 import React from 'react';
-import Stats from './Stats';
 import { shallow } from 'enzyme';
+import Home from './Home';
 
 jest.mock('react-socket-io-hooks', () => ({
   useEmitEvent: () => {},
   useSocketState: () => ({
-    stats: []
+    stats:  {
+      piApproximationArray: [4, 3, 3.5]
+    }
   }),
   useSocket: () => ({
     socket: {
@@ -16,7 +18,7 @@ jest.mock('react-socket-io-hooks', () => ({
 
 describe('Stats component', () => {
   it('should match snapshot', () => {
-    const wrapper = shallow(<Stats />);
+    const wrapper = shallow(<Home />);
     expect(wrapper).toMatchSnapshot();
   });
 });

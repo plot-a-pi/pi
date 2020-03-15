@@ -8,7 +8,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
   data = data.map(d => [d[0], d[1].toFixed(4)]);
     
   svg
-    .attr('viewBox', `${-pxX * 0.16} ${-pxY * 0.22} ${pxX * 1.2} ${pxY * 1.5}`);
+    .attr('viewBox', `${-pxX * 0.18} ${-pxY * 0.22} ${pxX * 1.25} ${pxY * 1.5}`);
 
   const xExtent = extent(data, d => d[0]);
   const xRange = xExtent[1] - xExtent[0] > 0 ? xExtent[1] - xExtent[0] : 2;
@@ -106,7 +106,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('stroke-width', scale * 0.5);
 };
 
-export const makeCvsDScatterplot = (svg, data, stats, width) => {
+export const makeCvsDScatterplot = (svg, data, width) => {
   
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   let globalDataArray = [];
@@ -127,8 +127,6 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
   svg
     .attr('viewBox', `${-pxX * 0.06} ${-pxY * 0.23} ${pxX} ${pxY + pxY * 0.5}`);
   
-  const lineEndpoint = stats.mean < stats.circumferenceMax / stats.diameterMax ? [stats.diameterMax, stats.mean * stats.diameterMax] : [stats.circumferenceMax / stats.mean, stats.circumferenceMax];
-  
   const xExtent = extent(data, d => d.diameter);
   const xRange = xExtent[1] - xExtent[0];
   const scX = scaleLinear()
@@ -139,6 +137,10 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
   const scY = scaleLinear()
     .domain([yExtent[0], yExtent[1]])
     .range([pxY, 0]);
+
+  const piApproximation = 3.14;
+  
+  const lineEndpoint = piApproximation < yExtent[1] / xExtent[1] ? [xExtent[1], piApproximation * xExtent[1]] : [yExtent[1] / piApproximation, yExtent[1]];
 
   svg
     .selectAll('.line')

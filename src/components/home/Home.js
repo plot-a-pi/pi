@@ -31,6 +31,7 @@ const Home = () => {
       emitRetrievedDataPoints();
       emitGlobalStats();
     }
+
   }, [socket.connected]);    
 
   const piApproximationsArray = stats.piApproximationArray;

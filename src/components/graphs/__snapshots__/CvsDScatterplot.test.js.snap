@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
+exports[`CvsDScatterplot component renders CvsDScatterplot 1`] = `
 <div
   className="container"
 >
@@ -9,7 +9,7 @@ exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
   >
     <text
       className="title"
-      fill="whitesmoke"
+      fill="#212E59"
     >
       test title
     </text>
@@ -18,7 +18,7 @@ exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
     />
     <text
       className="x-label"
-      fill="whitesmoke"
+      fill="#212E59"
     >
       test x-label
     </text>
@@ -27,22 +27,25 @@ exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
     />
     <text
       className="y-label"
-      fill="whitesmoke"
+      fill="#212E59"
     >
       test y-label
     </text>
+    <line
+      className="line"
+    />
   </svg>
   <CSVButton
     data={
       Array [
         Array [
-          1,
-          2,
+          undefined,
+          undefined,
         ],
       ]
     }
-    header1="test x-label"
-    header2="test y-label"
+    header1="Diameter (in)"
+    header2="Circumference (in)"
   />
 </div>
 `;

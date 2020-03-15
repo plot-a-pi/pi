@@ -4,7 +4,7 @@ import Home from './home/Home';
 import SessionForm from './controls/SessionForm';
 import DataEntryForm from './controls/DataEntryForm';
 import Header from './common/Header';
-import SessionGraph from './graphs/SessionGraph';
+import SessionCvsDGraph from './graphs/SessionCvsDGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';
 import { withSession } from '../firebase/AuthProvider';
@@ -21,7 +21,7 @@ export default function App() {
         <Route path='/teacher-sessions' component={withSession(TeacherSessions)} />
         <Route path='/session/:id' component={SessionForm} />
         <Route path='/submit-to-global' component={DataEntryForm} />
-        {/* <Route path='/session-graph/:id' component={SessionGraph} /> */}
+        {/* <Route path='/session-graph/:id' component={SessionCvsDGraph} /> */}
       </Switch>
     </>
   );
