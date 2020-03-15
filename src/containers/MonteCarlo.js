@@ -3,7 +3,6 @@ import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
 import Modal from '../components/common/Modal';
 import { useModal } from '../hooks/useModal';
-import GridWrapperStyles from './MonteCarloGridWrapper.css';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 import ScatterplotPiApprox from '../components/graphs/ScatterplotPiApprox';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
@@ -48,32 +47,10 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-<<<<<<< HEAD
       <MonteCarloScatterplot data={dartsArray} />
       <MonteCarloControls actions={actions} />
-=======
-      <div className={styles.dartContainer}>
-        <div className={styles.dartboard}>
-          <div className={GridWrapperStyles.MonteCarloGridWrapper}>
-            <div className={GridWrapperStyles.gridContainer}>
-              <div className={GridWrapperStyles.yLabel}>
-                <p>y</p>
-              </div>
-              <div className={GridWrapperStyles.title}>
-                <h2>Monte Carlo Approximation of Pi</h2>
-              </div>
-              <div className={GridWrapperStyles.graph}>
-                <MonteCarloScatterplot data={dartsArray} />
-              </div>
-              <div className={GridWrapperStyles.xLabel}>
-                <p>x</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <MonteCarloControls actions={actions} />
-      </div>
->>>>>>> 421d388bf14953121e1ac9e339f174fb5f218282
+      <MonteCarloScatterplot data={dartsArray} />
+      <MonteCarloControls actions={actions} />
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
@@ -88,26 +65,7 @@ const MonteCarlo = () => {
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
       </Modal>
-<<<<<<< HEAD
       <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
-=======
-      <div className={GridWrapperStyles.MonteCarloGridWrapper}>
-        <div className={GridWrapperStyles.gridContainer}>
-          <div className={GridWrapperStyles.yLabel}>
-            <p>Pi Approximation</p>
-          </div>
-          <div className={GridWrapperStyles.title}>
-            <h2>Pi Approximation vs Total Darts</h2>
-          </div>
-          <div className={GridWrapperStyles.scatterplot} >
-            <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} />
-          </div>
-          <div className={GridWrapperStyles.xLabel}>
-            <p>Total Darts</p>
-          </div>
-        </div>
-      </div>
->>>>>>> 421d388bf14953121e1ac9e339f174fb5f218282
     </div>
   );
 };
