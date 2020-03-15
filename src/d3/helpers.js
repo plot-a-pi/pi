@@ -40,10 +40,9 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .attr('class', 'tooltip')
         .attr('r', 10)
         .text('(' + d + ')')
-        .attr('stroke', '#f5f5f5')
         .attr('stroke-width', '.5')
         .style('fill', 'white')
-        .style('font-size', '3vw')
+        .style('font-size', '2.7vw')
         .style('font-weight', '900')
         .transition()
         .duration(500)
@@ -170,16 +169,15 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .attr('class', 'tooltip')
         .attr('r', 10)
         .text('(' + d + ')')
-        .attr('stroke', '#f5f5f5')
         .attr('stroke-width', '.5')
-        .style('fill', 'white')
-        .style('font-size', '3vw')
+        .style('fill', '#223493')
+        .style('font-size', '2.7vw')
         .style('font-weight', '900')
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '15vw')
-        .attr('y', '37vw')
+        .attr('x', '12vw')
+        .attr('y', '60vw')
         .style('text-anchor', 'middle');
     })
     .on('mouseleave', function() {
@@ -203,7 +201,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .attr('opacity', 0.8)
     .on('mouseenter', function(d){
       select(this)
-        .attr('r', scale * 5);
+        .attr('r', scale * 8);
       svg
         .selectAll('.tooltip')
         .data([d])
@@ -211,24 +209,22 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .attr('class', 'tooltip')
         .attr('r', 10)
         .text('(' + d + ')')
-        .attr('stroke', '#f5f5f5')
         .attr('stroke-width', '.5')
-        .style('fill', 'white')
-        .style('font-size', '3vw')
+        .style('fill', '#223493')
+        .style('font-size', '2.7vw')
         .style('font-weight', '900')
         .transition()
         .duration(500)
-        .style('font-size', '5vw')
-        .attr('x', '10vw')
-        .attr('y', '30vw')
+        .style('font-size', '3vw')
+        .attr('x', '12vw')
+        .attr('y', '60vw')
         .style('text-anchor', 'middle');
     })
     .on('mouseleave', function() {
       select(this)
         .transition()
         .duration(500)
-        .attr('r', scale)
-        .style('font-size', '5vw');
+        .attr('r', scale * 5);
       svg.select('.tooltip').remove();
     });
 
