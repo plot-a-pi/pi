@@ -4,10 +4,10 @@ import styles from './MonteCarlo.css';
 import Modal from '../components/common/Modal';
 import { useModal } from '../hooks/useModal';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
-import ScatterplotPiApprox from '../components/graphs/ScatterplotPiApprox';
+import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
-import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMin, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
+import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
@@ -29,9 +29,6 @@ const MonteCarlo = () => {
   const circleTotal = getCircleTotal(piState);
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
-  const yMin = getYMin(piState);
-  const yMax = getYMax(piState);
-
 
   const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
   const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
@@ -65,7 +62,7 @@ const MonteCarlo = () => {
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
       </Modal>
-      <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
+      <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
     </div>
   );
 };

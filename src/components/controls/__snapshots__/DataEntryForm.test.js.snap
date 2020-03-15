@@ -113,7 +113,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       >
                         ×
                       </button>
-                      <p>
+                      <div>
                         <div
                           className="modal"
                         >
@@ -125,7 +125,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                             Measure the distance around a circular object and record it here.
                           </p>
                         </div>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </section>
@@ -201,7 +201,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                       >
                         ×
                       </button>
-                      <p>
+                      <div>
                         <div
                           className="modal"
                         >
@@ -213,7 +213,7 @@ exports[`DataEntryForm component renders the DataEntryForm 1`] = `
                             Measure the widest path across the same circular object and record it here.
                           </p>
                         </div>
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </section>

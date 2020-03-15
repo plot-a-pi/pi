@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.css';
-import { style } from 'd3';
 
 const ButtonNav = () => {
   const location = useLocation();

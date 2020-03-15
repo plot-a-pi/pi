@@ -1,12 +1,4 @@
 .MonteCarlo {
-.svg {
-  overflow: visible;
-  display: block;
-  width: 100%;
-  height: 100%;
-  color: #212E59;
-  font-weight: bolder;
-}
 
 .container {
   display: flex;

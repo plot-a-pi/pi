@@ -1,6 +1,6 @@
 import React from 'react';
 import MathJax from 'react-mathjax';
-import styles from './CircumferenceVsDiameterGraph.css';
+import styles from './CvDGraphStats.css';
 import PropTypes from 'prop-types';
 
 const CvDGraphStats = ({ stats }) => {
@@ -17,15 +17,14 @@ const CvDGraphStats = ({ stats }) => {
   }
   
   return (
-    <div className={styles.stats}>
-      <h3>Total Points: <span>{stats.count}</span></h3>
+    <div className={styles.CvDGraphStats}>
+      <h3>Points: <span>{stats.count}</span></h3>
       <MathJax.Provider>
         <div className={styles.formula}>
           <MathJax.Node formula={statsEquation} />
         </div>
       </MathJax.Provider>
     </div>
-
   );
 };
 
