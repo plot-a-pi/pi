@@ -53,15 +53,15 @@ const TeacherSessions = () => {
     signOut();
   };
 
-  const headers = ['diameter', 'circumference'];
+  const headers = ['diameter (in)', 'circumference (in)'];
 
   const sessionElements = sessions.map(session => {
     return (
       <li key={session._id}>
         <h3>{session.name}</h3>
         <div className={styles.sessionLinks}>
-          <Link className={styles.sessionButton} target='_blank' to={`/session/${session._id}`}>Get  Link</Link>
-          <Link className={styles.sessionButton} target='_blank' to={`/session-graph/${session._id}`}>View Graph</Link>
+          <Link className={styles.sessionButton} to={`/session/${session._id}`}>Get  Link</Link>
+          <Link className={styles.sessionButton} to={`/session-graph/${session._id}`}>View Graph</Link>
           <Link className={styles.sessionButton} onClick={() => handleDownload(session._id)}>Download Data</Link>
         </div>
       </li>
