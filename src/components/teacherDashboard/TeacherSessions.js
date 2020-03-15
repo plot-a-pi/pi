@@ -62,7 +62,7 @@ const TeacherSessions = () => {
         <div className={styles.sessionLinks}>
           <Link className={styles.sessionButton} to={`/session/${session._id}`}>Get  Link</Link>
           <Link className={styles.sessionButton} to={`/session-graph/${session._id}`}>View Graph</Link>
-          <Link className={styles.sessionButton} onClick={() => handleDownload(session._id)}>Download Data</Link>
+          <button className={styles.sessionButton} onClick={() => handleDownload(session._id)}>Download Data</button>
         </div>
       </li>
     );

@@ -51,6 +51,7 @@ const PivsCountScatterplot = ({ data, title, xLabel, yLabel }) => {
         <text className={'x-label'} fill='whitesmoke'>{xLabel}</text>
         <g className={'y-axis'}></g>
         <text className={'y-label'} fill='whitesmoke'>{yLabel}</text>  
+        <line className={'line'}></line>
       </svg>
       <CSVButton header1={xLabel} header2={yLabel} data={data} />
     </div>
