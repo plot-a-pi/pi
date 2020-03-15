@@ -8,7 +8,7 @@ const SessionCvsDGraph = ({ match }) => {
   const socket = useSocket();
 
   const emitJoinSession = useEmitEvent('JOIN_SESSION');
-  const emitSessionData = useEmitEvent('GET_SESSION_DATA');
+  const emitSessionData = useEmitEvent('RETRIEVE_SESSION_DATA');
   const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
   const { sessionData } = useSocketState();
 
@@ -22,11 +22,11 @@ const SessionCvsDGraph = ({ match }) => {
 
   }, [socket.connected]);
 
-  if(!sessionData) return null;
-  console.log(sessionData);
+  if(!sessionData || !sessionData[0]) return null;
+  console.log(sessionData[0], 'sessionData in SessionCvsDGraph');
 
   return (
-    <CvsDScatterplot data={sessionData} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <CvsDScatterplot data={sessionData[0]} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };

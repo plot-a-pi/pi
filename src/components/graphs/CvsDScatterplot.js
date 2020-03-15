@@ -33,7 +33,7 @@ const CvsDScatterplot = ({ data, title, xLabel, yLabel }) => {
     const svg = select(svgRef.current);
     const { width } = dimensions || wrapperRef.current.getBoundingClientRect();
     // check this line... "cannot read propery 'toFixed' of undefined at eval helpers.js"
-    if(!dimensions || !data[0]) return;
+    if(!dimensions) return;
 
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${width * 0.77}px`);
