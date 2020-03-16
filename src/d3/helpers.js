@@ -306,3 +306,104 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .select('line')
     .attr('stroke-width', scale * 0.5);
 };
+
+export const makeMonteCarloDartBoard = (svg, data, width) => {
+
+  const pxX = width;
+  const pxY = pxX;
+  const scale = pxX / 500 + 1; 
+  svg
+    .attr('viewBox', `${-pxX * 0.15} ${-pxX * 0.15} ${pxX * 1.2} ${pxX * 1.3}`);
+
+  const scX = scaleLinear()
+    .domain([0, 1])
+    .range([0, pxX]);
+
+  const scY = scaleLinear()
+    .domain([0, 1])
+    .range([pxY, 0]);
+
+  svg
+    .selectAll('rect')
+    .remove();
+
+  svg
+    .selectAll('circle')
+    .remove();
+
+  svg
+    .append('rect')
+    .attr('x', 0)
+    .attr('y', 0)
+    .attr('width', pxX)
+    .attr('height', pxY)
+    .style('fill', '#7dc4b8')
+    .style('opacity', 0.25)
+    .attr('stroke', 'rgb(21, 27, 49)')
+    .attr('stroke-width', '2');
+
+  svg
+    .append('circle')
+  // eslint-disable-next-line no-unused-vars
+    .attr('cx', data => scX(0.5))
+  // eslint-disable-next-line no-unused-vars
+    .attr('cy', data => scY(0.5))
+    .attr('r', pxX / 2)
+    .style('fill', '#a4a6c9')
+    .style('opacity', 0.5)
+    .attr('stroke', 'rgb(21, 27, 49)')
+    .attr('stroke-width', '2');
+
+  svg
+    .selectAll('.points')
+    .data(data)
+    .join('circle')
+    .attr('cx', data => scX(data[0]))
+    .attr('cy', data => scY(data[1]))
+    .attr('r', scale)
+    .attr('class', 'points')
+    .attr('stroke', '#212e59')
+    .attr('stroke-width', '1')
+    .style('fill', '#223493');
+
+  svg
+    .select('.x-axis')
+    .attr('transform', `translate(0, ${pxX})`)
+    .transition()
+    .duration(1000)
+    .call(axisBottom(scX).tickSize(scale * 3))
+    .selectAll('text')
+    .attr('font-size', '2vw');
+
+  svg
+    .select('.y-axis')
+    .transition()
+    .duration(1000)
+    .call(axisLeft(scY).tickSize(scale * 3))
+    .selectAll('text')
+    .attr('font-size', '2vw');
+
+  svg
+    .select('.title')
+    .attr('transform', `translate(${pxX / 2}, ${-pxX * 0.05})`)
+    .attr('font-family', 'Arial')
+    .attr('font-size', '3.5vw')
+    .style('text-anchor', 'middle');
+
+  svg
+    .select('.x-label')
+    .attr('transform', `translate(${pxX / 2}, ${pxY * 1.09})`)
+    .attr('font-family', 'Arial')
+    .attr('font-size', '3vw')
+    .style('text-anchor', 'middle');
+
+  svg
+    .select('.y-label')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', -pxX * 0.11)
+    .attr('x', -pxX / 2)
+    .attr('font-family', 'Arial')
+    .attr('font-size', '3vw')
+    .style('text-anchor', 'middle');
+
+};
