@@ -23,6 +23,7 @@ export const USER_SESSIONS = 'USER_SESSIONS';
 export const RETRIEVE_SESSIONS = 'RETRIEVE_SESSIONS';
 export const GET_SESSION_DATA = 'GET_SESSION_DATA';
 export const GET_SESSION_STATS = 'GET_SESSION_STATS';
+
 export default function reducer(state, action) {
   switch(action.type){
     case UPDATE_GLOBAL:

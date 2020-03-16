@@ -31,6 +31,9 @@ exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
     >
       test y-label
     </text>
+    <line
+      className="line"
+    />
   </svg>
   <CSVButton
     data={

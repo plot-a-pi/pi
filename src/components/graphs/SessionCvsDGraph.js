@@ -8,9 +8,9 @@ const SessionCvsDGraph = ({ match }) => {
   const socket = useSocket();
 
   const emitJoinSession = useEmitEvent('JOIN_SESSION');
-  const emitSessionData = useEmitEvent('GET_SESSION_DATA');
+  const emitSessionData = useEmitEvent('RETRIEVE_SESSION_DATA');
   const emitSessionStats = useEmitEvent('GET_SESSION_STATS');
-  const { sessionData } = useSocketState();
+  const { sessionData, sessionStats } = useSocketState();
 
   useEffect(() => {
 
