@@ -44,8 +44,12 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
+      <div className={styles.dartBoard}>
+        <MonteCarloScatterplot data={dartsArray} />
+      </div>
+      <div className={styles.controls}>
+        <MonteCarloControls actions={actions} />
+      </div>
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
@@ -60,7 +64,9 @@ const MonteCarlo = () => {
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
       </Modal>
-      <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
+      <div className={styles.pivsCountScatterplot}>
+        <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
+      </div>
     </div>
   );
 };
