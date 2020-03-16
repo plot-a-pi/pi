@@ -17,7 +17,7 @@ const MonteCarlo = () => {
   const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
-    { name: 'ADD_DARTS', text: '1', actionCreator: () => dispatch(addDarts(1)) },
+    { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(addDarts(1)) },
     { name: 'ADD_10_DARTS', text: '10', actionCreator: () => dispatch(addDarts(10)) },
     { name: 'ADD_100_DARTS', text: '100', actionCreator: () => dispatch(addDarts(100)) },
     { name: 'ADD_1000_DARTS', text: '1000', actionCreator: () => dispatch(addDarts(1000)) },
