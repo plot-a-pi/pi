@@ -7,15 +7,11 @@ exports[`Header Component should render a Header 1`] = `
   <div
     className="Header"
   >
-    <div
+    <img
+      alt="Pi logo"
       className="logo"
-    >
-      <img
-        alt="Pi logo"
-        src="/path/image"
-        width="70px"
-      />
-    </div>
+      src="/path/image"
+    />
     <div
       className="title"
     >
@@ -23,7 +19,7 @@ exports[`Header Component should render a Header 1`] = `
         Plot a Pi
       </h2>
       <p>
-        It's easy as Pi!
+        Where the World Plots Pi
       </p>
     </div>
   </div>

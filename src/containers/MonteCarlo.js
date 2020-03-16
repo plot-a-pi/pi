@@ -5,7 +5,7 @@ import Modal from '../components/common/Modal';
 import { useModal } from '../hooks/useModal';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
-import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
+import { MonteCarloDartBoard } from '../components/graphs/MonteCarloDartBoard';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { addDarts, clearDarts } from '../actions/monteCarloActions';
@@ -45,7 +45,7 @@ const MonteCarlo = () => {
   return (
     <div className={styles.MonteCarlo}>
       <div className={styles.dartBoard}>
-        <MonteCarloScatterplot data={dartsArray} />
+        <MonteCarloDartBoard data={dartsArray} />
       </div>
       <h3>Add Darts</h3>
       <div className={styles.controls}>

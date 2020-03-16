@@ -6,6 +6,7 @@
   .dartBoard {
     display: flex;
     justify-content: flex-end;
+    width: 80%;
     border: 2px blue solid;
   }
   
@@ -42,6 +43,7 @@
   
   .controls {
     section{
+      background: rgb(217, 218, 240);
       display: flex;
       width: 80%;
       margin: auto;
