@@ -4,7 +4,10 @@
   flex-direction: column;
   align-items: stretch;
   width: 85vw;
+<<<<<<< HEAD:src/components/graphs/PivsCountScatterplot.css
   
+=======
+>>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8:src/components/graphs/Scatterplot.css
 }
 
 .svg {

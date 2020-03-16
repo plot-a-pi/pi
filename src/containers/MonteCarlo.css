@@ -1,4 +1,16 @@
 .MonteCarlo {
+<<<<<<< HEAD
+=======
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 60vw;
+}
+
+.MonteCarlo {
+>>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
   display: flex;
   flex-direction: column;
   color: rgb(58, 78, 153);
