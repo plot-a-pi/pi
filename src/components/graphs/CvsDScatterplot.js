@@ -6,11 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
 
-<<<<<<< HEAD
 const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
-=======
-const CvsDScatterplot = ({ data, title, xLabel, yLabel }) => {
->>>>>>> d6afeabc46205736e211e90c033710e309f43885
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
