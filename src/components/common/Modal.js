@@ -9,7 +9,7 @@ const Modal = ({ modalInstructions, showModal, toggleModal, children }) => {
       <div className={`${styles.Modal} ${showModal ? styles.modalShow : styles.modalHide}`}>
         <div className={styles.modalHeader}>
           <button className={styles.closeButton} type='button' onClick={toggleModal}>&times;</button>
-          <p>{modalInstructions}</p>
+          <div>{modalInstructions}</div>
           { children }
         </div>
       </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Scatterplot component renders Scatterplot 1`] = `
+exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
 <div
   className="container"
 >
@@ -10,21 +10,39 @@ exports[`Scatterplot component renders Scatterplot 1`] = `
     <text
       className="title"
       fill="whitesmoke"
-    />
+    >
+      test title
+    </text>
     <g
       className="x-axis"
     />
     <text
       className="x-label"
       fill="whitesmoke"
-    />
+    >
+      test x-label
+    </text>
     <g
       className="y-axis"
     />
     <text
       className="y-label"
       fill="whitesmoke"
-    />
+    >
+      test y-label
+    </text>
   </svg>
+  <CSVButton
+    data={
+      Array [
+        Array [
+          1,
+          2,
+        ],
+      ]
+    }
+    header1="test x-label"
+    header2="test y-label"
+  />
 </div>
 `;

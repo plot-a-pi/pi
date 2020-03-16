@@ -1,14 +1,15 @@
-.svg {
-  background: #212E59;
-  display: block;
-  width: 100%;
-  color: whitesmoke;
-}
-
 .container {
+  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 85vw;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: '#212E59';
 }
 
