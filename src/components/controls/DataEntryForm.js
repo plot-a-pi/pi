@@ -7,8 +7,6 @@ import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
 import { useEmitEvent } from 'react-socket-io-hooks';
 import Icon from '../../assets/192566_256x256.png';
-import { style } from 'd3';
-
 
 const DataEntryForm = () => {
 

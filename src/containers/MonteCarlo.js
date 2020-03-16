@@ -4,23 +4,23 @@ import styles from './MonteCarlo.css';
 import Modal from '../components/common/Modal';
 import { useModal } from '../hooks/useModal';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
-import ScatterplotPiApprox from '../components/graphs/ScatterplotPiApprox';
-import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
+import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
+import { MonteCarloDartBoard } from '../components/graphs/MonteCarloDartBoard';
 import monteCarloReducer from '../reducers/monteCarloReducer';
-import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getYMin, getYMax, getCircleTotal } from '../selectors/monteCarloSelectors';
-import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
+import { addDarts, clearDarts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
 
-  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMin: 2, yMax: 4 });
+  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [] });
 
   const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
-    { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(add1Dart()) },
-    { name: 'ADD_10_DARTS', text: '10', actionCreator: () => dispatch(add10Darts()) },
-    { name: 'ADD_100_DARTS', text: '100', actionCreator: () => dispatch(add100Darts()) },
-    { name: 'ADD_1000_DARTS', text: '1000', actionCreator: () => dispatch(add1000Darts()) },
+    { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(addDarts(1)) },
+    { name: 'ADD_10_DARTS', text: '10', actionCreator: () => dispatch(addDarts(10)) },
+    { name: 'ADD_100_DARTS', text: '100', actionCreator: () => dispatch(addDarts(100)) },
+    { name: 'ADD_1000_DARTS', text: '1000', actionCreator: () => dispatch(addDarts(1000)) },
     { name: 'CLEAR_DARTS', text: 'Reset', actionCreator: () => dispatch(clearDarts()) }
   ];
 
@@ -29,9 +29,6 @@ const MonteCarlo = () => {
   const circleTotal = getCircleTotal(piState);
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
-  const yMin = getYMin(piState);
-  const yMax = getYMax(piState);
-
 
   const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
   const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
@@ -41,16 +38,26 @@ const MonteCarlo = () => {
       <h3>Pi Approximation Derivation</h3>
       <br/>
       <MathJax.Provider >
-        <MathJax.Node formula={derivation} style={{ 'font-size' : '12px', 'font-style': 'bold' }}/>
+        <MathJax.Node formula={derivation} style={{ 'fontSize' : '12px', 'fontStyle': 'bold' }}/>
       </MathJax.Provider>
     </div>);
 
   return (
     <div className={styles.MonteCarlo}>
+<<<<<<< HEAD
       <MonteCarloScatterplot data={dartsArray} />
       <MonteCarloControls actions={actions} />
       <MonteCarloScatterplot data={dartsArray} />
       <MonteCarloControls actions={actions} />
+=======
+      <div className={styles.dartBoard}>
+        <MonteCarloDartBoard data={dartsArray} />
+      </div>
+      <h3>Add Darts</h3>
+      <div className={styles.controls}>
+        <MonteCarloControls actions={actions} />
+      </div>
+>>>>>>> 1f7ffc5f5474441b54ff1645218ccfb9ab7a7a19
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
@@ -65,7 +72,9 @@ const MonteCarlo = () => {
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
       </Modal>
-      <ScatterplotPiApprox data={numDartsVersusPiArray} xMax={dartsTotal} yMin={yMin} yMax={yMax} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
+      <div className={styles.pivsCountScatterplot}>
+        <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
+      </div>
     </div>
   );
 };

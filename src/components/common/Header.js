@@ -8,12 +8,10 @@ const Header = () => {
   return (
     <header className={styles.wrapper}>
       <div className={styles.Header}>
-        <div className={styles.logo}>
-          <img width='70px' src={Icon} alt='Pi logo' />
-        </div>
+        <img className={styles.logo} src={Icon} alt='Pi logo' />
         <div className={styles.title}>
           <h2>Plot a Pi</h2>
-          <p>It&apos;s easy as Pi!</p>
+          <p>Where the World Plots Pi</p>
         </div>
       </div>
       <div className={styles.buttons}>

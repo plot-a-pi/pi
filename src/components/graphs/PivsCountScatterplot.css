@@ -1,0 +1,18 @@
+.container {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  
+}
+
+.svg {
+  background: #212E59;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: whitesmoke;
+}
+
+

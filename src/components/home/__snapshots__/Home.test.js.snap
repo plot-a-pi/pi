@@ -1,14 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Stats component should match snapshot 1`] = `
-<Fragment>
-  <h2>
-    Sample Size:
-  </h2>
-  <p />
-  <h2>
-    Pi Approximation:
-  </h2>
-  <p />
-</Fragment>
+<div
+  className="Home"
+>
+  <section
+    className="introduction"
+  >
+    <div
+      className="whatsThis"
+    >
+      <h3>
+        What's this about...
+      </h3>
+      <button
+        className="modalButton"
+        onClick={[Function]}
+        type="button"
+      >
+         ? 
+      </button>
+    </div>
+    <Modal
+      modalInstructions={
+        <div
+          className="modal"
+        >
+          <h3>
+            Would you like to contribute to pi?
+          </h3>
+          <br />
+          <p>
+            Measure the circumference and diamter of a circular object and submit your measurements to improve our global approximation of pi.
+          </p>
+          <br />
+          <p>
+            How does the approximation change as more data is added?
+          </p>
+        </div>
+      }
+      modalTitle="Diameter"
+      showModal={false}
+      toggleModal={[Function]}
+    />
+  </section>
+  <CvsDScatterplot
+    className="graphA"
+    stats={
+      Object {
+        "piApproximationArray": Array [
+          4,
+          3,
+          3.5,
+        ],
+      }
+    }
+    title="Global Circle Measurements"
+    xLabel="Diameter (in)"
+    yLabel="Circumference (in)"
+  />
+  <CvDGraphStats
+    className={
+      Object {
+        "piApproximationArray": Array [
+          4,
+          3,
+          3.5,
+        ],
+      }
+    }
+    stats={
+      Object {
+        "piApproximationArray": Array [
+          4,
+          3,
+          3.5,
+        ],
+      }
+    }
+  />
+  <PivsCountScatterplot
+    className="graphB"
+    data={
+      Array [
+        Array [
+          1,
+          4,
+        ],
+        Array [
+          2,
+          3,
+        ],
+        Array [
+          3,
+          3.5,
+        ],
+      ]
+    }
+    title="Global Pi Approximation vs Count"
+    xLabel="Count"
+    yLabel="Pi Approximation"
+  />
+  <PiCrawler
+    className="piCrawler"
+  />
+</div>
 `;

@@ -1,5 +1,6 @@
 .container {
-  align-self: center
+  align-self: center;
+  margin-top: 30px;
 }
 .marquee {
   width: 80vw;
