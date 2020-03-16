@@ -12,7 +12,6 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('viewBox', `${-pxX * 0.18} ${-pxY * 0.22} ${pxX * 1.25} ${pxY * 1.5}`);
 
   const xExtent = extent(data, d => d[0]);
-<<<<<<< HEAD
   const scX = scaleLinear()
     .domain([xExtent[0], xExtent[1]])
     .range([0, pxX]);
@@ -42,26 +41,10 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('x2', scX(xExtent[1]))
     .attr('y2', y1);
 
-=======
-  const xRange = xExtent[1] - xExtent[0] > 0 ? xExtent[1] - xExtent[0] : 2;
-  const scX = scaleLinear()
-    .domain([xExtent[0], xExtent[1] + xRange * 0.07])
-    .range([0, pxX]);
-
-  const yExtent = extent(data, d => d[1]);
-  const scY = scaleLinear()
-    .domain([yExtent[0], yExtent[1]])
-    .range([pxY, 0]);
-
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
   svg
     .selectAll('circle')
     .data(data)
     .join('circle')
-<<<<<<< HEAD
-=======
-    .attr('cx', data => scX(data[0]))
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     .attr('cy', data => scY(data[1]))
     .attr('r', scale)
     .style('fill', '#f5f5f5')
@@ -94,14 +77,10 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .attr('r', scale)
         .style('font-size', '5vw');
       svg.select('.tooltip').remove();
-<<<<<<< HEAD
     })
     .transition()
     .duration(2000)
     .attr('cx', data => scX(data[0]));
-=======
-    });
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
 
   svg
     .select('.y-axis')
@@ -181,13 +160,8 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .domain([0, yExtent[1]])
     .range([pxY, 0]);
 
-<<<<<<< HEAD
   if(!stats.mean) return;
   let lineEndpoint;
-=======
-  let lineEndpoint = [0, 0];
-
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
   if(stats.mean) 
   { lineEndpoint = stats.mean < yExtent[1] / xExtent[1] ? [xExtent[1], stats.mean * (xExtent[1])] : [yExtent[1] / stats.mean, yExtent[1]];}
 
@@ -197,13 +171,10 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .style('stroke-width', 2)
     .attr('x1', 0)
     .attr('y1', pxY)
-<<<<<<< HEAD
     .attr('x2', scX(pxX))
     .attr('y2', scY(0))
     .transition()
     .duration(2000)
-=======
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     .attr('x2', scX(lineEndpoint[0]))
     .attr('y2', scY(lineEndpoint[1]));
 
@@ -213,10 +184,6 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .join('circle')
     .attr('class', 'global-point')
     .attr('cx', globalDataArray => scX(globalDataArray[0]))
-<<<<<<< HEAD
-=======
-    .attr('cy', globalDataArray => scY(globalDataArray[1]))
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     .attr('r', scale)
     .style('fill', '#223493')
     .attr('opacity', 0.8)
@@ -248,14 +215,10 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .attr('r', scale)
         .style('font-size', '5vw');
       svg.select('.tooltip').remove();
-<<<<<<< HEAD
     })
     .transition()
     .duration(2000)
     .attr('cy', globalDataArray => scY(globalDataArray[1]));
-=======
-    });
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     
   svg
     .selectAll('.user-point')
@@ -264,10 +227,6 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .attr('class', 'user-point')
     .attr('r', scale * 5)
     .attr('cx', userDataPointsArray => scX(userDataPointsArray[0]))
-<<<<<<< HEAD
-=======
-    .attr('cy', userDataPointsArray => scY(userDataPointsArray[1]))
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     .style('fill', '#99CCFF')
     .attr('opacity', 0.8)
     .on('mouseenter', function(d){
@@ -297,14 +256,10 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .duration(500)
         .attr('r', scale * 5);
       svg.select('.tooltip').remove();
-<<<<<<< HEAD
     })
     .transition()
     .duration(2000)
     .attr('cy', globalDataArray => scY(globalDataArray[1]));
-=======
-    });
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
 
   svg
     .select('.x-axis')
