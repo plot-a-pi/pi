@@ -3,14 +3,11 @@ import PropTypes from 'prop-types';
 
 const MonteCarloControls = ({ actions }) => (
   <section>
-    <h3>Add Darts</h3>
-    <div>
-      {actions.map(({ name, text, actionCreator }) => (
-        <button key={name} onClick={actionCreator}>
-          {text || name}
-        </button>
-      ))}
-    </div>
+    {actions.map(({ name, text, actionCreator }) => (
+      <button key={name} onClick={actionCreator}>
+        {text || name}
+      </button>
+    ))}
   </section>
 );
 

@@ -47,6 +47,7 @@ const MonteCarlo = () => {
       <div className={styles.dartBoard}>
         <MonteCarloScatterplot data={dartsArray} />
       </div>
+      <h3>Add Darts</h3>
       <div className={styles.controls}>
         <MonteCarloControls actions={actions} />
       </div>
