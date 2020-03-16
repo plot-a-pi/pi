@@ -29,10 +29,6 @@ const PivsCountScatterplot = ({ data, title, xLabel, yLabel }) => {
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
   
-<<<<<<< HEAD
-=======
-  
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
   useEffect(() => {
     const svg = select(svgRef.current);
     const wrapper = select(wrapperRef.current);
@@ -54,10 +50,7 @@ const PivsCountScatterplot = ({ data, title, xLabel, yLabel }) => {
         <text className={'x-label'} fill='whitesmoke'>{xLabel}</text>
         <g className={'y-axis'}></g>
         <text className={'y-label'} fill='whitesmoke'>{yLabel}</text>  
-<<<<<<< HEAD
         <line className={'line'}></line>
-=======
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
       </svg>
       <CSVButton header1={xLabel} header2={yLabel} data={data} />
     </div>

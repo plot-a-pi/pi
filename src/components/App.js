@@ -4,10 +4,7 @@ import Home from './home/Home';
 import DataEntryForm from './controls/DataEntryForm';
 import SessionForm from './controls/SessionForm';
 import Header from './common/Header';
-<<<<<<< HEAD
 // import SessionStudentView from './teacherDashboard/SessionStudentView';
-=======
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
 import SessionCvsDGraph from './graphs/SessionCvsDGraph';
 import TeacherSessions from './teacherDashboard/TeacherSessions';
 import TeacherDashboard from './teacherDashboard/TeacherDashboard';

@@ -8,11 +8,7 @@ import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
-<<<<<<< HEAD
 import { addDarts, clearDarts } from '../actions/monteCarloActions';
-=======
-import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
 
 const MonteCarlo = () => {
 
@@ -48,7 +44,6 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-<<<<<<< HEAD
       <div className={styles.dartBoard}>
         <MonteCarloScatterplot data={dartsArray} />
       </div>
@@ -56,12 +51,6 @@ const MonteCarlo = () => {
       <div className={styles.controls}>
         <MonteCarloControls actions={actions} />
       </div>
-=======
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
@@ -76,13 +65,9 @@ const MonteCarlo = () => {
       </div>
       <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
       </Modal>
-<<<<<<< HEAD
       <div className={styles.pivsCountScatterplot}>
         <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
       </div>
-=======
-      <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
->>>>>>> bba9d0539f0509cfab72c16cc4eb2c53abd03ca8
     </div>
   );
 };
