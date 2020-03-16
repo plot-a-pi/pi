@@ -44,12 +44,6 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-<<<<<<< HEAD
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
-=======
       <div className={styles.dartBoard}>
         <MonteCarloDartBoard data={dartsArray} />
       </div>
@@ -57,7 +51,6 @@ const MonteCarlo = () => {
       <div className={styles.controls}>
         <MonteCarloControls actions={actions} />
       </div>
->>>>>>> 1f7ffc5f5474441b54ff1645218ccfb9ab7a7a19
       <div className={styles.stats}>
         <div className={styles.dartTotals}>
           <p>Darts In Circle: <span>{circleTotal}</span></p>
