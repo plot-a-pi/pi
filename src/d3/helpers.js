@@ -107,7 +107,11 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('stroke-width', scale * 0.5);
 };
 
+<<<<<<< HEAD
 export const makeCvsDScatterplot = (svg, data, stats, width) => {
+=======
+export const makeCvsDScatterplot = (svg, data, width) => {
+>>>>>>> d6afeabc46205736e211e90c033710e309f43885
   
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   let globalDataArray = [];
