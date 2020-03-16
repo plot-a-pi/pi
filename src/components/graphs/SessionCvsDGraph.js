@@ -22,11 +22,10 @@ const SessionCvsDGraph = ({ match }) => {
 
   }, [socket.connected]);
 
-  if(!sessionData) return null;
-  console.log(sessionData);
+  if(!sessionData || !sessionData[0] || !sessionStats || !sessionStats.mean) return null;
 
   return (
-    <CvsDScatterplot data={sessionData} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
   );
 
 };
