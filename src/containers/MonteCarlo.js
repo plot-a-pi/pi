@@ -8,19 +8,19 @@ import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
 import { MonteCarloScatterplot } from '../components/graphs/MonteCarloScatterplot';
 import monteCarloReducer from '../reducers/monteCarloReducer';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
-import { add1Dart, add10Darts, add100Darts, add1000Darts, clearDarts } from '../actions/monteCarloActions';
+import { addDarts, clearDarts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
 
-  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [], yMin: 2, yMax: 4 });
+  const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [] });
 
   const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const actions = [
-    { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(add1Dart()) },
-    { name: 'ADD_10_DARTS', text: '10', actionCreator: () => dispatch(add10Darts()) },
-    { name: 'ADD_100_DARTS', text: '100', actionCreator: () => dispatch(add100Darts()) },
-    { name: 'ADD_1000_DARTS', text: '1000', actionCreator: () => dispatch(add1000Darts()) },
+    { name: 'ADD_DARTS', text: '1', actionCreator: () => dispatch(addDarts(1)) },
+    { name: 'ADD_10_DARTS', text: '10', actionCreator: () => dispatch(addDarts(10)) },
+    { name: 'ADD_100_DARTS', text: '100', actionCreator: () => dispatch(addDarts(100)) },
+    { name: 'ADD_1000_DARTS', text: '1000', actionCreator: () => dispatch(addDarts(1000)) },
     { name: 'CLEAR_DARTS', text: 'Reset', actionCreator: () => dispatch(clearDarts()) }
   ];
 
@@ -38,14 +38,12 @@ const MonteCarlo = () => {
       <h3>Pi Approximation Derivation</h3>
       <br/>
       <MathJax.Provider >
-        <MathJax.Node formula={derivation} style={{ 'font-size' : '12px', 'font-style': 'bold' }}/>
+        <MathJax.Node formula={derivation} style={{ 'fontSize' : '12px', 'fontStyle': 'bold' }}/>
       </MathJax.Provider>
     </div>);
 
   return (
     <div className={styles.MonteCarlo}>
-      <MonteCarloScatterplot data={dartsArray} />
-      <MonteCarloControls actions={actions} />
       <MonteCarloScatterplot data={dartsArray} />
       <MonteCarloControls actions={actions} />
       <div className={styles.stats}>

@@ -3,7 +3,6 @@ export const generateMonteCarloData = (sampleSize, currentCircleTotal, currentDa
   let newPiApproximationsArray = [];
   let x;
   let y;
-  let piMax = -1;
   let n = 1;
   
   while(n < sampleSize + 1){
@@ -14,11 +13,10 @@ export const generateMonteCarloData = (sampleSize, currentCircleTotal, currentDa
     }
     dartsArray.push([x, y]);
     const newPiApproximation = currentCircleTotal / (currentDartsTotal + n) * 4;
-    piMax = currentDartsTotal !== 0 && newPiApproximation > piMax ? newPiApproximation : piMax;
     currentDartsTotal + n !== 0 && newPiApproximationsArray.push(newPiApproximation);
     n++;
   }
   const newCircleTotal = currentCircleTotal;
   const newDartsArray = dartsArray;
-  return { newCircleTotal, newDartsArray, newPiApproximationsArray, piMax };
+  return { newCircleTotal, newDartsArray, newPiApproximationsArray };
 };
