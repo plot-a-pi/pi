@@ -20,24 +20,26 @@ export const makePivsCountScatterplot = (svg, data, width) => {
   if(yExtent[1] - yExtent[0] === 0) yExtent = [0, 4];
   let yMin = yExtent[0] > 3.14 ? 3.0 : yExtent[0];
   const yMax = yExtent[1] < 3.14 ? 3.5 : yExtent[1];
-  const scY = scaleLinear()
+  let scY = scaleLinear()
     .domain([yMin, yMax])
     .range([pxY, 0]);
 
+  const y1 = scY(Math.PI) ? scY(Math.PI) : 1;
+    
   svg
     .select('.line')
     .style('stroke', 'white')
     .style('stroke-width', 1)
     .attr('x1', 0)
-    .attr('y1', scY(Math.PI))
+    .attr('y1', y1)
     .attr('x2', scX(xExtent[1]))
-    .attr('y2', scY(Math.PI))
+    .attr('y2', y1)
     .transition()
     .duration(2000)
     .attr('x1', 0)
-    .attr('y1', scY(Math.PI))
+    .attr('y1', y1)
     .attr('x2', scX(xExtent[1]))
-    .attr('y2', scY(Math.PI));
+    .attr('y2', y1);
 
   svg
     .selectAll('circle')

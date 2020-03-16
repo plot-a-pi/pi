@@ -29,7 +29,6 @@ const PivsCountScatterplot = ({ data, title, xLabel, yLabel }) => {
   const wrapperRef = useRef(null);
   const dimensions = useResizeObserver(wrapperRef);
   
-  
   useEffect(() => {
     const svg = select(svgRef.current);
     const wrapper = select(wrapperRef.current);
