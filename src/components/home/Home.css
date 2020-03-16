@@ -10,29 +10,6 @@
     margin-right: 10%
 }
 
-.introduction {
-    max-height: 5vh;
-    margin: 0;
-    padding: 0;
-}
-
-.modal {
-    font-family: 'Roboto Mono';
-    color: #212E59;
-}
-
-.modalButton {
-    font-size: 12px;
-    width: 30px;
-    height: 30px;
-}
-
-.modalButton:focus{
-    outline: none;
-    box-shadow: 0 0 1px 2px #A4A6C9;
-    box-shadow: 0 0 0 2px -moz-mac-focusring;
-}
-
 .whatsThis {
     display: flex;
     width: 80vw;

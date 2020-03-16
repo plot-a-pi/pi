@@ -1,16 +1,21 @@
-.wrapper {
-  margin-bottom: 3vh;
+.container {
+  margin-bottom: 2vw;
 }
+
 .Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(245, 245, 245, 0.808);
+  height: 8vw;
+  padding: 1em;
+}
+.left {
   font-family: 'Roboto Mono';
-  border: 1px black solid;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
-  background-color: rgba(245, 245, 245, 0.808);
-  height: 8vw;
-  padding: 1em;
 
   .title {
     background-color: transparent;
@@ -29,7 +34,7 @@
   }
 
   .logo {
-    width: 11%;
+    width: 10vw;
   }
 
 };
@@ -57,7 +62,6 @@
     padding-bottom: .5em;
   }
 }
-
 .sessionNav {
   background-color: rgba(245, 245, 245, 0.808);
   display: flex;
