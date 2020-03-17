@@ -339,7 +339,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .attr('y', 0)
     .attr('width', pxX)
     .attr('height', pxY)
-    .style('fill', 'rgb(197, 209, 240)')
+    .style('fill', '#212E59')
     .style('opacity', 0.25)
     .attr('stroke', 'rgb(21, 27, 49)')
     .attr('stroke-width', '2');
@@ -351,8 +351,8 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
   // eslint-disable-next-line no-unused-vars
     .attr('cy', data => scY(0.5))
     .attr('r', pxX / 2)
-    .style('fill', '#212E59')
-    .style('opacity', 0.5)
+    .style('fill', 'blue')
+    .style('opacity', 0.35)
     .attr('stroke', 'rgb(21, 27, 49)')
     .attr('stroke-width', '2');
 
