@@ -3,7 +3,7 @@ import styles from './Home.css';
 import PiCrawler from '../common/PiCrawler';
 import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
 import CvsDScatterplot from '../graphs/CvsDScatterplot';
-import CvDGraphStats from '../graphs/CvDGraphStats';
+import CvDGraphStats from '../stats/CvDGraphStats';
 import PivsCountScatterplot from '../graphs/PivsCountScatterplot';
 
 const Home = () => {
