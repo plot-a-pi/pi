@@ -14,16 +14,14 @@ import { addDarts, clearDarts } from '../actions/monteCarloActions';
 const MonteCarlo = () => {
 
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [] });
-  const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
+  const derivation = '\\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\,  \\frac{\\pi}{4}';
 
   const [showDerivationModal, toggleDerivationModal] = useModal();
 
   const modalInstructions = (
     <div className={styles.modal}>
-      <h3>Pi Approximation Derivation</h3>
-      <br/>
       <MathJax.Provider >
-        <MathJax.Node formula={derivation} style={{ 'fontSize' : '12px', 'fontStyle': 'bold' }}/>
+        <MathJax.Node className={styles.derivation} formula={derivation} style={{ 'fontSize' : '2vw', 'fontStyle': 'bold' }}/>
       </MathJax.Provider>
     </div>);
 
