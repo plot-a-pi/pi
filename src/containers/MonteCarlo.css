@@ -42,6 +42,11 @@
       }
     }
   }
+
+  .modalButton {
+    width: 30vw;
+    font-size: 2vw;
+  }
   
   .stats {
     background-color: whitesmoke;
