@@ -1,20 +1,31 @@
 import React, { useReducer } from 'react';
-import MathJax from 'react-mathjax';
 import styles from './MonteCarlo.css';
-import Modal from '../components/common/Modal';
-import { useModal } from '../hooks/useModal';
+import MathJax from 'react-mathjax';
 import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
 import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
+import MonteCarloStats from '../components/stats/MonteCarloStats';
 import { MonteCarloDartBoard } from '../components/graphs/MonteCarloDartBoard';
 import monteCarloReducer from '../reducers/monteCarloReducer';
+import Modal from '../components/common/Modal';
+import { useModal } from '../hooks/useModal';
 import { getPiApproximation, getDartsTotal, getDartsArray, getNumDartsVersusPiArray, getCircleTotal } from '../selectors/monteCarloSelectors';
 import { addDarts, clearDarts } from '../actions/monteCarloActions';
 
 const MonteCarlo = () => {
 
   const [piState, dispatch] = useReducer(monteCarloReducer, { piApproximation: null, dartsTotal: 0, circleTotal: 0, dartsArray: [], piApproximationsArray: [] });
+  const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
 
   const [showDerivationModal, toggleDerivationModal] = useModal();
+
+  const modalInstructions = (
+    <div className={styles.modal}>
+      <h3>Pi Approximation Derivation</h3>
+      <br/>
+      <MathJax.Provider >
+        <MathJax.Node formula={derivation} style={{ 'fontSize' : '12px', 'fontStyle': 'bold' }}/>
+      </MathJax.Provider>
+    </div>);
 
   const actions = [
     { name: 'ADD_1_DART', text: '1', actionCreator: () => dispatch(addDarts(1)) },
@@ -30,44 +41,26 @@ const MonteCarlo = () => {
   const dartsArray = getDartsArray(piState);
   const numDartsVersusPiArray = getNumDartsVersusPiArray(piState);
 
-  const derivation = ' \\frac{Darts \\, in \\, Circle}{Total \\, Darts} \\, \\approx \\, \\frac{Circle \\, Area}{Square \\, Area} \\, = \\, \\frac{\\pi r^2}{(2r)^2} \\, \\approx \\, \\frac{\\pi}{4}';
-  const statsEquation = `\\pi \\, \\approx \\, 4 * \\frac {${circleTotal}}{${dartsTotal}} \\, = \\, ${piApproximation.toFixed(5)}`;
-
-  const modalInstructions = (
-    <div className={styles.modal}>
-      <h3>Pi Approximation Derivation</h3>
-      <br/>
-      <MathJax.Provider >
-        <MathJax.Node formula={derivation} style={{ 'fontSize' : '12px', 'fontStyle': 'bold' }}/>
-      </MathJax.Provider>
-    </div>);
-
   return (
     <div className={styles.MonteCarlo}>
-      <div className={styles.dartBoard}>
-        <MonteCarloDartBoard data={dartsArray} />
-      </div>
-      <h3>Add Darts</h3>
-      <div className={styles.controls}>
-        <MonteCarloControls actions={actions} />
-      </div>
-      <div className={styles.stats}>
-        <div className={styles.dartTotals}>
-          <p>Darts In Circle: <span>{circleTotal}</span></p>
-          <p>Total Darts: <span>{dartsTotal}</span></p>
+      <div className={styles.dartsAndControls}>
+        <div className={styles.dartBoard}>
+          <MonteCarloDartBoard data={dartsArray} />
         </div>
-        <div className={styles.formula}>
-          <MathJax.Provider>
-            <MathJax.Node formula={statsEquation} />
-          </MathJax.Provider>
-          <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> ? </button>
+        <div className={styles.controls}>
+          <h3 className={styles.addDarts}>Add Darts</h3>
+          <MonteCarloControls actions={actions} />
         </div>
       </div>
-      <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
-      </Modal>
+      <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> Pi Approximation Derivation </button>
+      <div>
+        <MonteCarloStats piApproximation={piApproximation} dartsTotal={dartsTotal} circleTotal={circleTotal} />
+      </div>
       <div className={styles.pivsCountScatterplot}>
         <PivsCountScatterplot data={numDartsVersusPiArray} title={'Pi Approximation vs Total Darts'} xLabel='Darts' yLabel='Pi Approximation'/>
       </div>
+      <Modal showModal={showDerivationModal} toggleModal={toggleDerivationModal} modalTitle={'Circumference'} modalInstructions={modalInstructions}>
+      </Modal>
     </div>
   );
 };

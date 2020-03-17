@@ -333,7 +333,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .attr('y', 0)
     .attr('width', pxX)
     .attr('height', pxY)
-    .style('fill', '#7dc4b8')
+    .style('fill', 'rgb(197, 209, 240)')
     .style('opacity', 0.25)
     .attr('stroke', 'rgb(21, 27, 49)')
     .attr('stroke-width', '2');

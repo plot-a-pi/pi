@@ -1,70 +1,49 @@
 .MonteCarlo {
+  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   color: rgb(58, 78, 153);
 
   .dartBoard {
-    display: flex;
-    justify-content: flex-end;
-    width: 80%;
-    border: 2px blue solid;
-  }
-  
-  .dartTotals {
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    flex-direction: row;
     width: 70vw;
-    margin: auto;
-    border: 2px solid black;
   }
-  
-  .formula {
-    border: lightblue 2px solid;
-    display: flex;
-    justify-content: space-around;
+
+  .addDarts {
     text-align: center;
-    align-items: center;
-    flex-direction: row;
-    width: 50vw;
-    margin: auto;
-  
-    button {
-      height: 50%;
-      margin-left: .5em;
-    }
+    font-size: 3vw;
+    font-weight: bold;
   }
-  
-  .modal {
-    font-family: 'Roboto Mono';
-    color: #212E59;
+
+  .dartsAndControls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
   
   .controls {
+    height: 40vw;
     section{
-      background: rgb(217, 218, 240);
       display: flex;
-      width: 80%;
+      width: 100%;
+      height: fit-content;
       margin: auto;
-      border: 2px red solid;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-around;
       align-content: center;
       text-align: center;
       height: inherit;
       button {
-        margin: 10px;
+        margin: 1vw;
         height: 6vw;
         width: 14vw;
-        padding: 5px;
+        padding: 1vw;
         font-size: 2vw;
       }
     }
   }
   
   .stats {
-    border: green solid 2px;
     background-color: whitesmoke;
     padding: 1em;
     padding-top: 1em;
@@ -81,7 +60,7 @@
   }
 
   .pivsCountScatterplot {
-    border: darkcyan solid 2px;
+    width: 100vw;
   }
 }
 

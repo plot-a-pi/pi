@@ -10,11 +10,3 @@
     margin-right: 10%
 }
 
-.whatsThis {
-    display: flex;
-    width: 80vw;
-    margin: auto;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 10vh;
-}

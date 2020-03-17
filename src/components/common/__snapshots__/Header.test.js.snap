@@ -1,32 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header Component should render a Header 1`] = `
-<header
-  className="wrapper"
+<div
+  className="container"
 >
-  <div
+  <header
     className="Header"
   >
-    <img
-      alt="Pi logo"
-      className="logo"
-      src="/path/image"
-    />
     <div
-      className="title"
+      className="left"
     >
-      <h2>
-        Plot a Pi
-      </h2>
-      <p>
-        Where the World Plots Pi
-      </p>
+      <img
+        alt="Pi logo"
+        className="logo"
+        src="/path/image"
+      />
+      <div
+        className="title"
+      >
+        <h2>
+          Plot a Pi
+        </h2>
+        <p>
+          Where the World Plots Pi
+        </p>
+      </div>
     </div>
-  </div>
+  </header>
   <div
-    className="buttons"
+    className="navigationBar"
   >
     <ButtonNav />
   </div>
-</header>
+</div>
 `;
