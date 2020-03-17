@@ -357,10 +357,8 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
   // eslint-disable-next-line no-unused-vars
     .attr('cy', data => scY(0.5))
     .attr('r', pxX / 2)
-    .style('fill', 'blue')
-    .style('opacity', 0.35)
-    .attr('stroke', 'rgb(21, 27, 49)')
-    .attr('stroke-width', '2');
+    .style('fill', 'rgb(88, 108, 161)')
+    .attr('opacity', .9);
 
   svg
     .selectAll('.points')
