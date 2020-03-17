@@ -25,7 +25,7 @@ const SessionCvsDGraph = ({ match }) => {
   if(!sessionData || !sessionData[0] || !sessionStats || !sessionStats.mean) return null;
 
   return (
-    <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} line={false} />
   );
 
 };

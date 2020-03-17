@@ -6,6 +6,7 @@ exports[`Stats component should match snapshot 1`] = `
 >
   <CvsDScatterplot
     className="graphA"
+    line={true}
     stats={
       Object {
         "piApproximationArray": Array [
