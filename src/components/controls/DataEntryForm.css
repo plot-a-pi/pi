@@ -5,6 +5,7 @@
     width: 80vw;
     margin: auto;
     margin-top: 4vh;
+    margin-bottom: 10vw;
     padding: 3vh 0 3vh 0;
     align-items: center;
     align-content: center;
@@ -12,32 +13,23 @@
     border-radius: 1rem;
     box-shadow: 0 1px 0 3px rgba(0,0,0,.25);
 
-    .pI {
-        font-size: 34px;
-    }
-
-    form {
-        display: flex;
-        flex-direction: column;
-        width: 60vw;
-        align-items: center;
+    .title {
+        font-size: 4vw;
     }
 
     .svgContainer {
         margin: .5em;
-        height: 25vh;
         width: auto;
     }
 
     select {
-        font-size: 16px;
+        font-size: 3vw;
         font-family: 'Heebo';
         color: #212E59;
         line-height: 1;
         padding: .25em 1em .5em .8em;
-        width: 30%;
-        height: 30px;
-        max-width: 30%;
+        width: 14vw;
+        height: 5vw;;
         box-sizing: border-box;
         border: 1px solid #A4A6C9;
         border-radius: .5rem;
@@ -75,12 +67,12 @@
     }
 
     input {
-        font-size: 16px;
+        font-size: 3vw;
         font-family: 'Heebo';
         color: #212E59;
         line-height: 1;
         width: 25vw;
-        height: 30px;
+        height: 5vw;
         padding: .25em 1em .4em .5em;
         box-sizing: border-box;
         border: 1px solid #A4A6C9;
@@ -104,24 +96,35 @@
         outline: none;
     }
 
-    .formInputWrapper {
+    .formWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         margin: .25em 0 .25em 0;
         text-align: left;
+        width: 60vw;
     }
 
     .measurementWrapper {
+        width: inherit;
         display: flex;
-        width: 60vw;
-        justify-content: space-between;
-        align-items: center;
+        justify-content: space-around;
+        align-items: flex-end;
         padding: .5em .25em .25em .25em;
+        margin-bottom: 3vw;
+    }
+
+    h3 {
+        font-size: 3vw;
+        margin-bottom: .3em;
+        padding-left: .25em;
     }
 
     .plotButton{
-        font-size: 16px;
-        width: 88px;
-        height: 44px;
-        margin-top: 1.5em;
+        font-size: 3vw;
+        width: 10vw;
+        height: 5vw;
+        border-radius: 0.5em;
     }
 
     .modal {
@@ -130,9 +133,10 @@
     }
     
     .modalButton {
-        font-size: 12px;
-        width: 30px;
-        height: 30px;
+        font-size: 3vw;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 0.5em;
     }
 
     .modalButton:focus{
@@ -140,10 +144,56 @@
         box-shadow: 0 0 1px 2px #A4A6C9;
         box-shadow: 0 0 0 2px -moz-mac-focusring;
     }
+    @media screen and (min-width: 1025px) {
+        
+        .formWrapper {
+            width: 800px;
+        }
 
-    h3 {
-        margin-bottom: .3em;
-        padding-left: .25em;
+        .svgContainer {
+            width: 10vw;
+            height: auto;
+        }
+
+        .title {
+            font-size: 40px;
+        }
+
+        h3 {
+            font-size: 30px;
+        }
+
+        .measurementWrapper {
+            margin-bottom: 20px;
+        }
+    
+        input {
+            width: 300px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 0.35em;
+            font-size: 20px;
+        }
+
+        select {
+            width: 150px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 0.3em;
+        }
+
+        .modalButton {
+            font-size: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 0.3em;
+        }
+
+        .plotButton{
+            font-size: 40px;
+            width: 130px;
+            height: 70px;
+            border-radius: 0.5em;
+        }  
     }
-
 }
