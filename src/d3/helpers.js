@@ -25,7 +25,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .range([pxY, 0]);
 
   const y1 = scY(Math.PI) ? scY(Math.PI) : 1;
-    
+
   svg
     .select('.line')
     .style('stroke', 'white')
@@ -63,6 +63,8 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .style('fill', 'white')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .attr('x', 0)
+        .attr('y', pxY * 1.3)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
@@ -199,6 +201,8 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .style('fill', '#223493')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .attr('x', 0)
+        .attr('y', pxY * 1.15)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
@@ -240,6 +244,8 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
         .style('fill', '#223493')
+        .attr('x', 0)
+        .attr('y', pxY * 1.15)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
@@ -345,7 +351,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
   // eslint-disable-next-line no-unused-vars
     .attr('cy', data => scY(0.5))
     .attr('r', pxX / 2)
-    .style('fill', '#a4a6c9')
+    .style('fill', '#212E59')
     .style('opacity', 0.5)
     .attr('stroke', 'rgb(21, 27, 49)')
     .attr('stroke-width', '2');
@@ -356,7 +362,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .join('circle')
     .attr('cx', data => scX(data[0]))
     .attr('cy', data => scY(data[1]))
-    .attr('r', scale)
+    .attr('r', scale * 1.5)
     .attr('class', 'points')
     .attr('stroke', '#212e59')
     .attr('stroke-width', '1')

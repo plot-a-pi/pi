@@ -3,10 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: .25em;
-  margin: 1em 0 1em 0;
   width: 90vw;
   height: 25vw;
+  margin-bottom: 3vw;
   border-radius: .5em;
   text-align: center;
   

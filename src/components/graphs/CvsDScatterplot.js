@@ -51,7 +51,9 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
         <text className={'y-label'} fill='#212E59'>{yLabel}</text>
         <line className={'line'}></line>
       </svg>
-      <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+      <div className={styles.csvButton}>
+        <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+      </div>
     </div>
   );
 };
