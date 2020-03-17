@@ -4,6 +4,10 @@
   align-items: stretch;
   width: 90%;
   margin: auto;
+
+  @media screen and (min-aspect-ratio: 3/2) {
+    width: 75%;
+  }
 }
 
 .svg {
@@ -12,3 +16,4 @@
   width: 100%;
   color: #212E59;
 }
+

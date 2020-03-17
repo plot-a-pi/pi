@@ -1,8 +1,4 @@
 .SessionCvsDGraph {
   margin: auto;
   margin-bottom: 30vw;
-
-  @media screen and (min-aspect-ratio: 3/2) {
-    width: 75%;
-  }
 }
