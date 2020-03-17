@@ -11,8 +11,8 @@ const Home = () => {
   const emitRetrievedDataPoints = useEmitEvent('RETRIEVE_DATA_POINTS');
   const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
   const socket = useSocket();
-  const { points } = useSocketState();
   const { stats } = useSocketState();
+  const { points } = useSocketState();
 
   useEffect(() => {
     if(socket.connected !== undefined) {

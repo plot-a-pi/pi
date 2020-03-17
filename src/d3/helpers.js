@@ -66,9 +66,8 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '15vw')
-        .attr('y', '37vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.3);
     })
     .on('mouseleave', function() {
       select(this)
@@ -160,15 +159,14 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .domain([0, yExtent[1]])
     .range([pxY, 0]);
 
-  if(!stats.mean) return;
-  let lineEndpoint;
+  let lineEndpoint = [0.01, 0];
   if(stats.mean) 
   { lineEndpoint = stats.mean < yExtent[1] / xExtent[1] ? [xExtent[1], stats.mean * (xExtent[1])] : [yExtent[1] / stats.mean, yExtent[1]];}
 
   svg
     .selectAll('.line')
-    .style('stroke', 'blue')
-    .style('stroke-width', 2)
+    .style('stroke', '#212E59')
+    .style('stroke-width', 1.5)
     .attr('x1', 0)
     .attr('y1', pxY)
     .attr('x2', scX(pxX))
@@ -204,9 +202,8 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '12vw')
-        .attr('y', '60vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.15);
     })
     .on('mouseleave', function() {
       select(this)
@@ -227,7 +224,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .attr('class', 'user-point')
     .attr('r', scale * 5)
     .attr('cx', userDataPointsArray => scX(userDataPointsArray[0]))
-    .style('fill', '#99CCFF')
+    .style('fill', 'rgb(197, 209, 240)')
     .attr('opacity', 0.8)
     .on('mouseenter', function(d){
       select(this)
@@ -240,15 +237,14 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .attr('r', 10)
         .text('(' + d + ')')
         .attr('stroke-width', '.5')
-        .style('fill', '#223493')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .style('fill', '#223493')
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '12vw')
-        .attr('y', '60vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.15);
     })
     .on('mouseleave', function() {
       select(this)

@@ -5,26 +5,29 @@ import PropTypes from 'prop-types';
 
 const CvDGraphStats = ({ stats }) => {
 
-  let statsEquation = '\\pi \\, \\approx \\, \\frac {}{}';
+  const statsEquation = '\\pi \\, \\approx \\, \\frac {c}{d} \\';
 
-  if(!stats) return;
+  if(!stats || !stats.mean) return null;
 
-  if(stats.mean) {
-    statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean.toFixed(4)}`;
-  }
-  else {
-    statsEquation = `\\pi \\, \\approx \\, \\frac {c}{d} \\, \\approx \\, ${stats.mean}`;
-  }
-  
   return (
-    <div className={styles.CvDGraphStats}>
-      <h3>Points: <span>{stats.count}</span></h3>
-      <MathJax.Provider>
-        <div className={styles.formula}>
-          <MathJax.Node formula={statsEquation} />
+    <MathJax.Provider>
+      <div className={styles.CvDGraphStats}>
+        <div className={styles.card}>
+          <h2>Points</h2>
+          <h3>{stats.count}</h3>
         </div>
-      </MathJax.Provider>
-    </div>
+        <div className={styles.card}>
+          <h2>
+            <MathJax.Node className={styles.formula} formula={statsEquation} />
+          </h2>
+          <h3>{stats.mean.toFixed(3)}</h3>
+        </div>
+        <div className={styles.card}>
+          <h2>Error</h2>
+          <h3>{(100 * Math.abs(Math.PI - stats.mean) / Math.PI).toFixed(3)}%</h3>
+        </div>
+      </div>
+    </MathJax.Provider>
   );
 };
 
