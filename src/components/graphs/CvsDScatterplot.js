@@ -6,7 +6,7 @@ import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
 
-const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
+const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel, line }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
@@ -37,7 +37,7 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
     const wrapper = select(wrapperRef.current);
     wrapper.style('height', `${width * 0.77}px`);
 
-    makeCvsDScatterplot(svg, data, stats, width);
+    makeCvsDScatterplot(svg, data, stats, width, line);
 
   }, [dimensions, data]);
 
@@ -51,7 +51,9 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel }) => {
         <text className={'y-label'} fill='#212E59'>{yLabel}</text>
         <line className={'line'}></line>
       </svg>
-      <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+      <div className={styles.csvButton}>
+        <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+      </div>
     </div>
   );
 };
@@ -61,7 +63,8 @@ CvsDScatterplot.propTypes = {
   stats: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   xLabel: PropTypes.string.isRequired,
-  yLabel: PropTypes.string.isRequired
+  yLabel: PropTypes.string.isRequired,
+  line: PropTypes.bool.isRequired
 };
 
 export default CvsDScatterplot;

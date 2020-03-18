@@ -3,18 +3,21 @@
 exports[`Modal component renders the Modal 1`] = `
 <section>
   <div
-    className="Modal modalHide"
+    className="Modal modalShow"
   >
     <div
       className="modalHeader"
     >
       <button
         className="closeButton"
+        onClick={[Function]}
         type="button"
       >
         ×
       </button>
-      <div />
+      <div>
+        <Component />
+      </div>
     </div>
   </div>
 </section>

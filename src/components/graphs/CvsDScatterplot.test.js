@@ -12,7 +12,7 @@ jest.mock('react-socket-io-hooks', () => ({
 
 describe('CvsDScatterplot component', () => {
   it('renders CvsDScatterplot', () => {
-    const wrapper = shallow(<CvsDScatterplot data={[[1, 2]]} title={'test title'} xLabel={'test x-label'} yLabel={'test y-label'} />);
+    const wrapper = shallow(<CvsDScatterplot data={[{ circumferene: 3.14, diameter: 1 }]} title={'test title'} xLabel={'test x-label'} yLabel={'test y-label'} stats={{}} line={true} />);
     expect(wrapper).toMatchSnapshot();
   });
 });

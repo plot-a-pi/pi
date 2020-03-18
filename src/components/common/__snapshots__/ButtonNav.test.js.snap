@@ -35,5 +35,27 @@ exports[`ButtonNav should render ButtonNav 1`] = `
       Plot Pi!
     </Component>
   </div>
+  <Modal
+    modalInstructions={
+      <div
+        className="modal"
+      >
+        <h3>
+          What is Plot a Pi?
+        </h3>
+        <br />
+        <p>
+          Plot a Pi is the first database of global pi approximations.  Our database contains pi approximations people of all ages from around the world.  To contribute, measure the circumference and diamter of a circular object and click Plot Pi to submit your point.
+        </p>
+        <br />
+        <p>
+          How does the approximation change as more data is added?
+        </p>
+      </div>
+    }
+    modalTitle="Diameter"
+    showModal={false}
+    toggleModal={[Function]}
+  />
 </Fragment>
 `;
