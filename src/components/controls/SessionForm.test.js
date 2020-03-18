@@ -13,7 +13,7 @@ describe('SessionForm component', () => {
   it('renders the SessionForm', () => {
     const wrapper = mount(
       <BrowserRouter>
-        <SessionForm match={{ params: 'test params' }}/>
+        <SessionForm match={{ params: { id: '1' } }}/>
       </BrowserRouter>
     );
     expect(wrapper).toMatchSnapshot();

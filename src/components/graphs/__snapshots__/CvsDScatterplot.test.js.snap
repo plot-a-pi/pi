@@ -42,7 +42,7 @@ exports[`CvsDScatterplot component renders CvsDScatterplot 1`] = `
       data={
         Array [
           Array [
-            undefined,
+            1,
             undefined,
           ],
         ]

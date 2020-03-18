@@ -27,7 +27,9 @@ exports[`SessionForm component renders the SessionForm 1`] = `
     <SessionForm
       match={
         Object {
-          "params": "test params",
+          "params": Object {
+            "id": "1",
+          },
         }
       }
     >
