@@ -89,6 +89,7 @@ const DataEntryForm = () => {
             <h3>Units</h3>
             <select id="circumferenceUnits" required value={circumferenceUnit} {...bindCircumferenceUnit} >
               <option value=''></option>
+              <option value="cm">cm</option>
               <option value="in">in</option>
             </select>
           </div>
@@ -105,6 +106,7 @@ const DataEntryForm = () => {
             <h3>Units</h3>
             <select id="diameterUnits" required value={diameterUnit} {...bindDiameterUnit} >
               <option value=''></option>
+              <option value="cm">cm</option>
               <option value="in">in</option>
             </select>
           </div>

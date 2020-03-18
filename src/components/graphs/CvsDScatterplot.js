@@ -5,6 +5,7 @@ import { select } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
+import { convert } from '../../data/conversions';
 
 const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel, line }) => {
   const svgRef = useRef(null);
