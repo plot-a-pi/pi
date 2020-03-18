@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CSVButton component matches a snapshot 1`] = `
+<div
+  className="CSVButton"
+  onClick={[Function]}
+>
+  Raw Data
+</div>
+`;
