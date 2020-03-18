@@ -16,7 +16,7 @@ exports[`Modal component renders the Modal 1`] = `
         ×
       </button>
       <div>
-        test instructions
+        <Component />
       </div>
     </div>
   </div>

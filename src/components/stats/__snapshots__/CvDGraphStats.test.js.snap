@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CvDGraphStats Component should render a CvDGraphStats 1`] = `""`;
-
 exports[`CvDGraphStats component renders the CvDGraphStats 1`] = `
 <div
   className="CvDGraphStats"
