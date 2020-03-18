@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CvDGraphStats Component should render a CvDGraphStats 1`] = `""`;
+
+exports[`CvDGraphStats component renders the CvDGraphStats 1`] = `
+<div
+  className="CvDGraphStats"
+>
+  <div
+    className="card"
+  >
+    <h2>
+      Points
+    </h2>
+    <h3>
+      10
+    </h3>
+  </div>
+  <div
+    className="card"
+  >
+    <h2>
+      π ≈
+    </h2>
+    <h3>
+      3.000
+    </h3>
+  </div>
+  <div
+    className="card"
+  >
+    <h2>
+      Error
+    </h2>
+    <h3>
+      4.507
+      %
+    </h3>
+  </div>
+</div>
+`;

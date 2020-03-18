@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeacherSessions component renders the TeacherSessions 1`] = `
+<section
+  className="wrapper"
+>
+  <div
+    className="TeacherSessions"
+  >
+    <form
+      className="sessionForm"
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter Session Name"
+        type="text"
+      />
+      <button>
+        Create
+      </button>
+    </form>
+    <ul
+      className="sessionListWrapper"
+    >
+      <h2 />
+    </ul>
+  </div>
+  <div
+    className="signout"
+  >
+    <p>
+      Signed in as: 
+      test-display-name
+    </p>
+    <Link
+      to="/"
+    >
+      <button
+        onClick={[Function]}
+      >
+        Sign Out
+      </button>
+    </Link>
+  </div>
+</section>
+`;

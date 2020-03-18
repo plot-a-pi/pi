@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonteCarloStats component renders the MonteCarloStats 1`] = `
+<Fragment>
+  <div
+    className="MonteCarloStats"
+  >
+    <div
+      className="card"
+    >
+      <h2>
+        Total Darts
+      </h2>
+      <h3>
+        10
+      </h3>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        Darts in Circle
+      </h2>
+      <h3>
+        5
+      </h3>
+    </div>
+    <div
+      className="card"
+    >
+      <h2>
+        π ≈
+      </h2>
+      <h3>
+        3.0000
+      </h3>
+    </div>
+  </div>
+</Fragment>
+`;

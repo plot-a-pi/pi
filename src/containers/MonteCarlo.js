@@ -1,7 +1,7 @@
 import React, { useReducer } from 'react';
 import styles from './MonteCarlo.css';
 import MathJax from 'react-mathjax';
-import MonteCarloControls from '../components/montecarlo/MonteCarloControls';
+import MonteCarloControls from '../components/controls/MonteCarloControls';
 import PivsCountScatterplot from '../components/graphs/PivsCountScatterplot';
 import MonteCarloStats from '../components/stats/MonteCarloStats';
 import { MonteCarloDartBoard } from '../components/graphs/MonteCarloDartBoard';

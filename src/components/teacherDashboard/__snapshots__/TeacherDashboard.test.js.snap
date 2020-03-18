@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TeacherDashboard component matches a snapshot 1`] = `
+<Fragment>
+  <div
+    className="TeacherDashboard"
+  >
+    <div
+      className="loginButton"
+    >
+      <button
+        onClick={[Function]}
+      >
+        SignUp/Login
+      </button>
+    </div>
+  </div>
+</Fragment>
+`;
