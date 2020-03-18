@@ -35,17 +35,21 @@ exports[`CvsDScatterplot component renders CvsDScatterplot 1`] = `
       className="line"
     />
   </svg>
-  <CSVButton
-    data={
-      Array [
+  <div
+    className="csvButton"
+  >
+    <CSVButton
+      data={
         Array [
-          undefined,
-          undefined,
-        ],
-      ]
-    }
-    header1="Diameter (in)"
-    header2="Circumference (in)"
-  />
+          Array [
+            1,
+            undefined,
+          ],
+        ]
+      }
+      header1="Diameter (in)"
+      header2="Circumference (in)"
+    />
+  </div>
 </div>
 `;

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonteCarlo component renders the MonteCarlo 1`] = `
+<div
+  className="MonteCarlo"
+>
+  <div
+    className="dartsAndControls"
+  >
+    <div
+      className="dartBoard"
+    >
+      <MonteCarloDartBoard
+        data={Array []}
+      />
+    </div>
+    <div
+      className="controls"
+    >
+      <h3
+        className="addDarts"
+      >
+        Add Darts
+      </h3>
+      <MonteCarloControls
+        actions={
+          Array [
+            Object {
+              "actionCreator": [Function],
+              "name": "ADD_1_DART",
+              "text": "1",
+            },
+            Object {
+              "actionCreator": [Function],
+              "name": "ADD_10_DARTS",
+              "text": "10",
+            },
+            Object {
+              "actionCreator": [Function],
+              "name": "ADD_100_DARTS",
+              "text": "100",
+            },
+            Object {
+              "actionCreator": [Function],
+              "name": "ADD_1000_DARTS",
+              "text": "1000",
+            },
+            Object {
+              "actionCreator": [Function],
+              "name": "CLEAR_DARTS",
+              "text": "Reset",
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
+  <button
+    className="modalButton"
+    onClick={[Function]}
+    type="button"
+  >
+     Pi Approximation Derivation 
+  </button>
+  <div>
+    <MonteCarloStats
+      circleTotal={0}
+      dartsTotal={0}
+      piApproximation={NaN}
+    />
+  </div>
+  <div
+    className="pivsCountScatterplot"
+  >
+    <PivsCountScatterplot
+      data={Array []}
+      title="Pi Approximation vs Total Darts"
+      xLabel="Darts"
+      yLabel="Pi Approximation"
+    />
+  </div>
+  <Modal
+    modalInstructions={
+      <div
+        className="modal"
+      >
+        <MathJaxProvider
+          options={
+            Object {
+              "showMathMenu": false,
+              "showMathMenuMSIE": false,
+              "tex2jax": Object {
+                "inlineMath": Array [],
+              },
+            }
+          }
+          script="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"
+        >
+          <MathJaxNode
+            className="derivation"
+            formula="\\\\frac{Circle \\\\, Area}{Square \\\\, Area} \\\\, = \\\\, \\\\frac{\\\\pi r^2}{(2r)^2} \\\\, \\\\approx \\\\, \\\\frac{Darts \\\\, in \\\\, Circle}{Total \\\\, Darts} \\\\, \\\\approx \\\\,  \\\\frac{\\\\pi}{4}"
+            style={
+              Object {
+                "fontSize": "2vw",
+                "fontStyle": "bold",
+              }
+            }
+          />
+        </MathJaxProvider>
+      </div>
+    }
+    modalTitle="Circumference"
+    showModal={false}
+    toggleModal={[Function]}
+  />
+</div>
+`;

@@ -6,18 +6,20 @@ import Icon from '../../assets/192566_256x256.png';
 const Header = () => {
 
   return (
-    <header className={styles.wrapper}>
-      <div className={styles.Header}>
-        <img className={styles.logo} src={Icon} alt='Pi logo' />
-        <div className={styles.title}>
-          <h2>Plot a Pi</h2>
-          <p>Where the World Plots Pi</p>
+    <div className={styles.container}>
+      <header className={styles.Header}>
+        <div className={styles.left}>
+          <img className={styles.logo} src={Icon} alt='Pi logo' />
+          <div className={styles.title}>
+            <h2>Plot a Pi</h2>
+            <p>Where the World Plots Pi</p>
+          </div>
         </div>
-      </div>
-      <div className={styles.buttons}>
+      </header>
+      <div className={styles.navigationBar}>
         <ButtonNav />
       </div>
-    </header>
+    </div>
   );
 };
 

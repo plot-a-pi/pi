@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionForm component renders the SessionForm 1`] = `
+<BrowserRouter>
+  <Router
+    history={
+      Object {
+        "action": "POP",
+        "block": [Function],
+        "createHref": [Function],
+        "go": [Function],
+        "goBack": [Function],
+        "goForward": [Function],
+        "length": 1,
+        "listen": [Function],
+        "location": Object {
+          "hash": "",
+          "pathname": "/",
+          "search": "",
+          "state": undefined,
+        },
+        "push": [Function],
+        "replace": [Function],
+      }
+    }
+  >
+    <SessionForm
+      match={
+        Object {
+          "params": Object {
+            "id": "1",
+          },
+        }
+      }
+    >
+      <div
+        className="DataEntryForm"
+      >
+        <h2>
+          Plot your 
+          <span
+            className="pI"
+          >
+            π
+          </span>
+        </h2>
+        <div>
+          <img
+            alt="Circumference vs Diameter Diagram"
+            className="svgContainer"
+            src="/path/image"
+          />
+        </div>
+        <form
+          onSubmit={[Function]}
+        >
+          <div
+            className="formInputWrapper"
+          >
+            <h3>
+              Circumference
+            </h3>
+            <div
+              className="measurementWrapper"
+            >
+              <input
+                onChange={[Function]}
+                required={true}
+                type="text"
+                value=""
+              />
+              <select
+                id="circumferenceUnits"
+                onChange={[Function]}
+                required={true}
+                value=""
+              >
+                <option
+                  value=""
+                />
+                <option
+                  value="in"
+                >
+                  in
+                </option>
+              </select>
+              <button
+                className="modalButton"
+                onClick={[Function]}
+                type="button"
+              >
+                 ? 
+              </button>
+              <Modal
+                modalInstructions={
+                  <div
+                    className="modal"
+                  >
+                    <p>
+                      The circumference is the distance around the circle.
+                    </p>
+                    <br />
+                    <p>
+                      Measure the distance around a circular object and record it here.
+                    </p>
+                  </div>
+                }
+                modalTitle="Circumference"
+                showModal={false}
+                toggleModal={[Function]}
+              >
+                <section>
+                  <div
+                    className="Modal modalHide"
+                  >
+                    <div
+                      className="modalHeader"
+                    >
+                      <button
+                        className="closeButton"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        ×
+                      </button>
+                      <div>
+                        <div
+                          className="modal"
+                        >
+                          <p>
+                            The circumference is the distance around the circle.
+                          </p>
+                          <br />
+                          <p>
+                            Measure the distance around a circular object and record it here.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </Modal>
+            </div>
+          </div>
+          <div
+            className="formInputWrapper"
+          >
+            <h3>
+              Diameter
+            </h3>
+            <div
+              className="measurementWrapper"
+            >
+              <input
+                onChange={[Function]}
+                required={true}
+                type="text"
+                value=""
+              />
+              <select
+                id="diameterUnits"
+                onChange={[Function]}
+                required={true}
+                value=""
+              >
+                <option
+                  value=""
+                />
+                <option
+                  value="in"
+                >
+                  in
+                </option>
+              </select>
+              <button
+                className="modalButton"
+                onClick={[Function]}
+                type="button"
+              >
+                 ? 
+              </button>
+              <Modal
+                modalInstructions={
+                  <div
+                    className="modal"
+                  >
+                    <p>
+                      The diameter is the distance across the circle.
+                    </p>
+                    <br />
+                    <p>
+                      Measure the widest path across the same circular object and record it here.
+                    </p>
+                  </div>
+                }
+                modalTitle="Diameter"
+                showModal={false}
+                toggleModal={[Function]}
+              >
+                <section>
+                  <div
+                    className="Modal modalHide"
+                  >
+                    <div
+                      className="modalHeader"
+                    >
+                      <button
+                        className="closeButton"
+                        onClick={[Function]}
+                        type="button"
+                      >
+                        ×
+                      </button>
+                      <div>
+                        <div
+                          className="modal"
+                        >
+                          <p>
+                            The diameter is the distance across the circle.
+                          </p>
+                          <br />
+                          <p>
+                            Measure the widest path across the same circular object and record it here.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              </Modal>
+            </div>
+          </div>
+          <button
+            className="plotButton"
+          >
+            Plot!
+          </button>
+        </form>
+      </div>
+    </SessionForm>
+  </Router>
+</BrowserRouter>
+`;

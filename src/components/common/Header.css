@@ -1,16 +1,21 @@
-.wrapper {
-  margin-bottom: 3vh;
+.container {
+  margin-bottom: 2vw;
 }
+
 .Header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgba(245, 245, 245, 0.808);
+  height: 8vw;
+  padding: 1em;
+}
+.left {
   font-family: 'Roboto Mono';
-  border: 1px black solid;
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
-  background-color: rgba(245, 245, 245, 0.808);
-  height: 8vw;
-  padding: 1em;
 
   .title {
     background-color: transparent;
@@ -29,33 +34,13 @@
   }
 
   .logo {
-    width: 11%;
+    width: 10vw;
   }
 
 };
 
 .hidden {
   visibility: hidden;
-}
-
-@media screen and (max-width: 475px) {
-  .nav {
-    background-color: rgba(245, 245, 245, 0.808);
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    padding-bottom: .5em;
-  }
-}
-
-@media screen and (min-width: 476px) {
-  .nav {
-    background-color: rgba(245, 245, 245, 0.808);
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    padding-bottom: .5em;
-  }
 }
 
 .sessionNav {
@@ -67,7 +52,7 @@
 }
 
 .link {
-  background-color: whitesmoke;
+  background-color: white;
   font-family: 'Roboto Mono';
   color: #223493;
   text-align: center;
@@ -95,4 +80,30 @@
   border: 1.5px solid #223493;
   border-radius: .5rem;
   outline-style: none;
+}
+
+@media screen and (max-width: 475px) {
+  .nav {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding-bottom: .5em;
+  }
+}
+
+@media screen and (min-width: 476px) {
+  .nav {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding-bottom: .5em;
+  }
+
+  .link {
+    font-size: 1.5vw;
+    width: 10%;
+    padding: 10px;
+  }
 }

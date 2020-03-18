@@ -25,7 +25,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .range([pxY, 0]);
 
   const y1 = scY(Math.PI) ? scY(Math.PI) : 1;
-    
+
   svg
     .select('.line')
     .style('stroke', 'white')
@@ -63,12 +63,13 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .style('fill', 'white')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .attr('x', 0)
+        .attr('y', pxY * 1.3)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '15vw')
-        .attr('y', '37vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.3);
     })
     .on('mouseleave', function() {
       select(this)
@@ -128,7 +129,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('stroke-width', scale * 0.5);
 };
 
-export const makeCvsDScatterplot = (svg, data, stats, width) => {
+export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
   
   const userPointIds = JSON.parse(localStorage.getItem('my-point-ids'));
   let globalDataArray = [];
@@ -152,7 +153,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
   const xExtent = extent(data, d => d.diameter);
   const xRange = xExtent[1] - xExtent[0];
   const scX = scaleLinear()
-    .domain([xExtent[0], xExtent[1] + xRange * 0.07])
+    .domain([0, xExtent[1] + xRange * 0.07])
     .range([0, pxX]);
   
   const yExtent = extent(data, d => d.circumference);
@@ -160,15 +161,20 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .domain([0, yExtent[1]])
     .range([pxY, 0]);
 
-  if(!stats.mean) return;
-  let lineEndpoint;
+  if(!line){
+    svg
+      .selectAll('.line')
+      .remove();
+  }
+    
+  let lineEndpoint = [0.01, 0];
   if(stats.mean) 
   { lineEndpoint = stats.mean < yExtent[1] / xExtent[1] ? [xExtent[1], stats.mean * (xExtent[1])] : [yExtent[1] / stats.mean, yExtent[1]];}
 
   svg
     .selectAll('.line')
-    .style('stroke', 'blue')
-    .style('stroke-width', 2)
+    .style('stroke', '#212E59')
+    .style('stroke-width', 1.5)
     .attr('x1', 0)
     .attr('y1', pxY)
     .attr('x2', scX(pxX))
@@ -201,12 +207,13 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .style('fill', '#223493')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .attr('x', 0)
+        .attr('y', pxY * 1.15)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '12vw')
-        .attr('y', '60vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.15);
     })
     .on('mouseleave', function() {
       select(this)
@@ -227,7 +234,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
     .attr('class', 'user-point')
     .attr('r', scale * 5)
     .attr('cx', userDataPointsArray => scX(userDataPointsArray[0]))
-    .style('fill', '#99CCFF')
+    .style('fill', 'rgb(197, 209, 240)')
     .attr('opacity', 0.8)
     .on('mouseenter', function(d){
       select(this)
@@ -240,15 +247,16 @@ export const makeCvsDScatterplot = (svg, data, stats, width) => {
         .attr('r', 10)
         .text('(' + d + ')')
         .attr('stroke-width', '.5')
-        .style('fill', '#223493')
         .style('font-size', '2.7vw')
         .style('font-weight', '900')
+        .style('fill', '#223493')
+        .attr('x', 0)
+        .attr('y', pxY * 1.15)
         .transition()
         .duration(500)
         .style('font-size', '3vw')
-        .attr('x', '12vw')
-        .attr('y', '60vw')
-        .style('text-anchor', 'middle');
+        .attr('x', 0)
+        .attr('y', pxY * 1.15);
     })
     .on('mouseleave', function() {
       select(this)
@@ -337,7 +345,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .attr('y', 0)
     .attr('width', pxX)
     .attr('height', pxY)
-    .style('fill', '#7dc4b8')
+    .style('fill', '#212E59')
     .style('opacity', 0.25)
     .attr('stroke', 'rgb(21, 27, 49)')
     .attr('stroke-width', '2');
@@ -349,10 +357,8 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
   // eslint-disable-next-line no-unused-vars
     .attr('cy', data => scY(0.5))
     .attr('r', pxX / 2)
-    .style('fill', '#a4a6c9')
-    .style('opacity', 0.5)
-    .attr('stroke', 'rgb(21, 27, 49)')
-    .attr('stroke-width', '2');
+    .style('fill', 'rgb(88, 108, 161)')
+    .attr('opacity', .9);
 
   svg
     .selectAll('.points')
@@ -360,7 +366,7 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .join('circle')
     .attr('cx', data => scX(data[0]))
     .attr('cy', data => scY(data[1]))
-    .attr('r', scale)
+    .attr('r', scale * 1.5)
     .attr('class', 'points')
     .attr('stroke', '#212e59')
     .attr('stroke-width', '1')

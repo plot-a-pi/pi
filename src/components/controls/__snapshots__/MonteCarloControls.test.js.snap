@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MonteCarloControls component renders the MonteCarloControls 1`] = `
+<section>
+  <button
+    key="test-name"
+    onClick={[Function]}
+  >
+    test-text
+  </button>
+</section>
+`;

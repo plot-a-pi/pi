@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import CvsDScatterplot from './CvsDScatterplot';
 import PropTypes from 'prop-types';
 import { useEmitEvent, useSocket, useSocketState } from 'react-socket-io-hooks';
+import styles from './SessionCvsDGraph.css';
 
 const SessionCvsDGraph = ({ match }) => {
   const { id } = match.params;
@@ -25,7 +26,9 @@ const SessionCvsDGraph = ({ match }) => {
   if(!sessionData || !sessionData[0] || !sessionStats || !sessionStats.mean) return null;
 
   return (
-    <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} />
+    <div className={styles.SessionCvsDGraph}>
+      <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} line={false} />
+    </div>
   );
 
 };

@@ -11,14 +11,32 @@
     z-index: 2;
     }
 
-    button {
+    .modal {
+        font-family: 'Roboto Mono';
+        color: #212E59;
+    }
+
+    .modalButton {
+        font-size: 12px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .modalButton:focus{
+        outline: none;
+        box-shadow: 0 0 1px 2px #A4A6C9;
+        box-shadow: 0 0 0 2px -moz-mac-focusring;
+    }
+
+    .closeButton {
         float: right;
-        color: lightgray;
+        color: #223493;
         font-size: 16px;
         font-weight: bold;
         margin-left: 1vw;
-        max-height: 30%;
-      }
+        width: 40px;
+        height: 40px;
+    }
 
     .modalShow{
         display: flex;
@@ -48,6 +66,5 @@
             width: 85vw;
             left: 5vw;
             }
-
-      }
+    }
 

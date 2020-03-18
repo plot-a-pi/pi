@@ -35,17 +35,21 @@ exports[`PivsCountScatterplot component renders PivsCountScatterplot 1`] = `
       className="line"
     />
   </svg>
-  <CSVButton
-    data={
-      Array [
+  <div
+    className="csvButton"
+  >
+    <CSVButton
+      data={
         Array [
-          1,
-          2,
-        ],
-      ]
-    }
-    header1="test x-label"
-    header2="test y-label"
-  />
+          Array [
+            1,
+            2,
+          ],
+        ]
+      }
+      header1="test x-label"
+      header2="test y-label"
+    />
+  </div>
 </div>
 `;

@@ -4,48 +4,9 @@ exports[`Stats component should match snapshot 1`] = `
 <div
   className="Home"
 >
-  <section
-    className="introduction"
-  >
-    <div
-      className="whatsThis"
-    >
-      <h3>
-        What's this about...
-      </h3>
-      <button
-        className="modalButton"
-        onClick={[Function]}
-        type="button"
-      >
-         ? 
-      </button>
-    </div>
-    <Modal
-      modalInstructions={
-        <div
-          className="modal"
-        >
-          <h3>
-            Would you like to contribute to pi?
-          </h3>
-          <br />
-          <p>
-            Measure the circumference and diamter of a circular object and submit your measurements to improve our global approximation of pi.
-          </p>
-          <br />
-          <p>
-            How does the approximation change as more data is added?
-          </p>
-        </div>
-      }
-      modalTitle="Diameter"
-      showModal={false}
-      toggleModal={[Function]}
-    />
-  </section>
   <CvsDScatterplot
     className="graphA"
+    line={true}
     stats={
       Object {
         "piApproximationArray": Array [
