@@ -13,14 +13,14 @@ export const convertData = (data, unit) => {
   if(unit === 'cm') {
     return data.map(point => {
       if(point.circumferenceUnit === 'cm') return point;
-      else return ({ ...point, circumference: point.circumference * 2.54, diameter: point.diameter * 2.54 });
+      else return ({ ...point, circumference: point.circumference * 2.54, diameter: point.diameter * 2.54, circumferenceUnit: 'cm' });
     });
   }
 
   else if(unit === 'in') {
     return data.map(point => {
       if(point.circumferenceUnit === 'in') return point;
-      else return ({ ...point, circumference: point.circumference / 2.54, diameter: point.diameter / 2.54 });
+      else return ({ ...point, circumference: point.circumference / 2.54, diameter: point.diameter / 2.54, circumferenceUnit: 'in' });
     });
   }
 };

@@ -34,6 +34,7 @@ exports[`CvsDScatterplot component renders CvsDScatterplot 1`] = `
     data={
       Array [
         Object {
+          "circumferenceUnit": "cm",
           "circumferene": 3.14,
           "diameter": 1,
         },

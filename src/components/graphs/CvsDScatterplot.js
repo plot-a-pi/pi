@@ -12,9 +12,9 @@ import { convertData } from '../../data/conversions';
 const CvsDScatterplot = ({ data, stats, title, line }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
-  const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
   const unit = useSelector(getUnit);
   data = convertData(data, unit);
+  const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
   const xLabel = `Diameter ${unit === 'cm' ? '(cm)' : '(in)'}`;
   const yLabel = `Circumference ${unit === 'cm' ? '(cm)' : '(in)'}`;
 
@@ -59,7 +59,7 @@ const CvsDScatterplot = ({ data, stats, title, line }) => {
         <line className={'line'}></line>
       </svg>
       <div className={styles.csvButton}>
-        <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+        <CSVButton header1={xLabel} header2={yLabel} data={dataForCSV} />  
       </div>
     </div>
   );
