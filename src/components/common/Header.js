@@ -11,8 +11,8 @@ const Header = () => {
         <div className={styles.left}>
           <img className={styles.logo} src={Icon} alt='Pi logo' />
           <div className={styles.title}>
-            <h2>Plot a Pi</h2>
-            <p>Where the World Plots Pi</p>
+            <h2 className={styles.plotapi}>Plot a Pi</h2>
+            <p className={styles.subheading}>Where the World Plots Pi</p>
           </div>
         </div>
       </header>

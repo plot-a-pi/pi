@@ -1,55 +1,50 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CvsDScatterplot component renders CvsDScatterplot 1`] = `
-<div
-  className="container"
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "subscription": Subscription {
+        "handleChangeWrapper": [Function],
+        "listeners": Object {
+          "notify": [Function],
+        },
+        "onStateChange": [Function],
+        "parentSub": undefined,
+        "store": Object {
+          "dispatch": [Function],
+          "getState": [Function],
+          "replaceReducer": [Function],
+          "subscribe": [Function],
+          Symbol(observable): [Function],
+        },
+        "unsubscribe": null,
+      },
+    }
+  }
 >
-  <svg
-    className="svg"
-  >
-    <text
-      className="title"
-      fill="#212E59"
-    >
-      test title
-    </text>
-    <g
-      className="x-axis"
-    />
-    <text
-      className="x-label"
-      fill="#212E59"
-    >
-      test x-label
-    </text>
-    <g
-      className="y-axis"
-    />
-    <text
-      className="y-label"
-      fill="#212E59"
-    >
-      test y-label
-    </text>
-    <line
-      className="line"
-    />
-  </svg>
-  <div
-    className="csvButton"
-  >
-    <CSVButton
-      data={
-        Array [
-          Array [
-            1,
-            undefined,
-          ],
-        ]
-      }
-      header1="Diameter (in)"
-      header2="Circumference (in)"
-    />
-  </div>
-</div>
+  <CvsDScatterplot
+    data={
+      Array [
+        Object {
+          "circumferenceUnit": "cm",
+          "circumferene": 3.14,
+          "diameter": 1,
+        },
+      ]
+    }
+    line={true}
+    stats={Object {}}
+    title="test title"
+    xLabel="test x-label"
+    yLabel="test y-label"
+  />
+</ContextProvider>
 `;

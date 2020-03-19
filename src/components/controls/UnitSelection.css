@@ -1,0 +1,19 @@
+.UnitSelection {
+  position: relative;
+  bottom: 3.2vw;
+  left: 0.5vw;
+  width: 8vw;
+  background:rgb(179, 181, 196);
+  font-size: 1.5vw;
+  z-index: 1;
+  text-align: center;
+  border-radius: .5rem;
+  padding: .5vw;
+  color: #212E59;
+
+  label {
+    margin-right: 0.5vw;
+    font-size: 1.5vw;
+  }
+
+}

@@ -27,7 +27,7 @@ const Home = () => {
   
   return (
     <div className={styles.Home}>
-      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} title={'Global Circle Measurements'} xLabel='Diameter (in)' yLabel={'Circumference (in)'} line={true} /> 
+      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} title={'Global Circle Measurements'} line={true} /> 
       <CvDGraphStats className={stats} stats={stats}/>
       <PivsCountScatterplot className={styles.graphB} data={dataArray} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
       <PiCrawler className={styles.piCrawler} />

@@ -4,12 +4,20 @@ import styles from './CvsDScatterplot.css';
 import { select } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
+import UnitSelection from '../controls/UnitSelection';
 import { makeCvsDScatterplot } from '../../d3/helpers';
+import { useSelector } from 'react-redux';
+import { getUnit } from '../../selectors/userSelectors';
+import { convertData } from '../../data/conversions';
 
-const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel, line }) => {
+const CvsDScatterplot = ({ data, stats, title, line }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
+  const unit = useSelector(getUnit);
+  data = convertData(data, unit);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
+  const xLabel = `Diameter ${unit === 'cm' ? '(cm)' : '(in)'}`;
+  const yLabel = `Circumference ${unit === 'cm' ? '(cm)' : '(in)'}`;
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
@@ -51,8 +59,9 @@ const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel, line }) => {
         <text className={'y-label'} fill='#212E59'>{yLabel}</text>
         <line className={'line'}></line>
       </svg>
-      <div className={styles.csvButton}>
-        <CSVButton header1='Diameter (in)' header2='Circumference (in)' data={dataForCSV} />  
+      <div>
+        <CSVButton header1={xLabel} header2={yLabel} data={dataForCSV} />  
+        <UnitSelection />
       </div>
     </div>
   );
@@ -62,8 +71,6 @@ CvsDScatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   stats: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  xLabel: PropTypes.string.isRequired,
-  yLabel: PropTypes.string.isRequired,
   line: PropTypes.bool.isRequired
 };
 

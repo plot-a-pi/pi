@@ -1,4 +1,3 @@
-  
 import reducer from './monteCarloReducer';
 import { addDarts, clearDarts } from '../actions/monteCarloActions.js';
 
