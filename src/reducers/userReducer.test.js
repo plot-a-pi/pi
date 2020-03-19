@@ -1,5 +1,5 @@
 import reducer from './userReducer';
-import { changeUnit } from '../actions/UserActions.js';
+import { changeUnit } from '../actions/userActions.js';
 
 describe('user reducer', () => {
 
