@@ -70,7 +70,10 @@
   font-size: 3vw;
   border: 1.5px solid #A4A6C9;
   border-radius: .5rem;
-  padding: 1.5vw;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-top: 1vw;
+  padding-bottom:1vw;
   margin-left: 1vw;
   margin-right: 1vw;
 }
@@ -100,7 +103,7 @@
   .nav {
     justify-content: flex-end;
   }
-  
+
   .Header {
     height: 100px;
     padding-top: 20px;
