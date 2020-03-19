@@ -4,6 +4,7 @@ import styles from './CvsDScatterplot.css';
 import { select } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
+import UnitSelection from '../controls/UnitSelection';
 import { makeCvsDScatterplot } from '../../d3/helpers';
 import { useSelector } from 'react-redux';
 import { getUnit } from '../../selectors/userSelectors';
@@ -58,8 +59,9 @@ const CvsDScatterplot = ({ data, stats, title, line }) => {
         <text className={'y-label'} fill='#212E59'>{yLabel}</text>
         <line className={'line'}></line>
       </svg>
-      <div className={styles.csvButton}>
+      <div>
         <CSVButton header1={xLabel} header2={yLabel} data={dataForCSV} />  
+        <UnitSelection />
       </div>
     </div>
   );
