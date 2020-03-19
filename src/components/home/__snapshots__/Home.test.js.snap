@@ -17,8 +17,6 @@ exports[`Stats component should match snapshot 1`] = `
       }
     }
     title="Global Circle Measurements"
-    xLabel="Diameter (in)"
-    yLabel="Circumference (in)"
   />
   <CvDGraphStats
     className={
