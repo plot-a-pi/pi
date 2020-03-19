@@ -5,12 +5,18 @@ import { select } from 'd3';
 import ResizeObserver from 'resize-observer-polyfill';
 import CSVButton from '../common/CSVButton';
 import { makeCvsDScatterplot } from '../../d3/helpers';
-import { convert } from '../../data/conversions';
+import { useSelector } from 'react-redux';
+import { getUnit } from '../../selectors/userSelectors';
+import { convertData } from '../../data/conversions';
 
-const CvsDScatterplot = ({ data, stats, title, xLabel, yLabel, line }) => {
+const CvsDScatterplot = ({ data, stats, title, line }) => {
   const svgRef = useRef(null);
   const wrapperRef = useRef(null);
   const dataForCSV = data.map(d => ([d.diameter, d.circumference]));
+  const unit = useSelector(getUnit);
+  data = convertData(data, unit);
+  const xLabel = `Diameter ${unit === 'cm' ? '(cm)' : '(in)'}`;
+  const yLabel = `Circumference ${unit === 'cm' ? '(cm)' : '(in)'}`;
 
   const useResizeObserver = ref => {
     const [dimensions, setDimensions] = useState(null);
@@ -63,8 +69,6 @@ CvsDScatterplot.propTypes = {
   data: PropTypes.array.isRequired,
   stats: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
-  xLabel: PropTypes.string.isRequired,
-  yLabel: PropTypes.string.isRequired,
   line: PropTypes.bool.isRequired
 };
 

@@ -7,11 +7,14 @@ import { useModal } from '../../hooks/useModal';
 import { useHistory } from 'react-router-dom';
 import { useEmitEvent } from 'react-socket-io-hooks';
 import Icon from '../../assets/192566_256x256.png';
+import { useDispatch } from 'react-redux';
+import { changeUnit } from '../../actions/userActions';
 
 const DataEntryForm = () => {
 
   const [showCircumferenceModal, toggleCircumferenceModal] = useModal();
   const [showDiameterModal, toggleDiameterModal] = useModal();
+  const dispatch = useDispatch();
 
   const emitCreateDataPoint = useEmitEvent('NEW_GLOBAL_DATA');
   const pointId = uuid();
@@ -23,6 +26,7 @@ const DataEntryForm = () => {
 
 
   const handleClick = () => {
+
     const circumferenceAsNumber = Number(circumference);
     const diameterAsNumber = Number(diameter);
 
@@ -32,6 +36,8 @@ const DataEntryForm = () => {
     if(circumferenceAsNumber < diameterAsNumber) return alert('Are you sure your measurements are correct?');
     if(Math.abs((circumferenceAsNumber / diameterAsNumber - Math.PI) / Math.PI) > 0.15) return alert('Are you sure you measured accurately?');
     if(circumferenceAsNumber > 150 || diameterAsNumber > 50) return alert('Please measure a smaller circle');
+
+    dispatch(changeUnit(circumferenceUnit));
 
     emitCreateDataPoint({
       payload: {

@@ -27,7 +27,7 @@ const SessionCvsDGraph = ({ match }) => {
 
   return (
     <div className={styles.SessionCvsDGraph}>
-      <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} xLabel={'Diameter (in)'} yLabel={'Circumference (in)'} line={false} />
+      <CvsDScatterplot data={sessionData[0]} stats={sessionStats} title={'Class Circle Measurement Data'} line={false} />
     </div>
   );
 
