@@ -30,4 +30,23 @@
   h3 {
     font-size: 4vw;
   }
+
+  @media screen and (min-aspect-ratio: 2/3){
+    flex-direction: column;
+    justify-content: space-between;
+    height: 45vw;
+    width: 17vw;
+    .card{
+      width: 22vw;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 2vw;
+    }
+
+    h3 {
+      font-size: 3vw;
+    }
+  }
 }

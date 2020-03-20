@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   color: #212E59;
+  margin-bottom: 10vw;
 
   .dartBoard {
     width: 70vw;
@@ -23,6 +24,10 @@
   
   .controls {
     height: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     section{
       display: flex;
       width: 100%;
@@ -47,25 +52,38 @@
     width: 32vw;
     font-size: 2vw;
   }
-  
-  .stats {
-    background-color: whitesmoke;
-    padding: 1em;
-    padding-top: 1em;
-    border-radius: .5em;
-    text-align: center;
-    align-items: space-between;
-    justify-content: center;
-    text-align: center;
-    width: 80vw;
-    height: 14vh;
-    margin: auto;
-    word-wrap: break-word;
-    font-size: 80%;
-  }
 
   .pivsCountScatterplot {
-    width: 100vw;
+    width: 90vw;
   }
+
+    
+  @media screen and (min-aspect-ratio: 2/3){
+    display: grid;
+    grid-template-areas: "dartsAndControls statsContainer"
+                         "pivsCountScatterplot pivsCountScatterplot"
+                         "modalButton modalButton";
+
+    .statsContainer {
+      grid-area: statsContainer;
+      width: 20vw;
+      margin: auto;
+    }
+    .modalButton {
+      grid-area: modalButton;
+      margin: auto;
+    }
+
+    .dartsAndControls {
+      grid-area: dartsAndControls;
+      width: 70vw;
+      margin: auto;
+    }
+    .pivsCountScatterplot{
+      grid-area: pivsCountScatterplot;
+      width: 90vw;
+      margin: auto;
+    }
 }
 
+}

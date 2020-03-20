@@ -51,7 +51,7 @@ const MonteCarlo = () => {
         </div>
       </div>
       <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> Pi Approximation Derivation </button>
-      <div>
+      <div className={styles.statsContainer}>
         <MonteCarloStats piApproximation={piApproximation} dartsTotal={dartsTotal} circleTotal={circleTotal} />
       </div>
       <div className={styles.pivsCountScatterplot}>
