@@ -36,7 +36,7 @@
     font-size: 30px;
   }
 }
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 420px) {
   .marquee {
     height: 2em;
   }

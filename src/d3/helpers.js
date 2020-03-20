@@ -67,7 +67,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
         .attr('y', pxY * 1.3)
         .transition()
         .duration(500)
-        .style('font-size', '3vw')
+        .style('font-size', '2vw')
         .attr('x', 0)
         .attr('y', pxY * 1.3);
     })
@@ -89,7 +89,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .duration(1000)
     .call(axisLeft(scY).tickSize(scale * 3))
     .selectAll('text')
-    .attr('font-size', '2vw');
+    .attr('font-size', '1.2vw');
 
   svg
     .select('.x-axis')
@@ -98,20 +98,20 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .duration(1000)
     .call(axisBottom(scX).tickSize(scale * 3))
     .selectAll('text')
-    .attr('font-size', '2vw');
+    .attr('font-size', '1.5vw');
 
   svg
     .select('.title')
     .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.15})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3.5vw')
+    .attr('font-size', '2.5vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.x-label')
     .attr('transform', `translate(${pxX / 2}, ${pxY * 1.3})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2vw')
     .style('text-anchor', 'middle');
 
   svg
@@ -120,7 +120,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .attr('y', -pxX * 0.09)
     .attr('x', -pxY / 2)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2vw')
     .style('text-anchor', 'middle');
 
   svg
@@ -205,15 +205,15 @@ export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
         .text('(' + d + ')')
         .attr('stroke-width', '.5')
         .style('fill', '#223493')
-        .style('font-size', '2.7vw')
+        .style('font-size', '2.2vw')
         .style('font-weight', '900')
-        .attr('x', 0)
-        .attr('y', pxY * 1.15)
+        .attr('x', pxX * 0.12)
+        .attr('y', pxY * 0.1)
         .transition()
         .duration(500)
-        .style('font-size', '3vw')
-        .attr('x', 0)
-        .attr('y', pxY * 1.15);
+        .style('font-size', '2vw')
+        .attr('x', pxX * 0.12)
+        .attr('y', pxY * 0.1);
     })
     .on('mouseleave', function() {
       select(this)
@@ -251,12 +251,12 @@ export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
         .style('font-weight', '900')
         .style('fill', '#223493')
         .attr('x', 0)
-        .attr('y', pxY * 1.15)
+        .attr('y', pxY * 0.1)
         .transition()
         .duration(500)
-        .style('font-size', '3vw')
+        .style('font-size', '2vw')
         .attr('x', 0)
-        .attr('y', pxY * 1.15);
+        .attr('y', pxY * 0.1);
     })
     .on('mouseleave', function() {
       select(this)
@@ -276,7 +276,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
     .duration(1000)
     .call(axisBottom(scX).tickSize(scale * 3))
     .selectAll('text')
-    .attr('font-size', '2vw');
+    .attr('font-size', '1.5vw');
 
   svg
     .select('.y-axis')
@@ -284,29 +284,29 @@ export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
     .duration(1000)
     .call(axisLeft(scY).tickSize(scale * 3))
     .selectAll('text')
-    .attr('font-size', '2vw');
+    .attr('font-size', '1.5vw');
 
   svg
     .select('.title')
     .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.09})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3.5vw')
+    .attr('font-size', '2.5vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.x-label')
     .attr('transform', `translate(${pxX / 2}, ${pxY * 1.15})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.y-label')
     .attr('transform', 'rotate(-90)')
-    .attr('y', -pxX * 0.09)
+    .attr('y', -pxX * 0.1)
     .attr('x', -pxY / 2)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2vw')
     .style('text-anchor', 'middle');
 
   svg

@@ -26,12 +26,22 @@ const Home = () => {
   const dataArray = piApproximationsArray.map((pi, i) => [i + 1, pi]);
   
   return (
-    <div className={styles.Home}>
-      <CvsDScatterplot className={styles.graphA} data={points} stats={stats} title={'Global Circle Measurements'} line={true} /> 
-      <CvDGraphStats className={stats} stats={stats}/>
-      <PivsCountScatterplot className={styles.graphB} data={dataArray} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
+    <>
+      <div className={styles.Home}>
+        <div className={styles.leftWide}>
+          <CvsDScatterplot data={points} stats={stats} title={'Global Circle Measurements'} line={true} /> 
+        </div>
+        <div className={styles.rightWide}>
+          <div className={styles.stats}>
+            <CvDGraphStats stats={stats}/>
+          </div>
+          <div className={styles.pivscount}>
+            <PivsCountScatterplot data={dataArray} title={'Global Pi Approximation vs Count'} xLabel={'Count'} yLabel={'Pi Approximation'} />
+          </div>
+        </div>
+      </div>
       <PiCrawler className={styles.piCrawler} />
-    </div>
+    </>
   );
 };
 

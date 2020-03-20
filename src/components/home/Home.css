@@ -3,6 +3,46 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    width: 100%;
+    height: fit-content;
+
+    .leftWide {
+        width: 90%;
+    }
+
+    .rightWide {
+        width: 90%;
+    }
+
 }
+@media screen and (min-width: 1200px) {
+    .Home {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
 
+    .leftWide {
+        margin-left: 20px;
+        flex: 1.1;
+        width: 90%;
+    }
+    .rightWide {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        flex: 1;
 
+        .stats {
+            width: 70%;
+            flex: 1;
+        }
+
+        .pivscount {
+            width: 90%;
+        }
+    }
+    
+}
