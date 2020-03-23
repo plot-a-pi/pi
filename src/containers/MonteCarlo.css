@@ -59,6 +59,10 @@
 
     
   @media screen and (min-aspect-ratio: 2/3){
+
+    .dartsAndControls {
+      display: block;
+    }
     display: grid;
     grid-template-areas: "dartsAndControls statsContainer"
                          "pivsCountScatterplot pivsCountScatterplot"
@@ -84,6 +88,35 @@
       width: 90vw;
       margin: auto;
     }
-}
+  }
 
+  @media screen and (min-aspect-ratio: 1/1){
+
+    display: grid;
+    grid-template-areas: "dartBoard statsContainer"
+                        "dartBoard pivsCountScatterplot"
+                        "controls controls"
+                        "modalButton modalButton";
+
+    .statsContainer {
+      grid-area: statsContainer;
+      margin: auto;
+    }
+    .modalButton {
+      grid-area: modalButton;
+      margin: auto;
+    }
+    .dartBoard {
+      grid-area: dartBoard;
+      border: 1px blue solid;
+    }
+    .controls {
+      grid-area: controls;
+      margin: auto;
+    }
+    .pivsCountScatterplot{
+      grid-area: pivsCountScatterplot;
+      margin: auto;
+    }
+  }
 }
