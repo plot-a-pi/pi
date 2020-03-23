@@ -62,7 +62,9 @@ exports[`MonteCarlo component renders the MonteCarlo 1`] = `
   >
      Pi Approximation Derivation 
   </button>
-  <div>
+  <div
+    className="statsContainer"
+  >
     <MonteCarloStats
       circleTotal={0}
       dartsTotal={0}
