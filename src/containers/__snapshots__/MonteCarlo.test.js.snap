@@ -5,63 +5,62 @@ exports[`MonteCarlo component renders the MonteCarlo 1`] = `
   className="MonteCarlo"
 >
   <div
-    className="dartsAndControls"
+    className="dartBoard"
   >
-    <div
-      className="dartBoard"
-    >
-      <MonteCarloDartBoard
-        data={Array []}
-      />
-    </div>
-    <div
-      className="controls"
-    >
-      <h3
-        className="addDarts"
-      >
-        Add Darts
-      </h3>
-      <MonteCarloControls
-        actions={
-          Array [
-            Object {
-              "actionCreator": [Function],
-              "name": "ADD_1_DART",
-              "text": "1",
-            },
-            Object {
-              "actionCreator": [Function],
-              "name": "ADD_10_DARTS",
-              "text": "10",
-            },
-            Object {
-              "actionCreator": [Function],
-              "name": "ADD_100_DARTS",
-              "text": "100",
-            },
-            Object {
-              "actionCreator": [Function],
-              "name": "ADD_1000_DARTS",
-              "text": "1000",
-            },
-            Object {
-              "actionCreator": [Function],
-              "name": "CLEAR_DARTS",
-              "text": "Reset",
-            },
-          ]
-        }
-      />
-    </div>
+    <MonteCarloDartBoard
+      data={Array []}
+    />
   </div>
-  <button
-    className="modalButton"
-    onClick={[Function]}
-    type="button"
+  <h3
+    className="addDarts"
   >
-     Pi Approximation Derivation 
-  </button>
+    Add Darts
+  </h3>
+  <div
+    className="controls"
+  >
+    <MonteCarloControls
+      actions={
+        Array [
+          Object {
+            "actionCreator": [Function],
+            "name": "ADD_1_DART",
+            "text": "1",
+          },
+          Object {
+            "actionCreator": [Function],
+            "name": "ADD_10_DARTS",
+            "text": "10",
+          },
+          Object {
+            "actionCreator": [Function],
+            "name": "ADD_100_DARTS",
+            "text": "100",
+          },
+          Object {
+            "actionCreator": [Function],
+            "name": "ADD_1000_DARTS",
+            "text": "1000",
+          },
+          Object {
+            "actionCreator": [Function],
+            "name": "CLEAR_DARTS",
+            "text": "Reset",
+          },
+        ]
+      }
+    />
+  </div>
+  <div
+    className="modalButton"
+  >
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+       Pi Approximation Derivation 
+    </button>
+  </div>
   <div
     className="statsContainer"
   >

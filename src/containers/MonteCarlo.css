@@ -87,8 +87,6 @@
       display: flex;
       justify-content: center;
       flex-direction: row;
-      align-items: flex-start;
-      margin-bottom: 20px;
     }
 
     .controls{ 
@@ -113,30 +111,60 @@
     display: grid;
     grid-template-areas: "darts stats"
                         "darts graph"
-                        "add add"
-                        "controls controls"
-                        "derivation derivation";
-    grid-template-rows: 10vw 10vw auto auto;
+                        "add graph"
+                        "controls derivation";
+    grid-template-rows: 9vw 20vw 10vw auto auto;
+    grid-template-columns: 1.5fr 3fr;
 
     .statsContainer {
-      grid-area: statsContainer;
       margin: auto;
+      width: 90%;
     }
     .modalButton {
-      grid-area: modalButton;
-      margin: auto;
+      margin-top: 0.3vw;
+      width: 30vw;
+      height: 4vw;
+      button{
+        padding: 1vw;
+        font-size: 1.5vw;
+        width: 100%;
+        align-self: center;
+      }
     }
     .dartBoard {
-      grid-area: dartBoard;
-      border: 1px blue solid;
-    }
-    .controls {
-      grid-area: controls;
-      margin: auto;
+      width: 34vw;
+      height: 34vw;
+
     }
     .pivsCountScatterplot{
-      grid-area: pivsCountScatterplot;
+      width: 85%;
       margin: auto;
+    }
+
+    .addDarts{
+      font-size: 2vw;
+      width: 30vw;
+      margin-top: 0px;
+    }
+
+    .controls {
+      height: 4vw;
+      margin: 5px;
+      width: 30vw;
+      section{
+        display: flex;
+        margin: auto;
+        flex-direction: row;
+        justify-content: space-around;
+        align-content: center;
+        text-align: center;
+        button {
+          margin: 0.5vw;
+          width: 6vw;
+          padding: 1vw;
+          font-size: 1.5vw;
+        }
+      }
     }
   }
 }

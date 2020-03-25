@@ -393,23 +393,23 @@ export const makeMonteCarloDartBoard = (svg, data, width) => {
     .select('.title')
     .attr('transform', `translate(${pxX / 2}, ${-pxX * 0.05})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3.5vw')
+    .attr('font-size', '3vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.x-label')
-    .attr('transform', `translate(${pxX / 2}, ${pxY * 1.09})`)
+    .attr('transform', `translate(${pxX / 2}, ${pxY * 1.12})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2.5vw')
     .style('text-anchor', 'middle');
 
   svg
     .select('.y-label')
     .attr('transform', 'rotate(-90)')
-    .attr('y', -pxX * 0.11)
+    .attr('y', -pxX * 0.13)
     .attr('x', -pxX / 2)
     .attr('font-family', 'Arial')
-    .attr('font-size', '3vw')
+    .attr('font-size', '2.5vw')
     .style('text-anchor', 'middle');
 
 };

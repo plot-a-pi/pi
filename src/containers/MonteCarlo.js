@@ -41,7 +41,9 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <MonteCarloDartBoard className={styles.dartBoard} data={dartsArray} />
+      <div className={styles.dartBoard} >
+        <MonteCarloDartBoard data={dartsArray}/>
+      </div>
       <h3 className={styles.addDarts}>Add Darts</h3>
       <div className={styles.controls}>
         <MonteCarloControls  actions={actions} />
