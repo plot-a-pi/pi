@@ -104,7 +104,7 @@ export const makePivsCountScatterplot = (svg, data, width) => {
     .select('.title')
     .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.15})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '2.5vw')
+    .attr('font-size', '3vw')
     .style('text-anchor', 'middle');
 
   svg
@@ -290,7 +290,7 @@ export const makeCvsDScatterplot = (svg, data, stats, width, line) => {
     .select('.title')
     .attr('transform', `translate(${pxX / 2.25}, ${-pxY * 0.09})`)
     .attr('font-family', 'Arial')
-    .attr('font-size', '2.5vw')
+    .attr('font-size', '3vw')
     .style('text-anchor', 'middle');
 
   svg

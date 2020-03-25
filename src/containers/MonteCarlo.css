@@ -1,29 +1,36 @@
 .MonteCarlo {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   color: #212E59;
   margin-bottom: 10vw;
+  width: 90%;
+  margin: auto;
+  display: grid;
+  grid-template-areas: "darts add"
+                       "darts controls"
+                       "derivation derivation"
+                       "stats stats"
+                       "graph graph";
+  grid-template-rows: 12vw 60vw; 
+  grid-template-columns: 4fr 1fr;     
 
   .dartBoard {
-    width: 70vw;
+    grid-area: darts;
   }
 
   .addDarts {
+    grid-area: add;
     text-align: center;
     font-size: 3vw;
     font-weight: bold;
+    justify-self: center;
+    align-self: end;
+    margin-bottom: 1vw;
   }
 
-  .dartsAndControls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
   .controls {
-    height: 40vw;
+    grid-area: controls;
+    justify-content: center;
+    align-self: top;
+    height: 53vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,7 +38,6 @@
     section{
       display: flex;
       width: 100%;
-      height: fit-content;
       margin: auto;
       flex-direction: column;
       justify-content: space-around;
@@ -40,51 +46,50 @@
       height: inherit;
       button {
         margin: 1vw;
-        height: 6vw;
-        width: 14vw;
-        padding: 1vw;
-        font-size: 2vw;
+        width: 17vw;
+        padding: 1.5vw;
+        font-size: 3vw;
       }
     }
   }
 
   .modalButton {
-    width: 32vw;
-    font-size: 2vw;
+    grid-area: derivation;
+    justify-self: center;
+    width: 55vw;
+    button {
+      width: 100%;
+      font-size: 3vw;
+      padding: 1.5vw;
+    }
   }
 
   .pivsCountScatterplot {
+    grid-area: graph;
     width: 90vw;
+  }
+
+  .statsContainer{
+    grid-area: stats;
   }
 
     
   @media screen and (min-aspect-ratio: 2/3){
 
-    .dartsAndControls {
-      display: block;
-    }
     display: grid;
-    grid-template-areas: "dartsAndControls statsContainer"
-                         "pivsCountScatterplot pivsCountScatterplot"
-                         "modalButton modalButton";
+    grid-template-areas: "darts add stats"
+                         "darts controls stats"
+                         "graph graph graph"
+                         "derivation derivation derivation";
 
     .statsContainer {
-      grid-area: statsContainer;
       width: 20vw;
       margin: auto;
     }
     .modalButton {
-      grid-area: modalButton;
-      margin: auto;
-    }
-
-    .dartsAndControls {
-      grid-area: dartsAndControls;
-      width: 70vw;
       margin: auto;
     }
     .pivsCountScatterplot{
-      grid-area: pivsCountScatterplot;
       width: 90vw;
       margin: auto;
     }
@@ -93,10 +98,11 @@
   @media screen and (min-aspect-ratio: 1/1){
 
     display: grid;
-    grid-template-areas: "dartBoard statsContainer"
-                        "dartBoard pivsCountScatterplot"
+    grid-template-areas: "darts stats"
+                        "darts graph"
+                        "add add"
                         "controls controls"
-                        "modalButton modalButton";
+                        "derivation derivation";
 
     .statsContainer {
       grid-area: statsContainer;

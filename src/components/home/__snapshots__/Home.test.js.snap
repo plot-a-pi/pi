@@ -67,8 +67,10 @@ exports[`Stats component should match snapshot 1`] = `
       </div>
     </div>
   </div>
-  <PiCrawler
+  <div
     className="piCrawler"
-  />
+  >
+    <PiCrawler />
+  </div>
 </Fragment>
 `;
