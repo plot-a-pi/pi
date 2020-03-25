@@ -40,7 +40,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <PiCrawler className={styles.piCrawler} />
+      <div className={styles.piCrawler}>
+        <PiCrawler />
+      </div>
     </>
   );
 };

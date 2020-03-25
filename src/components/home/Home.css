@@ -1,10 +1,15 @@
 .Home {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: fit-content;
+
+    .piCrawler {
+        margin-top: 50vw;
+        border: solid salmon 2px;
+    }
 
     .leftWide {
         width: 90%;
@@ -21,9 +26,8 @@
         justify-content: space-between;
         align-items: flex-start;
         width: 100%;
-        height: 80vh;
+        height: 90vh;
         margin-top: 3vw;
-        margin-bottom: 10vw;
     }
 
     .leftWide {
@@ -44,7 +48,6 @@
         }
 
         .pivscount {
-            margin-top: 10vw;
             width: 90%;
         }
     }
