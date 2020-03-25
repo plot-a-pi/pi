@@ -3,8 +3,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: .25em;
-  margin: 1em 0 1em 0;
   width: 90vw;
   height: 20vw;
   border-radius: .5em;
@@ -33,14 +31,15 @@
 
   @media screen and (min-aspect-ratio: 2/3){
     flex-direction: column;
-    justify-content: space-between;
-    height: 45vw;
+    height: 50vw;
     width: 17vw;
     .card{
       width: 22vw;
+      margin: 1.5vw;
     }
 
     h2 {
+      margin-top: 1vw;
       margin-bottom: 0;
       font-size: 2vw;
     }

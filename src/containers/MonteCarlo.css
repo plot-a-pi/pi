@@ -19,7 +19,7 @@
   .addDarts {
     grid-area: add;
     text-align: center;
-    font-size: 3vw;
+    font-size: 2.5vw;
     font-weight: bold;
     justify-self: center;
     align-self: end;
@@ -37,13 +37,11 @@
     align-items: center;
     section{
       display: flex;
-      width: 100%;
       margin: auto;
       flex-direction: column;
       justify-content: space-around;
       align-content: center;
       text-align: center;
-      height: inherit;
       button {
         margin: 1vw;
         width: 17vw;
@@ -68,7 +66,6 @@
     grid-area: graph;
     width: 90vw;
   }
-
   .statsContainer{
     grid-area: stats;
   }
@@ -77,17 +74,33 @@
   @media screen and (min-aspect-ratio: 2/3){
 
     display: grid;
+    width: 95%;
     grid-template-areas: "darts add stats"
                          "darts controls stats"
                          "graph graph graph"
                          "derivation derivation derivation";
+    grid-template-rows: 10vw 43vw auto auto;
+     
+    grid-template-columns: 6fr 1.5fr 3fr;  
 
-    .statsContainer {
-      width: 20vw;
-      margin: auto;
+    .statsContainer{
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+      align-items: flex-start;
+      margin-bottom: 20px;
     }
-    .modalButton {
-      margin: auto;
+
+    .controls{ 
+      height: 35vw;
+      section{
+        button{
+          font-size: 2.5vw;
+          margin: 1vw;
+          width: 15vw;
+          padding: 1vw;
+        }
+      }
     }
     .pivsCountScatterplot{
       width: 90vw;
@@ -103,6 +116,7 @@
                         "add add"
                         "controls controls"
                         "derivation derivation";
+    grid-template-rows: 10vw 10vw auto auto;
 
     .statsContainer {
       grid-area: statsContainer;
