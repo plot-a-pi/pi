@@ -1,13 +1,14 @@
 .MonteCarloStats{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 90vw;
   height: 20vw;
   border-radius: .5em;
-  margin: 2vw;
   text-align: center;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
   
   .card {
     display: flex;
@@ -16,11 +17,15 @@
     border-radius: 100%;
     background: rgb(197, 209, 240);
     height: 100%;
-    width: 28vw;
+    width: 100%;
+    margin-left: 1vw;
+    margin-right: 1vw;
   }
 
   h2 {
     font-size: 2.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
     font-weight: bolder;
     height: 4vw;
     margin-bottom: 2vw;
@@ -55,12 +60,14 @@
     width: 100%;
     height: 8vw;
     margin: 0px;
+    
     .card{
-      height: 100%;
-      width: 16vw;
+      height: 90%;
+      width: 14vw;
+      border-radius: 0.5em;
 
       h2{
-        font-size: 1.2vw;
+        font-size: 1.3vw;
         margin-bottom: 1vw;
         height: 1.5vw;
       }

@@ -19,6 +19,10 @@ const MonteCarloStats = ({ piApproximation, dartsTotal, circleTotal }) => {
           <h2>&pi; &asymp;</h2>
           <h3>{piApproximation.toFixed(4)}</h3>
         </div>
+        <div className={styles.card}>
+          <h2>% Error</h2>
+          <h3>{(100 * Math.abs((Math.PI - piApproximation) / Math.PI)).toFixed(2)}</h3>
+        </div>
       </div>
     </>
   );
