@@ -66,6 +66,7 @@
     grid-area: graph;
     width: 90vw;
   }
+
   .statsContainer{
     grid-area: stats;
   }
