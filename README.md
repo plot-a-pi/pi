@@ -2,7 +2,7 @@
 
 ## Overview
 
-Plot a Pi is an interactive, multi-user data visualization application for exploring the universal constant pi. It us intended to be used by individuals, groups, and educators for the following purposes:
+Plot a Pi is an interactive, multi-user data visualization application for exploring the universal constant pi. It is intended to be used by individuals, groups, and educators for the following purposes:
 
 * submit circumference/diameter measurements to a global database used to approximate pi
 * explore the effect of sample size on the precision of approximations
