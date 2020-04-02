@@ -36,13 +36,10 @@ exports[`SessionForm component renders the SessionForm 1`] = `
       <div
         className="DataEntryForm"
       >
-        <h2>
-          Plot your 
-          <span
-            className="pI"
-          >
-            π
-          </span>
+        <h2
+          className="title"
+        >
+          Plot your π
         </h2>
         <div>
           <img
@@ -52,23 +49,30 @@ exports[`SessionForm component renders the SessionForm 1`] = `
           />
         </div>
         <form
-          onSubmit={[Function]}
+          className="formWrapper"
         >
           <div
-            className="formInputWrapper"
+            className="measurementWrapper"
           >
-            <h3>
-              Circumference
-            </h3>
             <div
-              className="measurementWrapper"
+              className="formItem"
             >
+              <h3>
+                Circumference
+              </h3>
               <input
                 onChange={[Function]}
                 required={true}
                 type="text"
                 value=""
               />
+            </div>
+            <div
+              className="formItem"
+            >
+              <h3>
+                Units
+              </h3>
               <select
                 id="circumferenceUnits"
                 onChange={[Function]}
@@ -79,11 +83,20 @@ exports[`SessionForm component renders the SessionForm 1`] = `
                   value=""
                 />
                 <option
+                  value="cm"
+                >
+                  cm
+                </option>
+                <option
                   value="in"
                 >
                   in
                 </option>
               </select>
+            </div>
+            <div
+              className="formItem"
+            >
               <button
                 className="modalButton"
                 onClick={[Function]}
@@ -91,72 +104,30 @@ exports[`SessionForm component renders the SessionForm 1`] = `
               >
                  ? 
               </button>
-              <Modal
-                modalInstructions={
-                  <div
-                    className="modal"
-                  >
-                    <p>
-                      The circumference is the distance around the circle.
-                    </p>
-                    <br />
-                    <p>
-                      Measure the distance around a circular object and record it here.
-                    </p>
-                  </div>
-                }
-                modalTitle="Circumference"
-                showModal={false}
-                toggleModal={[Function]}
-              >
-                <section>
-                  <div
-                    className="Modal modalHide"
-                  >
-                    <div
-                      className="modalHeader"
-                    >
-                      <button
-                        className="closeButton"
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        ×
-                      </button>
-                      <div>
-                        <div
-                          className="modal"
-                        >
-                          <p>
-                            The circumference is the distance around the circle.
-                          </p>
-                          <br />
-                          <p>
-                            Measure the distance around a circular object and record it here.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </Modal>
             </div>
           </div>
           <div
-            className="formInputWrapper"
+            className="measurementWrapper"
           >
-            <h3>
-              Diameter
-            </h3>
             <div
-              className="measurementWrapper"
+              className="formItem"
             >
+              <h3>
+                Diameter
+              </h3>
               <input
                 onChange={[Function]}
                 required={true}
                 type="text"
                 value=""
               />
+            </div>
+            <div
+              className="formItem"
+            >
+              <h3>
+                Units
+              </h3>
               <select
                 id="diameterUnits"
                 onChange={[Function]}
@@ -167,11 +138,20 @@ exports[`SessionForm component renders the SessionForm 1`] = `
                   value=""
                 />
                 <option
+                  value="cm"
+                >
+                  cm
+                </option>
+                <option
                   value="in"
                 >
                   in
                 </option>
               </select>
+            </div>
+            <div
+              className="formItem"
+            >
               <button
                 className="modalButton"
                 onClick={[Function]}
@@ -179,62 +159,112 @@ exports[`SessionForm component renders the SessionForm 1`] = `
               >
                  ? 
               </button>
-              <Modal
-                modalInstructions={
-                  <div
-                    className="modal"
-                  >
-                    <p>
-                      The diameter is the distance across the circle.
-                    </p>
-                    <br />
-                    <p>
-                      Measure the widest path across the same circular object and record it here.
-                    </p>
-                  </div>
-                }
-                modalTitle="Diameter"
-                showModal={false}
-                toggleModal={[Function]}
-              >
-                <section>
-                  <div
-                    className="Modal modalHide"
-                  >
-                    <div
-                      className="modalHeader"
-                    >
-                      <button
-                        className="closeButton"
-                        onClick={[Function]}
-                        type="button"
-                      >
-                        ×
-                      </button>
-                      <div>
-                        <div
-                          className="modal"
-                        >
-                          <p>
-                            The diameter is the distance across the circle.
-                          </p>
-                          <br />
-                          <p>
-                            Measure the widest path across the same circular object and record it here.
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </section>
-              </Modal>
             </div>
           </div>
           <button
             className="plotButton"
+            onClick={[Function]}
           >
             Plot!
           </button>
+          <Modal
+            modalInstructions={
+              <div
+                className="modal"
+              >
+                <p>
+                  The circumference is the distance around the circle.
+                </p>
+                <br />
+                <p>
+                  Measure the distance around a circular object and record it here.
+                </p>
+              </div>
+            }
+            modalTitle="Circumference"
+            showModal={false}
+            toggleModal={[Function]}
+          >
+            <section>
+              <div
+                className="Modal modalHide"
+              >
+                <div
+                  className="modalHeader"
+                >
+                  <button
+                    className="closeButton"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    ×
+                  </button>
+                  <div>
+                    <div
+                      className="modal"
+                    >
+                      <p>
+                        The circumference is the distance around the circle.
+                      </p>
+                      <br />
+                      <p>
+                        Measure the distance around a circular object and record it here.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </Modal>
+          <Modal
+            modalInstructions={
+              <div
+                className="modal"
+              >
+                <p>
+                  The diameter is the distance across the circle.
+                </p>
+                <br />
+                <p>
+                  Measure the widest path across the same circular object and record it here.
+                </p>
+              </div>
+            }
+            modalTitle="Diameter"
+            showModal={false}
+            toggleModal={[Function]}
+          >
+            <section>
+              <div
+                className="Modal modalHide"
+              >
+                <div
+                  className="modalHeader"
+                >
+                  <button
+                    className="closeButton"
+                    onClick={[Function]}
+                    type="button"
+                  >
+                    ×
+                  </button>
+                  <div>
+                    <div
+                      className="modal"
+                    >
+                      <p>
+                        The diameter is the distance across the circle.
+                      </p>
+                      <br />
+                      <p>
+                        Measure the widest path across the same circular object and record it here.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </Modal>
         </form>
       </div>
     </SessionForm>

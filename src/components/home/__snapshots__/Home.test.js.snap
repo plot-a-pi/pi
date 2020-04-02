@@ -1,67 +1,76 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Stats component should match snapshot 1`] = `
-<div
-  className="Home"
->
-  <CvsDScatterplot
-    className="graphA"
-    line={true}
-    stats={
-      Object {
-        "piApproximationArray": Array [
-          4,
-          3,
-          3.5,
-        ],
-      }
-    }
-    title="Global Circle Measurements"
-  />
-  <CvDGraphStats
-    className={
-      Object {
-        "piApproximationArray": Array [
-          4,
-          3,
-          3.5,
-        ],
-      }
-    }
-    stats={
-      Object {
-        "piApproximationArray": Array [
-          4,
-          3,
-          3.5,
-        ],
-      }
-    }
-  />
-  <PivsCountScatterplot
-    className="graphB"
-    data={
-      Array [
-        Array [
-          1,
-          4,
-        ],
-        Array [
-          2,
-          3,
-        ],
-        Array [
-          3,
-          3.5,
-        ],
-      ]
-    }
-    title="Global Pi Approximation vs Count"
-    xLabel="Count"
-    yLabel="Pi Approximation"
-  />
-  <PiCrawler
+<Fragment>
+  <div
+    className="Home"
+  >
+    <div
+      className="leftWide"
+    >
+      <CvsDScatterplot
+        line={true}
+        stats={
+          Object {
+            "piApproximationArray": Array [
+              4,
+              3,
+              3.5,
+            ],
+          }
+        }
+        title="Global Circle Measurements"
+      />
+    </div>
+    <div
+      className="rightWide"
+    >
+      <div
+        className="stats"
+      >
+        <CvDGraphStats
+          stats={
+            Object {
+              "piApproximationArray": Array [
+                4,
+                3,
+                3.5,
+              ],
+            }
+          }
+        />
+      </div>
+      <div
+        className="pivscount"
+      >
+        <PivsCountScatterplot
+          data={
+            Array [
+              Array [
+                1,
+                4,
+              ],
+              Array [
+                2,
+                3,
+              ],
+              Array [
+                3,
+                3.5,
+              ],
+            ]
+          }
+          title="Global Pi Approximation vs Count"
+          xLabel="Count"
+          yLabel="Pi Approximation"
+        />
+      </div>
+    </div>
+  </div>
+  <div
     className="piCrawler"
-  />
-</div>
+  >
+    <PiCrawler />
+  </div>
+</Fragment>
 `;

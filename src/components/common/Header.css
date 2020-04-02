@@ -1,6 +1,5 @@
 .container {
-  margin-bottom: 2vw;
-  border: magenta 2px solid;
+  margin-bottom: 1vw;
   background: whitesmoke;
   padding: 2vw;
 }
@@ -135,9 +134,9 @@
 
   .container {
     display: flex;
+    padding: 15px;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    border: cyan 2px solid;
   }
 }

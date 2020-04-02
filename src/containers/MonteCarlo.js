@@ -41,17 +41,17 @@ const MonteCarlo = () => {
 
   return (
     <div className={styles.MonteCarlo}>
-      <div className={styles.dartsAndControls}>
-        <div className={styles.dartBoard}>
-          <MonteCarloDartBoard data={dartsArray} />
-        </div>
-        <div className={styles.controls}>
-          <h3 className={styles.addDarts}>Add Darts</h3>
-          <MonteCarloControls actions={actions} />
-        </div>
+      <div className={styles.dartBoard} >
+        <MonteCarloDartBoard data={dartsArray}/>
       </div>
-      <button className={styles.modalButton} type='button' onClick={() => toggleDerivationModal()}> Pi Approximation Derivation </button>
-      <div>
+      <h3 className={styles.addDarts}>Add Darts</h3>
+      <div className={styles.controls}>
+        <MonteCarloControls  actions={actions} />
+      </div>
+      <div className={styles.modalButton}>
+        <button  type='button' onClick={() => toggleDerivationModal()}> Pi Approximation Derivation </button>
+      </div>
+      <div className={styles.statsContainer}>
         <MonteCarloStats piApproximation={piApproximation} dartsTotal={dartsTotal} circleTotal={circleTotal} />
       </div>
       <div className={styles.pivsCountScatterplot}>

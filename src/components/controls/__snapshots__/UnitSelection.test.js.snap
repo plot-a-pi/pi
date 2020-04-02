@@ -16,29 +16,29 @@ exports[`UnitSelection component renders the UnitSelection component 1`] = `
     <div
       className="UnitSelection"
     >
-      <input
-        checked={true}
-        id="cm"
-        name="unit"
-        onClick={[Function]}
-        type="radio"
-        value="cm"
-      />
       <label
         htmlFor="cm"
       >
+        <input
+          checked={true}
+          id="cm"
+          name="unit"
+          onClick={[Function]}
+          type="radio"
+          value="cm"
+        />
         cm
       </label>
-      <input
-        checked={false}
-        name="unit"
-        onClick={[Function]}
-        type="radio"
-        value="in"
-      />
       <label
         htmlFor="in"
       >
+        <input
+          checked={false}
+          name="unit"
+          onClick={[Function]}
+          type="radio"
+          value="in"
+        />
         in
       </label>
     </div>

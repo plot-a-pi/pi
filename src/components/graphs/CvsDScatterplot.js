@@ -59,7 +59,7 @@ const CvsDScatterplot = ({ data, stats, title, line }) => {
         <text className={'y-label'} fill='#212E59'>{yLabel}</text>
         <line className={'line'}></line>
       </svg>
-      <div>
+      <div className={styles.csv}>
         <CSVButton header1={xLabel} header2={yLabel} data={dataForCSV} />  
         <UnitSelection />
       </div>
