@@ -14,11 +14,11 @@ const CvDGraphStats = ({ stats }) => {
       </div>
       <div className={styles.card}>
         <h2>&pi; &asymp;</h2>
-        <h3>{stats.mean.toFixed(3)}</h3>
+        <h3>{stats.mean.toFixed(2)}</h3>
       </div>
       <div className={styles.card}>
         <h2>Error</h2>
-        <h3>{(100 * Math.abs(Math.PI - stats.mean) / Math.PI).toFixed(3)}%</h3>
+        <h3>{(100 * Math.abs(Math.PI - stats.mean) / Math.PI).toFixed(2)}%</h3>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ exports[`CvDGraphStats component renders the CvDGraphStats 1`] = `
       π ≈
     </h2>
     <h3>
-      3.000
+      3.00
     </h3>
   </div>
   <div
@@ -31,7 +31,7 @@ exports[`CvDGraphStats component renders the CvDGraphStats 1`] = `
       Error
     </h2>
     <h3>
-      4.507
+      4.51
       %
     </h3>
   </div>

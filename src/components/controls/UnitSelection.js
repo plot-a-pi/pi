@@ -12,10 +12,10 @@ const UnitSelection = () => {
 
   return (
     <div className={styles.UnitSelection}>
-      <input id='cm' type='radio' name='unit' value='cm' checked={unit === 'cm'} onClick={() => dispatch(changeUnit('cm'))} />
-      <label htmlFor='cm'>cm</label>
-      <input type='radio' name='unit' value='in' checked={unit === 'in'} onClick={() => dispatch(changeUnit('in'))} />
-      <label htmlFor='in'>in</label>
+      <label htmlFor='cm'><input id='cm' type='radio' name='unit' value='cm' checked={unit === 'cm'} onClick={() => dispatch(changeUnit('cm'))} />cm 
+      </label>
+      <label htmlFor='in'><input type='radio' name='unit' value='in' checked={unit === 'in'} onClick={() => dispatch(changeUnit('in'))} />in
+      </label>
     </div>
   );
 };
