@@ -1,4 +1,4 @@
-# PLOT A Pi
+# Plot a Pi
 
 ## Overview
 
@@ -9,6 +9,9 @@ Plot a Pi is an interactive, multi-user data visualization application for explo
 * interact with a Monte Carlo approximation of pi
 * collect and save group/class datasets and compare to the global approximation of pi
 * easily download comma separated values for all circumference vs diameter graphs and pi approximation vs count graphs
+
+## Backend Application
+https://github.com/plot-a-pi/pi-be
 
 ## Application Features
 
