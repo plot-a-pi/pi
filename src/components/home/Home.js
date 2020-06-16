@@ -5,14 +5,14 @@ import { useEmitEvent, useSocketState, useSocket } from 'react-socket-io-hooks';
 import CvsDScatterplot from '../graphs/CvsDScatterplot';
 import CvDGraphStats from '../stats/CvDGraphStats';
 import PivsCountScatterplot from '../graphs/PivsCountScatterplot';
+import Loading from '../common/Loading';
 
 const Home = () => {
 
   const emitRetrievedDataPoints = useEmitEvent('RETRIEVE_DATA_POINTS');
   const emitGlobalStats = useEmitEvent('RETRIEVE_GLOBAL_STATS');
   const socket = useSocket();
-  const { stats } = useSocketState();
-  const { points } = useSocketState();
+  const { stats, points, loading } = useSocketState();
 
   useEffect(() => {
     if(socket.connected !== undefined) {
@@ -24,6 +24,8 @@ const Home = () => {
 
   const piApproximationsArray = stats.piApproximationArray;
   const dataArray = piApproximationsArray.map((pi, i) => [i + 1, pi]);
+
+  const loadingHtml = loading ? <Loading /> : null;
   
   return (
     <>
@@ -43,6 +45,7 @@ const Home = () => {
       <div className={styles.piCrawler}>
         <PiCrawler />
       </div>
+      {loadingHtml}
     </>
   );
 };

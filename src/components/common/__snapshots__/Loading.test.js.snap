@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Component should render a Loading 1`] = `
+<div
+  className="Loading"
+>
+  <img
+    src="/path/image"
+  />
+</div>
+`;
