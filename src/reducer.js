@@ -1,5 +1,6 @@
 export const initialState = {
   points: [],
+  loading: true,
   stats: {
     piApproximationArray: [],
     circumferenceMax: 50,
@@ -29,7 +30,7 @@ export default function reducer(state, action) {
     case UPDATE_GLOBAL:
       return { ...state, points: [...state.points, action.payload] };
     case RETRIEVE_DATA_POINTS:
-      return { ...state, points: action.payload };
+      return { ...state, points: action.payload, loading: false };
     case RETRIEVE_GLOBAL_STATS:
       return { ...state, stats: action.payload };
     case RETRIEVE_SESSION_DATA: 

@@ -1,0 +1,22 @@
+.Loading{
+  position: fixed;
+  width: 100%;
+  img{
+    display: block;
+    margin: auto;
+    width: 300px;
+
+  }
+  top: 30%;
+  margin: auto;
+
+  @media screen and (min-width: 1200px) {
+    width: 50%;
+    top: 40%;
+    left: 2%;
+    img{
+      width: 25%;
+    }
+  }
+
+}

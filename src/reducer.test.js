@@ -11,7 +11,7 @@ describe('socket reducer', () => {
   });
 
   it('can handle a RETRIEVE_DATA_POINTS action', () => {
-    const state = { word: 'hi' };
+    const state = { word: 'hi', loading: true };
     const action = {
       type: RETRIEVE_DATA_POINTS,
       payload: 'im a payload'
@@ -21,7 +21,8 @@ describe('socket reducer', () => {
 
     expect(newState).toEqual({
       word: 'hi',
-      points: action.payload
+      points: action.payload,
+      loading: false
     });
   });
 
