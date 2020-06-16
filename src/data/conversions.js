@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-export const convert = (point) => {
-  // const conversionObject = {
-  //   cmToIn : x => x / 2.54,
-  //   inToCm: x => x * 2.54 
-  // };
-  if(point.circumferenceUnit === 'in')
-    return { ...point, circumference: point.circumference * 2.54, diameter: point.diameter * 2.54 };
-  else return point;
-=======
 // refactor to use object for conversions
 
 export const convertData = (data, unit) => {
@@ -33,5 +23,4 @@ export const convertData = (data, unit) => {
       else return ({ ...point, circumference: point.circumference / 2.54, diameter: point.diameter / 2.54, circumferenceUnit: 'in' });
     });
   }
->>>>>>> bd08985d5a826409ffb8059080dcfe841e093069
 };
